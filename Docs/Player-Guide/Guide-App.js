@@ -14,7 +14,8 @@
   const machineMoves = DATA.pokedex?.machineMoves || {};
   const state = { view: REMATCH ? "rematches" : "walk", chapter: 1, trainerGroup: "All", shopLocation: shopTabs[0]?.key || "", filter: "All", page: 0, query: "", locationQuery: "", selectedArea: -1 };
   let selectedPokemon = null;
-  let dexListScroll = 0;
+  let dexListScroll;
+  const dexSort = { column: "number", direction: 1 };
   const PAGE = 8;
   const WILD_PAGE = 6;
   const $ = id => document.getElementById(id);
@@ -172,6 +173,10 @@
   }
 
   const statNames = ["HP", "Attack", "Defense", "Sp. Atk", "Sp. Def", "Speed"];
+  const dexStatColumns = [["HP", "hp"], ["Attack", "attack"], ["Defense", "defense"],
+    ["Sp. Attack", "spAttack"], ["Sp. Defense", "spDefense"], ["Speed", "speed"]];
+  const dexNameOrder = new Intl.Collator("en", { sensitivity: "base", numeric: true });
+  const statTotal = mon => mon.stats.reduce((sum, value) => sum + value, 0);
 
   function learnsetSection(label, columns, rows, open = false) {
     const table = `<div class="table-scroll"><table class="reference-table dex-table"><caption class="sr-only">${label} moves</caption><thead><tr>${columns.map(name => `<th scope="col">${name}</th>`).join("")}</tr></thead><tbody>${rows.map(row => `<tr>${row.map(cell => `<td>${esc(cell)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
@@ -184,12 +189,12 @@
       ["Catch rate", mon.catchRate], ["Base friendship", mon.friendship], ["Growth rate", mon.growth],
       ["Egg groups", mon.eggGroups.join(" / ")], ["EV yield", yields.join(", ") || "None"],
     ];
-    const total = mon.stats.reduce((sum, value) => sum + value, 0);
     const abilities = mon.abilities.map(ability => `<li>${esc(ability)}</li>`);
     if (mon.hidden) abilities.push(`<li>${esc(mon.hidden)} <small>Hidden ability</small></li>`);
-    // Only TM001–TM092 work in this release. Keep the full engine data for future builds.
+    // This release uses TM001–TM092 and HMs. Retain later TMs and TRs in the engine data.
     const machines = mon.machines.filter(code => {
-      if (!code.startsWith("TM")) return true;
+      if (code.startsWith("HM")) return true;
+      if (!code.startsWith("TM")) return false;
       const number = Number(code.slice(2));
       return number >= 1 && number <= 92;
     });
@@ -206,7 +211,7 @@
         </div>
       </header>
       <div class="dex-overview">
-        <section class="dex-panel"><div class="dex-panel-title"><h2>Base stats</h2><span class="dex-total"><strong>${total}</strong> total</span></div>
+        <section class="dex-panel"><div class="dex-panel-title"><h2>Base stats</h2><span class="dex-total"><strong>${statTotal(mon)}</strong> total</span></div>
           <dl class="dex-stats">${mon.stats.map((value, index) => `<div><dt>${statNames[index]}</dt><dd><span>${value}</span><span class="dex-meter" aria-hidden="true" style="--fill:${value / 255 * 100}%"></span></dd></div>`).join("")}</dl>
         </section>
         <section class="dex-panel"><h2>Abilities and species data</h2>
@@ -215,27 +220,57 @@
         </section>
       </div>
       <section class="section dex-moves">${title("Learnset")}
-        <div class="dex-learnsets">
-          <div>${learnsetSection("Level up", ["Level", "Move"], mon.level.map(([level, move]) => [level === 0 ? "On evolution" : level, move]), true)}</div>
-          <div>
-            ${learnsetSection("TMs, HMs and TRs", ["Machine", "Move"], machines.map(code => [code, machineMoves[code]]))}
-            ${learnsetSection("Egg moves", ["Move"], mon.egg.map(move => [move]))}
-            ${learnsetSection("Tutor moves", ["Move"], mon.tutor.map(move => [move]))}
-          </div>
-        </div>
+        ${learnsetSection("Level up", ["Level", "Move"], mon.level.map(([level, move]) => [level === 0 ? "On evolution" : level, move]), true)}
+        ${learnsetSection("TMs and HMs", ["Machine", "Move"], machines.map(code => [code, machineMoves[code]]))}
+        ${learnsetSection("Egg moves", ["Move"], mon.egg.map(move => [move]))}
+        ${learnsetSection("Tutor moves", ["Move"], mon.tutor.map(move => [move]))}
       </section>`;
+  }
+
+  function sortDexRows(rows) {
+    const { column, direction } = dexSort;
+    const statIndex = dexStatColumns.findIndex(([, key]) => key === column);
+    let compare;
+    if (column === "number") compare = (a, b) => a.dexNumber - b.dexNumber;
+    else if (column === "name") compare = (a, b) => dexNameOrder.compare(a.name, b.name);
+    else if (column === "bst") compare = (a, b) => statTotal(a) - statTotal(b);
+    else compare = (a, b) => a.stats[statIndex] - b.stats[statIndex];
+    rows.sort((a, b) => direction * compare(a, b) || a.dexNumber - b.dexNumber || Number(a.form) - Number(b.form));
+  }
+
+  function dexTable(rows) {
+    const columns = [["Icon"], ["Pokédex #", "number"], ["Name", "name"], ["Typing"],
+      ["Ability 1"], ["Ability 2"], ["Ability 3"], ...dexStatColumns, ["BST", "bst"]];
+    const headings = columns.map(([label, key]) => {
+      if (!key) return `<th scope="col">${label}</th>`;
+      const active = key === dexSort.column;
+      const ascending = dexSort.direction === 1;
+      const arrow = active ? (ascending ? "↑" : "↓") : "↕";
+      return `<th scope="col"${key === "name" ? "" : ' class="dex-number"'}${active ? ` aria-sort="${ascending ? "ascending" : "descending"}"` : ""}><button type="button" data-dex-sort="${key}">${label} <span aria-hidden="true">${arrow}</span></button></th>`;
+    }).join("");
+    const body = rows.map(mon => `<tr>
+      <td class="dex-icon-cell">${mon.icon ? icon(mon.icon, "poke-icon", "", true) : imageName(mon)}</td>
+      <td class="dex-number">${String(mon.dexNumber).padStart(3, "0")}</td>
+      <th scope="row"><button type="button" id="dex-${mon.token}" data-pokemon="${mon.token}">${esc(mon.name)}</button></th>
+      <td>${typeChips(mon.types)}</td>
+      ${[...mon.abilitySlots, mon.hidden].map(ability => `<td>${esc(ability || "—")}</td>`).join("")}
+      ${mon.stats.map(stat => `<td class="dex-number">${stat}</td>`).join("")}
+      <td class="dex-number dex-bst">${statTotal(mon)}</td>
+    </tr>`).join("");
+    return `<div class="table-scroll dex-list" tabindex="0" aria-label="Pokédex table, scroll for more rows or columns"><table class="reference-table dex-index-table"><caption class="sr-only">National Pokédex species and forms. Ability 3 is the hidden ability.</caption><thead><tr>${headings}</tr></thead><tbody>${body}</tbody></table></div>`;
   }
 
   function renderPokedex() {
     $("pager").innerHTML = "";
     if (selectedPokemon) return pokemonDetails(selectedPokemon);
-    const rows = pokedex.filter(mon => matches([mon.name, ...mon.types, ...mon.abilities, mon.hidden]));
-    const list = rows.map(mon => `<li><button type="button" id="dex-${mon.token}" data-pokemon="${mon.token}"><span class="dex-list-icon">${icon(mon.icon, "poke-icon", "", true)}</span><span class="dex-list-name">${esc(mon.name)}<small>${esc(mon.types.join(" / "))}</small></span><span class="dex-list-arrow" aria-hidden="true">›</span></button></li>`).join("");
+    const numberSearch = /^#?\d+$/.test(state.query) ? Number(state.query.replace("#", "")) : null;
+    const rows = pokedex.filter(mon => mon.dexNumber && (numberSearch !== null ? mon.dexNumber === numberSearch
+      : matches([mon.name, ...mon.types, ...mon.abilities, mon.hidden])));
+    sortDexRows(rows);
     return `<header class="dex-index">
-      <div class="dex-kicker">Heartfelt Gold field guide</div><h1 class="page-title">Pokédex</h1>
-      <p>Browse the full list or search by Pokémon name, type, or ability.</p>
+      <div><h1 class="page-title">Pokédex</h1><p>Select a column heading to sort. Ability 3 is the hidden ability.</p></div>
       ${stats([rows.length.toLocaleString(), state.query ? "matching entries" : "species and forms"])}</header>
-      ${list ? `<ul class="dex-list" aria-label="Pokémon entries">${list}</ul>` : '<div class="empty">No Pokémon match this search.</div>'}`;
+      ${rows.length ? dexTable(rows) : '<div class="empty">No Pokémon match this search.</div>'}`;
   }
 
   function bindPokedex() {
@@ -244,16 +279,29 @@
         const token = selectedPokemon.token;
         selectedPokemon = null;
         render();
+        const list = $("content").querySelector(".dex-list");
+        list.scrollTo(dexListScroll.left, dexListScroll.top);
+        window.scrollTo(0, dexListScroll.page);
         $(`dex-${token}`)?.focus({ preventScroll: true });
-        window.scrollTo(0, dexListScroll);
       };
     } else {
       const list = $("content").querySelector(".dex-list");
       if (!list) return;
       list.onclick = event => {
+        const heading = event.target.closest("[data-dex-sort]");
+        if (heading) {
+          const column = heading.dataset.dexSort;
+          const left = list.scrollLeft;
+          dexSort.direction = column === dexSort.column ? -dexSort.direction : (column === "number" || column === "name" ? 1 : -1);
+          dexSort.column = column;
+          render();
+          $("content").querySelector(".dex-list").scrollLeft = left;
+          $("content").querySelector(`[data-dex-sort="${column}"]`).focus({ preventScroll: true });
+          return;
+        }
         const button = event.target.closest("[data-pokemon]");
         if (!button) return;
-        dexListScroll = window.scrollY;
+        dexListScroll = { left: list.scrollLeft, top: list.scrollTop, page: window.scrollY };
         selectedPokemon = pokedex.find(mon => mon.token === button.dataset.pokemon);
         render();
         $("dexTitle").focus({ preventScroll: true });
@@ -347,7 +395,7 @@
     $("breadcrumb").textContent = REMATCH ? "Reference / Rematch trainers" : state.view === "walk" ? `Walkthrough / Chapter ${String(state.chapter).padStart(2, "0")}` : `Reference / ${state.view}`;
     $("content").innerHTML = ({ walk: renderWalk, pokedex: renderPokedex, trainers: renderTrainers, wild: renderWild, shops: renderShops, items: renderItems, evolution: renderEvolution, static: renderStatic, rematches: renderRematches })[state.view]();
     if (state.view === "pokedex") bindPokedex();
-    $("search").placeholder = state.view === "pokedex" ? "Pokémon names, types or abilities" : "Names, areas, items, moves or abilities";
+    $("search").placeholder = state.view === "pokedex" ? "Names, Pokédex numbers, types or abilities" : "Names, areas, items, moves or abilities";
     $("resultsStatus").textContent = $("content").querySelector(".stats")?.textContent.trim().replace(/\s+/g, " ") || "Guide content updated";
   }
   $("search").addEventListener("input", event => { state.query = event.target.value.trim().toLocaleLowerCase(); state.page = 0; state.selectedArea = -1; selectedPokemon = null; render(); });

@@ -85,26 +85,26 @@ def sprite_for(export, token):
     stem = token.removeprefix("SPECIES_").lower()
     for folder in ("ColorIcons", "TrainerMegaIcons", "Pokemon"):
         path = f"Sprites/{folder}/{stem}.png"
-        if (export / path).is_file():
+        if is_png_size(export / path, (32, 32)):
             return path
     return ""
 
 
-def is_battle_sheet(path):
+def is_png_size(path, size):
     try:
         with path.open("rb") as stream:
             header = stream.read(24)
     except FileNotFoundError:
         return False
     return (len(header) == 24 and header.startswith(b"\x89PNG\r\n\x1a\n")
-            and header[12:16] == b"IHDR" and struct.unpack(">II", header[16:24]) == (160, 80))
+            and header[12:16] == b"IHDR" and struct.unpack(">II", header[16:24]) == size)
 
 
 def front_sprite_for(export, token):
     stem = token.removeprefix("SPECIES_").lower()
     for folder in ("Front", "TrainerMegaFront", "PokedexFront"):
         path = f"Sprites/{folder}/{stem}.png"
-        if is_battle_sheet(export / path):
+        if is_png_size(export / path, (160, 80)):
             return path
     return ""
 
@@ -112,6 +112,8 @@ def front_sprite_for(export, token):
 def read_pokedex(export=None):
     names, machines, tutors = move_tables()
     blocks = entries(source("data/Species.c"), "SPECIES_")
+    national_order = source("data/PokedexSort.c").split("sPokedexSort_NationalNum[]", 1)[1].split("};", 1)[0]
+    dex_numbers = {token: number for number, token in enumerate(re.findall(r"SPECIES_\w+", national_order), 1)}
     forms = dict(re.findall(r"\[(SPECIES_\w+)\s*-\s*SPECIES_MEGA_START\]\s*=\s*(SPECIES_\w+)",
                             source("data/FormToSpeciesMapping.c")))
     hidden = dict(re.findall(r"\[(SPECIES_\w+)\s*\]\s*=\s*(ABILITY_\w+)",
@@ -124,6 +126,9 @@ def read_pokedex(export=None):
                 or "_FILLER_" in token):
             continue  # The engine reserves these entries for internal use.
         base = forms.get(token, token)
+        dex_species = token
+        while dex_species not in dex_numbers and dex_species in forms:
+            dex_species = forms[dex_species]
         base_set = learnsets.get(base, {})
         own_set = learnsets.get(token, {})
         # The engine falls back per category, then enables any machine whose move is also learned by level.
@@ -133,10 +138,15 @@ def read_pokedex(export=None):
         egg = own_set.get("EggMoves") or base_set.get("EggMoves", [])
         tutor = set(own_set.get("TutorMoves") or base_set.get("TutorMoves", []))
         hidden_ability = hidden.get(token, "ABILITY_NONE")
+        ability_tokens = re.findall(r"ABILITY_\w+", field(block, "abilities", r"\{[^}]+\}"))
+        ability_slots = ["" if ability == "ABILITY_NONE" else display(ability, "ABILITY_")
+                         for ability in ability_tokens]
         mon = {
             "token": token, "name": species_name(token, block, base, blocks), "form": token != base,
+            "dexNumber": dex_numbers.get(dex_species),
             "types": labels(block, "types", "TYPE_"), "stats": base_stats,
-            "abilities": labels(block, "abilities", "ABILITY_"),
+            "abilitySlots": ability_slots,
+            "abilities": list(dict.fromkeys(ability for ability in ability_slots if ability)),
             "hidden": display(hidden_ability, "ABILITY_") if hidden_ability != "ABILITY_NONE" else "",
             "category": c_string(block, "classification"), "description": c_string(block, "pokedexEntry"),
             "height": c_string(block, "height"), "weight": c_string(block, "weight"),
@@ -170,7 +180,7 @@ def copy_missing_battle_sprites(export, engine_sprites):
         stem = mon["token"].removeprefix("SPECIES_").lower()
         for gender in ("male", "female"):
             sprite = engine_sprites / stem / gender / "front.png"
-            if is_battle_sheet(sprite):
+            if is_png_size(sprite, (160, 80)):
                 shutil.copyfile(sprite, folder / f"{stem}.png")
                 copied += 1
                 break

@@ -46,24 +46,30 @@
 @media print{.skip-link,.sr-only{display:none!important}}
 .shop-item img.shop-icon{width:32px;height:32px;flex:0 0 32px;image-rendering:pixelated}.shop-table .shop-icon{width:36px;height:36px;object-fit:contain;image-rendering:pixelated}.shop-table td:first-child{width:52px}.shop-table .shop-price{font-weight:800;white-space:nowrap;color:#244f68}.shop-table th[scope=row]{font-size:.83rem}@media(max-width:560px){.shop-table{min-width:530px}}
 
-.dex-index{position:relative;isolation:isolate;overflow:hidden;padding:clamp(18px,3vw,32px);color:white;background:linear-gradient(110deg,#1c374d,#275970 68%,#357d72);border-radius:14px}
-.dex-index::after{content:"";position:absolute;z-index:-1;right:5%;top:50%;width:235px;aspect-ratio:1;transform:translateY(-50%);border:24px double #ffffff1c;border-radius:50%;background:linear-gradient(0deg,transparent 46%,#ffffff1c 46% 54%,transparent 54%)}
-.dex-index h1{font-size:clamp(2rem,4vw,3.3rem)}
-.dex-index p{margin:0;color:#e3f2f1}
-.dex-index .stats{margin:14px 0 0}
-.dex-index .stat{background:#112f42;color:#d3e9e8;border-color:#72999e}
-.dex-index .stat strong{color:white}
+.dex-index{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:10px;margin-bottom:14px}
+.dex-index p{margin:0;color:#526879}
+.dex-index .stats{margin:0}
 .dex-kicker{font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.13em;color:#37686d;margin-bottom:7px}
-.dex-index .dex-kicker{color:#bfebe2}
-.dex-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(225px,100%),1fr));gap:1px;padding:1px;background:#d5e2e8;border-radius:11px;list-style:none;margin:14px 0}
-.dex-list button{display:flex;align-items:center;gap:9px;width:100%;height:100%;min-height:46px;padding:5px 9px;border:0;border-radius:4px;text-align:left;color:#203f56;background:#fff;font-size:.88rem;font-weight:750;line-height:1.2}
-.dex-list li:nth-child(even) button{background:#f8fbfc}
-.dex-list li button:hover,.dex-list li button:focus-visible{background:#e0f0ec}
-.dex-list button:focus-visible{outline-offset:-3px}
-.dex-list-icon{display:grid;place-items:center;flex:none;width:34px;height:34px;background:#edf4f5;border-radius:6px}
-.dex-list-name{flex:1;min-width:0;overflow-wrap:anywhere}
-.dex-list small{display:block;margin-top:2px;font-size:.72rem;font-weight:500;color:#4e6675}
-.dex-list-arrow{color:#397279;font-size:1.18rem}
+.dex-list{max-height:72vh;overflow:auto;border:1px solid #bfcfd9;border-radius:8px;background:white}
+.dex-index-table{min-width:1080px;border-collapse:separate;border-spacing:0;font-size:.84rem}
+.dex-index-table thead th{position:sticky;top:0;z-index:1;padding:0 7px;background:#e7eef2;color:#27475d;text-transform:none;letter-spacing:normal;font-size:.8rem;box-shadow:0 1px #bfcfd9}
+.dex-index-table thead th:has(button){padding:0}
+.dex-index-table thead button{width:100%;padding:10px 7px;border:0;background:transparent;color:inherit;font-weight:750;white-space:nowrap;text-align:inherit}
+.dex-index-table thead button span{color:#597789;margin-left:1px}
+.dex-index-table thead th[aria-sort]{background:#d8e8ee}
+.dex-index-table thead button:hover{background:#cfe3ea}
+.dex-index-table button:focus-visible{outline-offset:-3px}
+.dex-index-table td,.dex-index-table tbody th{padding:4px 7px;line-height:1.25}
+.dex-index-table tbody tr:hover,.dex-index-table tbody tr:focus-within{background:#eaf5f2}
+.dex-index-table tbody button{padding:4px 0;border:0;background:transparent;color:#225e77;font-weight:750;text-align:left}
+.dex-index-table tbody button:hover{text-decoration:underline}
+.dex-index-table .dex-icon-cell{width:44px;text-align:center}
+.dex-icon-cell img{display:block;margin:auto}
+.dex-icon-cell .front-sprite{width:32px;height:32px;margin:auto;background-size:64px 32px}
+.dex-index-table .dex-number{text-align:right;font-variant-numeric:tabular-nums}
+.dex-index-table .dex-bst{font-weight:750;color:#275664}
+.dex-index-table .types{margin:0;gap:3px}
+.dex-index-table .type{font-size:.61rem;padding:3px 5px;background-image:linear-gradient(#102b3973,#102b3973);color:white}
 .dex-back{margin-bottom:14px;scroll-margin-top:14px;padding:7px 12px;background:white;border:1px solid #a8becb;border-radius:7px;color:#27586b;font-weight:700}
 .dex-back:hover{background:#e0f0ec}
 .dex-profile{display:grid;grid-template-columns:minmax(240px,2fr) minmax(0,3fr);min-height:256px;overflow:hidden;border:1px solid #b7cdd1;border-radius:14px;background:linear-gradient(120deg,#f2faf7,#fff);box-shadow:0 4px 18px #264b5b10}
@@ -82,8 +88,7 @@
 .dex-measurements div{padding:6px 10px;border:1px solid #c6dcda;border-radius:6px;background:#f1f8f7}
 .dex-measurements dt{font-size:.7rem;color:#4a626d}
 .dex-measurements dd{margin:0;font-weight:700}
-.dex-overview,.dex-learnsets{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
-.dex-overview{margin-top:14px}
+.dex-overview{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:14px}
 .dex-panel,.dex-learnset{min-width:0;background:white;border:1px solid #c1d3dc;border-radius:10px}
 .dex-panel{padding:16px 18px}
 .dex-panel h2{font-size:1.1rem;margin:0 0 10px}
@@ -110,13 +115,14 @@
 .dex-table{min-width:0;font-size:.89rem}
 .dex-table th:first-child:not(:only-child){width:8rem}
 @media(max-width:620px){
-  .dex-profile,.dex-overview,.dex-learnsets{grid-template-columns:minmax(0,1fr)}
+  .dex-profile,.dex-overview{grid-template-columns:minmax(0,1fr)}
   .dex-stage{min-height:178px}
   .dex-stage .front-sprite{width:160px;height:160px;background-size:320px 160px}
 }
 @media print{
   .dex-back{display:none}
-  .dex-index,.dex-index p,.dex-index .dex-kicker{color:var(--ink);background:white}
-  .dex-index .stat,.dex-index .stat strong{color:var(--ink);background:white}
+  .dex-list{max-height:none;overflow:visible}
+  .dex-index-table{min-width:0}
+  .dex-index-table thead th{position:static}
   .dex-stage .front-sprite{print-color-adjust:exact}
 }
