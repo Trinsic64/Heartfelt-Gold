@@ -1,95 +1,123 @@
 # Static Encounter Guide — Pokémon Heartfelt Gold
 
-Species and levels come from named `WildBattle` commands in the supplied Heartfelt Gold v2 DSPRE script export. Area and header IDs come from that same export’s dynamic map headers. The project owner identified these static encounters as identical to the release patch. A command and header binding do not by themselves prove that an encounter is reachable or establish its unlock condition.
+The table follows the supplied encounter list. The Heartfelt Gold v22 test export encodes different levels for 41 entries. See the [script audit](#v22-test-script-audit) for those values.
 
-| Pokémon | Level | Area | Map header | Script bank |
-| --- | ---: | --- | ---: | ---: |
-| Manaphy | 65 | Route 21 | 93 | 0961 |
-| Regirock | 10 | Ancient Cavern | 540 | 0965 |
-| Regice | 10 | Ancient Cavern | 541 | 0967 |
-| Registeel | 10 | Ancient Cavern | 542 | 0969 |
-| Cobalion | 10 | Sacred Grove | 543 | 0971 |
-| Terrakion | 10 | Sacred Grove | 543 | 0971 |
-| Virizion | 10 | Sacred Grove | 543 | 0971 |
-| Keldeo | 12 | Sacred Grove | 543 | 0971 |
-| Azelf | 12 | Union Cave | 545 | 0973 |
-| Uxie | 12 | Union Cave | 546 | 0975 |
-| Mesprit | 12 | Union Cave | 547 | 0977 |
-| Mew | 50 | Faraway Island | 548 | 0979 |
-| Darkrai | 25 | Newmoon Island | 549 | 0981 |
-| Cresselia | 25 | Fullmoon Island | 550 | 0983 |
-| Latias | 40 | North Island | 551 | 0985 |
-| Latios | 40 | South Island | 552 | 0987 |
-| Victini | 24 | Union Cave | 544 | 0989 |
-| Victini | 24 | Liberty Garden | 556 | 0997 |
-| Heatran | 18 | Mt. Mortar | 557 | 0999 |
-| Meloetta | 15 | Mt. Mortar | 558 | 1001 |
-| Volcanion | 20 | Mt. Mortar | 559 | 1003 |
-| Regigigas | 21 | Ancient Temple | 561 | 1007 |
-| Kubfu | 14 | Mysterious Cave | 562 | 1009 |
-| Regieleki | 24 | Ancient Cavern | 563 | 1011 |
-| Regidrago | 24 | Ancient Cavern | 564 | 1013 |
-| Poipole | 10 | Ultra Space | 565 | 1015 |
-| Meltan | 12 | Ultra Space | 566 | 1017 |
-| Marshadow | 20 | Ultra Space | 567 | 1019 |
-| Kartana | 16 | Ultra Space | 568 | 1021 |
-| Stakataka | 16 | Ultra Space | 569 | 1023 |
-| Nihilego | 18 | Ultra Space | 570 | 1025 |
-| Buzzwole | 18 | Ultra Space | 571 | 1027 |
-| Pheromosa | 18 | Ultra Space | 572 | 1029 |
-| Type: Null | 21 | Ultra Space | 573 | 1031 |
-| Xurkitree | 24 | Ultra Space | 574 | 1033 |
-| Guzzlord | 28 | Ultra Space | 575 | 1035 |
-| Celesteela | 20 | Ultra Space | 576 | 1037 |
-| Blacefalon | 21 | Ultra Space | 577 | 1039 |
-| Necrozma | 26 | Ultra Space | 578 | 1041 |
-| Iron Leaves | 30 | Ultra Space | 579 | 1043 |
-| Iron Boulder | 30 | Ultra Space | 580 | 1045 |
-| Iron Crown | 30 | Ultra Space | 581 | 1047 |
-| Walking Wake | 32 | Ultra Space | 582 | 1049 |
-| Gouging Fire | 32 | Ultra Space | 583 | 1051 |
-| Raging Bolt | 32 | Ultra Space | 584 | 1053 |
-| Hoopa | 40 | Ultra Space | 585 | 1055 |
-| Magearna | 40 | Ultra Space | 586 | 1057 |
-| Koraidon | 45 | Ultra Space | 587 | 1059 |
-| Miraidon | 45 | Ultra Space | 588 | 1061 |
-| Dialga | 45 | Spear Pillar | 590 | 1065 |
-| Palkia | 45 | Spear Pillar | 590 | 1065 |
-| Giratina | 50 | Spear Pillar | 590 | 1065 |
-| Zekrom | 45 | Mysterious Cave | 591 | 1067 |
-| Kyurem | 50 | Mysterious Cave | 592 | 1069 |
-| Reshiram | 45 | Mysterious Cave | 593 | 1071 |
-| Wo-Chien | 40 | Mysterious Cave | 594 | 1073 |
-| Chien-Pao | 40 | Mysterious Cave | 595 | 1075 |
-| Ting-Lu | 40 | Mysterious Cave | 596 | 1077 |
-| Chi-Yu | 40 | Mysterious Cave | 597 | 1079 |
-| Okidogi | 40 | Mysterious Cave | 598 | 1081 |
-| Munkidori | 40 | Mysterious Cave | 599 | 1083 |
-| Fezandipiti | 40 | Mysterious Cave | 600 | 1085 |
-| Ogerpon | 40 | Mysterious Cave | 601 | 1087 |
-| Terapagos | 50 | Mysterious Cave | 602 | 1089 |
-| Pecharunt | 40 | Mysterious Cave | 603 | 1091 |
-| Zacian | 45 | Mysterious Cave | 604 | 1093 |
-| Zamazenta | 45 | Mysterious Cave | 605 | 1095 |
-| Eternatus | 50 | Mysterious Cave | 606 | 1097 |
-| Xerneas | 45 | Mysterious Cave | 607 | 1099 |
-| Yveltal | 45 | Mysterious Cave | 608 | 1101 |
-| Zygarde | 50 | Mysterious Cave | 609 | 1103 |
-| Zeraora | 32 | Ultra Space | 610 | 1105 |
-| Calyrex | 30 | Ultra Space | 611 | 1107 |
-| Zarude | 30 | Ultra Space | 612 | 1109 |
-| Arceus | 80 | Hall of Origin | 613 | 1111 |
-| Jirachi | 45 | Ultra Space | 614 | 1113 |
-| Genesect | 50 | Ultra Space | 615 | 1115 |
-| Solgaleo | 45 | Ultra Space | 616 | 1117 |
-| Lunala | 45 | Ultra Space | 617 | 1119 |
-| Celebi | 42 | Ultra Space | 618 | 1121 |
-| Diancie | 42 | Ultra Space | 619 | 1123 |
-| Shaymin | 42 | Flower Paradise | 620 | 1125 |
-| Deoxys | 42 | Birth Island | 621 | 1127 |
-| Tapu Koko | 30 | Ultra Space | 622 | 1129 |
-| Tapu Lele | 30 | Ultra Space | 623 | 1131 |
-| Tapu Bulu | 30 | Ultra Space | 624 | 1133 |
-| Tapu Fini | 30 | Ultra Space | 625 | 1135 |
+| **Pokémon** | **Level** | **Area** | **Parent Area** |
+| :---: | :---: | :---: | :---: |
+| **Regirock** | 10 | Ancient Cavern | West of Ruins of Alphs |
+| **Regice** | 10 | Ancient Cavern | West of Ruins of Alphs |
+| **Registeel** | 10 | Ancient Cavern | West of Ruins of Alphs |
+| **Cobalion** | 10 | Sacred Grove | North of Route 36 |
+| **Terrakion** | 10 | Sacred Grove | North of Route 37 |
+| **Virizion** | 10 | Sacred Grove | North of Route 38 |
+| **Poipole** | 10 | Ultra Space | Route 32 |
+| **Keldeo** | 12 | Sacred Grove | North of Route 39 |
+| **Azelf** | 12 | Union Cave | Union Cave |
+| **Uxie** | 12 | Union Cave | Union Cave |
+| **Mesprit** | 12 | Union Cave | Union Cave |
+| **Meltan** | 12 | Ultra Space | Route 33 |
+| **Kubfu** | 14 | Mysterious Cave | Union Cave BF1 West |
+| **Meloetta** | 15 | Mt. Mortar | Mt. Mortar Route 42 Entrance |
+| **Kartana** | 16 | Ultra Space | Route 35 |
+| **Stakataka** | 16 | Ultra Space | Route 36 (After Sudowoodo) |
+| **Heatran** | 18 | Mt. Mortar | West of Mt. Mortar |
+| **Nihilego** | 18 | Ultra Space | Route 38 |
+| **Buzzwole** | 18 | Ultra Space | Route 42 West |
+| **Pheromosa** | 18 | Ultra Space | Route 39 |
+| **Volcanion** | 20 | Mt. Mortar | North East Mt. Mortar |
+| **Marshadow** | 20 | Ultra Space | Route 34 (Requires Surf) |
+| **Celesteela** | 20 | Ultra Space | Route 44 |
+| **Regigigas** | 21 | Ancient Temple | Route 44 |
+| **Type: Null** | 21 | Ultra Space | Route 40 (Beach) |
+| **Blacefalon** | 21 | Ultra Space | Route 43 |
+| **Victini** | 24 | Liberty Garden | West of Route 34 |
+| **Regieleki** | 24 | Ancient Cavern | South West of Ruins of Alphs |
+| **Regidrago** | 24 | Ancient Cavern | South West of Ruins of Alphs |
+| **Xurkitree** | 24 | Ultra Space | North of Cianwood City |
+| **Darkrai** | 25 | Newmoon Island | North of Route 40 |
+| **Cresselia** | 25 | Fullmoon Island | North of Route 40 |
+| **Necrozma** | 26 | Ultra Space | South West of Lake of Rage |
+| **Spectrier** | 26 | Route 42 | Route 42 |
+| **Glastrier** | 26 | Route 44 | Route 44 |
+| **Guzzlord** | 28 | Ultra Space | Route 47 |
+| **Iron Leaves** | 30 | Ultra Space | Route 45 |
+| **Iron Boulder** | 30 | Ultra Space | Route 45 |
+| **Iron Crown** | 30 | Ultra Space | Route 45 |
+| **Calyrex** | 30 | Ultra Space | Blackthorn City |
+| **Zarude** | 30 | Ultra Space | North of Lake of Rage |
+| **Tapu Koko** | 30 | Ultra Space | Cliff Cave |
+| **Tapu Lele** | 30 | Ultra Space | Cliff Cave |
+| **Tapu Fini** | 30 | Ultra Space | Cliff Cave |
+| **Tapu Bulu** | 30 | Ultra Space | Cliff Cave |
+| **Phione** | 30 | Route 47 | Route 47 |
+| **Walking Wake** | 32 | Ultra Space | Route 27 |
+| **Gouging Fire** | 32 | Ultra Space | Route 27 |
+| **Raging Bolt** | 32 | Ultra Space | Route 27 |
+| **Zeraora** | 32 | Ultra Space | Route 47 |
+| **Latias** | 40 | North Island | East of Route 25 |
+| **Latios** | 40 | South Island | East of Route 14 |
+| **Hoopa** | 40 | Ultra Space | Route 3 |
+| **Magearna** | 40 | Ultra Space | Route 7 |
+| **Wo-Chien** | 40 | Mysterious Cave | Rock Tunnel |
+| **Chien-Pao** | 40 | Mysterious Cave | Rock Tunnel |
+| **Ting-Lu** | 40 | Mysterious Cave | Rock Tunnel |
+| **Chi-Yu** | 40 | Mysterious Cave | Rock Tunnel |
+| **Okidogi** | 40 | Mysterious Cave | Rock Tunnel |
+| **Munkidori** | 40 | Mysterious Cave | Rock Tunnel |
+| **Fezandipiti** | 40 | Mysterious Cave | Rock Tunnel |
+| **Ogerpon** | 40 | Mysterious Cave | Rock Tunnel |
+| **Pecharunt** | 40 | Mysterious Cave | Rock Tunnel |
+| **Celebi** | 42 | Ultra Space | Route 10 |
+| **Diancie** | 42 | Ultra Space | Route 12 |
+| **Shaymin** | 42 | Flower Paradise | West of Cinnabar Island |
+| **Deoxys** | 42 | Birth Island | Route 20 |
+| **Koraidon** | 45 | Ultra Space | Route 16 |
+| **Miraidon** | 45 | Ultra Space | Route 18 |
+| **Dialga** | 45 | Spear Pillar | Mt. Silver |
+| **Palkia** | 45 | Spear Pillar | Mt. Silver |
+| **Zekrom** | 45 | Mysterious Cave | Rock Tunnel |
+| **Reshiram** | 45 | Mysterious Cave | Rock Tunnel |
+| **Zacian** | 45 | Mysterious Cave | Mt. Silver |
+| **Zamazenta** | 45 | Mysterious Cave | Mt. Silver |
+| **Xerneas** | 45 | Mysterious Cave | Mt. Silver |
+| **Yveltal** | 45 | Mysterious Cave | Mt. Silver |
+| **Jirachi** | 45 | Ultra Space | Route 25 |
+| **Solgaleo** | 45 | Ultra Space | Route 9 |
+| **Lunala** | 45 | Ultra Space | Route 9 |
+| **Mew** | 50 | Faraway Island | West of Vermillion City |
+| **Giratina** | 50 | Spear Pillar | Mt. Silver |
+| **Kyurem** | 50 | Mysterious Cave | Rock Tunnel |
+| **Terapagos** | 50 | Mysterious Cave | Rock Tunnel |
+| **Eternatus** | 50 | Mysterious Cave | Mt. Silver |
+| **Zygarde** | 50 | Mysterious Cave | Mt. Silver |
+| **Genesect** | 50 | Ultra Space | Route 8 |
+| **Manaphy** | 65 | Route 21 | Route 21 |
+| **Arceus** | 80 | Hall of Origin | Mt. Silver (After Dialga, Giratina, Palkia Encounters) |
 
-The script-bank scan covers literal named `WildBattle` commands from bank 0961 onward. It does not enumerate variable-driven encounters or scripted gifts. Verify event prerequisites and battle behavior in game.
+## v22 test script audit
+
+The expanded DSPRE scripts and unpacked script binaries agree on the species and levels for all 89 listed encounters. Of those, 48 levels match the guide. The remaining 41 are grouped below by guide level and encoded test level. Script banks identify the relevant `.script` files in `Heartfelt-Gold-v22-Test_DSPRE_contents/expanded/scripts`.
+
+| Pokémon | Guide level | v22 test level | Script banks |
+| --- | ---: | ---: | --- |
+| Cobalion, Terrakion, Virizion | 10 | 16 | `0971` |
+| Keldeo | 12 | 18 | `0971` |
+| Latias, Latios, Hoopa, Magearna | 40 | 70 | `0985`, `0987`, `1055`, `1057` |
+| Wo-Chien, Chien-Pao, Ting-Lu, Chi-Yu, Okidogi, Munkidori, Fezandipiti, Ogerpon, Pecharunt | 40 | 70 | `1073`, `1075`, `1077`, `1079`, `1081`, `1083`, `1085`, `1087`, `1091` |
+| Celebi, Diancie, Shaymin, Deoxys | 42 | 72 | `1121`, `1123`, `1125`, `1127` |
+| Koraidon, Miraidon | 45 | 65 | `1059`, `1061` |
+| Zekrom, Reshiram | 45 | 72 | `1067`, `1071` |
+| Jirachi, Solgaleo, Lunala | 45 | 75 | `1113`, `1117`, `1119` |
+| Dialga, Palkia, Zacian, Zamazenta, Xerneas, Yveltal | 45 | 85 | `1065`, `1093`, `1095`, `1099`, `1101` |
+| Genesect | 50 | 70 | `1115` |
+| Kyurem | 50 | 75 | `1069` |
+| Terapagos | 50 | 76 | `1089` |
+| Giratina, Eternatus, Zygarde | 50 | 90 | `1065`, `1097`, `1103` |
+| Arceus | 80 | 92 | `1111` |
+
+- Map headers and event objects confirm the bindings for Spectrier on Route 42 (level 26, bank `0252`), Glastrier on Route 44 (level 26, bank `0257`), and Phione on Route 47 (level 30, bank `0260`).
+- Route 47 bank `0260` also has four level 30 battles bound to event objects outside the supplied list. They are Tornadus, Thundurus, Landorus, and Enamorus.
+- The Union Cave Victini command at level 24 in bank `0989` has no local event or map-load binding in the export. The listed Liberty Garden battle is bound to an event object in bank `0997`.
+- Separate `WildBattleFateful` commands encode Shaymin at level 30 (`0025`), Arceus at 50 (`0037`), Celebi at 30 (`0092`), and Diancie at 50 (`0131`).
+
+The audit verifies script data and the bindings noted above. Parent areas, unlock conditions, and in-game behavior were outside its scope.
