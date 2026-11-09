@@ -1,6 +1,6 @@
 # Heartfelt Gold player guide — v1.0.12
 
-**For players:** [Open the guide online](https://trinsic64.github.io/Heartfelt-Gold/). It includes the story walkthrough, trainer chapters, wild encounters, shops, item locations, evolutions, and scripted encounters. Rematch trainers have a separate page linked from the guide.
+**For players:** [Open the guide online](https://trinsic64.github.io/Heartfelt-Gold/). It includes the story walkthrough, Pokédex, trainer chapters, wild encounters, shops, item locations, evolutions, and scripted encounters. Rematch trainers have a separate page linked from the guide.
 
 **For offline play:** [Download the v1.0.12 offline ZIP](https://github.com/Trinsic64/Heartfelt-Gold/releases/download/heartfelt-v1.0.12/Heartfelt-Gold-Player-Guide-Offline.zip), extract it, and double-click `index.html` in the extracted folder. Keep both HTML pages together so **Open rematch trainers** works. The pages contain their own sprites, styles, and code; no installation or internet connection is needed after downloading.
 
@@ -21,6 +21,10 @@ python Docs/Player-Guide/add-mart-prices.py --source "C:\ROM-Hack\Heartfelt-Gold
 python Docs/Player-Guide/build-standalone.py --source "C:\ROM-Hack\Heartfelt-Gold\Docs"
 ```
 
-The build script checks that every referenced sprite exists, embeds them once per page, and creates the offline ZIP from the same pages. Its versioned [app script](Guide-App.js) and [style](Guide-Style.css) must match the reviewed export, so guide behavior changes are included in the same repository change as the generated pages. The Marts page has 27 shop and floor tabs across 21 locations. Each department store floor has its own sidebar tab and priced table; counters on the same floor appear together. Item prices come from the [item data snapshot](../../HG-Engine/data/itemdata/itemdata.c).
+The build script checks that every referenced sprite exists, embeds them once per page, and creates the offline ZIP from the same pages. Its versioned [app script](Guide-App.js) and [style](Guide-Style.css) must match the reviewed export, so guide behavior changes are included in the same repository change as the generated pages.
+
+The Marts page has 30 tabs across 21 locations. Each department store floor or named counter has its own stock table. TMs show the move name next to the number and can be searched by either. Prices and move names come from the build's item and move data.
+
+The Pokédex is generated when the standalone guide is built. It includes base stats, abilities, species data, and level, machine, egg, and tutor moves for species and forms. When a release updates species, forms, abilities, moves, or learnsets, refresh the corresponding `HG-Engine` snapshots before rebuilding. The extractor follows the engine's form inheritance and machine and tutor compatibility rules. See [Pokédex data extractor](pokedex-data.py).
 
 For each release, update `release.json` with the patch filename and verified hashes, rebuild the guide, and run `python Docs/Player-Guide/verify-release-pair.py`. The Pages workflow runs the same check before publishing the guide.

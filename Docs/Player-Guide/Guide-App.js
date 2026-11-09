@@ -4,13 +4,16 @@
   const REMATCH = DATA.mode === "rematch";
   const shopTabsByKey = new Map();
   for (const shop of DATA.shops || []) {
-    const floor = shop.name.includes("Department Store") ? (shop.floor.match(/^\d+F/)?.[0] || shop.floor) : "";
+    const floor = shop.name.includes("Department Store") ? shop.floor : "";
     const key = floor ? `${shop.name}::${floor}` : shop.name;
     if (!shopTabsByKey.has(key)) shopTabsByKey.set(key, { key, label: floor ? `${shop.name} · ${floor}` : shop.name, counters: [] });
     shopTabsByKey.get(key).counters.push(shop);
   }
   const shopTabs = [...shopTabsByKey.values()];
+  const pokedex = DATA.pokedex?.pokemon || [];
+  const machineMoves = DATA.pokedex?.machineMoves || {};
   const state = { view: REMATCH ? "rematches" : "walk", chapter: 1, trainerGroup: "All", shopLocation: shopTabs[0]?.key || "", filter: "All", page: 0, query: "", locationQuery: "", selectedArea: -1 };
+  let selectedPokemon = null;
   const PAGE = 8;
   const WILD_PAGE = 6;
   const $ = id => document.getElementById(id);
@@ -26,6 +29,8 @@
   const stats = (...values) => `<div class="stats">${values.map(([n, label]) => `<span class="stat"><strong>${esc(n)}</strong> ${esc(label)}</span>`).join("")}</div>`;
   const chip = text => `<span class="badge">${esc(text)}</span>`;
   const price = value => Number.isFinite(value) ? `₽${value.toLocaleString("en-US")}` : "Price unavailable";
+  const itemLabel = name => Object.hasOwn(machineMoves, name) ? `${name} · ${machineMoves[name]}` : name;
+  const shopItemMatches = (item, floor) => matches([itemLabel(item.name), floor, item.price, item.badges]);
   const imageName = obj => obj.front
     ? `<span class="front-sprite" aria-hidden="true" style="background-image:url('${esc(obj.front)}')"></span>`
     : `${icon(obj.icon, "mon-icon")}${!obj.icon ? '<span class="mon-icon placeholder" aria-hidden="true">◈</span>' : ""}`;
@@ -83,12 +88,12 @@
   }
 
   function shopCard(shop) {
-    const entries = shop.items.map(item => `<div class="shop-item">${icon(item.sprite, "shop-icon", item.name)}<div><div class="item-name">${esc(item.name)}</div><small>${price(item.price)}${item.badges ? ` · ${esc(item.badges)} badges required` : ""}</small></div></div>`).join("");
+    const entries = shop.items.map(item => `<div class="shop-item">${icon(item.sprite, "shop-icon")}<div><div class="item-name">${esc(itemLabel(item.name))}</div><small>${price(item.price)}${item.badges ? ` · ${esc(item.badges)} badges required` : ""}</small></div></div>`).join("");
     return `<article class="shop-card"><div class="shop-title"><h3>${esc(shop.name)}</h3><small>${esc(shop.floor)}</small></div><div class="shop-items">${entries}</div></article>`;
   }
 
   function shopTable(location, counters, rows) {
-    const body = rows.map(({ item, floor }) => `<tr><td>${icon(item.sprite, "shop-icon", item.name)}</td><th scope="row">${esc(item.name)}</th><td class="shop-price">${price(item.price)}</td><td>${esc(floor || "Standard counter")}</td><td>${item.badges ? `${esc(item.badges)} badges` : "—"}</td></tr>`).join("");
+    const body = rows.map(({ item, floor }) => `<tr><td>${icon(item.sprite, "shop-icon")}</td><th scope="row">${esc(itemLabel(item.name))}</th><td class="shop-price">${price(item.price)}</td><td>${esc(floor || "Standard counter")}</td><td>${item.badges ? `${esc(item.badges)} badges` : "—"}</td></tr>`).join("");
     return `<article class="shop-card"><div class="shop-title"><h3>${esc(location)}</h3><small>${counters.length} ${counters.length === 1 ? "counter" : "counters"}</small></div><div class="table-scroll" tabindex="0" aria-label="${esc(location)} stock table, scroll horizontally if needed"><table class="reference-table shop-table"><caption class="sr-only">${esc(location)} item prices and stock</caption><thead><tr><th scope="col" aria-label="Item sprite"></th><th scope="col">Item</th><th scope="col">Price</th><th scope="col">Floor / counter</th><th scope="col">Requirement</th></tr></thead><tbody>${body}</tbody></table></div></article>`;
   }
 
@@ -117,8 +122,8 @@
     const ts = DATA.trainers.filter(t => chapterNum(t.stage) === state.chapter && trainerMatch(t))
       .sort((a, b) => a.order - b.order || gymOrder(a, b));
     const ws = DATA.wild.filter(a => a.chapter === state.chapter && filteredArea(a).length);
-    const ss = DATA.shops.filter(s => s.chapter === state.chapter && matches([s.name, s.floor, ...s.items.map(i => i.name)]));
-    const is = DATA.items.filter(i => i.chapter === state.chapter && matches([i.type, i.location, i.item, i.notes]));
+    const ss = DATA.shops.filter(s => s.chapter === state.chapter && (matches([s.name, s.floor]) || s.items.some(i => shopItemMatches(i, s.floor))));
+    const is = DATA.items.filter(i => i.chapter === state.chapter && matches([i.type, i.location, itemLabel(i.item), i.notes]));
     const st = DATA.statics.filter(i => i.chapter === state.chapter && matches([i.name, i.area, i.parent]));
     let html = `<h1 class="page-title">${esc(chapter?.label || "Story chapter")}</h1><p class="lead">Follow the chapter through its trainer battles and wild areas. Optional bonus battles appear beside their original story location; rematches have their own guide.</p>`;
     html += stats([ts.length, "trainer parties"], [ws.length, "wild areas"], [ss.length, "shops"], [is.length, "audited ground pickups"]);
@@ -133,7 +138,7 @@
   }
 
   function itemTable(rows) {
-    return `<div class="table-scroll" tabindex="0" aria-label="Item locations table, scroll horizontally if needed"><table class="reference-table"><caption class="sr-only">Item locations</caption><thead><tr><th scope="col" aria-label="Sprite"></th><th scope="col">Item</th><th scope="col">Where</th><th scope="col">Type</th><th scope="col">Coordinates</th><th scope="col">Notes</th></tr></thead><tbody>${rows.map(i => `<tr><td>${icon(i.sprite)}</td><th scope="row">${esc(i.item)}</th><td>${esc(i.location)}</td><td>${esc(i.type)}</td><td>${esc(i.coord)}</td><td>${esc(i.notes)}</td></tr>`).join("")}</tbody></table></div>`;
+    return `<div class="table-scroll" tabindex="0" aria-label="Item locations table, scroll horizontally if needed"><table class="reference-table"><caption class="sr-only">Item locations</caption><thead><tr><th scope="col" aria-label="Sprite"></th><th scope="col">Item</th><th scope="col">Where</th><th scope="col">Type</th><th scope="col">Coordinates</th><th scope="col">Notes</th></tr></thead><tbody>${rows.map(i => `<tr><td>${icon(i.sprite)}</td><th scope="row">${esc(itemLabel(i.item))}</th><td>${esc(i.location)}</td><td>${esc(i.type)}</td><td>${esc(i.coord)}</td><td>${esc(i.notes)}</td></tr>`).join("")}</tbody></table></div>`;
   }
   function staticTable(rows) {
     return `<div class="table-scroll" tabindex="0" aria-label="Scripted encounters table, scroll horizontally if needed"><table class="reference-table"><caption class="sr-only">Scripted Pokémon encounters and parent areas</caption><thead><tr><th scope="col" aria-label="Sprite"></th><th scope="col">Pokémon</th><th scope="col">Level</th><th scope="col">Encounter area</th><th scope="col">Parent area</th></tr></thead><tbody>${rows.map(i => `<tr><td>${icon(i.icon, "poke-icon")}</td><th scope="row">${esc(i.name)}</th><td>Lv. ${esc(i.level)}</td><td>${esc(i.area)}</td><td><strong>${esc(i.parent)}</strong><br><small class="dim">${esc(i.parentLink)}</small></td></tr>`).join("")}</tbody></table></div>`;
@@ -160,12 +165,74 @@
     const counters = selected?.counters || [];
     const locationMatches = matches([location]);
     const rows = counters.flatMap(shop => shop.items.map(item => ({ item, floor: shop.floor })))
-      .filter(({ item, floor }) => locationMatches || matches([item.name, floor, item.price, item.badges]));
+      .filter(({ item, floor }) => locationMatches || shopItemMatches(item, floor));
     $("pager").innerHTML = "";
-    return `<h1 class="page-title">${esc(location || "Marts and department stores")}</h1><p class="lead">Select a shop or department store floor in the sidebar to see its stock in one table. Counters on the same floor appear together. Prices come from the build's item data; standard mart stock grows with badge count.</p>${stats([shopTabs.length, "shop and floor tabs"], [counters.length, "counters"], [rows.length, "listed items"])}${rows.length ? shopTable(location, counters, rows) : '<div class="empty">No items match this search at this location.</div>'}`;
+    return `<h1 class="page-title">${esc(location || "Marts and department stores")}</h1><p class="lead">Select a shop, floor, or counter in the sidebar to see its stock and prices. Search by TM number or move name to find a TM. Standard mart stock grows with badge count.</p>${stats([shopTabs.length, "shop tabs"], [counters.length, counters.length === 1 ? "counter" : "counters"], [rows.length, "listed items"])}${rows.length ? shopTable(location, counters, rows) : '<div class="empty">No items match this search at this location.</div>'}`;
   }
+
+  const statNames = ["HP", "Attack", "Defense", "Sp. Atk", "Sp. Def", "Speed"];
+
+  function learnsetSection(label, columns, rows, open = false) {
+    const table = `<div class="table-scroll"><table class="reference-table dex-table"><caption class="sr-only">${label} moves</caption><thead><tr>${columns.map(name => `<th scope="col">${name}</th>`).join("")}</tr></thead><tbody>${rows.map(row => `<tr>${row.map(cell => `<td>${esc(cell)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
+    return `<details class="dex-learnset"${open ? " open" : ""}><summary>${label} <span class="dim">(${rows.length})</span></summary>${rows.length ? table : '<p class="dex-empty">None listed for this Pokémon.</p>'}</details>`;
+  }
+
+  function pokemonDetails(mon) {
+    const abilities = [...mon.abilities, ...(mon.hidden ? [`${mon.hidden} (Hidden)`] : [])];
+    const yields = mon.evs.flatMap((value, index) => value ? [`${value} ${statNames[index]}`] : []);
+    const facts = [
+      ["Category", mon.category], ["Height", mon.height], ["Weight", mon.weight],
+      ["Catch rate", mon.catchRate], ["Base friendship", mon.friendship], ["Growth rate", mon.growth],
+      ["Egg groups", mon.eggGroups.join(" / ")], ["EV yield", yields.join(", ") || "None"],
+    ];
+    const baseStats = [...mon.stats, mon.stats.reduce((sum, value) => sum + value, 0)];
+    return `<button type="button" class="dex-back" id="dexBack">← Back to Pokémon list</button>
+      <div class="dex-heading">${icon(mon.icon, "poke-icon")}<div><h1 class="page-title" id="dexTitle" tabindex="-1">${esc(mon.name)}</h1>${typeChips(mon.types)}</div></div>
+      ${mon.description ? `<p class="lead">${esc(mon.description)}</p>` : ""}
+      <div class="dex-overview">
+        <section class="dex-panel"><h2>Base stats</h2><dl class="dex-facts dex-stats">${[...statNames, "Total"].map((name, index) => `<div><dt>${name}</dt><dd>${baseStats[index]}</dd></div>`).join("")}</dl></section>
+        <section class="dex-panel"><h2>Abilities and species data</h2><p><strong>Abilities</strong> ${esc(abilities.join(" / ") || "None listed")}</p><dl class="dex-facts">${facts.filter(([, value]) => value !== "").map(([name, value]) => `<div><dt>${name}</dt><dd>${esc(value)}</dd></div>`).join("")}</dl></section>
+      </div>
+      <section class="section">${title("Learnset")}
+        ${learnsetSection("Level up", ["Level", "Move"], mon.level.map(([level, move]) => [level === 0 ? "On evolution" : level, move]), true)}
+        ${learnsetSection("TMs, HMs and TRs", ["Machine", "Move"], mon.machines.map(code => [code, machineMoves[code]]))}
+        ${learnsetSection("Egg moves", ["Move"], mon.egg.map(move => [move]))}
+        ${learnsetSection("Tutor moves", ["Move"], mon.tutor.map(move => [move]))}
+      </section>`;
+  }
+
+  function renderPokedex() {
+    if (selectedPokemon) {
+      $("pager").innerHTML = "";
+      return pokemonDetails(selectedPokemon);
+    }
+    const rows = pokedex.filter(mon => matches([mon.name, ...mon.types, ...mon.abilities, mon.hidden]));
+    const shown = pageSlice(rows, 30);
+    return `<h1 class="page-title">Pokédex</h1><p class="lead">Search by Pokémon name, type, or ability. Select a Pokémon to see its base stats, species data, and learnset. Alternate forms have their own entries.</p>${stats([rows.length, "matching entries"], [pokedex.length, "entries total"])}${shown.length ? `<ul class="dex-list">${shown.map(mon => `<li><button type="button" id="dex-${mon.token}" data-pokemon="${mon.token}">${icon(mon.icon, "poke-icon")}<span>${esc(mon.name)}<small>${esc(mon.types.join(" / "))}</small></span></button></li>`).join("")}</ul>` : '<div class="empty">No Pokémon match this search.</div>'}`;
+  }
+
+  function bindPokedex() {
+    if (selectedPokemon) {
+      $("dexBack").onclick = () => {
+        const token = selectedPokemon.token;
+        selectedPokemon = null;
+        render();
+        $(`dex-${token}`)?.focus();
+      };
+    } else {
+      $("content").querySelectorAll("[data-pokemon]").forEach(button => {
+        button.onclick = () => {
+          selectedPokemon = pokedex.find(mon => mon.token === button.dataset.pokemon);
+          render();
+          $("dexTitle").focus();
+          window.scrollTo(0, 0);
+        };
+      });
+    }
+  }
+
   function renderItems() {
-    const rows = DATA.items.filter(i => matches([i.type, i.location, i.item, i.coord, i.notes]));
+    const rows = DATA.items.filter(i => matches([i.type, i.location, itemLabel(i.item), i.coord, i.notes]));
     const shown = pageSlice(rows, 60);
     return `<h1 class="page-title">Ground item locations</h1><p class="lead">Visible item balls and hidden pickups from the Release v22 event files. Coordinates are map coordinates. Script gifts and older guide claims are listed in the linked audit files below.</p>${notice("Two visible item objects have unresolved identities in this extraction. A listed placement does not confirm that it is reachable during play.", true)}<p><a href="Release-v22-Item-Audit.md">Read audit notes</a> · <a href="Release-v22-Script-Item-Interactions.csv">Script item interactions</a> · <a href="Item-Locations.csv">Historical item list</a></p>${stats([rows.length, "matching pickups"])}${shown.length ? itemTable(shown) : '<div class="empty">No items match.</div>'}`;
   }
@@ -223,9 +290,9 @@
   }
 
   function renderNav() {
-    const views = REMATCH ? [["rematches", "Rematch trainers"]] : [["walk", "Story walkthrough"], ["trainers", "Trainers"], ["wild", "Wild atlas"], ["shops", "Marts & stores"], ["items", "Item locations"], ["evolution", "Evolutions"], ["static", "Static encounters"]];
+    const views = REMATCH ? [["rematches", "Rematch trainers"]] : [["walk", "Story walkthrough"], ...(pokedex.length ? [["pokedex", "Pokédex"]] : []), ["trainers", "Trainers"], ["wild", "Wild atlas"], ["shops", "Marts & stores"], ["items", "Item locations"], ["evolution", "Evolutions"], ["static", "Static encounters"]];
     $("viewNav").innerHTML = views.map(([key, label]) => `<button type="button" data-view="${key}" class="${state.view === key ? "active" : ""}" aria-current="${state.view === key ? "page" : "false"}">${esc(label)}</button>`).join("");
-    $("viewNav").querySelectorAll("button").forEach(button => button.onclick = () => { state.view = button.dataset.view; state.page = 0; state.query = ""; state.selectedArea = -1; $("search").value = ""; render(); $("main-content").focus(); });
+    $("viewNav").querySelectorAll("button").forEach(button => button.onclick = () => { state.view = button.dataset.view; state.page = 0; state.query = ""; state.selectedArea = -1; selectedPokemon = null; $("search").value = ""; render(); $("main-content").focus(); });
     if (state.view === "walk") {
       $("chapterNav").innerHTML = `<h3>Story chapters</h3>${DATA.chapters.map(c => `<button type="button" data-chapter="${c.number}" class="${state.chapter === c.number ? "active" : ""}" aria-current="${state.chapter === c.number ? "page" : "false"}">${esc(c.label)}</button>`).join("")}`;
       $("chapterNav").querySelectorAll("button").forEach(button => button.onclick = () => { state.chapter = Number(button.dataset.chapter); state.page = 0; render(); $("main-content").focus(); window.scrollTo(0, 0); });
@@ -233,11 +300,9 @@
       $("chapterNav").innerHTML = `<h3>Trainer chapters</h3><button type="button" data-trainer-group="All" class="${state.trainerGroup === "All" ? "active" : ""}" aria-pressed="${state.trainerGroup === "All"}">All trainers</button>${DATA.trainerGroups.map(g => `<button type="button" data-trainer-group="${esc(g.id)}" class="${state.trainerGroup === g.id ? "active" : ""}" aria-pressed="${state.trainerGroup === g.id}">${esc(g.label)}</button>`).join("")}`;
       $("chapterNav").querySelectorAll("button").forEach(button => button.onclick = () => { state.trainerGroup = button.dataset.trainerGroup; state.page = 0; render(); $("main-content").focus(); window.scrollTo(0, 0); });
     } else if (state.view === "shops") {
-      const matchingTabs = shopTabs.filter(tab => {
-        return matches([tab.label, ...tab.counters.flatMap(shop => [shop.floor, ...shop.items.map(item => item.name)])]);
-      });
+      const matchingTabs = shopTabs.filter(tab => matches([tab.label]) || tab.counters.some(shop => shop.items.some(item => shopItemMatches(item, shop.floor))));
       if (!matchingTabs.some(tab => tab.key === state.shopLocation)) state.shopLocation = matchingTabs[0]?.key || shopTabs[0]?.key || "";
-      $("chapterNav").innerHTML = `<h3>Mart locations and floors</h3>${shopTabs.map((tab, index) => `<button type="button" data-shop-index="${index}" class="${state.shopLocation === tab.key ? "active" : ""}" aria-current="${state.shopLocation === tab.key ? "page" : "false"}">${esc(tab.label)}</button>`).join("")}`;
+      $("chapterNav").innerHTML = `<h3>Mart locations, floors and counters</h3>${shopTabs.map((tab, index) => `<button type="button" data-shop-index="${index}" class="${state.shopLocation === tab.key ? "active" : ""}" aria-current="${state.shopLocation === tab.key ? "page" : "false"}">${esc(tab.label)}</button>`).join("")}`;
       $("chapterNav").querySelectorAll("button").forEach(button => button.onclick = () => { state.shopLocation = shopTabs[Number(button.dataset.shopIndex)].key; state.query = ""; $("search").value = ""; render(); $("main-content").focus(); window.scrollTo(0, 0); });
     } else if (state.view === "rematches") {
       const kinds = ["All", "Phone rematch", "Gym Leader", "Pokémon League"];
@@ -249,10 +314,12 @@
   function render() {
     renderNav();
     $("breadcrumb").textContent = REMATCH ? "Reference / Rematch trainers" : state.view === "walk" ? `Walkthrough / Chapter ${String(state.chapter).padStart(2, "0")}` : `Reference / ${state.view}`;
-    $("content").innerHTML = ({ walk: renderWalk, trainers: renderTrainers, wild: renderWild, shops: renderShops, items: renderItems, evolution: renderEvolution, static: renderStatic, rematches: renderRematches })[state.view]();
+    $("content").innerHTML = ({ walk: renderWalk, pokedex: renderPokedex, trainers: renderTrainers, wild: renderWild, shops: renderShops, items: renderItems, evolution: renderEvolution, static: renderStatic, rematches: renderRematches })[state.view]();
+    if (state.view === "pokedex") bindPokedex();
+    $("search").placeholder = state.view === "pokedex" ? "Pokémon names, types or abilities" : "Names, areas, items, moves or abilities";
     $("resultsStatus").textContent = $("content").querySelector(".stats")?.textContent.trim().replace(/\s+/g, " ") || "Guide content updated";
   }
-  $("search").addEventListener("input", event => { state.query = event.target.value.trim().toLocaleLowerCase(); state.page = 0; state.selectedArea = -1; render(); });
+  $("search").addEventListener("input", event => { state.query = event.target.value.trim().toLocaleLowerCase(); state.page = 0; state.selectedArea = -1; selectedPokemon = null; render(); });
   $("printBtn").onclick = () => window.print();
   $("textSizeBtn").onclick = () => {
     const larger = document.documentElement.classList.toggle("large-text");

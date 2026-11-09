@@ -1,7 +1,7 @@
 Heartfelt Gold player guide — v1.0.12
 
 1. Open index.html in a modern browser.
-2. Use the sidebar to browse the story, trainers, wild Pokémon, shops, items, and evolutions.
+2. Use the sidebar to browse the story, Pokédex, trainers, wild Pokémon, shops, items, and evolutions.
 3. Use Open rematch trainers for the separate rematch page.
 4. Search a section, choose Larger text, or print the current section as needed.
 

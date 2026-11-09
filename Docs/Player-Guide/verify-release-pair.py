@@ -247,16 +247,24 @@ csv_shop_rows = Counter((row["Shop"], row["Floor / state"], row["Item"], row["Pr
                          row["Item sprite"], row["Badges required"]) for row in shops_csv)
 assert html_shop_rows == csv_shop_rows and sum(html_shop_rows.values()) == 1065
 assert len({shop["name"] for shop in guide_data["shops"]}) == 21
-shop_tabs = Counter((shop["name"], re.match(r"^\d+F", shop["floor"]).group(0)
+shop_tabs = Counter((shop["name"], shop["floor"]
                      if "Department Store" in shop["name"] else "") for shop in guide_data["shops"])
-assert len(shop_tabs) == 27
-assert {floor for name, floor in shop_tabs if name == "Goldenrod Department Store"} == {"2F", "3F", "4F", "5F"}
-assert {floor for name, floor in shop_tabs if name == "Celadon Department Store"} == {"2F", "3F", "4F", "5F"}
-assert shop_tabs[("Goldenrod Department Store", "2F")] == 2
-assert shop_tabs[("Celadon Department Store", "2F")] == shop_tabs[("Celadon Department Store", "5F")] == 2
-assert "Mart locations and floors" in main_html and "shopTable(location, counters, rows)" in main_html
-assert "shopTabsByKey" in main_html and "shopTabs[Number(button.dataset.shopIndex)].key" in main_html
+assert len(shop_tabs) == 30
+shared_floors = {"2F lower counter", "2F upper counter", "3F", "4F"}
+assert {floor for name, floor in shop_tabs if name == "Goldenrod Department Store"} == shared_floors | {"5F"}
+assert {floor for name, floor in shop_tabs if name == "Celadon Department Store"} == shared_floors | {"5F left counter", "5F right counter"}
 assert "shop-table .shop-icon{width:36px" in main_html
+
+pokedex = guide_data["pokedex"]
+expected_dex = runpy.run_path(str(HERE / "pokedex-data.py"))["read_pokedex"]()
+assert [{k: v for k, v in mon.items() if k != "icon"} for mon in pokedex["pokemon"]] == expected_dex["pokemon"]
+assert pokedex["machineMoves"] == expected_dex["machineMoves"]
+for shop, floor, item, *_ in html_shop_rows:
+    if re.fullmatch(r"(?:TM|HM|TR)\d+(?:_[A-Z]+)?", item):
+        assert item in pokedex["machineMoves"], (shop, floor, item)
+main_sprites = json.loads(re.search(r"window\.GUIDE_SPRITES=(\{.*?\});</script>", main_html).group(1))
+assert all(not mon["icon"] or mon["icon"] in main_sprites for mon in pokedex["pokemon"])
+assert "pokedex" not in rematch_data
 
 evo_text = (ROOT / "HG-Engine/data/Evolutions.c").read_text(encoding="utf-8")
 for source, result in (("FRILLISH", "SPECIES_JELLICENT"),
@@ -287,4 +295,4 @@ assert f"{guide_hash} *{archive.name}" in asset_checksums
 assert version in (ROOT / "README.md").read_text(encoding="utf-8")
 assert (ROOT / f"RELEASE-NOTES-HEARTFELT-{version}.md").is_file()
 print(f"PASS: {version} patch, HGEFE teams, {sum(mega_totals.values())} Mega displays, held items, "
-      "1,065 Mart prices, evolutions, statics, site, ZIP, checksums, and notes agree")
+      "1,065 Mart prices, Pokédex, machine moves, evolutions, statics, site, ZIP, checksums, and notes agree")

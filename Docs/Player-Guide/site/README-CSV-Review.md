@@ -8,6 +8,8 @@ The trainer, wild encounter, shop, and evolution tables reflect the source data 
 
 Trainer cards show the in-battle Mega sprite, ability, and typing where the build's Mega Stone/form tables resolve a Mega species; the trainer CSV keeps the base party species stored in the ROM. Four Tatsugiri with Tatsugirinite and Blue's Floette with Floettite retain their base display because the configured target forms do not resolve to Mega species in this build. Wild encounter display is unchanged.
 
-All 1,065 configured Mart stock rows show the price from the build's itemdata.c; the Mart atlas groups 31 counters into 27 selectable shop and floor tabs across 21 locations. Department store floors have separate tabs; counters on the same floor appear together. Prices have not been independently checked against an in-game purchase.
+All 1,065 configured Mart stock rows show the price from the build's itemdata.c; the Mart atlas groups 31 counters into 30 tabs across 21 locations. Department store floors and named counters have separate tabs. Machine move names come from the engine's `MachineMoves.c` and `Moves.c`. Prices have not been independently checked against an in-game purchase.
+
+The Pokédex uses the engine's species, ability, and learnset tables. Forms use the engine's learnset inheritance rules. Machine and tutor lists reflect compatibility in the build.
 
 See `Release-v22-Item-Audit.md` for the item audit. `Item-Locations.csv` is the older Retiled Expansion item list and remains historical. Form-specific encounter rows and evolution icons were resolved against engine species IDs. The v23 input fixed Diglett's Cave map matrix 2 by adding map member 976; those map archives were preserved byte for byte in the built ROM.

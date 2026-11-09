@@ -12,6 +12,7 @@ import csv
 import hashlib
 import json
 import re
+import runpy
 import shutil
 import zipfile
 from pathlib import Path
@@ -26,6 +27,7 @@ PAGES = (
     ("Rematch-Trainer-Guide.html", "Rematch-Trainer-Guide.html"),
 )
 ZIP_NAME = "Heartfelt-Gold-Player-Guide-Offline.zip"
+GUIDE_DATA_PATTERN = re.compile(r"window\.GUIDE_DATA=(\{.*?\});</script>")
 
 
 def sprite_paths(value):
@@ -86,13 +88,23 @@ def bundled_script(source):
     return script
 
 
-def build_page(source, input_name, output_name, script, css, version):
-    html = (source / input_name).read_text(encoding="utf-8")
-    match = re.search(r"window\.GUIDE_DATA=(\{.*?\});</script>", html)
+def prepare_data(html, source):
+    match = GUIDE_DATA_PATTERN.search(html)
     if not match:
-        raise ValueError(f"No guide data in {input_name}")
+        raise ValueError("No guide data in HTML")
     data = json.loads(match.group(1))
     check_gym_order(source, data)
+    if data["mode"] == "main":
+        read_pokedex = runpy.run_path(str(HERE / "pokedex-data.py"))["read_pokedex"]
+        data["pokedex"] = read_pokedex(source)
+        data_payload = json.dumps(data, ensure_ascii=False, separators=(",", ":")).replace("<", "\\u003c")
+        html = html[:match.start(1)] + data_payload + html[match.end(1):]
+    return html, data
+
+
+def build_page(source, input_name, output_name, script, css, version):
+    html = (source / input_name).read_text(encoding="utf-8")
+    html, data = prepare_data(html, source)
     paths = sorted(set(sprite_paths(data)))
     sprites = {}
     for relative in paths:
@@ -150,7 +162,7 @@ def build(source):
     (SITE / "START-HERE.txt").write_text(
         f"Heartfelt Gold player guide — {version}\n\n"
         "1. Open index.html in a modern browser.\n"
-        "2. Use the sidebar to browse the story, trainers, wild Pokémon, shops, items, and evolutions.\n"
+        "2. Use the sidebar to browse the story, Pokédex, trainers, wild Pokémon, shops, items, and evolutions.\n"
         "3. Use Open rematch trainers for the separate rematch page.\n"
         "4. Search a section, choose Larger text, or print the current section as needed.\n\n"
         "The HTML pages include their sprites, styles, and code. Keep both HTML files in this folder "
@@ -185,10 +197,11 @@ def build(source):
         "retain their base display because the configured target forms do not resolve to Mega "
         "species in this build. Wild encounter display is unchanged.\n\n"
         "All 1,065 configured Mart stock rows show the price from the build's itemdata.c; "
-        "the Mart atlas groups 31 counters into 27 selectable shop and floor tabs across 21 "
-        "locations. Department store floors have separate tabs; counters on the same floor "
-        "appear together. Prices have not been "
-        "independently checked against an in-game purchase.\n\n"
+        "the Mart atlas groups 31 counters into 30 tabs across 21 locations. Department store floors "
+        "and named counters have separate tabs. Machine move names come from the engine's `MachineMoves.c` "
+        "and `Moves.c`. Prices have not been independently checked against an in-game purchase.\n\n"
+        "The Pokédex uses the engine's species, ability, and learnset tables. Forms use the engine's "
+        "learnset inheritance rules. Machine and tutor lists reflect compatibility in the build.\n\n"
         "See `Release-v22-Item-Audit.md` for the item audit. "
         "`Item-Locations.csv` is the older Retiled Expansion item list and remains historical. "
         "Form-specific encounter rows and evolution icons were resolved against engine species IDs. "

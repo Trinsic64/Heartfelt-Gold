@@ -45,3 +45,25 @@
 @media(max-width:850px){.location-nav{margin:8px 4px 0;padding:9px 4px}.location-list{max-height:190px}}
 @media print{.skip-link,.sr-only{display:none!important}}
 .shop-item img.shop-icon{width:32px;height:32px;flex:0 0 32px;image-rendering:pixelated}.shop-table .shop-icon{width:36px;height:36px;object-fit:contain;image-rendering:pixelated}.shop-table td:first-child{width:52px}.shop-table .shop-price{font-weight:800;white-space:nowrap;color:#244f68}.shop-table th[scope=row]{font-size:.83rem}@media(max-width:560px){.shop-table{min-width:530px}}
+
+.dex-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(200px,100%),1fr));gap:8px;padding:0;list-style:none}
+.dex-list button{display:flex;align-items:center;gap:10px;width:100%;height:100%;min-height:54px;padding:8px 12px;text-align:left;font-weight:700;color:#203f56;background:white;border:1px solid #bdcbd4;border-radius:7px}
+.dex-list button:hover,.dex-back:hover{background:#e7eef2}
+.dex-list small{display:block;font-weight:400;color:#526879}
+.dex-list .poke-icon,.dex-heading .poke-icon{flex:none}
+.dex-back{margin-bottom:16px;padding:7px 10px;background:white;border:1px solid #a8becb;border-radius:6px;color:#2b5874}
+.dex-heading{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.dex-overview{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:14px}
+.dex-panel,.dex-learnset{background:white;border:1px solid #bdcbd4;border-radius:8px}
+.dex-panel{padding:14px 16px}
+.dex-panel h2{font-size:1.1rem;margin:0 0 10px}
+.dex-facts{margin:0}
+.dex-facts div{display:flex;justify-content:space-between;gap:10px;padding:5px 0;border-bottom:1px solid #e1e8ec}
+.dex-facts dd{margin:0;text-align:right;font-weight:600}
+.dex-stats div:last-child{font-weight:800}
+.dex-learnset{margin-bottom:8px}
+.dex-learnset summary{padding:10px 13px;cursor:pointer;font-weight:700}
+.dex-learnset summary:focus-visible{outline:3px solid #df8d13;outline-offset:2px}
+.dex-empty{margin:0;padding:0 13px 12px}
+.dex-table{min-width:0}
+@media print{.dex-back{display:none}}

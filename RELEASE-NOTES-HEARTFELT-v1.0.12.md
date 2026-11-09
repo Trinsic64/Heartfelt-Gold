@@ -27,7 +27,7 @@ Back up your in-game save before switching versions. A copied save loaded and re
 | Artifact | Size | SHA-256 |
 | --- | ---: | --- |
 | v1.0.12 xDelta patch | 39,309,089 bytes | `f7d6e78332db8629d4f4099af1dbba5846c3acc155a79894a1252dd2e8a215ba` |
-| Offline guide ZIP | 3,946,336 bytes | `36d69fb496a688ed961acb13fde2e757c20537a58a2ab8c625ca2ce4e7e9cf0e` |
+| Offline guide ZIP | 4,342,768 bytes | `1fdd5d2033b6a7bec1a0b9159ed181f93402575a14976e5c1f7d7ae39146bbec` |
 | Decoded ROM (verification only; not distributed) | 207,742,432 bytes | `9f6e08223717ad90dbf3ce281aed2410c2e209f1e53ed5a566eb79f41bc3731a` |
 
 The patch decoded against the documented clean USA source and matched the v23 hg-engine build byte for byte. The guide's [release manifest](Docs/Player-Guide/release.json) records the source snapshots and hashes used for this version. The v23 map fix was checked in the map archive and matrix; in-game cave navigation has not been separately verified. Script listings do not establish encounter reachability or unlock conditions. Two visible ground pickup objects remain unresolved in the [item audit](Docs/Player-Guide/site/Release-v22-Item-Audit.md).
@@ -38,6 +38,8 @@ The patch decoded against the documented clean USA source and matched the v23 hg
 
 **Mega form display:** Trainer cards now use the in-battle Mega sprite, ability, and typing for 500 Pokémon across story, bonus, and rematch teams. This display is resolved from the build's Mega Stone, form, and species tables, including Rayquaza's Dragon Ascent form. The trainer CSV retains the base party data, and wild encounters are unchanged. Four Tatsugiri with Tatsugirinite and Blue's Floette with Floettite retain their base display because their configured target forms do not resolve to Mega species in this build. The game patch is unchanged.
 
-**Mart guide update:** The Marts tab has 27 sidebar tabs across 21 shop locations. Each department store floor has its own tab and priced table; counters on the same floor appear together. All 1,065 stock rows use prices from the build's `itemdata.c`, and item sprites are slightly larger. Prices were checked against the source data, not an in-game purchase; the game patch is unchanged.
+**Mart guide update.** The Marts tab has 30 sidebar tabs across 21 shop locations. Each department store floor or named counter has its own stock table. TM numbers show the move they teach. All 1,065 stock rows use prices from the build's `itemdata.c`.
+
+**Pokédex.** The main guide sidebar has a searchable Pokédex with base stats, abilities, species information, and level, machine, egg, and tutor learnsets. Alternate forms have separate entries.
 
 Only the patch and guide are distributed. No ROM or save is included.
