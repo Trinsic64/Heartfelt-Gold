@@ -22,6 +22,7 @@
   const esc = value => String(value ?? "").replace(/[&<>"']/g, ch => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[ch]));
   const icon = (src, cls = "small-sprite", alt = "", lazy = false) => src ? `<img class="${cls}" src="${esc(src.startsWith("Sprites/Items/") ? src + "?v=2" : src)}" alt="${esc(alt)}"${lazy ? ' loading="lazy"' : ""}>` : "";
   const chapterNum = value => Number.parseInt(String(value).slice(0, 2), 10) || 45;
+  const sidebarChapterLabel = label => label.replace(/^\d{2} /, "");
   // Keep audited Gym Trainer order, then the Leader, then the Bonus Battle.
   const gymRank = trainer => trainer.bonus ? 2 : trainer.major ? 1 : 0;
   const gymOrder = (a, b) => a.group === b.group && a.group?.startsWith("gym-") ? gymRank(a) - gymRank(b) : 0;
@@ -375,10 +376,10 @@
     $("viewNav").innerHTML = views.map(([key, label]) => `<button type="button" data-view="${key}" class="${state.view === key ? "active" : ""}" aria-current="${state.view === key ? "page" : "false"}">${esc(label)}</button>`).join("");
     $("viewNav").querySelectorAll("button").forEach(button => button.onclick = () => { state.view = button.dataset.view; state.page = 0; state.query = ""; state.selectedArea = -1; selectedPokemon = null; $("search").value = ""; render(); $("main-content").focus(); });
     if (state.view === "walk") {
-      $("chapterNav").innerHTML = `<h3>Story chapters</h3>${DATA.chapters.map(c => `<button type="button" data-chapter="${c.number}" class="${state.chapter === c.number ? "active" : ""}" aria-current="${state.chapter === c.number ? "page" : "false"}">${esc(c.label)}</button>`).join("")}`;
+      $("chapterNav").innerHTML = `<h3>Story chapters</h3>${DATA.chapters.map(c => `<button type="button" data-chapter="${c.number}" class="${state.chapter === c.number ? "active" : ""}" aria-current="${state.chapter === c.number ? "page" : "false"}">${esc(sidebarChapterLabel(c.label))}</button>`).join("")}`;
       $("chapterNav").querySelectorAll("button").forEach(button => button.onclick = () => { state.chapter = Number(button.dataset.chapter); state.page = 0; render(); $("main-content").focus(); window.scrollTo(0, 0); });
     } else if (state.view === "trainers") {
-      $("chapterNav").innerHTML = `<h3>Trainer chapters</h3><button type="button" data-trainer-group="All" class="${state.trainerGroup === "All" ? "active" : ""}" aria-pressed="${state.trainerGroup === "All"}">All trainers</button>${DATA.trainerGroups.map(g => `<button type="button" data-trainer-group="${esc(g.id)}" class="${state.trainerGroup === g.id ? "active" : ""}" aria-pressed="${state.trainerGroup === g.id}">${esc(g.label)}</button>`).join("")}`;
+      $("chapterNav").innerHTML = `<h3>Trainer chapters</h3><button type="button" data-trainer-group="All" class="${state.trainerGroup === "All" ? "active" : ""}" aria-pressed="${state.trainerGroup === "All"}">All trainers</button>${DATA.trainerGroups.map(g => `<button type="button" data-trainer-group="${esc(g.id)}" class="${state.trainerGroup === g.id ? "active" : ""}" aria-pressed="${state.trainerGroup === g.id}">${esc(sidebarChapterLabel(g.label))}</button>`).join("")}`;
       $("chapterNav").querySelectorAll("button").forEach(button => button.onclick = () => { state.trainerGroup = button.dataset.trainerGroup; state.page = 0; render(); $("main-content").focus(); window.scrollTo(0, 0); });
     } else if (state.view === "shops") {
       const matchingTabs = shopTabs.filter(tab => matches([tab.label]) || tab.counters.some(shop => shop.items.some(item => shopItemMatches(item, shop.floor))));
