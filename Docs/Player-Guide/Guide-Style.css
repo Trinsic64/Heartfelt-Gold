@@ -50,11 +50,13 @@
 .dex-index p{margin:0;color:#526879}
 .dex-index .stats{margin:0}
 .dex-kicker{font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.13em;color:#37686d;margin-bottom:7px}
-.dex-list{max-height:72vh;overflow:auto;border:1px solid #bfcfd9;border-radius:8px;background:white}
-.dex-index-table{min-width:1080px;border-collapse:separate;border-spacing:0;font-size:.84rem}
+.dex-table-frame{container-type:inline-size}
+.dex-list{overflow-x:auto;border:1px solid #bfcfd9;border-radius:8px;background:white}
+.dex-index-table{min-width:60rem;border-collapse:separate;border-spacing:0;font-size:.84rem}
+@container (min-width:62rem){.dex-list{overflow:visible}}
 .dex-index-table thead th{position:sticky;top:0;z-index:1;padding:0 7px;background:#e7eef2;color:#27475d;text-transform:none;letter-spacing:normal;font-size:.8rem;box-shadow:0 1px #bfcfd9}
 .dex-index-table thead th:has(button){padding:0}
-.dex-index-table thead button{width:100%;padding:10px 7px;border:0;background:transparent;color:inherit;font-weight:750;white-space:nowrap;text-align:inherit}
+.dex-index-table thead button{width:100%;padding:10px 5px;border:0;background:transparent;color:inherit;font-weight:750;white-space:nowrap;text-align:inherit}
 .dex-index-table thead button span{color:#597789;margin-left:1px}
 .dex-index-table thead th[aria-sort]{background:#d8e8ee}
 .dex-index-table thead button:hover{background:#cfe3ea}
@@ -63,10 +65,10 @@
 .dex-index-table tbody tr:hover,.dex-index-table tbody tr:focus-within{background:#eaf5f2}
 .dex-index-table tbody button{padding:4px 0;border:0;background:transparent;color:#225e77;font-weight:750;text-align:left}
 .dex-index-table tbody button:hover{text-decoration:underline}
-.dex-index-table .dex-icon-cell{width:44px;text-align:center}
-.dex-icon-cell img{display:block;margin:auto}
-.dex-icon-cell .front-sprite{width:32px;height:32px;margin:auto;background-size:64px 32px}
-.dex-index-table .dex-number{text-align:right;font-variant-numeric:tabular-nums}
+.dex-index-table .dex-icon-cell{width:62px;text-align:center}
+.dex-icon-cell img,.dex-icon-cell .front-sprite{display:block;width:48px;height:48px;margin:auto;image-rendering:auto}
+.dex-icon-cell .front-sprite{background-size:96px 48px}
+.dex-index-table .dex-number{text-align:center;font-variant-numeric:tabular-nums}
 .dex-index-table .dex-bst{font-weight:750;color:#275664}
 .dex-index-table .types{margin:0;gap:3px}
 .dex-index-table .type{font-size:.61rem;padding:3px 5px;background-image:linear-gradient(#102b3973,#102b3973);color:white}
@@ -121,7 +123,7 @@
 }
 @media print{
   .dex-back{display:none}
-  .dex-list{max-height:none;overflow:visible}
+  .dex-list{overflow:visible}
   .dex-index-table{min-width:0}
   .dex-index-table thead th{position:static}
   .dex-stage .front-sprite{print-color-adjust:exact}

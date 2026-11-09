@@ -173,8 +173,8 @@
   }
 
   const statNames = ["HP", "Attack", "Defense", "Sp. Atk", "Sp. Def", "Speed"];
-  const dexStatColumns = [["HP", "hp"], ["Attack", "attack"], ["Defense", "defense"],
-    ["Sp. Attack", "spAttack"], ["Sp. Defense", "spDefense"], ["Speed", "speed"]];
+  const dexStatColumns = [["HP", "hp"], ["Atk", "attack", "Attack"], ["Def", "defense", "Defense"],
+    ["Sp. Atk", "spAttack", "Special Attack"], ["Sp. Def", "spDefense", "Special Defense"], ["Speed", "speed"]];
   const dexNameOrder = new Intl.Collator("en", { sensitivity: "base", numeric: true });
   const statTotal = mon => mon.stats.reduce((sum, value) => sum + value, 0);
 
@@ -239,14 +239,14 @@
   }
 
   function dexTable(rows) {
-    const columns = [["Icon"], ["Pokédex #", "number"], ["Name", "name"], ["Typing"],
-      ["Ability 1"], ["Ability 2"], ["Ability 3"], ...dexStatColumns, ["BST", "bst"]];
-    const headings = columns.map(([label, key]) => {
+    const columns = [["Icon"], ["#", "number", "Pokédex number"], ["Name", "name"], ["Type"],
+      ["Ability 1"], ["Ability 2"], ["Ability 3"], ...dexStatColumns, ["BST", "bst", "Base stat total"]];
+    const headings = columns.map(([label, key, fullLabel]) => {
       if (!key) return `<th scope="col">${label}</th>`;
       const active = key === dexSort.column;
       const ascending = dexSort.direction === 1;
       const arrow = active ? (ascending ? "↑" : "↓") : "↕";
-      return `<th scope="col"${key === "name" ? "" : ' class="dex-number"'}${active ? ` aria-sort="${ascending ? "ascending" : "descending"}"` : ""}><button type="button" data-dex-sort="${key}">${label} <span aria-hidden="true">${arrow}</span></button></th>`;
+      return `<th scope="col"${key === "name" ? "" : ' class="dex-number"'}${active ? ` aria-sort="${ascending ? "ascending" : "descending"}"` : ""}><button type="button" data-dex-sort="${key}"${fullLabel ? ` aria-label="${fullLabel}" title="${fullLabel}"` : ""}>${label} <span aria-hidden="true">${arrow}</span></button></th>`;
     }).join("");
     const body = rows.map(mon => `<tr>
       <td class="dex-icon-cell">${mon.icon ? icon(mon.icon, "poke-icon", "", true) : imageName(mon)}</td>
@@ -257,7 +257,7 @@
       ${mon.stats.map(stat => `<td class="dex-number">${stat}</td>`).join("")}
       <td class="dex-number dex-bst">${statTotal(mon)}</td>
     </tr>`).join("");
-    return `<div class="table-scroll dex-list" tabindex="0" aria-label="Pokédex table, scroll for more rows or columns"><table class="reference-table dex-index-table"><caption class="sr-only">National Pokédex species and forms. Ability 3 is the hidden ability.</caption><thead><tr>${headings}</tr></thead><tbody>${body}</tbody></table></div>`;
+    return `<div class="dex-table-frame"><div class="table-scroll dex-list" tabindex="0" aria-label="Pokédex table, scroll horizontally if needed"><table class="reference-table dex-index-table"><caption class="sr-only">National Pokédex species and forms. Ability 3 is the hidden ability.</caption><thead><tr>${headings}</tr></thead><tbody>${body}</tbody></table></div></div>`;
   }
 
   function renderPokedex() {
@@ -280,7 +280,7 @@
         selectedPokemon = null;
         render();
         const list = $("content").querySelector(".dex-list");
-        list.scrollTo(dexListScroll.left, dexListScroll.top);
+        list.scrollLeft = dexListScroll.left;
         window.scrollTo(0, dexListScroll.page);
         $(`dex-${token}`)?.focus({ preventScroll: true });
       };
@@ -295,13 +295,15 @@
           dexSort.direction = column === dexSort.column ? -dexSort.direction : (column === "number" || column === "name" ? 1 : -1);
           dexSort.column = column;
           render();
-          $("content").querySelector(".dex-list").scrollLeft = left;
-          $("content").querySelector(`[data-dex-sort="${column}"]`).focus({ preventScroll: true });
+          const updatedList = $("content").querySelector(".dex-list");
+          updatedList.scrollLeft = left;
+          if (updatedList.getBoundingClientRect().top < 0) updatedList.scrollIntoView({ block: "start", inline: "nearest" });
+          updatedList.querySelector(`[data-dex-sort="${column}"]`).focus({ preventScroll: true });
           return;
         }
         const button = event.target.closest("[data-pokemon]");
         if (!button) return;
-        dexListScroll = { left: list.scrollLeft, top: list.scrollTop, page: window.scrollY };
+        dexListScroll = { left: list.scrollLeft, page: window.scrollY };
         selectedPokemon = pokedex.find(mon => mon.token === button.dataset.pokemon);
         render();
         $("dexTitle").focus({ preventScroll: true });
