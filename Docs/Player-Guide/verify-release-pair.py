@@ -32,8 +32,10 @@ with species_file.open("rb") as stream:
 species_text = species_file.read_text(encoding="utf-8")
 starts = list(re.finditer(r"(?m)^\s*\[SPECIES_([A-Z0-9_]+)\]\s*=\s*\{", species_text))
 held = {}
+species_blocks = {}
 for index, match in enumerate(starts):
     block = species_text[match.end():starts[index + 1].start() if index + 1 < len(starts) else len(species_text)]
+    species_blocks["SPECIES_" + match.group(1)] = block
     items = re.search(r"\.wildHeldItems\s*=\s*\{\s*\.common\s*=\s*(ITEM_[A-Z0-9_]+)\s*,"
                       r"\s*\.rare\s*=\s*(ITEM_[A-Z0-9_]+)", block)
     assert items, match.group(1)
@@ -74,6 +76,87 @@ with (SITE / "Static-Encounters.csv").open(newline="", encoding="utf-8-sig") as 
     csv_statics = Counter((row["Pokémon"], row["Level"], row["Area"]) for row in csv.DictReader(stream))
 assert markdown_statics == html_statics == csv_statics
 
+
+def normalized(value):
+    return re.sub(r"[^a-z0-9]", "", value.casefold())
+
+
+for relative, key in (
+    ("HG-Engine/data/Trainers.c", "trainerSourceSha256"),
+    ("HG-Engine/data/Encounters.c", "encounterSourceSha256"),
+    ("HG-Engine/data/Evolutions.c", "evolutionSourceSha256"),
+    ("HG-Engine/data/itemdata/itemdata.c", "itemDataSourceSha256"),
+    ("HG-Engine/src/field/mart.c", "martSourceSha256"),
+):
+    with (ROOT / relative).open("rb") as stream:
+        assert hashlib.file_digest(stream, "sha256").hexdigest() == release[key], relative
+
+trainer_text = (ROOT / "HG-Engine/data/Trainers.c").read_text(encoding="utf-8")
+trainer_starts = list(re.finditer(r"(?m)^\s*\[(\d+)\]\s*=\s*\{", trainer_text))
+trainer_blocks = {int(match.group(1)): trainer_text[match.end():trainer_starts[i + 1].start()
+                  if i + 1 < len(trainer_starts) else len(trainer_text)]
+                  for i, match in enumerate(trainer_starts)}
+html_trainers = {t["id"]: t for t in guide_data["trainers"]}
+csv_trainers = {}
+with (SITE / "Trainers-Story-Order.csv").open(newline="", encoding="utf-8-sig") as stream:
+    for row in csv.DictReader(stream):
+        csv_trainers.setdefault(int(row["Trainer ID"]), []).append(row)
+assert 0 not in html_trainers and 0 not in csv_trainers
+hidden = dict(re.findall(r"\[(SPECIES_[A-Z0-9_]+)\s*\]\s*=\s*(ABILITY_[A-Z0-9_]+)",
+                         (ROOT / "HG-Engine/data/HiddenAbilityTable.c").read_text(encoding="utf-8")))
+changed_ids = set(release["changedTrainerPartyIds"]) - {0}
+assert len(changed_ids) == 21
+for trainer_id in changed_ids:
+    block = trainer_blocks[trainer_id]
+    fields = {field: re.findall(r"(?m)^\s*\." + field + r"\s*=\s*([^,\r\n]+)", block)
+              for field in ("level", "species", "item", "abilitySlot")}
+    moves = [re.findall(r"MOVE_[A-Z0-9_]+", line) for line in
+             re.findall(r"(?m)^\s*\.moves\s*=\s*\{\s*([^}]+)\}", block)]
+    team = html_trainers[trainer_id]["team"]
+    csv_team = csv_trainers[trainer_id]
+    assert all(len(values) == len(team) == len(csv_team) == 6 for values in (*fields.values(), moves)), trainer_id
+    for index, (mon, row) in enumerate(zip(team, csv_team)):
+        token = fields["species"][index].strip()
+        item = fields["item"][index].strip()
+        slot = fields["abilitySlot"][index].strip()
+        assert Path(mon["icon"]).stem.upper() == token.removeprefix("SPECIES_")
+        assert int(mon["level"]) == int(row["Level"]) == int(fields["level"][index])
+        assert normalized(mon["name"]) == normalized(row["Pokémon"])
+        expected_item = "" if item == "ITEM_NONE" else item.removeprefix("ITEM_")
+        assert normalized(mon["held"]) == normalized(row["Held item"]) == normalized(expected_item)
+        expected_moves = [move.removeprefix("MOVE_") for move in moves[index] if move != "MOVE_NONE"]
+        assert [normalized(move) for move in mon["moves"]] == [normalized(move) for move in expected_moves], trainer_id
+        assert [normalized(move) for move in row["Moves"].split("; ")] == [normalized(move) for move in expected_moves]
+        expected_slot = {"TRAINER_POKEMON_ABILITY_1": "Slot 1", "TRAINER_POKEMON_ABILITY_2": "Slot 2",
+                         "TRAINER_POKEMON_ABILITY_HIDDEN": "Hidden"}[slot]
+        assert mon["abilitySlot"] == row["Ability slot"] == expected_slot
+        abilities = re.search(r"\.abilities\s*=\s*\{\s*(ABILITY_\w+)\s*,\s*(ABILITY_\w+)\s*\}", species_blocks[token])
+        assert abilities
+        ability = hidden[token] if expected_slot == "Hidden" else abilities.group(2 if expected_slot == "Slot 2" else 1)
+        assert normalized(mon["ability"]) == normalized(row["Ability"]) == normalized(ability.removeprefix("ABILITY_"))
+        assert row["Pokémon icon"] == mon["icon"] and int(row["Party slot"]) == index + 1
+
+mart_text = (ROOT / "HG-Engine/src/field/mart.c").read_text(encoding="utf-8")
+cherrygrove = mart_text.split("sCherrygroveCityMart[] = {", 1)[1].split("};", 1)[0]
+assert "ITEM_CHERISH_BALL" in cherrygrove and "ITEM_NEST_BALL" not in cherrygrove
+with (SITE / "Marts-and-Department-Stores.csv").open(newline="", encoding="utf-8-sig") as stream:
+    shops_csv = list(csv.DictReader(stream))
+assert len([row for row in shops_csv if row["Shop"] == "Cherrygrove City Mart" and row["Item"] == "Cherish Ball"]) == 1
+assert len([item for shop in guide_data["shops"] if shop["name"] == "Cherrygrove City Mart"
+            for item in shop["items"] if item["name"] == "Cherish Ball"]) == 1
+
+evo_text = (ROOT / "HG-Engine/data/Evolutions.c").read_text(encoding="utf-8")
+for source, result in (("FRILLISH", "SPECIES_JELLICENT"),
+                       ("FRILLISH_FEMALE", "MON_WITH_FORM(SPECIES_JELLICENT, 1)")):
+    block = evo_text.split(f"[SPECIES_{source}] = {{", 1)[1].split("[SPECIES_", 1)[0]
+    assert f"{{ EVO_LEVEL, 40, {result} }}" in block
+with (SITE / "Evolution-Guide.csv").open(newline="", encoding="utf-8-sig") as stream:
+    frillish_csv = [row for row in csv.DictReader(stream) if row["From"] in {"Frillish", "Frillish Female"}]
+assert len(frillish_csv) == 2 and all(row["Requirement"] == "Lv 40" and row["Engine method"] == "EVO_LEVEL"
+                                   for row in frillish_csv)
+assert len([e for e in guide_data["evos"] if e["from"] in {"Frillish", "Frillish Female"}
+            and e["requirement"] == "Lv 40" and e["method"] == "EVO_LEVEL"]) == 2
+
 archive = SITE / "Heartfelt-Gold-Player-Guide-Offline.zip"
 with archive.open("rb") as stream:
     guide_hash = hashlib.file_digest(stream, "sha256").hexdigest()
@@ -90,4 +173,4 @@ assert f"{release['patchSha256']} *{patch.name}" in asset_checksums
 assert f"{guide_hash} *{archive.name}" in asset_checksums
 assert version in (ROOT / "README.md").read_text(encoding="utf-8")
 assert (ROOT / f"RELEASE-NOTES-HEARTFELT-{version}.md").is_file()
-print(f"PASS: {version} patch, held items, static levels, site, ZIP, checksums, and notes agree")
+print(f"PASS: {version} patch, HGEFE teams, held items, shop, evolutions, statics, site, ZIP, checksums, and notes agree")

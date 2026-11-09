@@ -1,6 +1,6 @@
 # Evolution guide — Pokémon Heartfelt Gold
 
-These tables are generated from the current hg-engine authoring source supplied for Heartfelt Gold. The patch binary has not been independently decoded against these tables. Encounter availability still depends on game progress.
+These tables are generated from the current hg-engine authoring source supplied for Heartfelt Gold. The v1.0.12 xDelta patch decoded to the audited v23 build; the changed Frillish methods match the compiled source. Encounter availability still depends on game progress.
 
 Search for either Pokémon or an item. “Form N” is the engine's numeric form slot. Some special methods depend on engine handlers and still need in-game verification; the final column exposes the exact method constant for source checking.
 
@@ -174,8 +174,8 @@ Sources: [evolution table](../../HG-Engine/data/Evolutions.c), local `Data/Pokem
 | Foongus | Amoonguss | Lv 39 | EVO_LEVEL |
 | Fraxure | Haxorus | Lv 45 | EVO_LEVEL |
 | Frigibax | Arctibax | Lv 35 | EVO_LEVEL |
-| Frillish | Jellicent | Lv 40 · Male | EVO_LEVEL_MALE |
-| Frillish Female | Jellicent (form 1) | Lv 40 · Female | EVO_LEVEL_FEMALE |
+| Frillish | Jellicent | Lv 40 | EVO_LEVEL |
+| Frillish Female | Jellicent (Female) | Lv 40 | EVO_LEVEL |
 | Froakie | Frogadier | Lv 16 | EVO_LEVEL |
 | Frogadier | Greninja | Lv 36 | EVO_LEVEL |
 | Fuecoco | Crocalor | Lv 16 | EVO_LEVEL |

@@ -4,7 +4,7 @@ These tables are generated from the current hg-engine authoring source supplied 
 
 Rates are shares of slots **after an encounter is triggered**. Method encounter rates are shown separately; time affects grass slots. Swarm and radio Pokémon are conditional substitutions. Use the reverse index to search for a Pokémon.
 
-For v1.0.11 common and rare wild held items, use the [interactive guide](https://trinsic64.github.io/Heartfelt-Gold/) or its three downloadable wild encounter CSVs. Held items come from the updated [`Species.c`](../../HG-Engine/data/Species.c), including distinct regional and other forms.
+For v1.0.12 common and rare wild held items, use the [interactive guide](https://trinsic64.github.io/Heartfelt-Gold/) or its three downloadable wild encounter CSVs. Held items carry forward from the updated [`Species.c`](../../HG-Engine/data/Species.c), including distinct regional and other forms.
 
 Sources: [encounter table](../../HG-Engine/data/Encounters.c), local `Data/Encounters/HG-Encounters.csv`. Scripted encounters are listed in the [Static Encounter Guide](Static-Encounter-Guide.md).
 

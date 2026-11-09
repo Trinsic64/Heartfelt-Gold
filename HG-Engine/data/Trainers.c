@@ -13,12 +13,12 @@ const TrainerData sTrainerData[] = {
         },
         .party = {
             {
-                .ivs = 157,
+                .ivs = 0,
                 .abilitySlot = TRAINER_POKEMON_ABILITY_1,
                 .level = 5,
                 .species = SPECIES_BULBASAUR,
-                .item = ITEM_LEFTOVERS,
-                .moves = { MOVE_POWER_WHIP, MOVE_SLUDGE_BOMB, MOVE_DOUBLE_EDGE, MOVE_BODY_SLAM },
+                .item = ITEM_NONE,
+                .moves = { MOVE_NONE, MOVE_NONE, MOVE_NONE, MOVE_NONE },
                 .ballSeal = 0,
             },
         },
@@ -31,7 +31,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_RIVAL,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -98,7 +98,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_RIVAL,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_USE_WEATHER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -120,7 +120,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_RIVAL,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_USE_WEATHER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -213,7 +213,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_BEAUTY,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -272,7 +272,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_POLICEMAN,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -344,7 +344,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_JUGGLER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -470,7 +470,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_SWIMMER_F,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_USE_WEATHER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -529,7 +529,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_TWINS,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_DOUBLE_BATTLE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_PRIORITIZE_STATUS_MOVES | F_DOUBLE_BATTLE,
             .battleType = DOUBLE_BATTLE,
         },
         .party = {
@@ -630,7 +630,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_KIMONO_GIRL,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -683,7 +683,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_TEAM_ROCKET,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -822,7 +822,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_BURGLAR,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_USE_WEATHER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -894,7 +894,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_FIREBREATHER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES | F_MULTI_BATTLE_PARTNER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -987,7 +987,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_SWIMMER_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_USE_WEATHER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -1050,7 +1050,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_BLACK_BELT,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -1202,7 +1202,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_BIKER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -1255,17 +1255,17 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_LEADER_FALKNER,
             .items = { ITEM_FRESH_WATER, ITEM_FULL_RESTORE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_DAMAGE | F_PRIORITIZE_HEALING,
+            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_STATUS_MOVES | F_PRIORITIZE_HEALING,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
             {
-                .ivs = 206,
-                .abilitySlot = TRAINER_POKEMON_ABILITY_1,
+                .ivs = 223,
+                .abilitySlot = TRAINER_POKEMON_ABILITY_2,
                 .level = 14,
-                .species = SPECIES_PIDGEOTTO,
+                .species = SPECIES_TRANQUILL,
                 .item = ITEM_NONE,
-                .moves = { MOVE_QUICK_ATTACK, MOVE_GUST, MOVE_SAND_ATTACK, MOVE_TAILWIND },
+                .moves = { MOVE_SWIFT, MOVE_DUAL_WINGBEAT, MOVE_QUICK_ATTACK, MOVE_TAILWIND },
                 .ballSeal = 0,
             },
             {
@@ -1274,7 +1274,7 @@ const TrainerData sTrainerData[] = {
                 .level = 14,
                 .species = SPECIES_FLETCHINDER,
                 .item = ITEM_NONE,
-                .moves = { MOVE_TAILWIND, MOVE_DUAL_WINGBEAT, MOVE_FLAME_CHARGE, MOVE_QUICK_ATTACK },
+                .moves = { MOVE_STEEL_WING, MOVE_DUAL_WINGBEAT, MOVE_FLAME_CHARGE, MOVE_QUICK_ATTACK },
                 .ballSeal = 0,
             },
             {
@@ -1299,18 +1299,18 @@ const TrainerData sTrainerData[] = {
                 .ivs = 223,
                 .abilitySlot = TRAINER_POKEMON_ABILITY_2,
                 .level = 14,
-                .species = SPECIES_TRANQUILL,
-                .item = ITEM_NONE,
-                .moves = { MOVE_SWIFT, MOVE_DUAL_WINGBEAT, MOVE_QUICK_ATTACK, MOVE_HYPNOSIS },
-                .ballSeal = 0,
-            },
-            {
-                .ivs = 223,
-                .abilitySlot = TRAINER_POKEMON_ABILITY_2,
-                .level = 14,
                 .species = SPECIES_TRUMBEAK,
                 .item = ITEM_SITRUS_BERRY,
                 .moves = { MOVE_ROCK_BLAST, MOVE_BULLET_SEED, MOVE_SWORDS_DANCE, MOVE_AERIAL_ACE },
+                .ballSeal = 0,
+            },
+            {
+                .ivs = 206,
+                .abilitySlot = TRAINER_POKEMON_ABILITY_HIDDEN,
+                .level = 16,
+                .species = SPECIES_PIDGEOTTO,
+                .item = ITEM_NONE,
+                .moves = { MOVE_QUICK_ATTACK, MOVE_AERIAL_ACE, MOVE_PURSUIT, MOVE_TAILWIND },
                 .ballSeal = 0,
             },
         },
@@ -1336,7 +1336,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_LEADER_BUGSY,
             .items = { ITEM_SUPER_POTION, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_DAMAGE | F_PRIORITIZE_HEALING,
+            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_STATUS_MOVES | F_PRIORITIZE_HEALING,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -1346,7 +1346,7 @@ const TrainerData sTrainerData[] = {
                 .level = 20,
                 .species = SPECIES_BUTTERFREE,
                 .item = ITEM_CHARTI_BERRY,
-                .moves = { MOVE_SILVER_WIND, MOVE_SLEEP_POWDER, MOVE_TAILWIND, MOVE_HURRICANE },
+                .moves = { MOVE_SILVER_WIND, MOVE_SLEEP_POWDER, MOVE_TAILWIND, MOVE_AIR_CUTTER },
                 .ballSeal = 0,
             },
             {
@@ -1355,7 +1355,7 @@ const TrainerData sTrainerData[] = {
                 .level = 20,
                 .species = SPECIES_BEAUTIFLY,
                 .item = ITEM_CHARTI_BERRY,
-                .moves = { MOVE_STUN_SPORE, MOVE_GIGA_DRAIN, MOVE_AIR_CUTTER, MOVE_SILVER_WIND },
+                .moves = { MOVE_STUN_SPORE, MOVE_MEGA_DRAIN, MOVE_AIR_CUTTER, MOVE_SILVER_WIND },
                 .ballSeal = 0,
             },
             {
@@ -1364,7 +1364,7 @@ const TrainerData sTrainerData[] = {
                 .level = 20,
                 .species = SPECIES_DUSTOX,
                 .item = ITEM_SITRUS_BERRY,
-                .moves = { MOVE_SLUDGE_BOMB, MOVE_MIMIC, MOVE_SIGNAL_BEAM, MOVE_ELECTROWEB },
+                .moves = { MOVE_VENOSHOCK, MOVE_MIMIC, MOVE_SIGNAL_BEAM, MOVE_ELECTROWEB },
                 .ballSeal = 0,
             },
             {
@@ -1373,7 +1373,7 @@ const TrainerData sTrainerData[] = {
                 .level = 20,
                 .species = SPECIES_VIVILLON,
                 .item = ITEM_CHARTI_BERRY,
-                .moves = { MOVE_SLEEP_POWDER, MOVE_HURRICANE, MOVE_DREAM_EATER, MOVE_SIGNAL_BEAM },
+                .moves = { MOVE_SLEEP_POWDER, MOVE_AIR_SLASH, MOVE_DREAM_EATER, MOVE_SIGNAL_BEAM },
                 .ballSeal = 0,
             },
             {
@@ -1382,16 +1382,16 @@ const TrainerData sTrainerData[] = {
                 .level = 21,
                 .species = SPECIES_SCYTHER,
                 .item = ITEM_NONE,
-                .moves = { MOVE_WING_ATTACK, MOVE_POUNCE, MOVE_TRAILBLAZE, MOVE_TAILWIND },
+                .moves = { MOVE_WING_ATTACK, MOVE_POUNCE, MOVE_TRAILBLAZE, MOVE_ROOST },
                 .ballSeal = 0,
             },
             {
-                .ivs = 255,
+                .ivs = 180,
                 .abilitySlot = TRAINER_POKEMON_ABILITY_1,
                 .level = 22,
                 .species = SPECIES_BEEDRILL,
                 .item = ITEM_BEEDRILLITE,
-                .moves = { MOVE_SWORDS_DANCE, MOVE_DRILL_RUN, MOVE_FELL_STINGER, MOVE_POISON_JAB },
+                .moves = { MOVE_SWORDS_DANCE, MOVE_FURY_ATTACK, MOVE_BUG_BITE, MOVE_POISON_STING },
                 .ballSeal = 0,
             },
         },
@@ -1417,7 +1417,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_LASS,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -1476,7 +1476,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_POKE_MANIAC,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -1548,7 +1548,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_SCHOOL_KID_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -1611,7 +1611,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_HIKER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_USE_WEATHER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -1683,7 +1683,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_CAMPER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -1826,7 +1826,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_ACE_TRAINER_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -1965,7 +1965,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_LEADER_WHITNEY,
             .items = { ITEM_SUPER_POTION, ITEM_SUPER_POTION, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_DAMAGE | F_PRIORITIZE_HEALING,
+            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_HEALING,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -1984,12 +1984,12 @@ const TrainerData sTrainerData[] = {
                 .level = 25,
                 .species = SPECIES_WIGGLYTUFF,
                 .item = ITEM_NONE,
-                .moves = { MOVE_BODY_SLAM, MOVE_CHARM, MOVE_MISTY_TERRAIN, MOVE_PLAY_ROUGH },
+                .moves = { MOVE_BODY_SLAM, MOVE_ENCORE, MOVE_PSYCHIC_NOISE, MOVE_PLAY_ROUGH },
                 .ballSeal = 0,
             },
             {
                 .ivs = 239,
-                .abilitySlot = TRAINER_POKEMON_ABILITY_1,
+                .abilitySlot = TRAINER_POKEMON_ABILITY_2,
                 .level = 26,
                 .species = SPECIES_MILTANK,
                 .item = ITEM_NONE,
@@ -2020,7 +2020,7 @@ const TrainerData sTrainerData[] = {
                 .level = 27,
                 .species = SPECIES_AUDINO,
                 .item = ITEM_AUDINITE,
-                .moves = { MOVE_CALM_MIND, MOVE_HYPER_VOICE, MOVE_DISARMING_VOICE, MOVE_MISTY_TERRAIN },
+                .moves = { MOVE_CALM_MIND, MOVE_HYPER_VOICE, MOVE_DISARMING_VOICE, MOVE_GRASS_KNOT },
                 .ballSeal = 0,
             },
         },
@@ -2046,7 +2046,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_LEADER_MORTY,
             .items = { ITEM_HYPER_POTION, ITEM_HYPER_POTION, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_DAMAGE | F_PRIORITIZE_HEALING,
+            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_STATUS_MOVES | F_PRIORITIZE_HEALING,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -2056,7 +2056,7 @@ const TrainerData sTrainerData[] = {
                 .level = 28,
                 .species = SPECIES_DHELMISE,
                 .item = ITEM_POWER_HERB,
-                .moves = { MOVE_SWORDS_DANCE, MOVE_GYRO_BALL, MOVE_POWER_WHIP, MOVE_PHANTOM_FORCE },
+                .moves = { MOVE_SWORDS_DANCE, MOVE_IRON_HEAD, MOVE_SOLAR_BLADE, MOVE_PHANTOM_FORCE },
                 .ballSeal = 0,
             },
             {
@@ -2074,7 +2074,7 @@ const TrainerData sTrainerData[] = {
                 .level = 30,
                 .species = SPECIES_MISMAGIUS,
                 .item = ITEM_NONE,
-                .moves = { MOVE_SHADOW_BALL, MOVE_THUNDERBOLT, MOVE_CALM_MIND, MOVE_MAGICAL_LEAF },
+                .moves = { MOVE_HEX, MOVE_MYSTICAL_FIRE, MOVE_WILL_O_WISP, MOVE_THUNDERBOLT },
                 .ballSeal = 0,
             },
             {
@@ -2101,7 +2101,7 @@ const TrainerData sTrainerData[] = {
                 .level = 32,
                 .species = SPECIES_GENGAR,
                 .item = ITEM_GENGARITE,
-                .moves = { MOVE_SLUDGE_BOMB, MOVE_TOXIC, MOVE_SHADOW_BALL, MOVE_GIGA_DRAIN },
+                .moves = { MOVE_SLUDGE_BOMB, MOVE_TOXIC, MOVE_HEX, MOVE_GIGA_DRAIN },
                 .ballSeal = 0,
             },
         },
@@ -2127,7 +2127,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_LEADER_PRYCE,
             .items = { ITEM_HYPER_POTION, ITEM_FULL_RESTORE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_DAMAGE | F_PRIORITIZE_HEALING,
+            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_STATUS_MOVES | F_PRIORITIZE_HEALING,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -2160,7 +2160,7 @@ const TrainerData sTrainerData[] = {
             },
             {
                 .ivs = 255,
-                .abilitySlot = TRAINER_POKEMON_ABILITY_2,
+                .abilitySlot = TRAINER_POKEMON_ABILITY_1,
                 .level = 40,
                 .species = SPECIES_CETITAN,
                 .item = ITEM_NONE,
@@ -2172,8 +2172,8 @@ const TrainerData sTrainerData[] = {
                 .abilitySlot = TRAINER_POKEMON_ABILITY_1,
                 .level = 42,
                 .species = SPECIES_FROSLASS,
-                .item = ITEM_POWER_HERB,
-                .moves = { MOVE_WILL_O_WISP, MOVE_POLTERGEIST, MOVE_BLIZZARD, MOVE_HEX },
+                .item = ITEM_BRIGHT_POWDER,
+                .moves = { MOVE_WILL_O_WISP, MOVE_PSYCHIC, MOVE_BLIZZARD, MOVE_HEX },
                 .ballSeal = 0,
             },
             {
@@ -2208,17 +2208,17 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_LEADER_JASMINE,
             .items = { ITEM_HYPER_POTION, ITEM_HYPER_POTION, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_DAMAGE | F_PRIORITIZE_HEALING,
+            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_STATUS_MOVES | F_PRIORITIZE_HEALING,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
             {
                 .ivs = 255,
-                .abilitySlot = TRAINER_POKEMON_ABILITY_1,
+                .abilitySlot = TRAINER_POKEMON_ABILITY_HIDDEN,
                 .level = 38,
                 .species = SPECIES_SKARMORY,
-                .item = ITEM_NONE,
-                .moves = { MOVE_ROOST, MOVE_STEEL_WING, MOVE_TAILWIND, MOVE_DRILL_PECK },
+                .item = ITEM_WHITE_HERB,
+                .moves = { MOVE_ROOST, MOVE_STEEL_WING, MOVE_ROCK_SLIDE, MOVE_DRILL_PECK },
                 .ballSeal = 0,
             },
             {
@@ -2226,7 +2226,7 @@ const TrainerData sTrainerData[] = {
                 .abilitySlot = TRAINER_POKEMON_ABILITY_HIDDEN,
                 .level = 38,
                 .species = SPECIES_FORRETRESS,
-                .item = ITEM_NONE,
+                .item = ITEM_OCCA_BERRY,
                 .moves = { MOVE_STEALTH_ROCK, MOVE_EARTHQUAKE, MOVE_IRON_HEAD, MOVE_LUNGE },
                 .ballSeal = 0,
             },
@@ -2235,7 +2235,7 @@ const TrainerData sTrainerData[] = {
                 .abilitySlot = TRAINER_POKEMON_ABILITY_HIDDEN,
                 .level = 38,
                 .species = SPECIES_MAGNEZONE,
-                .item = ITEM_NONE,
+                .item = ITEM_AIR_BALLOON,
                 .moves = { MOVE_THUNDERBOLT, MOVE_CHARGE_BEAM, MOVE_MIRROR_SHOT, MOVE_STEEL_BEAM },
                 .ballSeal = 0,
             },
@@ -2289,7 +2289,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_LEADER_CHUCK,
             .items = { ITEM_HYPER_POTION, ITEM_HYPER_POTION, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_DAMAGE | F_PRIORITIZE_HEALING,
+            .aiFlags = F_TRAINER_EXPERT_AI | F_MULTI_BATTLE_PARTNER | F_PRIORITIZE_HEALING,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -2299,7 +2299,7 @@ const TrainerData sTrainerData[] = {
                 .level = 35,
                 .species = SPECIES_ANNIHILAPE,
                 .item = ITEM_NONE,
-                .moves = { MOVE_RAGE_FIST, MOVE_ASSURANCE, MOVE_CROSS_CHOP, MOVE_SWAGGER },
+                .moves = { MOVE_RAGE_FIST, MOVE_ASSURANCE, MOVE_CROSS_CHOP, MOVE_HONE_CLAWS },
                 .ballSeal = 0,
             },
             {
@@ -2323,10 +2323,10 @@ const TrainerData sTrainerData[] = {
             {
                 .ivs = 255,
                 .abilitySlot = TRAINER_POKEMON_ABILITY_HIDDEN,
-                .level = 35,
+                .level = 34,
                 .species = SPECIES_POLIWRATH,
                 .item = ITEM_NONE,
-                .moves = { MOVE_BELLY_DRUM, MOVE_BODY_SLAM, MOVE_BUBBLE_BEAM, MOVE_CIRCLE_THROW },
+                .moves = { MOVE_RAIN_DANCE, MOVE_BODY_SLAM, MOVE_BUBBLE_BEAM, MOVE_CIRCLE_THROW },
                 .ballSeal = 0,
             },
             {
@@ -2335,16 +2335,16 @@ const TrainerData sTrainerData[] = {
                 .level = 36,
                 .species = SPECIES_PAWMOT,
                 .item = ITEM_NONE,
-                .moves = { MOVE_THUNDER_PUNCH, MOVE_MACH_PUNCH, MOVE_BULK_UP, MOVE_BATON_PASS },
+                .moves = { MOVE_THUNDER_PUNCH, MOVE_MACH_PUNCH, MOVE_BULK_UP, MOVE_FIRE_PUNCH },
                 .ballSeal = 0,
             },
             {
                 .ivs = 255,
                 .abilitySlot = TRAINER_POKEMON_ABILITY_1,
-                .level = 37,
+                .level = 36,
                 .species = SPECIES_LUCARIO,
                 .item = ITEM_LUCARIONITE,
-                .moves = { MOVE_BONE_RUSH, MOVE_DRAIN_PUNCH, MOVE_POWER_UP_PUNCH, MOVE_FLASH_CANNON },
+                .moves = { MOVE_BONE_RUSH, MOVE_DRAIN_PUNCH, MOVE_POWER_UP_PUNCH, MOVE_IRON_TAIL },
                 .ballSeal = 0,
             },
         },
@@ -2370,13 +2370,13 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_LEADER_CLAIR,
             .items = { ITEM_HYPER_POTION, ITEM_FULL_RESTORE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_DAMAGE | F_PRIORITIZE_HEALING,
+            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_HEALING,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
             {
                 .ivs = 255,
-                .abilitySlot = TRAINER_POKEMON_ABILITY_1,
+                .abilitySlot = TRAINER_POKEMON_ABILITY_2,
                 .level = 44,
                 .species = SPECIES_NOIVERN,
                 .item = ITEM_NONE,
@@ -2415,7 +2415,7 @@ const TrainerData sTrainerData[] = {
                 .abilitySlot = TRAINER_POKEMON_ABILITY_2,
                 .level = 45,
                 .species = SPECIES_KINGDRA,
-                .item = ITEM_NONE,
+                .item = ITEM_SCOPE_LENS,
                 .moves = { MOVE_BRINE, MOVE_DRAGON_PULSE, MOVE_HYDRO_PUMP, MOVE_FLASH_CANNON },
                 .ballSeal = 0,
             },
@@ -2425,7 +2425,7 @@ const TrainerData sTrainerData[] = {
                 .level = 46,
                 .species = SPECIES_CHARIZARD,
                 .item = ITEM_CHARIZARDITE_X,
-                .moves = { MOVE_CRUNCH, MOVE_DRAGON_CLAW, MOVE_TEMPER_FLARE, MOVE_BLAZE_KICK },
+                .moves = { MOVE_CRUNCH, MOVE_DRAGON_CLAW, MOVE_TEMPER_FLARE, MOVE_DRAGON_DANCE },
                 .ballSeal = 0,
             },
         },
@@ -2451,7 +2451,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_ACE_TRAINER_F,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_USE_WEATHER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -2523,7 +2523,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_GENTLEMAN,
             .items = { ITEM_FULL_RESTORE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -2582,7 +2582,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_TEACHER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -2675,7 +2675,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_SAILOR,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_USE_WEATHER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -2738,7 +2738,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_SUPER_NERD,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -2783,7 +2783,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_GUITARIST,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -2843,7 +2843,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_PSYCHIC_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -2977,7 +2977,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_POKEFAN_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -3040,7 +3040,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_POKEFAN,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -3099,7 +3099,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_MEDIUM,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -3234,7 +3234,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_BUG_CATCHER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_PRIORITIZE_STATUS_MOVES | F_MULTI_BATTLE_PARTNER | F_USE_WEATHER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -3331,7 +3331,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_YOUNGSTER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_USE_WEATHER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -3412,7 +3412,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_BIRD_KEEPER_GS,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -3559,7 +3559,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_SAGE,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES | F_MULTI_BATTLE_PARTNER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -3698,7 +3698,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_SAGE,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -3770,7 +3770,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_SAGE,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -3904,7 +3904,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_FISHERMAN,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -3975,7 +3975,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_FISHERMAN,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_USE_WEATHER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -4068,7 +4068,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_FISHERMAN,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -4165,7 +4165,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_FISHERMAN,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_USE_WEATHER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -4232,7 +4232,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_HIKER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -4370,7 +4370,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_ACE_TRAINER_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -4423,7 +4423,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_YOUNGSTER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -4486,7 +4486,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_PICNICKER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_USE_WEATHER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -4636,7 +4636,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_BUG_CATCHER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_PRIORITIZE_STATUS_MOVES | F_HARRASSMENT,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -4699,7 +4699,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_BUG_CATCHER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_HARRASSMENT,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -4821,7 +4821,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_BEAUTY,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -4893,7 +4893,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_LASS,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_USE_WEATHER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -4960,7 +4960,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_BIRD_KEEPER_GS,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_PRIORITIZE_STATUS_MOVES | F_MULTI_BATTLE_PARTNER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -5027,7 +5027,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_BIRD_KEEPER_GS,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -5161,7 +5161,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_CAMPER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES | F_MULTI_BATTLE_PARTNER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -5228,7 +5228,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_PICNICKER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -5295,7 +5295,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_PICNICKER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -5362,7 +5362,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_BUG_CATCHER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -5425,7 +5425,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_BUG_CATCHER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -5496,7 +5496,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_POLICEMAN,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -5563,7 +5563,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_TWINS,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE | F_DOUBLE_BATTLE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_DOUBLE_BATTLE,
             .battleType = DOUBLE_BATTLE,
         },
         .party = {
@@ -5658,7 +5658,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_BIRD_KEEPER_GS,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -5717,7 +5717,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_PICNICKER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -5802,7 +5802,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_CAMPER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -5887,7 +5887,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_SWIMMER_F,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES | F_USE_WEATHER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -5959,7 +5959,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_SWIMMER_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_USE_WEATHER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -6031,7 +6031,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_SAGE,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -6076,7 +6076,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_SAGE,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -6129,7 +6129,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_MEDIUM,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -6192,7 +6192,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_SWIMMER_F,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_MULTI_BATTLE_PARTNER | F_USE_WEATHER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -6259,7 +6259,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_SWIMMER_F,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -6322,7 +6322,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_SWIMMER_F,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -6381,7 +6381,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_SWIMMER_F,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -6440,7 +6440,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_SWIMMER_F,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -6499,7 +6499,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_SWIMMER_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_USE_WEATHER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -6558,7 +6558,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_SWIMMER_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_USE_WEATHER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -6625,7 +6625,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_SWIMMER_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_USE_WEATHER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -6688,7 +6688,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_SWIMMER_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES | F_USE_WEATHER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -6747,7 +6747,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_SWIMMER_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -6806,7 +6806,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_HIKER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -6897,7 +6897,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_TEAM_ROCKET,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -6969,7 +6969,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_ACE_TRAINER_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_DAMAGE | F_PRIORITIZE_HEALING,
+            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_HEALING,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -7054,7 +7054,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_ACE_TRAINER_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_DAMAGE | F_PRIORITIZE_HEALING,
+            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_STATUS_MOVES | F_PRIORITIZE_HEALING,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -7135,7 +7135,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_ACE_TRAINER_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -7318,7 +7318,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_ACE_TRAINER_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_USE_WEATHER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -7457,7 +7457,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_ACE_TRAINER_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -7524,7 +7524,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_ACE_TRAINER_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -7591,7 +7591,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_ACE_TRAINER_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -7735,7 +7735,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_ACE_TRAINER_F,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -7887,7 +7887,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_ACE_TRAINER_F,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -8035,7 +8035,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_ACE_TRAINER_F,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -8107,7 +8107,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_ACE_TRAINER_F,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -8170,7 +8170,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_ACE_TRAINER_F,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_USE_WEATHER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -8314,7 +8314,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_ACE_TRAINER_F,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -8386,7 +8386,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_FISHERMAN,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -8449,7 +8449,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_FISHERMAN,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -8516,7 +8516,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_FISHERMAN,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -8592,7 +8592,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_FISHERMAN,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -8659,7 +8659,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_FISHERMAN,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -8722,7 +8722,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_FISHERMAN,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -8794,7 +8794,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_FISHERMAN,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -8876,7 +8876,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_POKE_MANIAC,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -8943,7 +8943,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_POKE_MANIAC,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -9002,7 +9002,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_POKE_MANIAC,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -9078,7 +9078,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_POKE_MANIAC,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -9227,7 +9227,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_HIKER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -9299,7 +9299,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_SCHOOL_KID_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -9392,7 +9392,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_LASS,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -9477,7 +9477,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_BIRD_KEEPER_GS,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_DOUBLE_BATTLE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -9562,7 +9562,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_CAMPER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -9615,7 +9615,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_PICNICKER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -9852,7 +9852,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_PICNICKER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -9943,7 +9943,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_HIKER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -10015,7 +10015,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_HIKER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -10087,7 +10087,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_HIKER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -10163,7 +10163,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_HIKER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -10235,7 +10235,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_CAMPER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -10307,7 +10307,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_CAMPER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -10564,7 +10564,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_PICNICKER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -10640,7 +10640,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_PICNICKER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -10733,7 +10733,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_PICNICKER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -10826,7 +10826,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_HIKER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_USE_WEATHER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -10907,7 +10907,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_HIKER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -10998,7 +10998,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_BLACK_BELT,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -11065,7 +11065,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_BLACK_BELT,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES | F_MULTI_BATTLE_PARTNER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -11137,7 +11137,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_BLACK_BELT,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -11201,7 +11201,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_BLACK_BELT,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -11273,7 +11273,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_KIMONO_GIRL,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_DAMAGE | F_PRIORITIZE_HEALING,
+            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_STATUS_MOVES | F_PRIORITIZE_HEALING,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -11337,7 +11337,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_KIMONO_GIRL,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_DAMAGE | F_PRIORITIZE_HEALING,
+            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_STATUS_MOVES | F_PRIORITIZE_HEALING,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -11401,7 +11401,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_KIMONO_GIRL,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_DAMAGE | F_PRIORITIZE_HEALING,
+            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_HEALING,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -11465,7 +11465,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_KIMONO_GIRL,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_DAMAGE | F_PRIORITIZE_HEALING,
+            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_STATUS_MOVES | F_PRIORITIZE_HEALING,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -11529,7 +11529,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_KIMONO_GIRL,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_DAMAGE | F_PRIORITIZE_HEALING,
+            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_STATUS_MOVES | F_PRIORITIZE_HEALING,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -11593,7 +11593,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_SWIMMER_F,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -11638,7 +11638,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_SWIMMER_F,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE | F_USE_WEATHER,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES | F_USE_WEATHER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -11683,7 +11683,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_SWIMMER_F,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -11728,7 +11728,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_SWIMMER_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -11773,7 +11773,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_SWIMMER_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -11822,7 +11822,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_SWIMMER_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_USE_WEATHER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -11859,7 +11859,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_SWIMMER_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_USE_WEATHER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -11904,7 +11904,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_POKE_MANIAC,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -11995,7 +11995,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_POKE_MANIAC,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -12086,7 +12086,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_BIKER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -12153,7 +12153,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_MEDIUM,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -12202,7 +12202,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_MEDIUM,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -12251,7 +12251,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_MEDIUM,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -12300,7 +12300,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_SCHOOL_KID_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -12464,7 +12464,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_BEAUTY,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -12517,7 +12517,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_POKEFAN_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -12589,7 +12589,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_POKEFAN,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_USE_WEATHER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -12652,7 +12652,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_LASS,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -12737,7 +12737,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_LASS,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -12804,7 +12804,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_TEAM_ROCKET,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -12868,7 +12868,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_TEAM_ROCKET,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -13007,7 +13007,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_TEAM_ROCKET,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -13079,7 +13079,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_TEAM_ROCKET,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -13151,7 +13151,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_TEAM_ROCKET,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -13223,7 +13223,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_TEAM_ROCKET,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -13290,7 +13290,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_TEAM_ROCKET,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -13362,7 +13362,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_TEAM_ROCKET,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -13429,7 +13429,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_ACE_TRAINER_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES | F_MULTI_BATTLE_PARTNER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -13496,7 +13496,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_TEAM_ROCKET,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -13563,7 +13563,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_TEAM_ROCKET,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -13630,7 +13630,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_TEAM_ROCKET,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -13705,7 +13705,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_TEAM_ROCKET_F,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -13772,7 +13772,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_TEAM_ROCKET_F,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -13903,7 +13903,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_POKE_MANIAC,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_PRIORITIZE_DAMAGE | F_USE_WEATHER,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_USE_WEATHER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -13984,7 +13984,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_POKE_MANIAC,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_USE_WEATHER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -14047,7 +14047,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_HIKER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_USE_WEATHER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -14110,7 +14110,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_HIKER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -14177,7 +14177,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_ACE_TRAINER_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -14240,7 +14240,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_ACE_TRAINER_F,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -14299,7 +14299,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_BEAUTY,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_MULTI_BATTLE_PARTNER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -14357,7 +14357,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_BEAUTY,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_MULTI_BATTLE_PARTNER | F_USE_WEATHER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -14489,7 +14489,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_BEAUTY,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -14538,7 +14538,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_SAILOR,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_USE_WEATHER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -14601,7 +14601,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_SAILOR,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES | F_USE_WEATHER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -14660,7 +14660,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_SAILOR,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_USE_WEATHER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -14723,7 +14723,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_SAILOR,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -14782,7 +14782,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_LASS,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -14841,7 +14841,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_TEAM_ROCKET,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -14900,7 +14900,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_BIRD_KEEPER_GS,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -14972,7 +14972,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_TEAM_ROCKET,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -15031,7 +15031,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_TEAM_ROCKET,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -15103,7 +15103,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_TEAM_ROCKET,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -15170,7 +15170,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_ACE_TRAINER_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -15228,7 +15228,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_TEAM_ROCKET,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -15300,7 +15300,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_TEAM_ROCKET,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -15351,7 +15351,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_TEAM_ROCKET,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -15418,7 +15418,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_ACE_TRAINER_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -15485,7 +15485,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_TEAM_ROCKET,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -15543,7 +15543,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_TEAM_ROCKET,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -15610,7 +15610,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_TEAM_ROCKET,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -15691,7 +15691,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_ACE_TRAINER_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -15749,7 +15749,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_PSYCHIC_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -15924,7 +15924,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_GUITARIST,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -16017,7 +16017,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_SUPER_NERD,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -16089,7 +16089,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_HIKER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -16182,7 +16182,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_HIKER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -16275,7 +16275,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_ACE_TRAINER_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -16357,7 +16357,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_ACE_TRAINER_F,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -16439,7 +16439,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_SAILOR,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -16502,7 +16502,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_SAILOR,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -16595,7 +16595,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_SAILOR,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -16677,7 +16677,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_SAILOR,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_USE_WEATHER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -16759,7 +16759,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_JUGGLER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -16841,7 +16841,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_SWIMMER_F,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -16900,7 +16900,7 @@ const TrainerData sTrainerData[] = {
             .trainerClass = TRAINERCLASS_CHAMPION,
             .partySize = TRAINER_DATA_RANDOM_PARTY_ORDER,
             .items = { ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_FULL_RESTORE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_USE_WEATHER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -17005,7 +17005,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_ELITE_FOUR_WILL,
             .items = { ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -17026,7 +17026,7 @@ const TrainerData sTrainerData[] = {
                 .level = 51,
                 .species = SPECIES_BRONZONG,
                 .item = ITEM_PSYCHIC_SEED,
-                .moves = { MOVE_IRON_DEFENSE, MOVE_PSYCHIC_TERRAIN, MOVE_PSYCHIC, MOVE_FLASH_CANNON },
+                .moves = { MOVE_POWER_GEM, MOVE_CALM_MIND, MOVE_PSYCHIC, MOVE_FLASH_CANNON },
                 .setIvs = { .hp = 31, .attack = 31, .defense = 31, .speed = 31, .spAttack = 31, .spDefense = 31 },
                 .setEvs = { .hp = 4, .attack = 252, .defense = 0, .speed = 252, .spAttack = 0, .spDefense = 0 },
                 .ballSeal = 0,
@@ -17070,7 +17070,7 @@ const TrainerData sTrainerData[] = {
                 .level = 52,
                 .species = SPECIES_GARDEVOIR,
                 .item = ITEM_GARDEVOIRITE,
-                .moves = { MOVE_CALM_MIND, MOVE_PSYCHIC, MOVE_MOONBLAST, MOVE_CHARGE_BEAM },
+                .moves = { MOVE_CALM_MIND, MOVE_PSYCHIC, MOVE_HYPER_VOICE, MOVE_AURA_SPHERE },
                 .setIvs = { .hp = 31, .attack = 31, .defense = 31, .speed = 31, .spAttack = 31, .spDefense = 31 },
                 .setEvs = { .hp = 4, .attack = 0, .defense = 0, .speed = 252, .spAttack = 252, .spDefense = 0 },
                 .ballSeal = 0,
@@ -17098,7 +17098,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_ELITE_FOUR_KAREN,
             .items = { ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES | F_MULTI_BATTLE_PARTNER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -17152,7 +17152,7 @@ const TrainerData sTrainerData[] = {
                 .level = 55,
                 .species = SPECIES_KINGAMBIT,
                 .item = ITEM_CHOPLE_BERRY,
-                .moves = { MOVE_KOWTOW_CLEAVE, MOVE_IRON_HEAD, MOVE_SWORDS_DANCE, MOVE_AERIAL_ACE },
+                .moves = { MOVE_KOWTOW_CLEAVE, MOVE_IRON_HEAD, MOVE_AERIAL_ACE, MOVE_SWORDS_DANCE },
                 .setIvs = { .hp = 31, .attack = 31, .defense = 31, .speed = 31, .spAttack = 31, .spDefense = 31 },
                 .setEvs = { .hp = 252, .attack = 252, .defense = 4, .speed = 0, .spAttack = 0, .spDefense = 0 },
                 .ballSeal = 0,
@@ -17163,9 +17163,9 @@ const TrainerData sTrainerData[] = {
                 .level = 57,
                 .species = SPECIES_TYRANITAR,
                 .item = ITEM_TYRANITARITE,
-                .moves = { MOVE_CRUNCH, MOVE_ROCK_SLIDE, MOVE_EARTHQUAKE, MOVE_AERIAL_ACE },
-                .setIvs = { .hp = 31, .attack = 31, .defense = 31, .speed = 31, .spAttack = 31, .spDefense = 31 },
-                .setEvs = { .hp = 4, .attack = 252, .defense = 0, .speed = 252, .spAttack = 0, .spDefense = 0 },
+                .moves = { MOVE_DRAGON_DANCE, MOVE_STONE_EDGE, MOVE_CRUNCH, MOVE_FIRE_PUNCH },
+                .setIvs = { .hp = 0, .attack = 0, .defense = 0, .speed = 0, .spAttack = 0, .spDefense = 0 },
+                .setEvs = { .hp = 0, .attack = 0, .defense = 0, .speed = 0, .spAttack = 0, .spDefense = 0 },
                 .ballSeal = 0,
             },
         },
@@ -17191,7 +17191,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_ELITE_FOUR_KOGA,
             .items = { ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_DAMAGE | F_PRIORITIZE_HEALING,
+            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_STATUS_MOVES | F_PRIORITIZE_HEALING,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -17245,7 +17245,7 @@ const TrainerData sTrainerData[] = {
                 .level = 51,
                 .species = SPECIES_IRON_MOTH,
                 .item = ITEM_AIR_BALLOON,
-                .moves = { MOVE_FIRE_BLAST, MOVE_SLUDGE_WAVE, MOVE_BUG_BUZZ, MOVE_AGILITY },
+                .moves = { MOVE_FIRE_BLAST, MOVE_SLUDGE_WAVE, MOVE_BUG_BUZZ, MOVE_CONFUSE_RAY },
                 .setIvs = { .hp = 31, .attack = 31, .defense = 31, .speed = 31, .spAttack = 31, .spDefense = 31 },
                 .setEvs = { .hp = 4, .attack = 0, .defense = 0, .speed = 252, .spAttack = 252, .spDefense = 0 },
                 .ballSeal = 0,
@@ -17256,7 +17256,7 @@ const TrainerData sTrainerData[] = {
                 .level = 53,
                 .species = SPECIES_VENUSAUR,
                 .item = ITEM_VENUSAURITE,
-                .moves = { MOVE_GIGA_DRAIN, MOVE_SLUDGE_BOMB, MOVE_LEECH_SEED, MOVE_SLEEP_POWDER },
+                .moves = { MOVE_GIGA_DRAIN, MOVE_SLUDGE_BOMB, MOVE_EARTH_POWER, MOVE_SLEEP_POWDER },
                 .setIvs = { .hp = 31, .attack = 31, .defense = 31, .speed = 31, .spAttack = 31, .spDefense = 31 },
                 .setEvs = { .hp = 4, .attack = 0, .defense = 0, .speed = 252, .spAttack = 252, .spDefense = 0 },
                 .ballSeal = 0,
@@ -17284,7 +17284,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_BUG_CATCHER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -17444,7 +17444,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_BLACK_BELT,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -17535,7 +17535,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_BLACK_BELT,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -17602,7 +17602,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_SWIMMER_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES | F_USE_WEATHER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -17788,7 +17788,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_LEADER_MISTY,
             .items = { ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -17943,12 +17943,12 @@ const TrainerData sTrainerData[] = {
             {
                 .ivs = 255,
                 .abilitySlot = TRAINER_POKEMON_ABILITY_1,
-                .level = 64,
-                .species = SPECIES_AMPHAROS,
-                .item = ITEM_AMPHAROSITE,
-                .moves = { MOVE_DRAGON_PULSE, MOVE_DAZZLING_GLEAM, MOVE_COTTON_GUARD, MOVE_DISCHARGE },
-                .setIvs = { .hp = 31, .attack = 31, .defense = 31, .speed = 31, .spAttack = 31, .spDefense = 31 },
-                .setEvs = { .hp = 252, .attack = 0, .defense = 4, .speed = 0, .spAttack = 252, .spDefense = 0 },
+                .level = 63,
+                .species = SPECIES_RAICHU,
+                .item = ITEM_RAICHUNITE_Y,
+                .moves = { MOVE_FOCUS_BLAST, MOVE_ZAP_CANNON, MOVE_DYNAMIC_PUNCH, MOVE_CALM_MIND },
+                .setIvs = { .hp = 0, .attack = 0, .defense = 0, .speed = 0, .spAttack = 0, .spDefense = 0 },
+                .setEvs = { .hp = 0, .attack = 0, .defense = 0, .speed = 0, .spAttack = 0, .spDefense = 0 },
                 .ballSeal = 0,
             },
         },
@@ -17974,7 +17974,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_LEADER_ERIKA,
             .items = { ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -18067,7 +18067,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_LEADER_JANINE,
             .items = { ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES | F_HARRASSMENT,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -18160,7 +18160,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_LEADER_SABRINA,
             .items = { ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -18253,7 +18253,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_LEADER_BLAINE,
             .items = { ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -18346,7 +18346,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_PKMN_TRAINER_RED,
             .items = { ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_FULL_RESTORE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -18435,7 +18435,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_LEADER_BLUE,
             .items = { ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_FULL_RESTORE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -18528,7 +18528,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_TEAM_ROCKET,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -18577,7 +18577,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_RIVAL,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES | F_HARRASSMENT,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -18653,7 +18653,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_RIVAL,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -18738,7 +18738,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_RIVAL,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -18760,7 +18760,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_RIVAL,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -18827,7 +18827,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_RIVAL,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -18903,7 +18903,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_RIVAL,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -18988,7 +18988,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_RIVAL,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -19055,7 +19055,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_RIVAL,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -19216,7 +19216,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_RIVAL,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_USE_WEATHER,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -19301,7 +19301,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_SWIMMER_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_USE_WEATHER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -19350,7 +19350,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_CAMPER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -19441,7 +19441,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_CAMPER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -19532,7 +19532,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_PICNICKER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -19623,7 +19623,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_PICNICKER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -19714,7 +19714,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_BLACK_BELT,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -19805,7 +19805,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_YOUNGSTER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -19896,7 +19896,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_YOUNGSTER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -19987,7 +19987,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_FIREBREATHER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE | F_USE_WEATHER,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_USE_WEATHER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -20068,7 +20068,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_FIREBREATHER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -20149,7 +20149,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_BURGLAR,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -20230,7 +20230,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_BURGLAR,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -20301,7 +20301,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET | TRAINER_DATA_TYPE_NATURE_SET,
             .trainerClass = TRAINERCLASS_RIVAL,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -20628,7 +20628,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_RIVAL,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -20713,7 +20713,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_RIVAL,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -20798,7 +20798,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_ELDER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -20873,7 +20873,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_SWIMMER_F,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -20966,7 +20966,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_SWIMMER_F,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_USE_WEATHER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -21104,7 +21104,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_SWIMMER_F,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -21197,7 +21197,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_SWIMMER_F,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_USE_WEATHER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -21234,7 +21234,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_SWIMMER_F,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -21327,7 +21327,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_SWIMMER_F,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -21420,7 +21420,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_SWIMMER_F,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -21513,7 +21513,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_BIRD_KEEPER_GS,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -21699,7 +21699,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_BIRD_KEEPER_GS,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -21792,7 +21792,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_BIRD_KEEPER_GS,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -21885,7 +21885,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_BIRD_KEEPER_GS,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -21976,7 +21976,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_CAMPER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -22034,7 +22034,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_CAMPER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -22092,7 +22092,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_CAMPER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -22150,7 +22150,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_CAMPER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -22208,7 +22208,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_CAMPER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -22301,7 +22301,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_BIKER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -22383,7 +22383,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_BIKER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES | F_HARRASSMENT,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -22465,7 +22465,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_BIKER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -22558,7 +22558,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_BIKER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES | F_MULTI_BATTLE_PARTNER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -22651,7 +22651,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_BIKER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -22748,7 +22748,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_BIKER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -22841,7 +22841,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_BIKER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -23027,7 +23027,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_PSYCHIC_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -23120,7 +23120,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_FIREBREATHER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -23213,7 +23213,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_FIREBREATHER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -23280,7 +23280,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_FISHERMAN,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES | F_USE_WEATHER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -23466,7 +23466,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_FISHERMAN,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -23559,7 +23559,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_FISHERMAN,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -23650,7 +23650,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_FISHERMAN,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -23741,7 +23741,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_FISHERMAN,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -23832,7 +23832,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_TWINS,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE | F_DOUBLE_BATTLE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES | F_DOUBLE_BATTLE,
             .battleType = DOUBLE_BATTLE,
         },
         .party = {
@@ -23945,7 +23945,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_SCHOOL_KID_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -24038,7 +24038,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_SCHOOL_KID_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -24131,7 +24131,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_SCHOOL_KID_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -24224,7 +24224,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_SCHOOL_KID_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -24306,7 +24306,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_SCHOOL_KID_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -24403,7 +24403,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_PICNICKER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_USE_WEATHER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -24496,7 +24496,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_PICNICKER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -24589,7 +24589,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_PICNICKER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -24680,7 +24680,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_PICNICKER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -24771,7 +24771,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_PICNICKER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -24864,7 +24864,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_GENTLEMAN,
             .items = { ITEM_FULL_RESTORE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -24957,7 +24957,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_GENTLEMAN,
             .items = { ITEM_FULL_RESTORE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -25002,7 +25002,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_BLACK_BELT,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -25084,7 +25084,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_BEAUTY,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -25142,7 +25142,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_BEAUTY,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -25200,7 +25200,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_BEAUTY,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -25253,7 +25253,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_BEAUTY,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -25311,7 +25311,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_BEAUTY,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -25372,7 +25372,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_BEAUTY,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -25425,7 +25425,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_BEAUTY,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -25518,7 +25518,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_BEAUTY,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -25653,7 +25653,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_POKEFAN_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -25746,7 +25746,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_POKEFAN_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -25839,7 +25839,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_POKEFAN_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -25932,7 +25932,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_POKEFAN,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -26014,7 +26014,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_TEAM_ROCKET,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -26099,7 +26099,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_LASS,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -26192,7 +26192,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_LASS,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES | F_HARRASSMENT,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -26285,7 +26285,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_LASS,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES | F_USE_WEATHER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -26378,7 +26378,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_HIKER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE | F_DOUBLE_BATTLE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -26471,7 +26471,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_HIKER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -26568,7 +26568,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_HIKER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -26650,7 +26650,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_BUG_CATCHER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -26741,7 +26741,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_ACE_TRAINER_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_MULTI_BATTLE_PARTNER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -26834,7 +26834,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_ACE_TRAINER_F,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -26927,7 +26927,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_ACE_TRAINER_F,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -26990,7 +26990,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_SUPER_NERD,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -27165,7 +27165,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_SUPER_NERD,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -27329,7 +27329,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_MEDIUM,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -27422,7 +27422,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_MEDIUM,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -27515,7 +27515,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_SWIMMER_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_USE_WEATHER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -27608,7 +27608,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_SWIMMER_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -27701,7 +27701,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_SWIMMER_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES | F_USE_WEATHER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -27738,7 +27738,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_SWIMMER_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -27831,7 +27831,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_SWIMMER_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES | F_USE_WEATHER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -27924,7 +27924,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_SWIMMER_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -27961,7 +27961,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_SWIMMER_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -28010,7 +28010,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_SWIMMER_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -28068,7 +28068,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_YOUNGSTER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -28161,7 +28161,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_YOUNGSTER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -28254,7 +28254,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_YOUNGSTER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -28347,7 +28347,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_YOUNGSTER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES | F_MULTI_BATTLE_PARTNER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -28440,7 +28440,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_TEACHER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -28604,7 +28604,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_HIKER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -28671,7 +28671,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_TWINS,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_DOUBLE_BATTLE,
             .battleType = DOUBLE_BATTLE,
         },
         .party = {
@@ -28720,7 +28720,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_PSYCHIC_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -28792,7 +28792,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_TWINS,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_DOUBLE_BATTLE | F_USE_WEATHER,
             .battleType = DOUBLE_BATTLE,
         },
         .party = {
@@ -28859,7 +28859,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_FIREBREATHER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -28935,7 +28935,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_PSYCHIC_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -28998,7 +28998,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_FIREBREATHER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_PRIORITIZE_STATUS_MOVES | F_HARRASSMENT,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -29065,7 +29065,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_POKE_MANIAC,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_HARRASSMENT,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -29132,7 +29132,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_POKE_MANIAC,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES | F_MULTI_BATTLE_PARTNER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -29199,7 +29199,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_SUPER_NERD,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_USE_WEATHER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -29266,7 +29266,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_ACE_TRAINER_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_USE_WEATHER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -29333,7 +29333,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_PSYCHIC_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -29498,7 +29498,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_SCHOOL_KID_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -29565,7 +29565,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_BEAUTY,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -29624,7 +29624,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_FIREBREATHER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -29706,7 +29706,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_LASS,
             .items = { ITEM_MOOMOO_MILK, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -29777,7 +29777,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_GENTLEMAN,
             .items = { ITEM_FULL_RESTORE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -29844,7 +29844,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_PICNICKER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -29907,7 +29907,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_CAMPER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -29966,7 +29966,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_TEAM_ROCKET_F,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -30033,7 +30033,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_PSYCHIC_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -30108,7 +30108,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_POKE_MANIAC,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -30189,7 +30189,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_ACE_TRAINER_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES | F_MULTI_BATTLE_PARTNER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -30270,7 +30270,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_ACE_TRAINER_F,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -30342,7 +30342,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_POKEFAN_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -30409,7 +30409,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_SAILOR,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -30484,7 +30484,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_PSYCHIC_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -30565,7 +30565,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_PSYCHIC_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -30637,7 +30637,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_FISHERMAN,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES | F_USE_WEATHER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -30709,7 +30709,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_BIRD_KEEPER_GS,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -30785,7 +30785,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_PSYCHIC_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -30867,7 +30867,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_TWINS,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_DOUBLE_BATTLE,
             .battleType = DOUBLE_BATTLE,
         },
         .party = {
@@ -30916,7 +30916,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_ACE_TRAINER_F,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -30975,7 +30975,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_ELITE_FOUR_BRUNO,
             .items = { ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -31068,7 +31068,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_LASS,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE | F_DOUBLE_BATTLE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -31161,7 +31161,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_BIRD_KEEPER_GS,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -31254,7 +31254,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_BIRD_KEEPER_GS,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -31429,7 +31429,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_POKEFAN_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -31706,7 +31706,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_TWINS,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES | F_DOUBLE_BATTLE,
             .battleType = DOUBLE_BATTLE,
         },
         .party = {
@@ -31755,7 +31755,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_TEACHER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -31919,7 +31919,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_SCHOOL_KID_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -32001,7 +32001,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_SCHOOL_KID_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -32092,7 +32092,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_SCHOOL_KID_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -32183,7 +32183,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_SCHOOL_KID_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -32274,7 +32274,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_SCHOOL_KID_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -32365,7 +32365,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_SCHOOL_KID_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -32456,7 +32456,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_SCHOOL_KID_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -32547,7 +32547,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_POKEFAN,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -32638,7 +32638,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_POKEFAN,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -32729,7 +32729,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_POKEFAN_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -32820,7 +32820,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_POKEFAN_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -32911,7 +32911,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_SAILOR,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -33002,7 +33002,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_SAILOR,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -33093,7 +33093,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_LASS,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_USE_WEATHER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -33151,7 +33151,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_LASS,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -33200,7 +33200,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_ACE_TRAINER_F,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -33291,7 +33291,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_ACE_TRAINER_F,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -33382,7 +33382,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_BIRD_KEEPER_GS,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -33473,7 +33473,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_BIRD_KEEPER_GS,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -33564,7 +33564,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_BIRD_KEEPER_GS,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -33655,7 +33655,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_BUG_CATCHER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -33746,7 +33746,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_FISHERMAN,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -33837,7 +33837,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_HIKER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -33928,7 +33928,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_HIKER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -34019,7 +34019,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_PICNICKER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -34110,7 +34110,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_JUGGLER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -34201,7 +34201,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_JUGGLER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -34292,7 +34292,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_ACE_TRAINER_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -34383,7 +34383,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_ACE_TRAINER_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -34474,7 +34474,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_ACE_TRAINER_F,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -34565,7 +34565,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_ACE_TRAINER_F,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -34656,7 +34656,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_BUG_CATCHER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -34747,7 +34747,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_BUG_CATCHER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -34838,7 +34838,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_FISHERMAN,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -34929,7 +34929,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_FISHERMAN,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -35020,7 +35020,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_LASS,
             .items = { ITEM_MOOMOO_MILK, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -35111,7 +35111,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_LASS,
             .items = { ITEM_MOOMOO_MILK, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -35202,7 +35202,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_PICNICKER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -35293,7 +35293,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_PICNICKER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -35384,7 +35384,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_SCIENTIST_GS,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -35443,7 +35443,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_SCIENTIST_GS,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE | F_DOUBLE_BATTLE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -35502,7 +35502,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_SCIENTIST_GS,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -35565,7 +35565,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_SCIENTIST_GS,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -35637,7 +35637,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_SCIENTIST_GS,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_MULTI_BATTLE_PARTNER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -35709,7 +35709,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_SUPER_NERD,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -35758,7 +35758,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_SUPER_NERD,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -35803,7 +35803,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_SUPER_NERD,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -35848,7 +35848,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_SUPER_NERD,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -35901,7 +35901,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_SUPER_NERD,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -35946,7 +35946,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_EXECUTIVE_ARIANA,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_DAMAGE | F_PRIORITIZE_HEALING,
+            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_HEALING,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -36026,7 +36026,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_EXECUTIVE_ARIANA,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_DAMAGE | F_PRIORITIZE_HEALING,
+            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_HEALING,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -36098,7 +36098,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_SKIER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -36165,7 +36165,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_SKIER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -36232,7 +36232,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_BOARDER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -36295,7 +36295,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_BOARDER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_USE_WEATHER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -36362,7 +36362,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_BOARDER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -36429,7 +36429,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_EXECUTIVE_ARCHER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_DAMAGE | F_PRIORITIZE_HEALING,
+            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_HEALING,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -36501,7 +36501,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_EXECUTIVE_PROTON,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_DAMAGE | F_PRIORITIZE_HEALING,
+            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_STATUS_MOVES | F_PRIORITIZE_HEALING,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -36573,7 +36573,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_EXECUTIVE_PETREL,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_DAMAGE | F_PRIORITIZE_HEALING,
+            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_STATUS_MOVES | F_PRIORITIZE_HEALING,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -36645,7 +36645,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_EXECUTIVE_PETREL,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_DAMAGE | F_PRIORITIZE_HEALING,
+            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_HEALING,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -36935,7 +36935,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET | TRAINER_DATA_TYPE_NATURE_SET,
             .trainerClass = TRAINERCLASS_RIVAL,
             .items = { ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES | F_USE_WEATHER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -37044,7 +37044,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_POKEFAN_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -37137,7 +37137,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_MEDIUM,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -37209,7 +37209,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_MEDIUM,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -37276,7 +37276,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_PASSERBY,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -37312,7 +37312,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_PASSERBY,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_USE_WEATHER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -37348,7 +37348,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_PASSERBY,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_USE_WEATHER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -37384,7 +37384,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_MYSTERY_MAN,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -37452,7 +37452,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_TEAM_ROCKET,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -37511,7 +37511,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_ACE_TRAINER_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -37592,7 +37592,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_ACE_TRAINER_F,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -37673,7 +37673,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_TWINS,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE | F_DOUBLE_BATTLE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES | F_DOUBLE_BATTLE,
             .battleType = DOUBLE_BATTLE,
         },
         .party = {
@@ -37756,7 +37756,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_SCHOOL_KID_M,
             .items = { ITEM_HYPER_POTION, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -37847,7 +37847,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_SCHOOL_KID_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -37905,7 +37905,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_SCHOOL_KID_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -37996,7 +37996,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_SCHOOL_KID_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -38054,7 +38054,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_SCHOOL_KID_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -38145,7 +38145,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_SCHOOL_KID_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_MULTI_BATTLE_PARTNER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -38203,7 +38203,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_SAILOR,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -38294,7 +38294,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_YOUNGSTER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -38385,7 +38385,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_YOUNGSTER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -38443,7 +38443,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_BUG_CATCHER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -38534,7 +38534,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_BUG_CATCHER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -38625,7 +38625,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_BUG_CATCHER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -38683,7 +38683,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_FISHERMAN,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -38774,7 +38774,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_FISHERMAN,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -38832,7 +38832,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_FISHERMAN,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -38923,7 +38923,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_PICNICKER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -39014,7 +39014,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_PICNICKER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -39072,7 +39072,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_PICNICKER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -39163,7 +39163,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_PICNICKER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -39221,7 +39221,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_PICNICKER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -39312,7 +39312,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_HIKER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -39403,7 +39403,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_HIKER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_USE_WEATHER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -39461,7 +39461,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_CAMPER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -39552,7 +39552,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_CAMPER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -39610,7 +39610,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_JUGGLER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -39701,7 +39701,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_LASS,
             .items = { ITEM_MOOMOO_MILK, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -39792,7 +39792,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_LASS,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -39850,7 +39850,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_POKE_MANIAC,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -39941,7 +39941,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_TWINS,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_DOUBLE_BATTLE,
             .battleType = DOUBLE_BATTLE,
         },
         .party = {
@@ -39999,7 +39999,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_BUG_CATCHER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -40124,7 +40124,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_BEAUTY,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -40173,7 +40173,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_POKEFAN,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -40222,7 +40222,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_CAMPER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES | F_MULTI_BATTLE_PARTNER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -40271,7 +40271,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_POKE_MANIAC,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -40343,7 +40343,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_SUPER_NERD,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -40406,7 +40406,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_SUPER_NERD,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_USE_WEATHER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -40465,7 +40465,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_POKEFAN_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -40546,7 +40546,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_POKEFAN_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -40627,7 +40627,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_SAGE,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -40685,7 +40685,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_SAGE,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -40738,7 +40738,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_SAGE,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -40796,7 +40796,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_ACE_TRAINER_M,
             .items = { ITEM_DIRE_HIT, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -40889,7 +40889,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_SCHOOL_KID_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -40982,7 +40982,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_HIKER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -41064,7 +41064,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_BLACK_BELT,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -41157,7 +41157,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_DOUBLE_TEAM,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE | F_DOUBLE_BATTLE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_DOUBLE_BATTLE,
             .battleType = DOUBLE_BATTLE,
         },
         .party = {
@@ -41270,7 +41270,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_BLACK_BELT,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -41363,7 +41363,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_HIKER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_USE_WEATHER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -41456,7 +41456,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_YOUNGSTER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -41549,7 +41549,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_YOUNG_COUPLE,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE | F_DOUBLE_BATTLE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_DOUBLE_BATTLE,
             .battleType = DOUBLE_BATTLE,
         },
         .party = {
@@ -41662,7 +41662,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_GENTLEMAN,
             .items = { ITEM_FULL_RESTORE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -41755,7 +41755,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_BIRD_KEEPER_GS,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -41848,7 +41848,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_BIRD_KEEPER_GS,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES | F_MULTI_BATTLE_PARTNER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -41941,7 +41941,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_YOUNG_COUPLE,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE | F_DOUBLE_BATTLE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_DOUBLE_BATTLE,
             .battleType = DOUBLE_BATTLE,
         },
         .party = {
@@ -42054,7 +42054,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_FISHERMAN,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_USE_WEATHER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -42151,7 +42151,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_YOUNG_COUPLE,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE | F_DOUBLE_BATTLE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_DOUBLE_BATTLE,
             .battleType = DOUBLE_BATTLE,
         },
         .party = {
@@ -42272,7 +42272,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_CAMPER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -42365,7 +42365,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_CAMPER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -42462,7 +42462,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_PICNICKER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -42555,7 +42555,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_PICNICKER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES | F_MULTI_BATTLE_PARTNER | F_USE_WEATHER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -42648,7 +42648,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_TEACHER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -42741,7 +42741,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_BIRD_KEEPER_GS,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -42838,7 +42838,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_SCHOOL_KID_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -43028,7 +43028,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_SCHOOL_KID_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -43121,7 +43121,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_TWINS,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE | F_DOUBLE_BATTLE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES | F_DOUBLE_BATTLE,
             .battleType = DOUBLE_BATTLE,
         },
         .party = {
@@ -43242,7 +43242,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_POKEFAN_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -43335,7 +43335,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_POKEFAN,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -43428,7 +43428,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_BIKER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -43521,7 +43521,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_BIKER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -43614,7 +43614,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_BIKER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -43711,7 +43711,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_BIKER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -43804,7 +43804,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_BIKER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -43897,7 +43897,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_BIKER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -43990,7 +43990,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_BIKER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -44083,7 +44083,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_BIKER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -44180,7 +44180,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_CAMPER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -44273,7 +44273,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_PICNICKER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES | F_MULTI_BATTLE_PARTNER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -44366,7 +44366,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_PICNICKER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -44459,7 +44459,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_BIRD_KEEPER_GS,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -44552,7 +44552,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_BIRD_KEEPER_GS,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -44645,7 +44645,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_SWIMMER_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -44738,7 +44738,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_SWIMMER_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -44820,7 +44820,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_SWIMMER_F,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -44913,7 +44913,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_SWIMMER_F,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_USE_WEATHER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -44995,7 +44995,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_FISHERMAN,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_USE_WEATHER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -45088,7 +45088,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_FISHERMAN,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_USE_WEATHER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -45181,7 +45181,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_FISHERMAN,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES | F_USE_WEATHER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -45274,7 +45274,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_SWIMMER_F,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -45367,7 +45367,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_SWIMMER_F,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_USE_WEATHER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -45460,7 +45460,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_SWIMMER_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_USE_WEATHER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -45553,7 +45553,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_SWIMMER_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_USE_WEATHER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -45646,7 +45646,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_BIRD_KEEPER_GS,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -45739,7 +45739,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_BIRD_KEEPER_GS,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -45832,7 +45832,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_TWINS,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE | F_DOUBLE_BATTLE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_DOUBLE_BATTLE,
             .battleType = DOUBLE_BATTLE,
         },
         .party = {
@@ -45923,7 +45923,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_CAMPER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -46005,7 +46005,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_PICNICKER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -46087,7 +46087,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_TEAM_ROCKET,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -46151,7 +46151,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_BIRD_KEEPER_GS,
             .items = { ITEM_X_ATTACK, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -46242,7 +46242,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_PICNICKER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -46333,7 +46333,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_ACE_TRAINER_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -46424,7 +46424,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_BLACK_BELT,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -46515,7 +46515,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_HIKER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -46606,7 +46606,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_ACE_TRAINER_F,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -46697,7 +46697,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_FISHERMAN,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -46788,7 +46788,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_ACE_TRAINER_F,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -46879,7 +46879,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_POKEFAN_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -46970,7 +46970,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_POKEFAN,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -47061,7 +47061,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_BIRD_KEEPER_GS,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -47152,7 +47152,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_LASS,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -47243,7 +47243,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_LASS,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -47334,7 +47334,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_LASS,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -47425,7 +47425,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_YOUNGSTER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -47516,7 +47516,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_YOUNGSTER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -47607,7 +47607,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_YOUNGSTER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -47698,7 +47698,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_FIREBREATHER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -47789,7 +47789,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_FIREBREATHER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -47880,7 +47880,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_FIREBREATHER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -47971,7 +47971,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_BUG_CATCHER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -48062,7 +48062,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_BUG_CATCHER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -48153,7 +48153,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_BUG_CATCHER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -48244,7 +48244,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_BUG_CATCHER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -48335,7 +48335,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_BUG_CATCHER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -48426,7 +48426,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_BUG_CATCHER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -48517,7 +48517,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_BIKER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -48608,7 +48608,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_BIKER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -48699,7 +48699,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_BIKER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -48790,7 +48790,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_BIKER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -48881,7 +48881,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_BIKER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -48972,7 +48972,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_BIKER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -49063,7 +49063,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_BIKER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -49154,7 +49154,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_BIKER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -49245,7 +49245,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_BIKER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -49336,7 +49336,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_TEACHER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -49427,7 +49427,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_TEACHER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -49518,7 +49518,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_TEACHER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -49609,7 +49609,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_SCHOOL_KID_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -49700,7 +49700,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_SCHOOL_KID_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -49791,7 +49791,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_SCHOOL_KID_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -49882,7 +49882,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_TWINS,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES | F_DOUBLE_BATTLE,
             .battleType = DOUBLE_BATTLE,
         },
         .party = {
@@ -49977,7 +49977,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_TWINS,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES | F_DOUBLE_BATTLE,
             .battleType = DOUBLE_BATTLE,
         },
         .party = {
@@ -50072,7 +50072,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_TWINS,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES | F_DOUBLE_BATTLE,
             .battleType = DOUBLE_BATTLE,
         },
         .party = {
@@ -50167,7 +50167,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_BIRD_KEEPER_GS,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -50258,7 +50258,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_BIRD_KEEPER_GS,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -50349,7 +50349,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_BIRD_KEEPER_GS,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -50440,7 +50440,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_SCHOOL_KID_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -50531,7 +50531,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_SCHOOL_KID_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -50622,7 +50622,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_SCHOOL_KID_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -50713,7 +50713,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_YOUNG_COUPLE,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_DOUBLE_BATTLE,
             .battleType = DOUBLE_BATTLE,
         },
         .party = {
@@ -50808,7 +50808,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_YOUNG_COUPLE,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_DOUBLE_BATTLE,
             .battleType = DOUBLE_BATTLE,
         },
         .party = {
@@ -50903,7 +50903,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_YOUNG_COUPLE,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_DOUBLE_BATTLE,
             .battleType = DOUBLE_BATTLE,
         },
         .party = {
@@ -50998,7 +50998,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_HIKER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -51089,7 +51089,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_HIKER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -51180,7 +51180,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_HIKER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -51271,7 +51271,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_CAMPER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -51362,7 +51362,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_CAMPER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -51453,7 +51453,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_CAMPER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -51544,7 +51544,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_FISHERMAN,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -51635,7 +51635,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_FISHERMAN,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -51726,7 +51726,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_FISHERMAN,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -51817,7 +51817,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_FISHERMAN,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -51908,7 +51908,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_FISHERMAN,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -51999,7 +51999,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_FISHERMAN,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -52090,7 +52090,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_PKMN_TRAINER_CHERYL,
             .items = { ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -52169,7 +52169,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_PKMN_TRAINER_MARLEY,
             .items = { ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -52248,7 +52248,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_PKMN_TRAINER_MIRA,
             .items = { ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -52327,7 +52327,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_PKMN_TRAINER_RILEY,
             .items = { ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -52485,7 +52485,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_GENTLEMAN,
             .items = { ITEM_FULL_RESTORE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -52576,7 +52576,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_GENTLEMAN,
             .items = { ITEM_FULL_RESTORE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -52667,7 +52667,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_GENTLEMAN,
             .items = { ITEM_FULL_RESTORE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -52779,7 +52779,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_SAILOR,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -52965,7 +52965,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_SWIMMER_F,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_PRIORITIZE_STATUS_MOVES | F_USE_WEATHER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -53058,7 +53058,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_BEAUTY,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -53125,7 +53125,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_BEAUTY,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -53184,7 +53184,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_ACE_TRAINER_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES | F_MULTI_BATTLE_PARTNER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -53277,7 +53277,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_ACE_TRAINER_M,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -53370,7 +53370,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_ACE_TRAINER_F,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_MULTI_BATTLE_PARTNER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -53576,7 +53576,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_HIKER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_USE_WEATHER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -53855,7 +53855,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_SKIER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -53948,7 +53948,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_SUPER_NERD,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES | F_USE_WEATHER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -54033,7 +54033,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_SUPER_NERD,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -54118,7 +54118,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_SUPER_NERD,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES | F_USE_WEATHER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -54203,7 +54203,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_SCIENTIST_GS,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -54288,7 +54288,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_SCIENTIST_GS,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -54373,7 +54373,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_SCIENTIST_GS,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -54458,7 +54458,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_BUG_CATCHER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES | F_MULTI_BATTLE_PARTNER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -54551,7 +54551,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_BUG_CATCHER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_MULTI_BATTLE_PARTNER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -54644,7 +54644,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_BUG_CATCHER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -54901,7 +54901,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_ROCKET_BOSS,
             .items = { ITEM_FULL_RESTORE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_DAMAGE | F_PRIORITIZE_HEALING,
+            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_HEALING,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -54982,7 +54982,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_CHAMPION,
             .items = { ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_FULL_RESTORE },
-            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_DAMAGE | F_PRIORITIZE_HEALING,
+            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_HEALING | F_USE_WEATHER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -55075,7 +55075,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_ELITE_FOUR_WILL,
             .items = { ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_DAMAGE | F_PRIORITIZE_HEALING,
+            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_STATUS_MOVES | F_MULTI_BATTLE_PARTNER | F_PRIORITIZE_HEALING,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -55261,7 +55261,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_ELITE_FOUR_BRUNO,
             .items = { ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_DAMAGE | F_PRIORITIZE_HEALING,
+            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_STATUS_MOVES | F_MULTI_BATTLE_PARTNER | F_PRIORITIZE_HEALING,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -55354,7 +55354,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_ELITE_FOUR_KAREN,
             .items = { ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_DAMAGE | F_PRIORITIZE_HEALING,
+            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_HEALING,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -55447,7 +55447,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_EXECUTIVE_PROTON,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_DAMAGE | F_PRIORITIZE_HEALING,
+            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_STATUS_MOVES | F_PRIORITIZE_HEALING,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -55921,7 +55921,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_LEADER_MORTY,
             .items = { ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_NONE },
-            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_DAMAGE | F_PRIORITIZE_HEALING,
+            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_STATUS_MOVES | F_PRIORITIZE_HEALING,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -56200,7 +56200,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_LEADER_CHUCK,
             .items = { ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_NONE },
-            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_DAMAGE | F_PRIORITIZE_HEALING,
+            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_STATUS_MOVES | F_PRIORITIZE_HEALING,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -56386,7 +56386,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_LEADER_BROCK,
             .items = { ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_NONE },
-            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_DAMAGE | F_PRIORITIZE_HEALING,
+            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_HEALING,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -56479,7 +56479,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_LEADER_MISTY,
             .items = { ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -56572,7 +56572,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_LEADER_LT_SURGE,
             .items = { ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_NONE },
-            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_DAMAGE | F_PRIORITIZE_HEALING,
+            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_HEALING,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -56665,7 +56665,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_LEADER_ERIKA,
             .items = { ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -56758,7 +56758,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_LEADER_JANINE,
             .items = { ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -56851,7 +56851,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_LEADER_SABRINA,
             .items = { ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_NONE },
-            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_DAMAGE | F_PRIORITIZE_HEALING,
+            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_HEALING,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -56944,7 +56944,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_LEADER_BLAINE,
             .items = { ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_NONE },
-            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_DAMAGE | F_PRIORITIZE_HEALING,
+            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_HEALING,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -57037,7 +57037,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_LEADER_BLUE,
             .items = { ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_FULL_RESTORE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES | F_USE_WEATHER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -57130,7 +57130,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_BEAUTY,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -57181,7 +57181,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_YOUNG_COUPLE,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE | F_DOUBLE_BATTLE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_DOUBLE_BATTLE,
             .battleType = DOUBLE_BATTLE,
         },
         .party = {
@@ -57264,7 +57264,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_DOUBLE_TEAM,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE | F_DOUBLE_BATTLE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_DOUBLE_BATTLE,
             .battleType = DOUBLE_BATTLE,
         },
         .party = {
@@ -57347,7 +57347,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_HIKER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE | F_USE_WEATHER,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -57419,7 +57419,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES,
             .trainerClass = TRAINERCLASS_CAMPER,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_PRIORITIZE_DAMAGE,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -57530,7 +57530,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_LEADER_CLAIR,
             .items = { ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -57582,7 +57582,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET | TRAINER_DATA_TYPE_NATURE_SET,
             .trainerClass = TRAINERCLASS_RIVAL,
             .items = { ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -57686,7 +57686,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET | TRAINER_DATA_TYPE_NATURE_SET,
             .trainerClass = TRAINERCLASS_RIVAL,
             .items = { ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_USE_WEATHER,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -57740,32 +57740,32 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_LEADER_FALKNER,
             .items = { ITEM_FRESH_WATER, ITEM_FULL_RESTORE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_DAMAGE | F_PRIORITIZE_HEALING,
+            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_STATUS_MOVES | F_PRIORITIZE_HEALING,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
             {
                 .ivs = 255,
                 .abilitySlot = TRAINER_POKEMON_ABILITY_HIDDEN,
-                .level = 14,
+                .level = 16,
                 .species = SPECIES_BOMBIRDIER,
                 .item = ITEM_NONE,
-                .moves = { MOVE_ROCK_TOMB, MOVE_SNARL, MOVE_DUAL_WINGBEAT, MOVE_TAILWIND },
+                .moves = { MOVE_ROCK_THROW, MOVE_SNARL, MOVE_DUAL_WINGBEAT, MOVE_TAILWIND },
                 .ballSeal = 0,
             },
             {
                 .ivs = 255,
                 .abilitySlot = TRAINER_POKEMON_ABILITY_HIDDEN,
-                .level = 14,
+                .level = 16,
                 .species = SPECIES_EMOLGA,
                 .item = ITEM_NONE,
-                .moves = { MOVE_VOLT_SWITCH, MOVE_NUZZLE, MOVE_DUAL_WINGBEAT, MOVE_TICKLE },
+                .moves = { MOVE_SHOCK_WAVE, MOVE_NUZZLE, MOVE_DUAL_WINGBEAT, MOVE_TICKLE },
                 .ballSeal = 0,
             },
             {
                 .ivs = 255,
                 .abilitySlot = TRAINER_POKEMON_ABILITY_1,
-                .level = 14,
+                .level = 16,
                 .species = SPECIES_SQUAWKABILLY,
                 .item = ITEM_NONE,
                 .moves = { MOVE_DUAL_WINGBEAT, MOVE_TAKE_DOWN, MOVE_FINAL_GAMBIT, MOVE_PARTING_SHOT },
@@ -57774,7 +57774,7 @@ const TrainerData sTrainerData[] = {
             {
                 .ivs = 255,
                 .abilitySlot = TRAINER_POKEMON_ABILITY_1,
-                .level = 14,
+                .level = 16,
                 .species = SPECIES_FLAMIGO,
                 .item = ITEM_NONE,
                 .moves = { MOVE_WATER_PULSE, MOVE_DOUBLE_KICK, MOVE_DUAL_WINGBEAT, MOVE_FEATHER_DANCE },
@@ -57783,19 +57783,19 @@ const TrainerData sTrainerData[] = {
             {
                 .ivs = 255,
                 .abilitySlot = TRAINER_POKEMON_ABILITY_1,
-                .level = 14,
+                .level = 16,
                 .species = SPECIES_CRAMORANT,
-                .item = ITEM_NONE,
+                .item = ITEM_WACAN_BERRY,
                 .moves = { MOVE_DIVE, MOVE_FLY, MOVE_FURY_ATTACK, MOVE_AQUA_RING },
                 .ballSeal = 0,
             },
             {
                 .ivs = 255,
                 .abilitySlot = TRAINER_POKEMON_ABILITY_HIDDEN,
-                .level = 16,
+                .level = 18,
                 .species = SPECIES_SKARMORY,
                 .item = ITEM_SKARMORITE,
-                .moves = { MOVE_SKY_DROP, MOVE_METAL_CLAW, MOVE_SAND_TOMB, MOVE_AGILITY },
+                .moves = { MOVE_SKY_DROP, MOVE_METAL_CLAW, MOVE_SAND_TOMB, MOVE_ROCK_SMASH },
                 .ballSeal = 0,
             },
         },
@@ -57809,26 +57809,26 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_LEADER_BUGSY,
             .items = { ITEM_SUPER_POTION, ITEM_NONE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_DAMAGE | F_PRIORITIZE_HEALING,
+            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_HEALING,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
             {
                 .ivs = 255,
-                .abilitySlot = TRAINER_POKEMON_ABILITY_HIDDEN,
+                .abilitySlot = TRAINER_POKEMON_ABILITY_2,
                 .level = 22,
                 .species = SPECIES_SHUCKLE,
-                .item = ITEM_NONE,
-                .moves = { MOVE_ACUPRESSURE, MOVE_STEALTH_ROCK, MOVE_STICKY_WEB, MOVE_SKITTER_SMACK },
+                .item = ITEM_SITRUS_BERRY,
+                .moves = { MOVE_METEOR_BEAM, MOVE_STEALTH_ROCK, MOVE_STICKY_WEB, MOVE_SKITTER_SMACK },
                 .ballSeal = 0,
             },
             {
                 .ivs = 255,
-                .abilitySlot = TRAINER_POKEMON_ABILITY_2,
+                .abilitySlot = TRAINER_POKEMON_ABILITY_HIDDEN,
                 .level = 22,
                 .species = SPECIES_HERACROSS,
-                .item = ITEM_FLAME_ORB,
-                .moves = { MOVE_POUNCE, MOVE_ARM_THRUST, MOVE_ROCK_BLAST, MOVE_CURSE },
+                .item = ITEM_COBA_BERRY,
+                .moves = { MOVE_POUNCE, MOVE_ARM_THRUST, MOVE_ROCK_BLAST, MOVE_SPIKES },
                 .ballSeal = 0,
             },
             {
@@ -57836,8 +57836,8 @@ const TrainerData sTrainerData[] = {
                 .abilitySlot = TRAINER_POKEMON_ABILITY_HIDDEN,
                 .level = 22,
                 .species = SPECIES_FROSMOTH,
-                .item = ITEM_NONE,
-                .moves = { MOVE_FEATHER_DANCE, MOVE_ICY_WIND, MOVE_STRUGGLE_BUG, MOVE_INFESTATION },
+                .item = ITEM_OCCA_BERRY,
+                .moves = { MOVE_CALM_MIND, MOVE_ICY_WIND, MOVE_STRUGGLE_BUG, MOVE_GIGA_DRAIN },
                 .ballSeal = 0,
             },
             {
@@ -57846,7 +57846,7 @@ const TrainerData sTrainerData[] = {
                 .level = 22,
                 .species = SPECIES_ARAQUANID,
                 .item = ITEM_NONE,
-                .moves = { MOVE_BUBBLE_BEAM, MOVE_LEECH_LIFE, MOVE_IRON_DEFENSE, MOVE_TRAILBLAZE },
+                .moves = { MOVE_DIVE, MOVE_LEECH_LIFE, MOVE_IRON_DEFENSE, MOVE_TRAILBLAZE },
                 .ballSeal = 0,
             },
             {
@@ -57854,7 +57854,7 @@ const TrainerData sTrainerData[] = {
                 .abilitySlot = TRAINER_POKEMON_ABILITY_HIDDEN,
                 .level = 22,
                 .species = SPECIES_VESPIQUEN,
-                .item = ITEM_NONE,
+                .item = ITEM_CHARTI_BERRY,
                 .moves = { MOVE_FELL_STINGER, MOVE_TAILWIND, MOVE_AIR_CUTTER, MOVE_SLASH },
                 .ballSeal = 0,
             },
@@ -57878,7 +57878,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_LEADER_WHITNEY,
             .items = { ITEM_SUPER_POTION, ITEM_SUPER_POTION, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_DAMAGE | F_PRIORITIZE_HEALING,
+            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_HEALING,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -57888,16 +57888,16 @@ const TrainerData sTrainerData[] = {
                 .level = 27,
                 .species = SPECIES_BEWEAR,
                 .item = ITEM_NONE,
-                .moves = { MOVE_TAUNT, MOVE_STOMP, MOVE_DRAIN_PUNCH, MOVE_BIND },
+                .moves = { MOVE_BULK_UP, MOVE_STOMP, MOVE_DRAIN_PUNCH, MOVE_THUNDER_PUNCH },
                 .ballSeal = 0,
             },
             {
                 .ivs = 255,
-                .abilitySlot = TRAINER_POKEMON_ABILITY_1,
+                .abilitySlot = TRAINER_POKEMON_ABILITY_HIDDEN,
                 .level = 27,
                 .species = SPECIES_SNORLAX,
-                .item = ITEM_NONE,
-                .moves = { MOVE_ZEN_HEADBUTT, MOVE_RETALIATE, MOVE_HIGH_HORSEPOWER, MOVE_METRONOME },
+                .item = ITEM_GANLON_BERRY,
+                .moves = { MOVE_ZEN_HEADBUTT, MOVE_CHIP_AWAY, MOVE_STOMPING_TANTRUM, MOVE_METRONOME },
                 .ballSeal = 0,
             },
             {
@@ -57905,7 +57905,7 @@ const TrainerData sTrainerData[] = {
                 .abilitySlot = TRAINER_POKEMON_ABILITY_HIDDEN,
                 .level = 27,
                 .species = SPECIES_KECLEON,
-                .item = ITEM_NONE,
+                .item = ITEM_LIFE_ORB,
                 .moves = { MOVE_DIZZY_PUNCH, MOVE_FIRE_PUNCH, MOVE_ICE_PUNCH, MOVE_THUNDER_PUNCH },
                 .ballSeal = 0,
             },
@@ -57923,8 +57923,8 @@ const TrainerData sTrainerData[] = {
                 .abilitySlot = TRAINER_POKEMON_ABILITY_HIDDEN,
                 .level = 27,
                 .species = SPECIES_MAUSHOLD,
-                .item = ITEM_NONE,
-                .moves = { MOVE_AERIAL_ACE, MOVE_TRAILBLAZE, MOVE_SWIFT, MOVE_SUPER_FANG },
+                .item = ITEM_LOADED_DICE,
+                .moves = { MOVE_AERIAL_ACE, MOVE_TRAILBLAZE, MOVE_POPULATION_BOMB, MOVE_BABY_DOLL_EYES },
                 .ballSeal = 0,
             },
             {
@@ -57933,7 +57933,7 @@ const TrainerData sTrainerData[] = {
                 .level = 29,
                 .species = SPECIES_DRAMPA,
                 .item = ITEM_DRAMPANITE,
-                .moves = { MOVE_ECHOED_VOICE, MOVE_STEEL_WING, MOVE_BREAKING_SWIPE, MOVE_DRAGON_DANCE },
+                .moves = { MOVE_SWIFT, MOVE_SHOCK_WAVE, MOVE_EXTRASENSORY, MOVE_DRAGON_BREATH },
                 .ballSeal = 0,
             },
         },
@@ -57947,7 +57947,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_LEADER_MORTY,
             .items = { ITEM_HYPER_POTION, ITEM_HYPER_POTION, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_DAMAGE | F_PRIORITIZE_HEALING,
+            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_STATUS_MOVES | F_PRIORITIZE_HEALING,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -57975,7 +57975,7 @@ const TrainerData sTrainerData[] = {
                 .level = 32,
                 .species = SPECIES_BASCULEGION,
                 .item = ITEM_POWER_HERB,
-                .moves = { MOVE_PHANTOM_FORCE, MOVE_LIQUIDATION, MOVE_LAST_RESPECTS, MOVE_AGILITY },
+                .moves = { MOVE_PHANTOM_FORCE, MOVE_LIQUIDATION, MOVE_LAST_RESPECTS, MOVE_CALM_MIND },
                 .ballSeal = 0,
             },
             {
@@ -57992,7 +57992,7 @@ const TrainerData sTrainerData[] = {
                 .abilitySlot = TRAINER_POKEMON_ABILITY_1,
                 .level = 32,
                 .species = SPECIES_GHOLDENGO,
-                .item = ITEM_NONE,
+                .item = ITEM_WHITE_HERB,
                 .moves = { MOVE_NASTY_PLOT, MOVE_MAKE_IT_RAIN, MOVE_SHADOW_BALL, MOVE_POWER_GEM },
                 .ballSeal = 0,
             },
@@ -58016,32 +58016,32 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_LEADER_CHUCK,
             .items = { ITEM_HYPER_POTION, ITEM_HYPER_POTION, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_DAMAGE | F_PRIORITIZE_HEALING,
+            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_HEALING,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
             {
                 .ivs = 255,
                 .abilitySlot = TRAINER_POKEMON_ABILITY_1,
-                .level = 37,
+                .level = 36,
                 .species = SPECIES_GREAT_TUSK,
-                .item = ITEM_NONE,
-                .moves = { MOVE_EARTHQUAKE, MOVE_CLOSE_COMBAT, MOVE_SUPERCELL_SLAM, MOVE_STEALTH_ROCK },
+                .item = ITEM_HEAT_ROCK,
+                .moves = { MOVE_EARTHQUAKE, MOVE_BODY_PRESS, MOVE_SUPERCELL_SLAM, MOVE_SUNNY_DAY },
                 .ballSeal = 0,
             },
             {
                 .ivs = 255,
                 .abilitySlot = TRAINER_POKEMON_ABILITY_1,
-                .level = 37,
+                .level = 36,
                 .species = SPECIES_IRON_VALIANT,
-                .item = ITEM_NONE,
+                .item = ITEM_BOOSTER_ENERGY,
                 .moves = { MOVE_DRAIN_PUNCH, MOVE_SPIRIT_BREAK, MOVE_SHADOW_SNEAK, MOVE_SWORDS_DANCE },
                 .ballSeal = 0,
             },
             {
                 .ivs = 255,
                 .abilitySlot = TRAINER_POKEMON_ABILITY_2,
-                .level = 37,
+                .level = 36,
                 .species = SPECIES_SNEASLER,
                 .item = ITEM_LIECHI_BERRY,
                 .moves = { MOVE_SWORDS_DANCE, MOVE_DIRE_CLAW, MOVE_THROAT_CHOP, MOVE_BRICK_BREAK },
@@ -58049,26 +58049,26 @@ const TrainerData sTrainerData[] = {
             },
             {
                 .ivs = 255,
-                .abilitySlot = TRAINER_POKEMON_ABILITY_1,
-                .level = 37,
-                .species = SPECIES_TAUROS_AQUA,
-                .item = ITEM_NONE,
-                .moves = { MOVE_RAGING_BULL, MOVE_BODY_PRESS, MOVE_LIQUIDATION, MOVE_BULK_UP },
+                .abilitySlot = TRAINER_POKEMON_ABILITY_HIDDEN,
+                .level = 36,
+                .species = SPECIES_TAUROS_BLAZE,
+                .item = ITEM_MARANGA_BERRY,
+                .moves = { MOVE_RAGING_BULL, MOVE_BODY_PRESS, MOVE_TEMPER_FLARE, MOVE_BULK_UP },
                 .ballSeal = 0,
             },
             {
                 .ivs = 255,
                 .abilitySlot = TRAINER_POKEMON_ABILITY_2,
-                .level = 37,
+                .level = 36,
                 .species = SPECIES_GALLADE,
                 .item = ITEM_NONE,
-                .moves = { MOVE_SWORDS_DANCE, MOVE_LEAF_BLADE, MOVE_SACRED_SWORD, MOVE_PSYCHO_CUT },
+                .moves = { MOVE_SWORDS_DANCE, MOVE_SOLAR_BLADE, MOVE_SACRED_SWORD, MOVE_PSYCHO_CUT },
                 .ballSeal = 0,
             },
             {
                 .ivs = 255,
                 .abilitySlot = TRAINER_POKEMON_ABILITY_1,
-                .level = 39,
+                .level = 38,
                 .species = SPECIES_LUCARIO,
                 .item = ITEM_LUCARIONITE_Z,
                 .moves = { MOVE_AURA_SPHERE, MOVE_FLASH_CANNON, MOVE_PSYCHIC, MOVE_CALM_MIND },
@@ -58085,7 +58085,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_LEADER_JASMINE,
             .items = { ITEM_HYPER_POTION, ITEM_HYPER_POTION, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_DAMAGE | F_PRIORITIZE_HEALING,
+            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_STATUS_MOVES | F_PRIORITIZE_HEALING,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -58166,7 +58166,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_LEADER_PRYCE,
             .items = { ITEM_HYPER_POTION, ITEM_FULL_RESTORE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_DAMAGE | F_PRIORITIZE_HEALING,
+            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_HEALING,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -58176,7 +58176,7 @@ const TrainerData sTrainerData[] = {
                 .level = 42,
                 .species = SPECIES_VANILLUXE,
                 .item = ITEM_ICY_ROCK,
-                .moves = { MOVE_AURORA_VEIL, MOVE_BLIZZARD, MOVE_NONE, MOVE_NONE },
+                .moves = { MOVE_AURORA_VEIL, MOVE_BLIZZARD, MOVE_FLASH_CANNON, MOVE_WATER_PULSE },
                 .ballSeal = 0,
             },
             {
@@ -58212,7 +58212,7 @@ const TrainerData sTrainerData[] = {
                 .level = 44,
                 .species = SPECIES_WALREIN,
                 .item = ITEM_LEFTOVERS,
-                .moves = { MOVE_BLIZZARD, MOVE_SURF, MOVE_AQUA_RING, MOVE_HAIL },
+                .moves = { MOVE_BLIZZARD, MOVE_SURF, MOVE_AQUA_RING, MOVE_SUBSTITUTE },
                 .ballSeal = 0,
             },
             {
@@ -58235,7 +58235,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS,
             .trainerClass = TRAINERCLASS_LEADER_CLAIR,
             .items = { ITEM_HYPER_POTION, ITEM_FULL_RESTORE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_DAMAGE | F_PRIORITIZE_HEALING,
+            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_STATUS_MOVES | F_PRIORITIZE_HEALING,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -58254,7 +58254,7 @@ const TrainerData sTrainerData[] = {
                 .level = 46,
                 .species = SPECIES_ARCHALUDON,
                 .item = ITEM_POWER_HERB,
-                .moves = { MOVE_ELECTRO_SHOT, MOVE_DRAGON_PULSE, MOVE_FLASH_CANNON, MOVE_SOLAR_BEAM },
+                .moves = { MOVE_ELECTRO_SHOT, MOVE_DRAGON_PULSE, MOVE_FLASH_CANNON, MOVE_THUNDER_WAVE },
                 .ballSeal = 0,
             },
             {
@@ -58272,7 +58272,7 @@ const TrainerData sTrainerData[] = {
                 .level = 46,
                 .species = SPECIES_HAXORUS,
                 .item = ITEM_LIFE_ORB,
-                .moves = { MOVE_DRAGON_DANCE, MOVE_DRAGON_CLAW, MOVE_IRON_HEAD, MOVE_BREAKING_SWIPE },
+                .moves = { MOVE_DRAGON_DANCE, MOVE_DRAGON_CLAW, MOVE_IRON_HEAD, MOVE_BRICK_BREAK },
                 .ballSeal = 0,
             },
             {
@@ -58304,7 +58304,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_ELITE_FOUR_WILL,
             .items = { ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES | F_MULTI_BATTLE_PARTNER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -58385,7 +58385,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_ELITE_FOUR_KOGA,
             .items = { ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_DAMAGE | F_PRIORITIZE_HEALING,
+            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_STATUS_MOVES | F_MULTI_BATTLE_PARTNER | F_PRIORITIZE_HEALING,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -58406,7 +58406,7 @@ const TrainerData sTrainerData[] = {
                 .level = 53,
                 .species = SPECIES_IRON_MOTH,
                 .item = ITEM_BOOSTER_ENERGY,
-                .moves = { MOVE_SLUDGE_WAVE, MOVE_FIERY_DANCE, MOVE_FLAME_CHARGE, MOVE_ENERGY_BALL },
+                .moves = { MOVE_SLUDGE_WAVE, MOVE_FIERY_DANCE, MOVE_TOXIC_SPIKES, MOVE_ENERGY_BALL },
                 .setIvs = { .hp = 0, .attack = 0, .defense = 0, .speed = 0, .spAttack = 0, .spDefense = 0 },
                 .setEvs = { .hp = 0, .attack = 0, .defense = 0, .speed = 0, .spAttack = 0, .spDefense = 0 },
                 .ballSeal = 0,
@@ -58547,7 +58547,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_ELITE_FOUR_KAREN,
             .items = { ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -58628,7 +58628,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_ABILITY | TRAINER_DATA_TYPE_IV_EV_SET | TRAINER_DATA_TYPE_NATURE_SET,
             .trainerClass = TRAINERCLASS_CHAMPION,
             .items = { ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_FULL_RESTORE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_USE_WEATHER,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES | F_USE_WEATHER,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -58721,7 +58721,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_LEADER_BROCK,
             .items = { ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -58802,7 +58802,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_LEADER_MISTY,
             .items = { ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -58935,9 +58935,9 @@ const TrainerData sTrainerData[] = {
                 .ivs = 255,
                 .abilitySlot = TRAINER_POKEMON_ABILITY_1,
                 .level = 64,
-                .species = SPECIES_ZERAORA,
-                .item = ITEM_LIFE_ORB,
-                .moves = { MOVE_PLASMA_FISTS, MOVE_QUICK_ATTACK, MOVE_BULK_UP, MOVE_POWER_UP_PUNCH },
+                .species = SPECIES_SANDY_SHOCKS,
+                .item = ITEM_BOOSTER_ENERGY,
+                .moves = { MOVE_SUBSTITUTE, MOVE_SCORCHING_SANDS, MOVE_THUNDERBOLT, MOVE_FLASH_CANNON },
                 .setIvs = { .hp = 0, .attack = 0, .defense = 0, .speed = 0, .spAttack = 0, .spDefense = 0 },
                 .setEvs = { .hp = 0, .attack = 0, .defense = 0, .speed = 0, .spAttack = 0, .spDefense = 0 },
                 .ballSeal = 0,
@@ -58946,9 +58946,9 @@ const TrainerData sTrainerData[] = {
                 .ivs = 255,
                 .abilitySlot = TRAINER_POKEMON_ABILITY_1,
                 .level = 66,
-                .species = SPECIES_RAICHU,
-                .item = ITEM_RAICHUNITE_Y,
-                .moves = { MOVE_FOCUS_BLAST, MOVE_ZAP_CANNON, MOVE_DRAINING_KISS, MOVE_CALM_MIND },
+                .species = SPECIES_ZERAORA,
+                .item = ITEM_ZERAORITE,
+                .moves = { MOVE_PLASMA_FISTS, MOVE_QUICK_ATTACK, MOVE_BULK_UP, MOVE_POWER_UP_PUNCH },
                 .setIvs = { .hp = 0, .attack = 0, .defense = 0, .speed = 0, .spAttack = 0, .spDefense = 0 },
                 .setEvs = { .hp = 0, .attack = 0, .defense = 0, .speed = 0, .spAttack = 0, .spDefense = 0 },
                 .ballSeal = 0,
@@ -58964,7 +58964,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_LEADER_ERIKA,
             .items = { ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -59126,7 +59126,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_LEADER_SABRINA,
             .items = { ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -59207,7 +59207,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_LEADER_BLAINE,
             .items = { ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -59288,7 +59288,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_LEADER_BLUE,
             .items = { ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_FULL_RESTORE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -59369,7 +59369,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_ELITE_FOUR_WILL,
             .items = { ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_DAMAGE | F_PRIORITIZE_HEALING,
+            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_STATUS_MOVES | F_PRIORITIZE_HEALING,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -59450,7 +59450,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_ELITE_FOUR_KOGA,
             .items = { ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS,
+            .aiFlags = F_PRIORITIZE_SUPER_EFFECTIVE | F_EVALUATE_ATTACKS | F_EXPERT_ATTACKS | F_PRIORITIZE_STATUS_MOVES,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -59531,7 +59531,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_ELITE_FOUR_BRUNO,
             .items = { ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_DAMAGE | F_PRIORITIZE_HEALING,
+            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_STATUS_MOVES | F_PRIORITIZE_HEALING,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -59612,7 +59612,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_ELITE_FOUR_KAREN,
             .items = { ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_NONE, ITEM_NONE },
-            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_DAMAGE | F_PRIORITIZE_HEALING,
+            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_STATUS_MOVES | F_PRIORITIZE_HEALING,
             .battleType = SINGLE_BATTLE,
         },
         .party = {
@@ -59693,7 +59693,7 @@ const TrainerData sTrainerData[] = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET,
             .trainerClass = TRAINERCLASS_CHAMPION,
             .items = { ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_FULL_RESTORE },
-            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_DAMAGE | F_PRIORITIZE_HEALING,
+            .aiFlags = F_TRAINER_EXPERT_AI | F_PRIORITIZE_STATUS_MOVES | F_PRIORITIZE_HEALING,
             .battleType = SINGLE_BATTLE,
         },
         .party = {

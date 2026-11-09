@@ -27,7 +27,7 @@ Local shop,Cherrygrove City Mart,,Premier Ball,,,Sprites/Items/premier_ball.png,
 Local shop,Cherrygrove City Mart,,Poke Doll,,,Sprites/Items/poke_doll.png,Configured stock; availability may depend on story state,src/field/mart.c (local engine source)
 Local shop,Cherrygrove City Mart,,Escape Rope,,,Sprites/Items/escape_rope.png,Configured stock; availability may depend on story state,src/field/mart.c (local engine source)
 Local shop,Cherrygrove City Mart,,Repel,,,Sprites/Items/repel.png,Configured stock; availability may depend on story state,src/field/mart.c (local engine source)
-Local shop,Cherrygrove City Mart,,Nest Ball,,,Sprites/Items/nest_ball.png,Configured stock; availability may depend on story state,src/field/mart.c (local engine source)
+Local shop,Cherrygrove City Mart,,Cherish Ball,,,Sprites/Items/cherish_ball.png,Configured stock; availability may depend on story state,src/field/mart.c (local engine source)
 Local shop,Violet City Mart,,Sun Stone,,,Sprites/Items/sun_stone.png,Configured stock; availability may depend on story state,src/field/mart.c (local engine source)
 Local shop,Violet City Mart,,Heal Ball,,,Sprites/Items/heal_ball.png,Configured stock; availability may depend on story state,src/field/mart.c (local engine source)
 Local shop,Violet City Mart,,Net Ball,,,Sprites/Items/net_ball.png,Configured stock; availability may depend on story state,src/field/mart.c (local engine source)

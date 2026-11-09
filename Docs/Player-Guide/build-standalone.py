@@ -119,7 +119,8 @@ def build(source):
         build_page(source, input_name, output_name, script, css, version)
     (SITE / RELEASE.name).write_bytes(RELEASE.read_bytes().replace(b"\r\n", b"\n"))
     for path in source.iterdir():
-        if path.is_file() and path.suffix.lower() in {".csv", ".md"} and path.name != "README-CSV-Review.md":
+        if (path.is_file() and path.suffix.lower() in {".csv", ".md"}
+                and path.name != "README-CSV-Review.md" and not path.stem.endswith("-v23-Preview")):
             (SITE / path.name).write_bytes(path.read_bytes().replace(b"\r\n", b"\n"))
     (SITE / "START-HERE.txt").write_text(
         f"Heartfelt Gold player guide — {version}\n\n"
@@ -139,9 +140,11 @@ def build(source):
         "styles, and code. Rematches have a separate page; bonus battles stay with story trainers.\n\n"
         f"This guide is bundled with the {version} patch named in `release.json`. The patch was decoded "
         "against the documented clean USA ROM and matched the recorded hg-engine build hash.\n\n"
-        "The trainer, wild encounter, shop, and evolution tables reflect the current authoring data "
-        "used for this guide. Wild held items match the v1.0.11 `HG-Engine/data/Species.c` "
-        "snapshot, including form-specific rows. Ground pickups come from the named Release-v2 "
+        "The trainer, wild encounter, shop, and evolution tables reflect the source data "
+        "used for the v23 hg-engine build. Twenty-one player-facing trainer parties changed "
+        "since v1.0.11; internal dummy Trainer 0 is omitted. Cherrygrove Mart now stocks Cherish "
+        "Ball, and both Frillish forms evolve at level 40. Wild held items match the updated "
+        "`HG-Engine/data/Species.c` snapshot, including form-specific rows. Ground pickups come from the named Release-v2 "
         "event extraction and hidden "
         "item parameter table. Two visible pickup objects have unresolved item identities. "
         "The 89 static encounter rows use v22 Test levels and follow the reviewed Markdown guide; "
@@ -151,7 +154,9 @@ def build(source):
         "have not all been independently checked against gameplay.\n\n"
         "See `Release-v22-Item-Audit.md` for the item audit. "
         "`Item-Locations.csv` is the older Retiled Expansion item list and remains historical. "
-        "Form-specific encounter rows and evolution icons were resolved against engine species IDs.\n",
+        "Form-specific encounter rows and evolution icons were resolved against engine species IDs. "
+        "The v23 input fixed Diglett's Cave map matrix 2 by adding map member 976; those map archives "
+        "were preserved byte for byte in the built ROM.\n",
         encoding="utf-8", newline="\n",
     )
     (SITE / ".nojekyll").write_text("", encoding="utf-8")

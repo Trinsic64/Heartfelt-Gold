@@ -17,17 +17,17 @@ There are still some awkward or glitchy tiles, but the project is playable and r
 
 ## Player guide
 
-The [v1.0.11 interactive guide](https://trinsic64.github.io/Heartfelt-Gold/) opens in a browser. For offline use, [download the v1.0.11 guide ZIP](https://github.com/Trinsic64/Heartfelt-Gold/releases/download/heartfelt-v1.0.11/Heartfelt-Gold-Player-Guide-Offline.zip), extract it, and double-click `index.html`. The pages include their sprites and work without an account or installation. [Guide details and source notes](Docs/Player-Guide/README.md).
+The [v1.0.12 interactive guide](https://trinsic64.github.io/Heartfelt-Gold/) opens in a browser. For offline use, [download the v1.0.12 guide ZIP](https://github.com/Trinsic64/Heartfelt-Gold/releases/download/heartfelt-v1.0.12/Heartfelt-Gold-Player-Guide-Offline.zip), extract it, and double-click `index.html`. The pages include their sprites and work without an account or installation. [Guide details and source notes](Docs/Player-Guide/README.md).
 
 ## Download and play
 
 The current Heartfelt Gold patch is:
 
-- [Heartfelt-Gold-v1.0.11-Patch.xdelta](https://github.com/Trinsic64/Heartfelt-Gold/releases/download/heartfelt-v1.0.11/Heartfelt-Gold-v1.0.11-Patch.xdelta) — adds the updated wild held items to the v22 hg-engine build. See the [GitHub Release](https://github.com/Trinsic64/Heartfelt-Gold/releases/tag/heartfelt-v1.0.11) and [release notes](RELEASE-NOTES-HEARTFELT-v1.0.11.md).
+- [Heartfelt-Gold-v1.0.12-Patch.xdelta](https://github.com/Trinsic64/Heartfelt-Gold/releases/download/heartfelt-v1.0.12/Heartfelt-Gold-v1.0.12-Patch.xdelta) — includes the v23 Diglett's Cave map fix and updated trainer parties. See the [GitHub Release](https://github.com/Trinsic64/Heartfelt-Gold/releases/tag/heartfelt-v1.0.12) and [release notes](RELEASE-NOTES-HEARTFELT-v1.0.12.md).
 
-The [v1.0.10](https://github.com/Trinsic64/Heartfelt-Gold/releases/tag/heartfelt-v1.0.10), [v1.0.9](https://github.com/Trinsic64/Heartfelt-Gold/releases/tag/heartfelt-v1.0.9), [v1.0.8](https://github.com/Trinsic64/Heartfelt-Gold/releases/tag/heartfelt-v1.0.8), [v1.0.7](https://github.com/Trinsic64/Heartfelt-Gold/releases/tag/heartfelt-v1.0.7), [v1.0.6](https://github.com/Trinsic64/Heartfelt-Gold/releases/tag/heartfelt-v1.0.6), [v1.0.5](https://github.com/Trinsic64/Heartfelt-Gold/releases/tag/heartfelt-v1.0.5), [v1.0.4](https://github.com/Trinsic64/Heartfelt-Gold/releases/tag/heartfelt-v1.0.4), [v1.0.3](https://github.com/Trinsic64/Heart-Gold-Retiled/releases/tag/heartfelt-v1.0.3), [v1.0.2](https://github.com/Trinsic64/Heart-Gold-Retiled/releases/tag/heartfelt-v1.0.2), [v1.0.1](https://github.com/Trinsic64/Heart-Gold-Retiled/releases/tag/heartfelt-v1.0.1), and [v1.0.0](https://github.com/Trinsic64/Heart-Gold-Retiled/releases/tag/heartfelt-v1.0.0) patches remain available for archival use.
+The [v1.0.11](https://github.com/Trinsic64/Heartfelt-Gold/releases/tag/heartfelt-v1.0.11), [v1.0.10](https://github.com/Trinsic64/Heartfelt-Gold/releases/tag/heartfelt-v1.0.10), [v1.0.9](https://github.com/Trinsic64/Heartfelt-Gold/releases/tag/heartfelt-v1.0.9), [v1.0.8](https://github.com/Trinsic64/Heartfelt-Gold/releases/tag/heartfelt-v1.0.8), [v1.0.7](https://github.com/Trinsic64/Heartfelt-Gold/releases/tag/heartfelt-v1.0.7), [v1.0.6](https://github.com/Trinsic64/Heartfelt-Gold/releases/tag/heartfelt-v1.0.6), [v1.0.5](https://github.com/Trinsic64/Heartfelt-Gold/releases/tag/heartfelt-v1.0.5), [v1.0.4](https://github.com/Trinsic64/Heartfelt-Gold/releases/tag/heartfelt-v1.0.4), [v1.0.3](https://github.com/Trinsic64/Heart-Gold-Retiled/releases/tag/heartfelt-v1.0.3), [v1.0.2](https://github.com/Trinsic64/Heart-Gold-Retiled/releases/tag/heartfelt-v1.0.2), [v1.0.1](https://github.com/Trinsic64/Heart-Gold-Retiled/releases/tag/heartfelt-v1.0.1), and [v1.0.0](https://github.com/Trinsic64/Heart-Gold-Retiled/releases/tag/heartfelt-v1.0.0) patches remain available for archival use.
 
-The v1.0.11 patch was decoded against a clean USA source matching the hashes below and reproduced the tested ROM byte for byte. Its output SHA-256 is `98342f8cb080f50a33b71a9f807571e9024471449ca9ad261de856d55cc1f5aa`.
+The v1.0.12 patch was decoded against a clean USA source matching the hashes below and reproduced the tested v23 ROM byte for byte. Its output SHA-256 is `9f6e08223717ad90dbf3ce281aed2410c2e209f1e53ed5a566eb79f41bc3731a`.
 
 **Save import friendly:** in-game saves from earlier Heartfelt Gold versions are expected to remain compatible. A copied save loaded and reached gameplay in a v1.0.11 headless emulator check; this release did not receive a new save/reload test. Back up your save, import or copy it for the new ROM, and continue without starting a new game. Match the save filename to the new ROM where your emulator requires it. Boot from the in-game save rather than loading an older emulator save state.
 
@@ -62,7 +62,7 @@ Then:
 1. Back up your clean ROM dump.
 2. Open xDelta UI or RomPatcher.js.
 3. Select your original Pokémon HeartGold (USA) `.nds` file as the **source/ROM file**.
-4. Select `Heartfelt-Gold-v1.0.11-Patch.xdelta` as the **patch file**.
+4. Select `Heartfelt-Gold-v1.0.12-Patch.xdelta` as the **patch file**.
 5. Apply the patch and save the newly generated `.nds` file separately from your original ROM.
 
 Apply exactly one patch to the clean ROM. Do not stack Heartfelt Gold with any earlier Retiled patch.
@@ -82,6 +82,7 @@ In RomPatcher.js, the selections should look like this:
 SHA-256:
 
 ```text
+F7D6E78332DB8629D4F4099AF1DBBA5846C3ACC155A79894A1252DD2E8A215BA  xDelta/Heartfelt-Gold-v1.0.12-Patch.xdelta
 33A031FF79159A74FFABA3F5A4A2C0C13DB1F316C55632BEF553B7931D221E5F  xDelta/Heartfelt-Gold-v1.0.11-Patch.xdelta
 2F20D3092BA208FFD0C24DBE437801CA017674F8A86D4160F926041C99C36AD2  xDelta/Heartfelt-Gold-v1.0.10-Patch.xdelta
 55735DCA98762490DF6062113A9124BF906C5E4E63B265CE7C624713DCF65D56  xDelta/Heartfelt-Gold-v1.0.9-Patch.xdelta
@@ -102,7 +103,7 @@ D814036E86628E9D0512701094DC7F9AC54A11D6B3AEBC716A837F77CCF74506  xDelta/Heartfe
 On PowerShell:
 
 ```powershell
-Get-FileHash .\xDelta\Heartfelt-Gold-v1.0.11-Patch.xdelta -Algorithm SHA256
+Get-FileHash .\xDelta\Heartfelt-Gold-v1.0.12-Patch.xdelta -Algorithm SHA256
 Get-FileHash .\xDelta\HG-Retiled-Expansion-Patch.xdelta -Algorithm SHA256
 Get-FileHash .\xDelta\HG-Retiled-Patch.xdelta -Algorithm SHA256
 Get-FileHash .\HG-Retiled-v3.bps -Algorithm SHA256
@@ -111,14 +112,14 @@ Get-FileHash .\HG-Retiled-v3.bps -Algorithm SHA256
 On macOS or Linux:
 
 ```bash
-sha256sum xDelta/Heartfelt-Gold-v1.0.11-Patch.xdelta xDelta/HG-Retiled-Expansion-Patch.xdelta xDelta/HG-Retiled-Patch.xdelta HG-Retiled-v3.bps
+sha256sum xDelta/Heartfelt-Gold-v1.0.12-Patch.xdelta xDelta/HG-Retiled-Expansion-Patch.xdelta xDelta/HG-Retiled-Patch.xdelta HG-Retiled-v3.bps
 ```
 
 The map archive hashes are recorded in [checksums.sha256](checksums.sha256).
 
 ## Player guides
 
-The [Heartfelt Gold player-guide index](Docs/Guides/README.md) links to current wild encounter, trainer, evolution, static encounter, and hg-engine feature guides. The v1.0.11 HTML and offline ZIP identify their matching patch in [release.json](Docs/Player-Guide/release.json); wild held items follow the updated `Species.c` snapshot and static levels follow the v22 Test script audit.
+The [Heartfelt Gold player-guide index](Docs/Guides/README.md) links to current wild encounter, trainer, evolution, static encounter, and hg-engine feature guides. The v1.0.12 HTML and offline ZIP identify their matching patch in [release.json](Docs/Player-Guide/release.json); wild held items follow the updated `Species.c` snapshot and static levels follow the v22 Test script audit.
 
 
 ## Maps for creators

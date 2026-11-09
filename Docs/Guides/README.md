@@ -1,8 +1,8 @@
 # Pokémon Heartfelt Gold player guides
 
-For the v1.0.11 visual, searchable guide, [open the interactive player guide](https://trinsic64.github.io/Heartfelt-Gold/). To use it locally, [download the offline ZIP](https://github.com/Trinsic64/Heartfelt-Gold/releases/download/heartfelt-v1.0.11/Heartfelt-Gold-Player-Guide-Offline.zip), extract it, and double-click `index.html`. Keep the extracted files together for the separate rematch page. [Source and review notes](../Player-Guide/README.md).
+For the v1.0.12 visual, searchable guide, [open the interactive player guide](https://trinsic64.github.io/Heartfelt-Gold/). To use it locally, [download the offline ZIP](https://github.com/Trinsic64/Heartfelt-Gold/releases/download/heartfelt-v1.0.12/Heartfelt-Gold-Player-Guide-Offline.zip), extract it, and double-click `index.html`. Keep the extracted files together for the separate rematch page. [Source and review notes](../Player-Guide/README.md).
 
-These guides describe the current Heartfelt Gold authoring data and contain spoilers. The species, level, trainer, and evolution tables were regenerated from the supplied hg-engine source, with v1.0.11 wild held items from the updated `Species.c` snapshot. The static encounter levels match the v22 Test DSPRE script export. The v1.0.11 patch was decoded and matched the tested build hash; individual guide rows have not all been checked in gameplay.
+These guides describe the current Heartfelt Gold authoring data and contain spoilers. Trainer, evolution, and Mart tables reflect the v23 build; wild held items use the updated `Species.c` snapshot. The static encounter levels match the v22 Test DSPRE script export. The v1.0.12 patch was decoded and matched the tested v23 build hash; individual guide rows have not all been checked in gameplay.
 
 | Guide | Contents |
 | --- | --- |

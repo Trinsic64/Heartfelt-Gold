@@ -3951,7 +3951,7 @@ const EvolutionTable __data[MAX_SPECIES_INCLUDING_FORMS + 1] =
     [SPECIES_KIRLIA] = {
         .entries = {
             { EVO_LEVEL, 30, SPECIES_GARDEVOIR },
-            { EVO_STONE_MALE, 109, SPECIES_GALLADE },
+            { EVO_STONE_MALE, ITEM_DAWN_STONE, SPECIES_GALLADE },
             { EVO_NONE, 0, SPECIES_NONE },
             { EVO_NONE, 0, SPECIES_NONE },
             { EVO_NONE, 0, SPECIES_NONE },
@@ -9004,7 +9004,7 @@ const EvolutionTable __data[MAX_SPECIES_INCLUDING_FORMS + 1] =
 
     [SPECIES_FRILLISH] = {
         .entries = {
-            { EVO_LEVEL_MALE, 40, SPECIES_JELLICENT },
+            { EVO_LEVEL, 40, SPECIES_JELLICENT },
             { EVO_NONE, 0, SPECIES_NONE },
             { EVO_NONE, 0, SPECIES_NONE },
             { EVO_NONE, 0, SPECIES_NONE },
@@ -18888,7 +18888,7 @@ const EvolutionTable __data[MAX_SPECIES_INCLUDING_FORMS + 1] =
 
     [SPECIES_FRILLISH_FEMALE] = {
         .entries = {
-            { EVO_LEVEL_FEMALE, 40, MON_WITH_FORM(SPECIES_JELLICENT, 1) },
+            { EVO_LEVEL, 40, MON_WITH_FORM(SPECIES_JELLICENT, 1) },
             { EVO_NONE, 0, SPECIES_NONE },
             { EVO_NONE, 0, SPECIES_NONE },
             { EVO_NONE, 0, SPECIES_NONE },

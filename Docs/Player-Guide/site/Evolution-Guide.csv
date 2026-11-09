@@ -165,8 +165,8 @@ Fomantis,Lurantis,Lv 34,EVO_LEVEL,Sprites/ColorIcons/fomantis.png,Sprites/ColorI
 Foongus,Amoonguss,Lv 39,EVO_LEVEL,Sprites/ColorIcons/foongus.png,Sprites/ColorIcons/amoonguss.png,https://github.com/Trinsic64/Heartfelt-Gold/blob/main/Docs/Guides/Evolution-Guide.md,,
 Fraxure,Haxorus,Lv 45,EVO_LEVEL,Sprites/ColorIcons/fraxure.png,Sprites/ColorIcons/haxorus.png,https://github.com/Trinsic64/Heartfelt-Gold/blob/main/Docs/Guides/Evolution-Guide.md,,
 Frigibax,Arctibax,Lv 35,EVO_LEVEL,Sprites/ColorIcons/frigibax.png,Sprites/ColorIcons/arctibax.png,https://github.com/Trinsic64/Heartfelt-Gold/blob/main/Docs/Guides/Evolution-Guide.md,,
-Frillish,Jellicent,Lv 40 · Male,EVO_LEVEL_MALE,Sprites/ColorIcons/frillish.png,Sprites/ColorIcons/jellicent.png,https://github.com/Trinsic64/Heartfelt-Gold/blob/main/Docs/Guides/Evolution-Guide.md,,
-Frillish Female,Jellicent (Female),Lv 40 · Female,EVO_LEVEL_FEMALE,Sprites/ColorIcons/frillish_female.png,Sprites/ColorIcons/jellicent_female.png,https://github.com/Trinsic64/Heartfelt-Gold/blob/main/Docs/Guides/Evolution-Guide.md,JELLICENT_FEMALE,FRILLISH_FEMALE
+Frillish,Jellicent,Lv 40,EVO_LEVEL,Sprites/ColorIcons/frillish.png,Sprites/ColorIcons/jellicent.png,https://github.com/Trinsic64/Heartfelt-Gold/blob/main/Docs/Guides/Evolution-Guide.md,,
+Frillish Female,Jellicent (Female),Lv 40,EVO_LEVEL,Sprites/ColorIcons/frillish_female.png,Sprites/ColorIcons/jellicent_female.png,https://github.com/Trinsic64/Heartfelt-Gold/blob/main/Docs/Guides/Evolution-Guide.md,JELLICENT_FEMALE,FRILLISH_FEMALE
 Froakie,Frogadier,Lv 16,EVO_LEVEL,Sprites/ColorIcons/froakie.png,Sprites/ColorIcons/frogadier.png,https://github.com/Trinsic64/Heartfelt-Gold/blob/main/Docs/Guides/Evolution-Guide.md,,
 Frogadier,Greninja,Lv 36,EVO_LEVEL,Sprites/ColorIcons/frogadier.png,Sprites/ColorIcons/greninja.png,https://github.com/Trinsic64/Heartfelt-Gold/blob/main/Docs/Guides/Evolution-Guide.md,,
 Fuecoco,Crocalor,Lv 16,EVO_LEVEL,Sprites/ColorIcons/fuecoco.png,Sprites/ColorIcons/crocalor.png,https://github.com/Trinsic64/Heartfelt-Gold/blob/main/Docs/Guides/Evolution-Guide.md,,

@@ -10,6 +10,12 @@ Docs/Player-Guide/site/*.csv text eol=lf
 Docs/Player-Guide/site/*.md text eol=lf
 Docs/Player-Guide/site/*.txt text eol=lf
 Docs/Player-Guide/site/*.json text eol=lf
+HG-Engine/data/Trainers.c text eol=lf
+HG-Engine/data/Encounters.c text eol=lf
+HG-Engine/data/Evolutions.c text eol=lf
+HG-Engine/data/Species.c text eol=lf
+HG-Engine/data/itemdata/itemdata.c text eol=lf
+HG-Engine/src/field/mart.c text eol=lf
 *.mtl text eol=lf
 
 # Patch, archives, images, and generated map formats

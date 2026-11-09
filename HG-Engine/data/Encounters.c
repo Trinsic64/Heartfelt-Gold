@@ -5334,7 +5334,7 @@ const EncounterData __data[] =
         .fishSwarm = SPECIES_NONE,
     },
 
-                                            [ENCDATA_D40R0106_WHIRL_ISLANDS_B3F_LEDGE_OVERLOOKING_LUGIA_ROOM] = {
+                                                [ENCDATA_D40R0106_WHIRL_ISLANDS_B3F_LEDGE_OVERLOOKING_LUGIA_ROOM] = {
         .rateWalk = 5,
         .rateSurf = 0,
         .rateRockSmash = 0,
@@ -5889,7 +5889,7 @@ const EncounterData __data[] =
         .fishSwarm = SPECIES_NONE,
     },
 
-                                                    [ENCDATA_D38R0101_MT_MORTAR_WATERFALL_ROOM] = {
+                                                        [ENCDATA_D38R0101_MT_MORTAR_WATERFALL_ROOM] = {
         .rateWalk = 10,
         .rateSurf = 10,
         .rateRockSmash = 0,
@@ -5946,11 +5946,11 @@ const EncounterData __data[] =
                 SPECIES_LOUDRED,
                 SPECIES_SIRFETCHD,
                 SPECIES_DRUDDIGON,
-                SPECIES_CROBAT,
+                SPECIES_BEWEAR,
                 SPECIES_HONEDGE,
                 SPECIES_IRON_TREADS,
                 SPECIES_GREAT_TUSK,
-                SPECIES_CROBAT,
+                SPECIES_BEWEAR,
                 SPECIES_HONEDGE,
             },
         },
@@ -7332,7 +7332,7 @@ const EncounterData __data[] =
         .fishSwarm = SPECIES_NONE,
     },
 
-                                                            [ENCDATA_D44R0102_DRAGONS_DEN] = {
+                                                                [ENCDATA_D44R0102_DRAGONS_DEN] = {
         .rateWalk = 10,
         .rateSurf = 10,
         .rateRockSmash = 0,
@@ -7407,7 +7407,7 @@ const EncounterData __data[] =
         },
         .surfSlots = {
             { 38, 45, SPECIES_TATSUGIRI },
-            { 42, 43, SPECIES_KINGDRA },
+            { 45, 46, SPECIES_KINGDRA },
             { 40, 45, SPECIES_DRAGONAIR },
             { 38, 43, SPECIES_DRAGALGE },
             { 40, 45, SPECIES_DRAGONAIR },
@@ -7419,8 +7419,8 @@ const EncounterData __data[] =
         .oldRodSlots = {
             { 28, 29, SPECIES_DRATINI },
             { 28, 29, SPECIES_DREEPY },
-            { 42, 45, SPECIES_KINGDRA },
-            { 30, 45, SPECIES_MILOTIC },
+            { 45, 48, SPECIES_KINGDRA },
+            { 34, 45, SPECIES_MILOTIC },
             { 40, 45, SPECIES_DRAGONAIR },
         },
         .goodRodSlots = {
@@ -9885,7 +9885,7 @@ const EncounterData __data[] =
         .fishSwarm = SPECIES_NONE,
     },
 
-                                    [ENCDATA_D41R0102_MT_SILVER_TOP_SNOWY_AREA] = {
+                                        [ENCDATA_D41R0102_MT_SILVER_TOP_SNOWY_AREA] = {
         .rateWalk = 20,
         .rateSurf = 10,
         .rateRockSmash = 0,
@@ -9960,7 +9960,7 @@ const EncounterData __data[] =
         },
         .surfSlots = {
             { 30, 35, SPECIES_SHELLDER },
-            { 30, 35, SPECIES_MANTYKE },
+            { 25, 31, SPECIES_MANTYKE },
             { 35, 44, SPECIES_CLOYSTER },
             { 35, 44, SPECIES_MANTINE },
             { 37, 46, SPECIES_MANTINE },
@@ -9981,7 +9981,7 @@ const EncounterData __data[] =
             { 31, 39, SPECIES_POLITOED },
             { 38, 40, SPECIES_PALAFIN },
             { 32, 40, SPECIES_SHELLDER },
-            { 33, 40, SPECIES_MILOTIC },
+            { 34, 40, SPECIES_MILOTIC },
         },
         .superRodSlots = {
             { 49, 57, SPECIES_MILOTIC },
@@ -14436,7 +14436,7 @@ const EncounterData __data[] =
         .fishSwarm = SPECIES_NONE,
     },
 
-                                    [ENCDATA_R24_ROUTE_24] = {
+                                        [ENCDATA_R24_ROUTE_24] = {
         .rateWalk = 20,
         .rateSurf = 10,
         .rateRockSmash = 0,
@@ -14658,7 +14658,7 @@ const EncounterData __data[] =
         .fishSwarm = SPECIES_NONE,
     },
 
-                                                                [ENCDATA_D45R0101_TOHJO_FALLS] = {
+                                                                    [ENCDATA_D45R0101_TOHJO_FALLS] = {
         .rateWalk = 15,
         .rateSurf = 10,
         .rateRockSmash = 80,
@@ -14743,7 +14743,7 @@ const EncounterData __data[] =
             { 41, 44, SPECIES_FERROTHORN },
         },
         .oldRodSlots = {
-            { 34, 39, SPECIES_MANTYKE },
+            { 34, 39, SPECIES_MANTINE },
             { 34, 39, SPECIES_DRAGONAIR },
             { 34, 39, SPECIES_CLOBBOPUS },
             { 34, 39, SPECIES_DEWGONG },
