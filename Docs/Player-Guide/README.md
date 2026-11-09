@@ -8,6 +8,8 @@ The [standalone `index.html`](site/index.html) also opens locally by itself. Dow
 
 This guide is paired with the v1.0.12 patch in [release.json](release.json). The patch was decoded against the documented clean source and matched the v23 build byte for byte. Trainer parties, the Cherrygrove Mart, and Frillish evolutions reflect the v23 data. Wild held items use the updated [Species.c snapshot](../../HG-Engine/data/Species.c); the 89 scripted encounters use the reviewed v22 Test levels. Ground pickups were audited from the named Release-v2 event extraction, with two unresolved visible objects. Scripted encounters and listed placements do not by themselves establish reachability or unlock conditions; individual guide rows have not all been checked in gameplay. See [source and review notes](site/README-CSV-Review.md) and the [item audit](site/Release-v22-Item-Audit.md).
 
+The first Elite Four and Champion run appears after eight badges. The second run and its bonus battles have their own postgame chapter after Gym #16 Blue; the five second-run teams are included on the main trainer page rather than the generic rematch page.
+
 The site is published from `Docs/Player-Guide/site` by the [Pages workflow](../../.github/workflows/player-guide-pages.yml). To regenerate the portable pages from a reviewed guide export, run:
 
 ```powershell

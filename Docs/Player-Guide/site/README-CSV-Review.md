@@ -1,6 +1,6 @@
 # Heartfelt Gold player guide notes — v1.0.12
 
-Open `index.html` locally, or use the published guide at https://trinsic64.github.io/Heartfelt-Gold/. The two HTML pages include their sprites, styles, and code. Rematches have a separate page; bonus battles stay with story trainers.
+Open `index.html` locally, or use the published guide at https://trinsic64.github.io/Heartfelt-Gold/. The two HTML pages include their sprites, styles, and code. Rematches have a separate page; bonus battles stay with story trainers. The first Elite Four and Champion run follows eight badges, while the second run and its bonus battles follow Gym #16 Blue.
 
 This guide is bundled with the v1.0.12 patch named in `release.json`. The patch was decoded against the documented clean USA ROM and matched the recorded hg-engine build hash.
 

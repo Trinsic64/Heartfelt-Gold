@@ -102,6 +102,37 @@ with (SITE / "Trainers-Story-Order.csv").open(newline="", encoding="utf-8-sig") 
     for row in csv.DictReader(stream):
         csv_trainers.setdefault(int(row["Trainer ID"]), []).append(row)
 assert 0 not in html_trainers and 0 not in csv_trainers
+
+# Both League runs are story chapters, each with its own bonus parties.
+league_names = ("will", "koga", "bruno", "karen", "lance")
+first_run = ((245, 746), (247, 747), (418, 748), (246, 749), (244, 750))
+second_run = ((702, 759), (703, 760), (704, 761), (705, 762), (701, 763))
+chapters = {chapter["number"]: chapter["label"] for chapter in guide_data["chapters"]}
+assert "after 8 badges" in chapters[31] and "after 16 badges" in chapters[43]
+assert chapters[44].endswith("Mt. Silver / Red")
+groups = {group["id"]: index for index, group in enumerate(guide_data["trainerGroups"])}
+assert groups["gym-42"] < groups["postleague-will"] < groups["postleague-lance"] < groups["stage-44"]
+for name, first, second in zip(league_names, first_run, second_run):
+    for ids, prefix, chapter in ((first, "league-", "31 "), (second, "postleague-", "43 ")):
+        main_id, bonus_id = ids
+        for trainer_id, is_bonus in ((main_id, False), (bonus_id, True)):
+            trainer = html_trainers[trainer_id]
+            rows = csv_trainers[trainer_id]
+            assert trainer["group"] == prefix + name and trainer["stage"].startswith(chapter)
+            assert trainer["bonus"] is is_bonus and len(rows) == len(trainer["team"]) == 6
+            assert all(row["Story stage (approx.)"] == trainer["stage"] for row in rows)
+            assert all(row["Battle kind"] == ("Bonus battle" if is_bonus else "Main / special battle")
+                       for row in rows)
+
+rematch_html = (SITE / "Rematch-Trainer-Guide.html").read_text(encoding="utf-8")
+rematch_data = json.loads(re.search(r"window\.GUIDE_DATA=(\{.*?\});</script>", rematch_html).group(1))
+rematch_ids = {trainer["id"] for trainer in rematch_data["trainers"]}
+with (SITE / "Rematch-Trainers.csv").open(newline="", encoding="utf-8-sig") as stream:
+    rematch_csv_ids = {int(row["Trainer ID"]) for row in csv.DictReader(stream)}
+assert not ({main_id for main_id, _ in second_run} & (rematch_ids | rematch_csv_ids))
+assert guide_data["counts"]["trainers"] == len(html_trainers)
+assert guide_data["counts"]["rematches"] == rematch_data["counts"]["rematches"] == len(rematch_ids)
+
 hidden = dict(re.findall(r"\[(SPECIES_[A-Z0-9_]+)\s*\]\s*=\s*(ABILITY_[A-Z0-9_]+)",
                          (ROOT / "HG-Engine/data/HiddenAbilityTable.c").read_text(encoding="utf-8")))
 changed_ids = set(release["changedTrainerPartyIds"]) - {0}
