@@ -1,0 +1,12 @@
+{
+  "version": "v1.0.10",
+  "tag": "heartfelt-v1.0.10",
+  "patch": "xDelta/Heartfelt-Gold-v1.0.10-Patch.xdelta",
+  "patchSha256": "2f20d3092ba208ffd0c24dbe437801ca017674f8a86d4160f926041c99c36ad2",
+  "sourceRomSha256": "65f02a56842b75aa92d775d56d657a56fe3fa993550b04dc20704ab82d760105",
+  "dspreInputSha256": "cab62a140eef13bb66b46539ce7f4816859392f8b1345b8ad497acfe5ebbb833",
+  "decodedRomSha256": "5173570c76d8e333f19cfebd9671f7242990aae8ccd1bfe3f711f9114c623298",
+  "decodedRomBytes": 207711200,
+  "engineCommit": "23c4f1ab256ace92bcba4585df3c0b2959741676",
+  "guideEvidence": "Current hg-engine authoring data and the named Release-v2 event/script extraction; see README-CSV-Review.md"
+}

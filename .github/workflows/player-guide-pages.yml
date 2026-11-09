@@ -4,7 +4,12 @@ on:
   push:
     branches: [main]
     paths:
-      - "Docs/Player-Guide/site/**"
+      - "Docs/Player-Guide/**"
+      - "xDelta/Heartfelt-Gold-v*-Patch.xdelta"
+      - "checksums.sha256"
+      - "README.md"
+      - "RELEASE-NOTES-HEARTFELT-v*.md"
+      - "RELEASE-CHECKSUMS-HEARTFELT-v*.sha256"
       - ".github/workflows/player-guide-pages.yml"
   workflow_dispatch:
 
@@ -28,6 +33,8 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
+      - name: Verify patch and guide version
+        run: python Docs/Player-Guide/verify-release-pair.py
       - name: Configure Pages
         uses: actions/configure-pages@v5
       - name: Upload guide

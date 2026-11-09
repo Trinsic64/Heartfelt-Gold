@@ -1,4 +1,4 @@
-Heartfelt Gold player guide
+Heartfelt Gold player guide — v1.0.10
 
 1. Open index.html in a modern browser.
 2. Use the sidebar to browse the story, trainers, wild Pokémon, shops, items, and evolutions.
