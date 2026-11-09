@@ -5,6 +5,11 @@
 *.yml text eol=lf
 *.yaml text eol=lf
 *.sha256 text eol=lf
+Docs/Player-Guide/site/*.html text eol=lf
+Docs/Player-Guide/site/*.csv text eol=lf
+Docs/Player-Guide/site/*.md text eol=lf
+Docs/Player-Guide/site/*.txt text eol=lf
+Docs/Player-Guide/site/*.json text eol=lf
 *.mtl text eol=lf
 
 # Patch, archives, images, and generated map formats

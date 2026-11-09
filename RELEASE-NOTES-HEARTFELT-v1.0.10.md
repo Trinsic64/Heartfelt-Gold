@@ -22,7 +22,7 @@ Back up your in-game save before switching versions. A copied save loaded and re
 | Artifact | Size | SHA-256 |
 | --- | ---: | --- |
 | v1.0.10 xDelta patch | 39,296,010 bytes | `2f20d3092ba208ffd0c24dbe437801ca017674f8a86d4160f926041c99c36ad2` |
-| Offline guide ZIP | 3,677,789 bytes | `5336548e69e8e677ddcfe4f7ed6d1952eb979d9755347aaba91b19a625e261fb` |
+| Offline guide ZIP | 3,677,457 bytes | `324be5adbd905a1c0bbb3267221754e6c8bc09070581cf7ce944c58686dcdb58` |
 | Decoded ROM (verification only; not distributed) | 207,711,200 bytes | `5173570c76d8e333f19cfebd9671f7242990aae8ccd1bfe3f711f9114c623298` |
 
 The patch decoded against the documented clean USA source and matched the v1.0.10 hg-engine build byte for byte. The build's port audit passed checks for protected project sources, configuration, ROM data, messages, scripts, items, headers and cameras. A headless DeSmuME check reached gameplay from a copied save. The engine source commit is `23c4f1ab256ace92bcba4585df3c0b2959741676`.

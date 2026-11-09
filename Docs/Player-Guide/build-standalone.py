@@ -98,7 +98,7 @@ def build_page(source, input_name, output_name, script, css, version):
     if "Guide-App.js" in html or "Guide-Style.css" in html:
         raise ValueError(f"External app asset reference remains in {output_name}")
     output = SITE / output_name
-    output.write_text(html, encoding="utf-8")
+    output.write_text(html, encoding="utf-8", newline="\n")
     print(f"{output_name}: {len(paths)} embedded sprites, {output.stat().st_size:,} bytes")
 
 
@@ -117,10 +117,10 @@ def build(source):
     script = bundled_script(source)
     for input_name, output_name in PAGES:
         build_page(source, input_name, output_name, script, css, version)
-    shutil.copy2(RELEASE, SITE / RELEASE.name)
+    (SITE / RELEASE.name).write_bytes(RELEASE.read_bytes().replace(b"\r\n", b"\n"))
     for path in source.iterdir():
         if path.is_file() and path.suffix.lower() in {".csv", ".md"} and path.name != "README-CSV-Review.md":
-            shutil.copy2(path, SITE / path.name)
+            (SITE / path.name).write_bytes(path.read_bytes().replace(b"\r\n", b"\n"))
     (SITE / "START-HERE.txt").write_text(
         f"Heartfelt Gold player guide — {version}\n\n"
         "1. Open index.html in a modern browser.\n"
@@ -130,7 +130,7 @@ def build(source):
         "The HTML pages include their sprites, styles, and code. Keep both HTML files in this folder "
         "for the rematch link to work. No internet connection is needed.\n"
         "See README-CSV-Review.md for data sources and limitations.\n",
-        encoding="utf-8",
+        encoding="utf-8", newline="\n",
     )
     (SITE / "README-CSV-Review.md").write_text(
         f"# Heartfelt Gold player guide notes — {version}\n\n"
@@ -148,7 +148,7 @@ def build(source):
         "See `Release-v22-Item-Audit.md` for the item audit. "
         "`Item-Locations.csv` is the older Retiled Expansion item list and remains historical. "
         "Form-specific encounter rows and evolution icons were resolved against engine species IDs.\n",
-        encoding="utf-8",
+        encoding="utf-8", newline="\n",
     )
     (SITE / ".nojekyll").write_text("", encoding="utf-8")
     archive = SITE / ZIP_NAME
