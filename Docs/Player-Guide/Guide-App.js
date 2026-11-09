@@ -30,11 +30,14 @@
     const portrait = t.portrait
       ? `<div class="portrait-window" aria-hidden="true" style="background-image:url('${esc(t.portrait)}');background-size:224px 112px;background-position:left center;background-repeat:no-repeat"></div>`
       : `<div class="portrait-window" aria-hidden="true"><span class="portrait-fallback">♟</span></div>`;
-    const team = t.team.map(m => `<div class="mon-card">
-      <div class="mon-top">${imageName(m)}<div><div class="mon-name">${esc(m.name)}</div><div class="level">Lv. ${esc(m.level)}</div></div></div>
-      ${typeChips(m.types)}<div class="ability"><strong>Ability:</strong> ${esc(m.ability)}${m.abilitySlot === "Hidden" ? ' <span class="ability-kind">(Hidden)</span>' : ""}</div><div class="held"><strong>Held:</strong> ${icon(m.heldSprite, "small-sprite")}<span>${esc(m.held || "No held item")}</span></div>
+    const team = t.team.map(m => {
+      const shown = m.mega || m;
+      return `<div class="mon-card">
+      <div class="mon-top">${imageName(shown)}<div><div class="mon-name">${esc(shown.name)}</div><div class="level">Lv. ${esc(m.level)}${m.mega ? " · Mega form" : ""}</div></div></div>
+      ${typeChips(shown.types)}<div class="ability"><strong>Ability:</strong> ${esc(shown.ability)}${m.mega ? ' <span class="ability-kind">(Mega)</span>' : m.abilitySlot === "Hidden" ? ' <span class="ability-kind">(Hidden)</span>' : ""}</div><div class="held"><strong>Held:</strong> ${icon(m.heldSprite, "small-sprite")}<span>${esc(m.held || "No held item")}</span></div>
       <div class="moves">${m.moves.length ? m.moves.map(move => `<span class="move">${esc(move)}</span>`).join("") : `<span class="move dim">Moves not listed</span>`}</div>
-    </div>`).join("");
+    </div>`;
+    }).join("");
     const badges = [t.major ? '<span class="badge major">Major battle</span>' : "", t.bonus ? '<span class="badge bonus">Bonus battle</span>' : "", t.rematch ? '<span class="badge rematch">Rematch</span>' : ""].join("");
     const rematchText = t.rematch ? `${esc(t.rematchInfo.kind)} · ${esc(t.rematchInfo.variant)} · original ID ${esc(t.rematchInfo.base)}` : "";
     const battleItems = t.battleItemIcons?.length ? `<span class="battle-items">${t.battleItemIcons.map(i => `<span>${icon(i.sprite, "small-sprite", i.name)} ${esc(i.name)}</span>`).join("")}</span>` : "None listed";
@@ -82,7 +85,7 @@
   }
   function trainerMatch(t) {
     return matches([t.name, t.location, t.class, t.id, t.bonusNote, t.battleItems,
-      ...t.team.flatMap(m => [m.name, m.held, m.ability, ...m.moves])]);
+      ...t.team.flatMap(m => [m.name, m.held, m.ability, m.mega?.name, m.mega?.ability, ...m.moves])]);
   }
 
   function pageSlice(rows, size = PAGE) {
@@ -129,7 +132,7 @@
       || gymOrder(a, b)
       || a.order - b.order || Number(a.bonus) - Number(b.bonus) || a.id - b.id);
     const shown = pageSlice(rows, 10);
-    return `<h1 class="page-title">${state.trainerGroup === "All" ? "Story and bonus trainers" : esc(DATA.trainerGroups.find(g => g.id === state.trainerGroup)?.label || "Trainers")}</h1><p class="lead">Trainer battles in approximate story order, including optional bonus battles. Each Gym lists its trainers in audited order, then the Leader, then the Leader's Bonus Battle. Elite Four and Champion battles have their own chapters. Rematches are in the separate rematch guide.</p>${stats([rows.length, "matching trainer parties"], [rows.filter(t => t.bonus).length, "bonus parties included"])}${shown.map(trainerCard).join("") || '<div class="empty">No trainers match.</div>'}`;
+    return `<h1 class="page-title">${state.trainerGroup === "All" ? "Story and bonus trainers" : esc(DATA.trainerGroups.find(g => g.id === state.trainerGroup)?.label || "Trainers")}</h1><p class="lead">Trainer battles in approximate story order, including optional bonus battles. Mega-capable teams show their in-battle Mega sprite, ability, and typing. Each Gym lists its trainers in audited order, then the Leader, then the Leader's Bonus Battle. Elite Four and Champion battles have their own chapters. Rematches are in the separate rematch guide.</p>${stats([rows.length, "matching trainer parties"], [rows.filter(t => t.bonus).length, "bonus parties included"])}${shown.map(trainerCard).join("") || '<div class="empty">No trainers match.</div>'}`;
   }
 
   function renderWild() {

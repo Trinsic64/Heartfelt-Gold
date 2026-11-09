@@ -16,6 +16,8 @@ HG-Engine/data/Evolutions.c text eol=lf
 HG-Engine/data/Species.c text eol=lf
 HG-Engine/data/itemdata/itemdata.c text eol=lf
 HG-Engine/src/field/mart.c text eol=lf
+HG-Engine/src/battle/mega.c text eol=lf
+HG-Engine/data/PokeFormDataTbl.c text eol=lf
 *.mtl text eol=lf
 
 # Patch, archives, images, and generated map formats

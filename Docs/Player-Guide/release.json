@@ -15,8 +15,10 @@
   "evolutionSourceSha256": "a3ac9b225a552a9d09b1c02601f506dc9e4ecd0f6e5dabe722cf4123c73ac457",
   "itemDataSourceSha256": "1f47fddfa3b4da28f240d3d98de0a5b78f85e8a7353436713cf5d4ebbab48f68",
   "martSourceSha256": "69f1e48077190b89045f3b9db18fe76e393bfbe9ac96848b46ac4c599f237e66",
+  "megaSourceSha256": "44e174812cec6ffc979e574efaf252fb2ba7a5a0095ee60c77fc144db7780d4f",
+  "formTableSha256": "c60d4b0561137a44806e0a01b89d5d93d6d182f3db15b999673a05ee6cbea50a",
   "changedTrainerPartyIds": [0, 20, 21, 30, 31, 32, 33, 34, 35, 245, 246, 247, 255, 738, 739, 740, 741, 742, 744, 745, 747, 753],
   "diglettCaveMatrixId": 2,
   "diglettCaveNewMapId": 976,
-  "guideEvidence": "v23 Test map input and HGEFE-synced trainer, item, mart and evolution sources; wild held items and v22 scripted encounter levels carried forward; see README-CSV-Review.md"
+  "guideEvidence": "v23 Test map input and HGEFE-synced trainer, item, mart, evolution and Mega/form sources; wild held items and v22 scripted encounter levels carried forward; see README-CSV-Review.md"
 }

@@ -12,6 +12,8 @@ The first Elite Four and Champion run appears after eight badges. The second run
 
 Every Gym chapter lists its Gym Trainers in audited order, then the Leader, then the Leader's Bonus Battle. This applies to the walkthrough and Trainers tab. The bundle builder checks the HTML and CSV order before publishing; after changing trainer data, run `python Docs/Player-Guide/order-gym-trainers.py --source "C:\ROM-Hack\Heartfelt-Gold\Docs"` before rebuilding.
 
+Trainer cards show in-battle Mega form sprites, abilities, and types when the build's Mega Stone and form tables resolve a Mega species. This applies to story, bonus, and rematch trainers; wild encounter display is unchanged. The trainer CSV keeps the base species and ability stored in the ROM. Four Tatsugiri with Tatsugirinite and Blue's Floette with Floettite retain their base display because the current engine form table does not resolve those entries to Mega species. To refresh after trainer or Mega data changes, run `python Docs/Player-Guide/add-trainer-mega-forms.py --source "C:\ROM-Hack\Heartfelt-Gold\Docs"` before building the standalone guide. Pass `--engine-sprites "<hg-engine>/data/graphics/sprites"` when new forms need to be copied into the versioned asset set.
+
 The site is published from `Docs/Player-Guide/site` by the [Pages workflow](../../.github/workflows/player-guide-pages.yml). To regenerate the portable pages from a reviewed guide export, run:
 
 ```powershell

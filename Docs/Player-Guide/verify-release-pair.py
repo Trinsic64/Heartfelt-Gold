@@ -3,7 +3,9 @@
 import hashlib
 import json
 import csv
+import base64
 import re
+import runpy
 import zipfile
 from collections import Counter
 from pathlib import Path
@@ -87,6 +89,8 @@ for relative, key in (
     ("HG-Engine/data/Evolutions.c", "evolutionSourceSha256"),
     ("HG-Engine/data/itemdata/itemdata.c", "itemDataSourceSha256"),
     ("HG-Engine/src/field/mart.c", "martSourceSha256"),
+    ("HG-Engine/src/battle/mega.c", "megaSourceSha256"),
+    ("HG-Engine/data/PokeFormDataTbl.c", "formTableSha256"),
 ):
     with (ROOT / relative).open("rb") as stream:
         assert hashlib.file_digest(stream, "sha256").hexdigest() == release[key], relative
@@ -143,6 +147,49 @@ for group in gym_groups:
     ids = [t["id"] for t in members]
     assert [trainer_id for trainer_id in csv_trainers if trainer_id in ids] == ids, group
 assert main_html.count("gymOrder(a, b)") >= 2  # Walkthrough and Trainer tab share the rank.
+
+mega_helpers = runpy.run_path(str(HERE / "add-trainer-mega-forms.py"))
+reverse, stone_forms, stone_items, move_forms, mega_species = mega_helpers["read_tables"]()
+normalize_mega = mega_helpers["normalize"]
+mega_totals = Counter()
+unresolved_stones = Counter()
+for page_data, page_html in ((guide_data, main_html), (rematch_data, rematch_html)):
+    sprite_match = re.search(r"window\.GUIDE_SPRITES=(\{.*?\});</script>", page_html)
+    assert sprite_match
+    embedded_sprites = json.loads(sprite_match.group(1))
+    for trainer in page_data["trainers"]:
+        for mon in trainer["team"]:
+            raw_species = "SPECIES_" + Path(mon["icon"]).stem.upper()
+            base, form_number = reverse.get(raw_species, (raw_species, 0))
+            item = next((token for token in stone_items
+                         if normalize_mega(mon["held"]) == normalize_mega(token.removeprefix("ITEM_"))), None)
+            target = stone_forms.get((base, item, form_number)) if item else None
+            if not target:
+                for move in mon["moves"]:
+                    target = move_forms.get((base, normalize_mega(move), form_number))
+                    if target:
+                        break
+            if not target:
+                assert "mega" not in mon, (trainer["id"], mon["name"])
+                if item:
+                    unresolved_stones[(raw_species, mon["held"])] += 1
+                continue
+            mega = mon["mega"]
+            expected = mega_species[target]
+            assert all(mega[key] == expected[key] for key in ("speciesToken", "name", "types", "ability"))
+            stem = target.removeprefix("SPECIES_").lower()
+            for kind, folder, key in (("Front", "TrainerMegaFront", "front"),
+                                      ("ColorIcons", "TrainerMegaIcons", "icon")):
+                path = f"Sprites/{folder}/{stem}.png"
+                assert mega[key] == path and path in embedded_sprites
+                vendor = HERE / "mega-sprites" / kind / f"{stem}.png"
+                assert base64.b64decode(embedded_sprites[path].split(",", 1)[1]) == vendor.read_bytes()
+            mega_totals[target] += 1
+assert sum(mega_totals.values()) == 500 and len(mega_totals) == 88
+assert unresolved_stones == Counter({("SPECIES_TATSUGIRI", "Tatsugirinite"): 4,
+                                     ("SPECIES_FLOETTE", "Floettite"): 1})
+assert "const shown = m.mega || m" in main_html and "const shown = m.mega || m" in rematch_html
+assert not any("mega" in entry for area in guide_data["wild"] for entry in area["entries"])
 
 hidden = dict(re.findall(r"\[(SPECIES_[A-Z0-9_]+)\s*\]\s*=\s*(ABILITY_[A-Z0-9_]+)",
                          (ROOT / "HG-Engine/data/HiddenAbilityTable.c").read_text(encoding="utf-8")))
@@ -215,4 +262,5 @@ assert f"{release['patchSha256']} *{patch.name}" in asset_checksums
 assert f"{guide_hash} *{archive.name}" in asset_checksums
 assert version in (ROOT / "README.md").read_text(encoding="utf-8")
 assert (ROOT / f"RELEASE-NOTES-HEARTFELT-{version}.md").is_file()
-print(f"PASS: {version} patch, HGEFE teams, held items, shop, evolutions, statics, site, ZIP, checksums, and notes agree")
+print(f"PASS: {version} patch, HGEFE teams, {sum(mega_totals.values())} Mega displays, held items, "
+      "shop, evolutions, statics, site, ZIP, checksums, and notes agree")
