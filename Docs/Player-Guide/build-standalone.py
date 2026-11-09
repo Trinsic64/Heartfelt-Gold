@@ -19,6 +19,7 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 SITE = HERE / "site"
 APP_SCRIPT = HERE / "Guide-App.js"
+STYLE = HERE / "Guide-Style.css"
 RELEASE = HERE / "release.json"
 PAGES = (
     ("Heartfelt-Gold-Walkthrough.html", "index.html"),
@@ -133,7 +134,9 @@ def build(source):
         patch_hash = hashlib.file_digest(stream, "sha256").hexdigest()
     if patch_hash != release["patchSha256"]:
         raise ValueError(f"Patch SHA-256 differs from release.json: {patch}")
-    css = (source / "Guide-Style.css").read_text(encoding="utf-8")
+    css = STYLE.read_text(encoding="utf-8")
+    if (source / "Guide-Style.css").read_text(encoding="utf-8") != css:
+        raise ValueError("Guide-Style.css in the reviewed export differs from the versioned style")
     if "</style" in css.lower():
         raise ValueError("CSS contains an HTML style terminator")
     script = bundled_script(source)
@@ -181,6 +184,9 @@ def build(source):
         "stored in the ROM. Four Tatsugiri with Tatsugirinite and Blue's Floette with Floettite "
         "retain their base display because the configured target forms do not resolve to Mega "
         "species in this build. Wild encounter display is unchanged.\n\n"
+        "All 1,065 configured Mart stock rows show the price from the build's itemdata.c; "
+        "the Mart atlas groups 31 counters into 21 selectable locations. Prices have not been "
+        "independently checked against an in-game purchase.\n\n"
         "See `Release-v22-Item-Audit.md` for the item audit. "
         "`Item-Locations.csv` is the older Retiled Expansion item list and remains historical. "
         "Form-specific encounter rows and evolution icons were resolved against engine species IDs. "

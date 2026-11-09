@@ -17,9 +17,10 @@ Trainer cards show in-battle Mega form sprites, abilities, and types when the bu
 The site is published from `Docs/Player-Guide/site` by the [Pages workflow](../../.github/workflows/player-guide-pages.yml). To regenerate the portable pages from a reviewed guide export, run:
 
 ```powershell
+python Docs/Player-Guide/add-mart-prices.py --source "C:\ROM-Hack\Heartfelt-Gold\Docs"
 python Docs/Player-Guide/build-standalone.py --source "C:\ROM-Hack\Heartfelt-Gold\Docs"
 ```
 
-The build script checks that every referenced sprite exists, embeds them once per page, and creates the offline ZIP from the same pages. Its versioned [app script](Guide-App.js) must match the reviewed export, so guide behavior changes are included in the same repository change as the generated pages.
+The build script checks that every referenced sprite exists, embeds them once per page, and creates the offline ZIP from the same pages. Its versioned [app script](Guide-App.js) and [style](Guide-Style.css) must match the reviewed export, so guide behavior changes are included in the same repository change as the generated pages. The Marts page lists one location at a time, combining its floors and counters in one priced table; item prices come from the [item data snapshot](../../HG-Engine/data/itemdata/itemdata.c).
 
 For each release, update `release.json` with the patch filename and verified hashes, rebuild the guide, and run `python Docs/Player-Guide/verify-release-pair.py`. The Pages workflow runs the same check before publishing the guide.

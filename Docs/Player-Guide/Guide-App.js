@@ -2,7 +2,8 @@
   "use strict";
   const DATA = window.GUIDE_DATA;
   const REMATCH = DATA.mode === "rematch";
-  const state = { view: REMATCH ? "rematches" : "walk", chapter: 1, trainerGroup: "All", filter: "All", page: 0, query: "", locationQuery: "", selectedArea: -1 };
+  const shopLocations = [...new Set((DATA.shops || []).map(shop => shop.name))];
+  const state = { view: REMATCH ? "rematches" : "walk", chapter: 1, trainerGroup: "All", shopLocation: shopLocations[0] || "", filter: "All", page: 0, query: "", locationQuery: "", selectedArea: -1 };
   const PAGE = 8;
   const WILD_PAGE = 6;
   const $ = id => document.getElementById(id);
@@ -17,6 +18,7 @@
   const notice = (text, blue = false) => `<div class="notice${blue ? " blue" : ""}">${esc(text)}</div>`;
   const stats = (...values) => `<div class="stats">${values.map(([n, label]) => `<span class="stat"><strong>${esc(n)}</strong> ${esc(label)}</span>`).join("")}</div>`;
   const chip = text => `<span class="badge">${esc(text)}</span>`;
+  const price = value => Number.isFinite(value) ? `₽${value.toLocaleString("en-US")}` : "Price unavailable";
   const imageName = obj => obj.front
     ? `<span class="front-sprite" aria-hidden="true" style="background-image:url('${esc(obj.front)}')"></span>`
     : `${icon(obj.icon, "mon-icon")}${!obj.icon ? '<span class="mon-icon placeholder" aria-hidden="true">◈</span>' : ""}`;
@@ -74,8 +76,13 @@
   }
 
   function shopCard(shop) {
-    const entries = shop.items.map(item => `<div class="shop-item">${icon(item.sprite, "small-sprite", item.name)}<div><div class="item-name">${esc(item.name)}</div>${item.badges ? `<small>${esc(item.badges)} badges required</small>` : ""}</div></div>`).join("");
+    const entries = shop.items.map(item => `<div class="shop-item">${icon(item.sprite, "shop-icon", item.name)}<div><div class="item-name">${esc(item.name)}</div><small>${price(item.price)}${item.badges ? ` · ${esc(item.badges)} badges required` : ""}</small></div></div>`).join("");
     return `<article class="shop-card"><div class="shop-title"><h3>${esc(shop.name)}</h3><small>${esc(shop.floor)}</small></div><div class="shop-items">${entries}</div></article>`;
+  }
+
+  function shopTable(location, counters, rows) {
+    const body = rows.map(({ item, floor }) => `<tr><td>${icon(item.sprite, "shop-icon", item.name)}</td><th scope="row">${esc(item.name)}</th><td class="shop-price">${price(item.price)}</td><td>${esc(floor || "Standard counter")}</td><td>${item.badges ? `${esc(item.badges)} badges` : "—"}</td></tr>`).join("");
+    return `<article class="shop-card"><div class="shop-title"><h3>${esc(location)}</h3><small>${counters.length} ${counters.length === 1 ? "counter" : "counters"}</small></div><div class="table-scroll" tabindex="0" aria-label="${esc(location)} stock table, scroll horizontally if needed"><table class="reference-table shop-table"><caption class="sr-only">${esc(location)} item prices and stock</caption><thead><tr><th scope="col" aria-label="Item sprite"></th><th scope="col">Item</th><th scope="col">Price</th><th scope="col">Floor / counter</th><th scope="col">Requirement</th></tr></thead><tbody>${body}</tbody></table></div></article>`;
   }
 
   function filteredArea(area) {
@@ -141,9 +148,13 @@
     return `<h1 class="page-title">Wild encounter atlas</h1><p class="lead">Browse Pokémon by area and method, or jump to a location from the sidebar. Slot share is the chance after an encounter is triggered. Abilities list the possible normal abilities and the hidden ability from the species data; an individual wild Pokémon's ability is not fixed by this table.</p>${stats([rows.length, "matching areas"], [DATA.wild.length, "areas total"])}${shown.map(a => areaCard(a, filteredArea(a))).join("") || '<div class="empty">No wild areas match.</div>'}`;
   }
   function renderShops() {
-    const rows = DATA.shops.filter(s => matches([s.name, s.floor, ...s.items.map(i => i.name)]));
-    const shown = pageSlice(rows, 8);
-    return `<h1 class="page-title">Marts and department stores</h1><p class="lead">Configured stock from the local engine source. Standard mart stock grows with badge count; listed prices were not supplied by these stock arrays.</p>${stats([rows.length, "shop counters"])}${shown.map(shopCard).join("") || '<div class="empty">No shops match.</div>'}`;
+    const location = state.shopLocation;
+    const counters = DATA.shops.filter(shop => shop.name === location);
+    const locationMatches = matches([location]);
+    const rows = counters.flatMap(shop => shop.items.map(item => ({ item, floor: shop.floor })))
+      .filter(({ item, floor }) => locationMatches || matches([item.name, floor, item.price, item.badges]));
+    $("pager").innerHTML = "";
+    return `<h1 class="page-title">${esc(location || "Marts and department stores")}</h1><p class="lead">Select a location in the sidebar to see its stock in one table. Prices come from the build's item data; standard mart stock grows with badge count.</p>${stats([shopLocations.length, "shop locations"], [counters.length, "counters"], [rows.length, "listed items"])}${rows.length ? shopTable(location, counters, rows) : '<div class="empty">No items match this search at this location.</div>'}`;
   }
   function renderItems() {
     const rows = DATA.items.filter(i => matches([i.type, i.location, i.item, i.coord, i.notes]));
@@ -213,6 +224,14 @@
     } else if (state.view === "trainers") {
       $("chapterNav").innerHTML = `<h3>Trainer chapters</h3><button type="button" data-trainer-group="All" class="${state.trainerGroup === "All" ? "active" : ""}" aria-pressed="${state.trainerGroup === "All"}">All trainers</button>${DATA.trainerGroups.map(g => `<button type="button" data-trainer-group="${esc(g.id)}" class="${state.trainerGroup === g.id ? "active" : ""}" aria-pressed="${state.trainerGroup === g.id}">${esc(g.label)}</button>`).join("")}`;
       $("chapterNav").querySelectorAll("button").forEach(button => button.onclick = () => { state.trainerGroup = button.dataset.trainerGroup; state.page = 0; render(); $("main-content").focus(); window.scrollTo(0, 0); });
+    } else if (state.view === "shops") {
+      const matchingLocations = shopLocations.filter(location => {
+        const counters = DATA.shops.filter(shop => shop.name === location);
+        return matches([location, ...counters.flatMap(shop => [shop.floor, ...shop.items.map(item => item.name)])]);
+      });
+      if (!matchingLocations.includes(state.shopLocation)) state.shopLocation = matchingLocations[0] || shopLocations[0] || "";
+      $("chapterNav").innerHTML = `<h3>Mart locations</h3>${shopLocations.map((location, index) => `<button type="button" data-shop-index="${index}" class="${state.shopLocation === location ? "active" : ""}" aria-current="${state.shopLocation === location ? "page" : "false"}">${esc(location)}</button>`).join("")}`;
+      $("chapterNav").querySelectorAll("button").forEach(button => button.onclick = () => { state.shopLocation = shopLocations[Number(button.dataset.shopIndex)]; state.query = ""; $("search").value = ""; render(); $("main-content").focus(); window.scrollTo(0, 0); });
     } else if (state.view === "rematches") {
       const kinds = ["All", "Phone rematch", "Gym Leader", "Pokémon League"];
       $("chapterNav").innerHTML = `<h3>Rematch groups</h3>${kinds.map(kind => `<button type="button" data-filter="${esc(kind)}" class="${state.filter === kind ? "active" : ""}" aria-pressed="${state.filter === kind}">${esc(kind)}</button>`).join("")}`;

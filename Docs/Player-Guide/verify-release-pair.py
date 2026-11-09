@@ -234,6 +234,22 @@ assert len([row for row in shops_csv if row["Shop"] == "Cherrygrove City Mart" a
 assert len([item for shop in guide_data["shops"] if shop["name"] == "Cherrygrove City Mart"
             for item in shop["items"] if item["name"] == "Cherish Ball"]) == 1
 
+mart_helpers = runpy.run_path(str(HERE / "add-mart-prices.py"))
+item_prices = mart_helpers["read_prices"]()
+item_token = mart_helpers["item_token"]
+html_shop_rows = Counter()
+for shop in guide_data["shops"]:
+    for item in shop["items"]:
+        assert item["price"] == item_prices[item_token(item["sprite"])]
+        html_shop_rows[(shop["name"], shop["floor"], item["name"], str(item["price"]),
+                        item["sprite"], item["badges"])] += 1
+csv_shop_rows = Counter((row["Shop"], row["Floor / state"], row["Item"], row["Price"],
+                         row["Item sprite"], row["Badges required"]) for row in shops_csv)
+assert html_shop_rows == csv_shop_rows and sum(html_shop_rows.values()) == 1065
+assert len({shop["name"] for shop in guide_data["shops"]}) == 21
+assert "Mart locations" in main_html and "shopTable(location, counters, rows)" in main_html
+assert "shop-table .shop-icon{width:36px" in main_html
+
 evo_text = (ROOT / "HG-Engine/data/Evolutions.c").read_text(encoding="utf-8")
 for source, result in (("FRILLISH", "SPECIES_JELLICENT"),
                        ("FRILLISH_FEMALE", "MON_WITH_FORM(SPECIES_JELLICENT, 1)")):
@@ -263,4 +279,4 @@ assert f"{guide_hash} *{archive.name}" in asset_checksums
 assert version in (ROOT / "README.md").read_text(encoding="utf-8")
 assert (ROOT / f"RELEASE-NOTES-HEARTFELT-{version}.md").is_file()
 print(f"PASS: {version} patch, HGEFE teams, {sum(mega_totals.values())} Mega displays, held items, "
-      "shop, evolutions, statics, site, ZIP, checksums, and notes agree")
+      "1,065 Mart prices, evolutions, statics, site, ZIP, checksums, and notes agree")
