@@ -247,7 +247,15 @@ csv_shop_rows = Counter((row["Shop"], row["Floor / state"], row["Item"], row["Pr
                          row["Item sprite"], row["Badges required"]) for row in shops_csv)
 assert html_shop_rows == csv_shop_rows and sum(html_shop_rows.values()) == 1065
 assert len({shop["name"] for shop in guide_data["shops"]}) == 21
-assert "Mart locations" in main_html and "shopTable(location, counters, rows)" in main_html
+shop_tabs = Counter((shop["name"], re.match(r"^\d+F", shop["floor"]).group(0)
+                     if "Department Store" in shop["name"] else "") for shop in guide_data["shops"])
+assert len(shop_tabs) == 27
+assert {floor for name, floor in shop_tabs if name == "Goldenrod Department Store"} == {"2F", "3F", "4F", "5F"}
+assert {floor for name, floor in shop_tabs if name == "Celadon Department Store"} == {"2F", "3F", "4F", "5F"}
+assert shop_tabs[("Goldenrod Department Store", "2F")] == 2
+assert shop_tabs[("Celadon Department Store", "2F")] == shop_tabs[("Celadon Department Store", "5F")] == 2
+assert "Mart locations and floors" in main_html and "shopTable(location, counters, rows)" in main_html
+assert "shopTabsByKey" in main_html and "shopTabs[Number(button.dataset.shopIndex)].key" in main_html
 assert "shop-table .shop-icon{width:36px" in main_html
 
 evo_text = (ROOT / "HG-Engine/data/Evolutions.c").read_text(encoding="utf-8")

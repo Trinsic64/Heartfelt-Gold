@@ -58,8 +58,15 @@
   const DATA = window.GUIDE_DATA;
   const REMATCH = DATA.mode === "rematch";
   const spriteUrl = path => window.GUIDE_SPRITES[path] || path;
-  const shopLocations = [...new Set((DATA.shops || []).map(shop => shop.name))];
-  const state = { view: REMATCH ? "rematches" : "walk", chapter: 1, trainerGroup: "All", shopLocation: shopLocations[0] || "", filter: "All", page: 0, query: "", locationQuery: "", selectedArea: -1 };
+  const shopTabsByKey = new Map();
+  for (const shop of DATA.shops || []) {
+    const floor = shop.name.includes("Department Store") ? (shop.floor.match(/^\d+F/)?.[0] || shop.floor) : "";
+    const key = floor ? `${shop.name}::${floor}` : shop.name;
+    if (!shopTabsByKey.has(key)) shopTabsByKey.set(key, { key, label: floor ? `${shop.name} · ${floor}` : shop.name, counters: [] });
+    shopTabsByKey.get(key).counters.push(shop);
+  }
+  const shopTabs = [...shopTabsByKey.values()];
+  const state = { view: REMATCH ? "rematches" : "walk", chapter: 1, trainerGroup: "All", shopLocation: shopTabs[0]?.key || "", filter: "All", page: 0, query: "", locationQuery: "", selectedArea: -1 };
   const PAGE = 8;
   const WILD_PAGE = 6;
   const $ = id => document.getElementById(id);
@@ -204,13 +211,14 @@
     return `<h1 class="page-title">Wild encounter atlas</h1><p class="lead">Browse Pokémon by area and method, or jump to a location from the sidebar. Slot share is the chance after an encounter is triggered. Abilities list the possible normal abilities and the hidden ability from the species data; an individual wild Pokémon's ability is not fixed by this table.</p>${stats([rows.length, "matching areas"], [DATA.wild.length, "areas total"])}${shown.map(a => areaCard(a, filteredArea(a))).join("") || '<div class="empty">No wild areas match.</div>'}`;
   }
   function renderShops() {
-    const location = state.shopLocation;
-    const counters = DATA.shops.filter(shop => shop.name === location);
+    const selected = shopTabs.find(tab => tab.key === state.shopLocation);
+    const location = selected?.label || "";
+    const counters = selected?.counters || [];
     const locationMatches = matches([location]);
     const rows = counters.flatMap(shop => shop.items.map(item => ({ item, floor: shop.floor })))
       .filter(({ item, floor }) => locationMatches || matches([item.name, floor, item.price, item.badges]));
     $("pager").innerHTML = "";
-    return `<h1 class="page-title">${esc(location || "Marts and department stores")}</h1><p class="lead">Select a location in the sidebar to see its stock in one table. Prices come from the build's item data; standard mart stock grows with badge count.</p>${stats([shopLocations.length, "shop locations"], [counters.length, "counters"], [rows.length, "listed items"])}${rows.length ? shopTable(location, counters, rows) : '<div class="empty">No items match this search at this location.</div>'}`;
+    return `<h1 class="page-title">${esc(location || "Marts and department stores")}</h1><p class="lead">Select a shop or department store floor in the sidebar to see its stock in one table. Counters on the same floor appear together. Prices come from the build's item data; standard mart stock grows with badge count.</p>${stats([shopTabs.length, "shop and floor tabs"], [counters.length, "counters"], [rows.length, "listed items"])}${rows.length ? shopTable(location, counters, rows) : '<div class="empty">No items match this search at this location.</div>'}`;
   }
   function renderItems() {
     const rows = DATA.items.filter(i => matches([i.type, i.location, i.item, i.coord, i.notes]));
@@ -281,13 +289,12 @@
       $("chapterNav").innerHTML = `<h3>Trainer chapters</h3><button type="button" data-trainer-group="All" class="${state.trainerGroup === "All" ? "active" : ""}" aria-pressed="${state.trainerGroup === "All"}">All trainers</button>${DATA.trainerGroups.map(g => `<button type="button" data-trainer-group="${esc(g.id)}" class="${state.trainerGroup === g.id ? "active" : ""}" aria-pressed="${state.trainerGroup === g.id}">${esc(g.label)}</button>`).join("")}`;
       $("chapterNav").querySelectorAll("button").forEach(button => button.onclick = () => { state.trainerGroup = button.dataset.trainerGroup; state.page = 0; render(); $("main-content").focus(); window.scrollTo(0, 0); });
     } else if (state.view === "shops") {
-      const matchingLocations = shopLocations.filter(location => {
-        const counters = DATA.shops.filter(shop => shop.name === location);
-        return matches([location, ...counters.flatMap(shop => [shop.floor, ...shop.items.map(item => item.name)])]);
+      const matchingTabs = shopTabs.filter(tab => {
+        return matches([tab.label, ...tab.counters.flatMap(shop => [shop.floor, ...shop.items.map(item => item.name)])]);
       });
-      if (!matchingLocations.includes(state.shopLocation)) state.shopLocation = matchingLocations[0] || shopLocations[0] || "";
-      $("chapterNav").innerHTML = `<h3>Mart locations</h3>${shopLocations.map((location, index) => `<button type="button" data-shop-index="${index}" class="${state.shopLocation === location ? "active" : ""}" aria-current="${state.shopLocation === location ? "page" : "false"}">${esc(location)}</button>`).join("")}`;
-      $("chapterNav").querySelectorAll("button").forEach(button => button.onclick = () => { state.shopLocation = shopLocations[Number(button.dataset.shopIndex)]; state.query = ""; $("search").value = ""; render(); $("main-content").focus(); window.scrollTo(0, 0); });
+      if (!matchingTabs.some(tab => tab.key === state.shopLocation)) state.shopLocation = matchingTabs[0]?.key || shopTabs[0]?.key || "";
+      $("chapterNav").innerHTML = `<h3>Mart locations and floors</h3>${shopTabs.map((tab, index) => `<button type="button" data-shop-index="${index}" class="${state.shopLocation === tab.key ? "active" : ""}" aria-current="${state.shopLocation === tab.key ? "page" : "false"}">${esc(tab.label)}</button>`).join("")}`;
+      $("chapterNav").querySelectorAll("button").forEach(button => button.onclick = () => { state.shopLocation = shopTabs[Number(button.dataset.shopIndex)].key; state.query = ""; $("search").value = ""; render(); $("main-content").focus(); window.scrollTo(0, 0); });
     } else if (state.view === "rematches") {
       const kinds = ["All", "Phone rematch", "Gym Leader", "Pokémon League"];
       $("chapterNav").innerHTML = `<h3>Rematch groups</h3>${kinds.map(kind => `<button type="button" data-filter="${esc(kind)}" class="${state.filter === kind ? "active" : ""}" aria-pressed="${state.filter === kind}">${esc(kind)}</button>`).join("")}`;

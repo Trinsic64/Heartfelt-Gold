@@ -21,6 +21,6 @@ python Docs/Player-Guide/add-mart-prices.py --source "C:\ROM-Hack\Heartfelt-Gold
 python Docs/Player-Guide/build-standalone.py --source "C:\ROM-Hack\Heartfelt-Gold\Docs"
 ```
 
-The build script checks that every referenced sprite exists, embeds them once per page, and creates the offline ZIP from the same pages. Its versioned [app script](Guide-App.js) and [style](Guide-Style.css) must match the reviewed export, so guide behavior changes are included in the same repository change as the generated pages. The Marts page lists one location at a time, combining its floors and counters in one priced table; item prices come from the [item data snapshot](../../HG-Engine/data/itemdata/itemdata.c).
+The build script checks that every referenced sprite exists, embeds them once per page, and creates the offline ZIP from the same pages. Its versioned [app script](Guide-App.js) and [style](Guide-Style.css) must match the reviewed export, so guide behavior changes are included in the same repository change as the generated pages. The Marts page has 27 shop and floor tabs across 21 locations. Each department store floor has its own sidebar tab and priced table; counters on the same floor appear together. Item prices come from the [item data snapshot](../../HG-Engine/data/itemdata/itemdata.c).
 
 For each release, update `release.json` with the patch filename and verified hashes, rebuild the guide, and run `python Docs/Player-Guide/verify-release-pair.py`. The Pages workflow runs the same check before publishing the guide.
