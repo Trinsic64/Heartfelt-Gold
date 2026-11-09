@@ -6,6 +6,7 @@ import csv
 import base64
 import re
 import runpy
+import struct
 import zipfile
 from collections import Counter
 from pathlib import Path
@@ -257,13 +258,18 @@ assert "shop-table .shop-icon{width:36px" in main_html
 
 pokedex = guide_data["pokedex"]
 expected_dex = runpy.run_path(str(HERE / "pokedex-data.py"))["read_pokedex"]()
-assert [{k: v for k, v in mon.items() if k != "icon"} for mon in pokedex["pokemon"]] == expected_dex["pokemon"]
+assert [{k: v for k, v in mon.items() if k not in {"icon", "front"}}
+        for mon in pokedex["pokemon"]] == expected_dex["pokemon"]
 assert pokedex["machineMoves"] == expected_dex["machineMoves"]
 for shop, floor, item, *_ in html_shop_rows:
     if re.fullmatch(r"(?:TM|HM|TR)\d+(?:_[A-Z]+)?", item):
         assert item in pokedex["machineMoves"], (shop, floor, item)
 main_sprites = json.loads(re.search(r"window\.GUIDE_SPRITES=(\{.*?\});</script>", main_html).group(1))
 assert all(not mon["icon"] or mon["icon"] in main_sprites for mon in pokedex["pokemon"])
+for mon in pokedex["pokemon"]:
+    assert Path(mon["front"]).stem == mon["token"].removeprefix("SPECIES_").lower()
+    sprite = base64.b64decode(main_sprites[mon["front"]].split(",", 1)[1])
+    assert sprite.startswith(b"\x89PNG\r\n\x1a\n") and struct.unpack(">II", sprite[16:24]) == (160, 80)
 assert "pokedex" not in rematch_data
 
 evo_text = (ROOT / "HG-Engine/data/Evolutions.c").read_text(encoding="utf-8")

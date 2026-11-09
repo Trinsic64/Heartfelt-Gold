@@ -1,7 +1,10 @@
 """Extract Pokédex entries and machine labels from the release engine snapshot."""
 
+import argparse
 import json
 import re
+import shutil
+import struct
 from pathlib import Path
 
 
@@ -87,6 +90,25 @@ def sprite_for(export, token):
     return ""
 
 
+def is_battle_sheet(path):
+    try:
+        with path.open("rb") as stream:
+            header = stream.read(24)
+    except FileNotFoundError:
+        return False
+    return (len(header) == 24 and header.startswith(b"\x89PNG\r\n\x1a\n")
+            and header[12:16] == b"IHDR" and struct.unpack(">II", header[16:24]) == (160, 80))
+
+
+def front_sprite_for(export, token):
+    stem = token.removeprefix("SPECIES_").lower()
+    for folder in ("Front", "TrainerMegaFront", "PokedexFront"):
+        path = f"Sprites/{folder}/{stem}.png"
+        if is_battle_sheet(export / path):
+            return path
+    return ""
+
+
 def read_pokedex(export=None):
     names, machines, tutors = move_tables()
     blocks = entries(source("data/Species.c"), "SPECIES_")
@@ -132,5 +154,34 @@ def read_pokedex(export=None):
                 mon[key] = ""
         if export is not None:
             mon["icon"] = sprite_for(export, token)
+            mon["front"] = front_sprite_for(export, token)
         pokemon.append(mon)
     return {"pokemon": pokemon, "machineMoves": {code: names[move] for code, move in machines}}
+
+
+def copy_missing_battle_sprites(export, engine_sprites):
+    folder = export / "Sprites" / "PokedexFront"
+    folder.mkdir(parents=True, exist_ok=True)
+    copied = 0
+    missing = []
+    for mon in read_pokedex(export)["pokemon"]:
+        if mon["front"]:
+            continue
+        stem = mon["token"].removeprefix("SPECIES_").lower()
+        for gender in ("male", "female"):
+            sprite = engine_sprites / stem / gender / "front.png"
+            if is_battle_sheet(sprite):
+                shutil.copyfile(sprite, folder / f"{stem}.png")
+                copied += 1
+                break
+        else:
+            missing.append(stem)
+    print(f"Copied {copied} battle sprites. Missing {len(missing)}: {', '.join(missing) or 'none'}")
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Fill missing Pokédex battle sprites from the build graphics")
+    parser.add_argument("--source", type=Path, required=True, help="Reviewed guide export directory")
+    parser.add_argument("--engine-sprites", type=Path, required=True, help="Build's data/graphics/sprites directory")
+    args = parser.parse_args()
+    copy_missing_battle_sprites(args.source, args.engine_sprites)
