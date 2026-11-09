@@ -133,10 +133,35 @@ rematch_html = (SITE / "Rematch-Trainer-Guide.html").read_text(encoding="utf-8")
 rematch_data = json.loads(re.search(r"window\.GUIDE_DATA=(\{.*?\});</script>", rematch_html).group(1))
 rematch_ids = {trainer["id"] for trainer in rematch_data["trainers"]}
 with (SITE / "Rematch-Trainers.csv").open(newline="", encoding="utf-8-sig") as stream:
-    rematch_csv_ids = {int(row["Trainer ID"]) for row in csv.DictReader(stream)}
+    rematch_csv_rows = list(csv.DictReader(stream))
+    rematch_csv_ids = {int(row["Trainer ID"]) for row in rematch_csv_rows}
 assert not ({main_id for main_id, _ in second_run} & (rematch_ids | rematch_csv_ids))
 assert guide_data["counts"]["trainers"] == len(html_trainers)
 assert guide_data["counts"]["rematches"] == rematch_data["counts"]["rematches"] == len(rematch_ids)
+
+script_audit = runpy.run_path(str(HERE / "audit-scripted-trainers.py"))
+for group, expected, stage in (("rocket-hq", script_audit["HQ"], "23 "),
+                               ("dance-first", [601], "16 "),
+                               ("dance-kimono", script_audit["KIMONO"], "29 "),
+                               ("stage-25", script_audit["RAID"], "25 "),
+                               ("dragon-den-tag", script_audit["DEN"], "41 "),
+                               ("silver-indigo", script_audit["SILVER"], "41 ")):
+    parties = [t for t in guide_data["trainers"] if t["group"] == group]
+    assert [t["id"] for t in sorted(parties, key=lambda t: t["order"])] == expected, group
+    assert [tid for tid in csv_trainers if tid in expected] == expected, group
+    for trainer in parties:
+        assert trainer["stage"].startswith(stage), trainer["id"]
+        for row in csv_trainers[trainer["id"]]:
+            assert row["Location"] == trainer["location"] and row["Story stage (approx.)"] == trainer["stage"]
+            if trainer["id"] in script_audit["PARTNERS"]:
+                assert trainer["partner"] and row["Battle kind"] == "Battle partner"
+assert groups["stage-23"] < groups["rocket-hq"] < groups["gym-24"] < groups["stage-25"]
+assert groups["dance-first"] < groups["gym-16"] < groups["gym-27"] < groups["dance-kimono"] < groups["stage-29"]
+assert groups["stage-41"] < groups["dragon-den-tag"] < groups["silver-indigo"]
+dojo_parties = [t for t in rematch_data["trainers"] if 712 <= t["id"] <= 727]
+assert len(dojo_parties) == 16 and all(t["location"] == script_audit["DOJO"] for t in dojo_parties)
+assert all(row["Location"] == script_audit["DOJO"] for row in rematch_csv_rows if 712 <= int(row["Trainer ID"]) <= 727)
+assert release["decodedRomSha256"] in (SITE / "Scripted-Trainer-Audit.md").read_text(encoding="utf-8")
 
 gym_groups = [group["id"] for group in guide_data["trainerGroups"]
               if group["id"].startswith("gym-")]

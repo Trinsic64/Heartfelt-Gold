@@ -27,7 +27,7 @@ Back up your in-game save before switching versions. A copied save loaded and re
 | Artifact | Size | SHA-256 |
 | --- | ---: | --- |
 | v1.0.12 xDelta patch | 39,309,089 bytes | `f7d6e78332db8629d4f4099af1dbba5846c3acc155a79894a1252dd2e8a215ba` |
-| Offline guide ZIP | 4,785,793 bytes | `0745a6aa87a7c62e71d089b01980dedbb26e79fb52889cbd49f2aea1497df121` |
+| Offline guide ZIP | 4,788,812 bytes | `18ad733fc50f5cea4d3cbf5a4d3aca26059bc32b3883515dfb3774e0f45d8eb9` |
 | Decoded ROM (verification only; not distributed) | 207,742,432 bytes | `9f6e08223717ad90dbf3ce281aed2410c2e209f1e53ed5a566eb79f41bc3731a` |
 
 The patch decoded against the documented clean USA source and matched the v23 hg-engine build byte for byte. The guide's [release manifest](Docs/Player-Guide/release.json) records the source snapshots and hashes used for this version. The v23 map fix was checked in the map archive and matrix; in-game cave navigation has not been separately verified. Script listings do not establish encounter reachability or unlock conditions. Two visible ground pickup objects remain unresolved in the [item audit](Docs/Player-Guide/site/Release-v22-Item-Audit.md).
@@ -41,5 +41,7 @@ The patch decoded against the documented clean USA source and matched the v23 hg
 **Mart guide update.** The Marts tab has 30 sidebar tabs across 21 shop locations. Each department store floor or named counter has its own stock table. TM numbers show the move they teach. All 1,065 stock rows use prices from the build's `itemdata.c`.
 
 **Pokédex.** Compare species and forms in a searchable table with sortable National Pokédex numbers, names, and stats. Open an entry to see its battle sprite and full profile. Machine learnsets display TM001–TM092 and HMs.
+
+**Scripted trainer audit.** Team Rocket HQ has its own Trainer chapter with the security statue battles, Petrel, and the B2F double battle alongside Lance. The Ecruteak Dance Theater visits are separated, with the Kimono Girls after eight badges. The Goldenrod raid and Silver follow-up battles appear at their later story points. Gym rematches list the Saffron Fighting Dojo.
 
 Only the patch and guide are distributed. No ROM or save is included.

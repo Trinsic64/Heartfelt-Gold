@@ -55,10 +55,10 @@
       <div class="moves">${m.moves.length ? m.moves.map(move => `<span class="move">${esc(move)}</span>`).join("") : `<span class="move dim">Moves not listed</span>`}</div>
     </div>`;
     }).join("");
-    const badges = [t.major ? '<span class="badge major">Major battle</span>' : "", t.bonus ? '<span class="badge bonus">Bonus battle</span>' : "", t.rematch ? '<span class="badge rematch">Rematch</span>' : ""].join("");
+    const badges = [t.major ? '<span class="badge major">Major battle</span>' : "", t.bonus ? '<span class="badge bonus">Bonus battle</span>' : "", t.rematch ? '<span class="badge rematch">Rematch</span>' : "", t.partner ? chip("Battle partner") : ""].join("");
     const rematchText = t.rematch ? `${esc(t.rematchInfo.kind)} · ${esc(t.rematchInfo.variant)} · original ID ${esc(t.rematchInfo.base)}` : "";
     const battleItems = t.battleItemIcons?.length ? `<span class="battle-items">${t.battleItemIcons.map(i => `<span>${icon(i.sprite, "small-sprite", i.name)} ${esc(i.name)}</span>`).join("")}</span>` : "None listed";
-    return `<article class="trainer-card" id="trainer-${esc(t.id)}"><div class="trainer-heading"><div><h3>${esc(t.name)} <span class="dim">· ${esc(t.class)}</span></h3><div class="sub">${esc(t.location === "—" ? "Location not resolved" : t.location)}${rematchText ? " · " + rematchText : ""}</div></div><div class="badges">${badges}</div></div>
+    return `<article class="trainer-card" id="trainer-${esc(t.id)}"><div class="trainer-heading"><div><h3>${esc(t.name)} <span class="dim">· ${esc(t.class)}</span></h3><div class="sub">${esc(t.location === "—" ? "Location not resolved" : t.location)}${rematchText ? " · " + rematchText : ""}</div>${t.storyNote ? `<div class="sub">${esc(t.storyNote)}</div>` : ""}</div><div class="badges">${badges}</div></div>
       <div class="trainer-body"><div class="trainer-side">${portrait}<div><div class="trainer-class">${esc(t.class)}</div><div class="trainer-id">Trainer ID ${esc(t.id)}</div></div></div><div class="team-grid">${team}</div></div>
       <div class="trainer-foot"><strong>Battle items:</strong> ${battleItems}${t.bonusNote ? ` · <strong>Source note:</strong> ${esc(t.bonusNote)}` : ""}</div></article>`;
   }
@@ -106,7 +106,7 @@
     return area.entries.filter(e => matches([e.name, e.method, e.condition, e.common, e.rare, ...(e.abilities || []), e.hiddenAbility]));
   }
   function trainerMatch(t) {
-    return matches([t.name, t.location, t.class, t.id, t.bonusNote, t.battleItems,
+    return matches([t.name, t.location, t.class, t.id, t.bonusNote, t.storyNote, t.battleItems,
       ...t.team.flatMap(m => [m.name, m.held, m.ability, m.mega?.name, m.mega?.ability, ...m.moves])]);
   }
 
@@ -153,8 +153,8 @@
     rows.sort((a, b) => groupOrder[a.group] - groupOrder[b.group]
       || gymOrder(a, b)
       || a.order - b.order || Number(a.bonus) - Number(b.bonus) || a.id - b.id);
-    const shown = pageSlice(rows, 10);
-    return `<h1 class="page-title">${state.trainerGroup === "All" ? "Story and bonus trainers" : esc(DATA.trainerGroups.find(g => g.id === state.trainerGroup)?.label || "Trainers")}</h1><p class="lead">Trainer battles in approximate story order, including optional bonus battles. Mega-capable teams show their in-battle Mega sprite, ability, and typing. Each Gym lists its trainers in audited order, then the Leader, then the Leader's Bonus Battle. Elite Four and Champion battles have their own chapters. Rematches are in the separate rematch guide.</p>${stats([rows.length, "matching trainer parties"], [rows.filter(t => t.bonus).length, "bonus parties included"])}${shown.map(trainerCard).join("") || '<div class="empty">No trainers match.</div>'}`;
+    const shown = pageSlice(rows, state.trainerGroup === "rocket-hq" ? Math.max(1, rows.length) : 10);
+    return `<h1 class="page-title">${state.trainerGroup === "All" ? "Story and bonus trainers" : esc(DATA.trainerGroups.find(g => g.id === state.trainerGroup)?.label || "Trainers")}</h1><p class="lead">Trainer battles in approximate story order, including optional bonus battles. Mega-capable teams show their in-battle Mega sprite, ability, and typing. Each Gym lists its trainers in audited order, then the Leader, then the Leader's Bonus Battle. Elite Four and Champion battles have their own chapters. Rematches are in the separate rematch guide. <a href="Scripted-Trainer-Audit.md">Scripted battle audit</a></p>${stats([rows.length, "matching trainer parties"], [rows.filter(t => t.bonus).length, "bonus parties included"])}${shown.map(trainerCard).join("") || '<div class="empty">No trainers match.</div>'}`;
   }
 
   function renderWild() {
