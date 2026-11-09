@@ -1,5 +1,7 @@
 # Pokémon Heartfelt Gold player guides
 
+For a visual, searchable guide, [open the interactive player guide](https://trinsic64.github.io/Heartfelt-Gold/). To use it locally, [download the offline ZIP](https://trinsic64.github.io/Heartfelt-Gold/Heartfelt-Gold-Player-Guide-Offline.zip), extract it, and open `index.html`. [Source and review notes](../Player-Guide/README.md).
+
 These guides describe the current Heartfelt Gold authoring data and contain spoilers. The species, level, trainer, and evolution tables were regenerated from the supplied current hg-engine source. The static encounter table comes from the supplied DSPRE script export, which the project owner identified as identical for these encounters. The patch binary has not been independently decoded against every table.
 
 | Guide | Contents |

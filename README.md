@@ -15,6 +15,10 @@ There are still some awkward or glitchy tiles, but the project is playable and r
   <img src="Pictures/Screenshot%202026-08-12%20210437.png" width="32%" alt="Retiled waterside scene">
 </p>
 
+## Player guide
+
+[Open the interactive guide](https://trinsic64.github.io/Heartfelt-Gold/) in your browser, or [download the offline guide ZIP](https://trinsic64.github.io/Heartfelt-Gold/Heartfelt-Gold-Player-Guide-Offline.zip), extract it, and open `index.html`. The offline pages include their sprites and work without an account or installation. [Guide details and source notes](Docs/Player-Guide/README.md).
+
 ## Download and play
 
 The current Heartfelt Gold patch is:

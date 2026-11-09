@@ -1,0 +1,419 @@
+﻿Pickup type,Area,Map,Item,Quantity,X,Y,Map header,Event file,Object index,Script bank,Script entry,Verification
+Hidden ground item,Bellchime Trail,D17R1101,Big Mushroom,1,39,20,6,0004,0,0022,8126,Release hidden-item parameter table
+Hidden ground item,Bellchime Trail,D17R1101,Big Mushroom,1,23,7,6,0004,1,0022,8127,Release hidden-item parameter table
+Hidden ground item,Burned Tower,D18R0101,Ultra Ball,1,8,24,7,0005,0,0023,8020,Release hidden-item parameter table
+Visible ground item,Burned Tower,D18R0101,HP Up,1,7,26,7,0005,11,0023,7045,Item-ball script number 7000 + item ID
+Visible ground item,Burned Tower,D18R0101,Rare Candy,1,15,9,7,0005,13,0023,7050,Item-ball script number 7000 + item ID
+Visible ground item,Route 2,R02,Elixir,1,1045,212,10,0007,5,0169,7040,Item-ball script number 7000 + item ID
+Hidden ground item,Route 3,R03,Star Piece,1,1095,121,11,0008,1,0175,8145,Release hidden-item parameter table
+Hidden ground item,Route 3,R03,Star Piece,1,1100,116,11,0008,2,0175,8138,Release hidden-item parameter table
+Hidden ground item,Route 3,R03,Hyper Potion,1,1160,105,11,0008,3,0175,8139,Release hidden-item parameter table
+Visible ground item,Route 3,R03,Big Root,1,1132,120,11,0008,11,0175,7296,Item-ball script number 7000 + item ID
+Hidden ground item,Route 4,R04,Ultra Ball,1,1219,109,12,0009,1,0178,8113,Release hidden-item parameter table
+Hidden ground item,Route 4,R04,Big Mushroom,1,1251,123,12,0009,2,0178,8194,Release hidden-item parameter table
+Visible ground item,Route 4,R04,Rare Candy,1,1254,107,12,0009,3,0178,7050,Item-ball script number 7000 + item ID
+Visible ground item,Route 6,R06,TM062,1,1291,282,14,0011,5,0184,7389,Item-ball script number 7000 + item ID
+Visible ground item,Route 7,R07,Mental Herb,1,1263,226,15,0012,0,0186,7219,Item-ball script number 7000 + item ID
+Visible ground item,Route 8,R08,TM041,1,1358,248,16,0013,11,0188,7368,Item-ball script number 7000 + item ID
+Hidden ground item,Route 9,R09,Ether,1,1422,140,17,0014,1,0190,8105,Release hidden-item parameter table
+Visible ground item,Route 9,R09,TM091,1,1415,136,17,0014,13,0190,7418,Item-ball script number 7000 + item ID
+Visible ground item,Route 9,R09,Full Restore,1,1413,154,17,0014,14,0190,7023,Item-ball script number 7000 + item ID
+Visible ground item,Route 9,R09,Light Clay,1,1376,143,17,0014,15,0190,7269,Item-ball script number 7000 + item ID
+Visible ground item,Route 9,R09,Choice Band,1,1356,154,17,0014,16,0190,7220,Item-ball script number 7000 + item ID
+Hidden ground item,Route 10,R10,Carbos,1,1418,183,18,0015,0,0191,8197,Release hidden-item parameter table
+Hidden ground item,Route 11,R11,Revive,1,1371,292,19,0016,1,0197,8104,Release hidden-item parameter table
+Visible ground item,Route 11,R11,TM086,1,1393,292,19,0016,6,0197,7413,Item-ball script number 7000 + item ID
+Hidden ground item,Route 12,R12,Elixir,1,1415,302,20,0017,2,0199,8112,Release hidden-item parameter table
+Visible ground item,Route 12,R12,Yellow Flute,1,1411,347,20,0017,9,0199,7066,Item-ball script number 7000 + item ID
+Visible ground item,Route 12,R12,Unresolved,,1410,332,20,0017,18,0199,7,Local Script 7 not resolved to item grant in bank 0199
+Hidden ground item,Route 13,R13,Calcium,1,1386,377,21,0018,3,0201,8111,Release hidden-item parameter table
+Visible ground item,Route 15,R15,PP Up,1,1263,423,23,0020,11,0203,7051,Item-ball script number 7000 + item ID
+Visible ground item,Route 15,R15,Rose Incense,1,1290,434,23,0020,12,0203,7318,Item-ball script number 7000 + item ID
+Hidden ground item,Route 17,R17,Max Ether,1,1133,355,25,0022,0,0209,8109,Release hidden-item parameter table
+Hidden ground item,Route 17,R17,Max Elixir,1,1129,390,25,0022,1,0209,8110,Release hidden-item parameter table
+Hidden ground item,Route 25,R25,Revive,1,1327,41,29,0026,1,0216,8107,Release hidden-item parameter table
+Visible ground item,Route 25,R25,Flame Orb,1,1380,36,29,0026,11,0216,7273,Item-ball script number 7000 + item ID
+Hidden ground item,Route 26,R26,Nugget,1,890,408,30,0027,1,0218,8183,Release hidden-item parameter table
+Visible ground item,Route 26,R26,Focus Sash,1,910,314,30,0027,6,0218,7275,Item-ball script number 7000 + item ID
+Hidden ground item,Route 27,R27,Revive,1,858,394,31,0028,1,0221,8181,Release hidden-item parameter table
+Hidden ground item,Route 27,R27,Big Mushroom,1,882,396,31,0028,2,0221,8182,Release hidden-item parameter table
+Hidden ground item,Route 27,R27,Nugget,1,890,408,31,0028,3,0221,8183,Release hidden-item parameter table
+Visible ground item,Route 27,R27,PP Max,1,783,407,31,0028,7,0221,7053,Item-ball script number 7000 + item ID
+Visible ground item,Route 27,R27,TM002,1,793,407,31,0028,8,0221,7329,Item-ball script number 7000 + item ID
+Visible ground item,Route 27,R27,Destiny Knot,1,843,394,31,0028,9,0221,7280,Item-ball script number 7000 + item ID
+Hidden ground item,Route 28,R28,Rare Candy,1,874,262,32,0029,0,0223,8115,Release hidden-item parameter table
+Visible ground item,Route 28,R28,TM035,1,865,264,32,0029,0,0223,7362,Item-ball script number 7000 + item ID
+Hidden ground item,Route 29,R29,Nugget,1,572,390,33,0030,2,0225,8001,Release hidden-item parameter table
+Visible ground item,Route 29,R29,Lucky Egg,1,654,386,33,0030,8,0225,7231,Item-ball script number 7000 + item ID
+Hidden ground item,Route 30,R30,Nugget,1,572,390,34,0031,4,0227,8001,Release hidden-item parameter table
+Hidden ground item,Route 32,R32,Great Ball,1,460,432,36,0033,3,0232,8005,Release hidden-item parameter table
+Visible ground item,Route 32,R32,Life Orb,1,456,365,36,0033,12,0232,7270,Item-ball script number 7000 + item ID
+Visible ground item,Route 32,R32,TM009,1,451,401,36,0033,15,0232,7336,Item-ball script number 7000 + item ID
+Visible ground item,Route 32,R32,Shell Bell,1,475,439,36,0033,16,0232,7253,Item-ball script number 7000 + item ID
+Hidden ground item,Route 34,R34,Rare Candy,1,363,436,38,0035,3,0237,8007,Release hidden-item parameter table
+Visible ground item,Route 34,R34,Nugget,1,364,438,38,0035,8,0237,7092,Item-ball script number 7000 + item ID
+Visible ground item,Route 34,R34,TM063,1,372,390,38,0035,14,0237,7390,Item-ball script number 7000 + item ID
+Visible ground item,Route 35,R35,TM066,1,380,317,39,0036,9,0240,7393,Item-ball script number 7000 + item ID
+Visible ground item,Route 35,R35,Unresolved,,375,277,39,0036,14,0240,6,Local Script 6 not resolved to item grant in bank 0240
+Visible ground item,Route 36,R36,Quick Claw,1,393,237,40,0037,8,0243,7217,Item-ball script number 7000 + item ID
+Hidden ground item,Route 38,R38,HP Up,1,291,175,42,0039,2,0247,8022,Release hidden-item parameter table
+Visible ground item,Route 38,R38,Choice Scarf,1,347,175,42,0039,6,0247,7287,Item-ball script number 7000 + item ID
+Visible ground item,Route 38,R38,Lax Incense,1,297,186,42,0039,7,0247,7255,Item-ball script number 7000 + item ID
+Hidden ground item,Route 39,R39,PP Up,1,259,176,43,0040,3,0249,8135,Release hidden-item parameter table
+Hidden ground item,Route 39,R39,Full Heal,1,285,231,43,0040,4,0249,8137,Release hidden-item parameter table
+Visible ground item,Route 39,R39,TM060,1,257,187,43,0040,10,0249,7387,Item-ball script number 7000 + item ID
+Visible ground item,Route 42,R42,Assault Vest,1,472,176,44,0041,6,0252,7640,Item-ball script number 7000 + item ID
+Visible ground item,Route 42,R42,Dubious Disc,1,477,166,44,0041,7,0252,7324,Item-ball script number 7000 + item ID
+Visible ground item,Route 42,R42,TM065,1,430,169,44,0041,8,0252,7392,Item-ball script number 7000 + item ID
+Visible ground item,Route 43,R43,Max Ether,1,532,138,45,0042,7,0254,7039,Item-ball script number 7000 + item ID
+Hidden ground item,Route 44,R44,Elixir,1,613,171,46,0043,2,0257,8100,Release hidden-item parameter table
+Visible ground item,Route 44,R44,Absolite,1,564,177,46,0043,8,0257,7677,Item-ball script number 7000 + item ID
+Visible ground item,Route 44,R44,Max Revive,1,593,172,46,0043,9,0257,7029,Item-ball script number 7000 + item ID
+Visible ground item,Route 44,R44,Choice Specs,1,607,162,46,0043,10,0257,7297,Item-ball script number 7000 + item ID
+Hidden ground item,Route 45,R45,PP Up,1,649,289,47,0044,1,0258,8101,Release hidden-item parameter table
+Hidden ground item,Route 45,R45,PP Max,1,640,341,47,0044,3,0258,8230,Release hidden-item parameter table
+Visible ground item,Route 45,R45,Light Clay,1,653,269,47,0044,8,0258,7269,Item-ball script number 7000 + item ID
+Visible ground item,Route 45,R45,Nugget,1,647,282,47,0044,9,0258,7092,Item-ball script number 7000 + item ID
+Visible ground item,Route 45,R45,Zoom Lens,1,645,302,47,0044,10,0258,7276,Item-ball script number 7000 + item ID
+Visible ground item,Route 45,R45,Galladite,1,662,242,47,0044,13,0258,7756,Item-ball script number 7000 + item ID
+Visible ground item,Route 45,R45,PP Max,1,645,226,47,0044,14,0258,7053,Item-ball script number 7000 + item ID
+Hidden ground item,Route 46,R46,PP Max,1,640,341,48,0045,2,0259,8230,Release hidden-item parameter table
+Visible ground item,Route 46,R46,Love Sweet,1,611,344,48,0045,6,0259,4,Local Script 4: item var + pickup helper
+Hidden ground item,Viridian City,T02,Nugget,1,1053,247,50,0047,5,0741,8200,Release hidden-item parameter table
+Hidden ground item,Pewter City,T03,PP Up,1,1035,101,51,0048,4,0750,8198,Release hidden-item parameter table
+Hidden ground item,Pewter City,T03,Guard Spec.,1,1068,108,51,0048,5,0750,8199,Release hidden-item parameter table
+Hidden ground item,Pewter City,T03,Max Revive,1,1038,119,51,0048,6,0750,8227,Release hidden-item parameter table
+Visible ground item,Pewter City,T03,Wise Glasses,1,1029,91,51,0048,6,0750,7267,Item-ball script number 7000 + item ID
+Hidden ground item,Cerulean City,T04,Nugget,1,1298,110,52,0049,5,0758,8106,Release hidden-item parameter table
+Hidden ground item,Vermilion City,T06,Full Heal,1,1324,306,54,0051,4,0776,8103,Release hidden-item parameter table
+Hidden ground item,Vermilion City,T06,Heart Scale,1,1318,323,54,0051,5,0776,8168,Release hidden-item parameter table
+Hidden ground item,Vermilion City,T06,Pearl,1,1312,336,54,0051,6,0776,8162,Release hidden-item parameter table
+Hidden ground item,Vermilion City,T06,Pearl,1,1313,335,54,0051,7,0776,8163,Release hidden-item parameter table
+Hidden ground item,Vermilion City,T06,Big Pearl,1,1315,335,54,0051,8,0776,8164,Release hidden-item parameter table
+Visible ground item,Vermilion City,T06,Luck Incense,1,1321,328,54,0051,12,0776,7319,Item-ball script number 7000 + item ID
+Visible ground item,Vermilion City,T06,Sticky Barb,1,1336,327,54,0051,13,0776,7288,Item-ball script number 7000 + item ID
+Visible ground item,Celadon City,T07,TM067,1,1195,226,55,0052,12,0785,7394,Item-ball script number 7000 + item ID
+Hidden ground item,Fuchsia City,T08,Nugget,1,1232,413,56,0053,4,0807,8134,Release hidden-item parameter table
+Hidden ground item,Cinnabar Island,T09,Rare Candy,1,1030,481,57,0054,2,0815,8114,Release hidden-item parameter table
+Hidden ground item,Cinnabar Island,T09,Iron,1,1044,506,57,0054,3,0815,8166,Release hidden-item parameter table
+Hidden ground item,Cinnabar Island,T09,Star Piece,1,1041,493,57,0054,4,0815,8167,Release hidden-item parameter table
+Visible ground item,Cinnabar Island,T09,Magmarizer,1,1045,497,57,0054,2,0815,7323,Item-ball script number 7000 + item ID
+Hidden ground item,Indigo Plateau,T10,Rare Candy,1,910,209,58,0055,1,0818,8190,Release hidden-item parameter table
+Hidden ground item,Cherrygrove City,T21,Nugget,1,572,390,67,0064,2,0850,8001,Release hidden-item parameter table
+Hidden ground item,Cherrygrove City,T21,Nugget,1,522,388,67,0064,3,0850,8225,Release hidden-item parameter table
+Hidden ground item,Violet City,T22,Poké Ball,1,481,241,73,0070,4,0857,8108,Release hidden-item parameter table
+Visible ground item,Violet City,T22,Lucky Punch,1,504,237,73,0070,5,0857,7256,Item-ball script number 7000 + item ID
+Visible ground item,Violet City,T22,PP Max,1,459,229,73,0070,6,0857,7053,Item-ball script number 7000 + item ID
+Hidden ground item,Azalea Town,T23,Full Heal,1,421,469,74,0071,6,0866,8006,Release hidden-item parameter table
+Hidden ground item,Cianwood City,T24,Stardust,1,189,357,75,0072,5,0875,8026,Release hidden-item parameter table
+Hidden ground item,Olivine City,T26,Rare Candy,1,309,256,77,0074,4,0911,8023,Release hidden-item parameter table
+Hidden ground item,Olivine City,T26,Full Heal,1,285,231,77,0074,5,0911,8137,Release hidden-item parameter table
+Visible ground item,Olivine City,T26,TM057,1,309,250,77,0074,4,0911,7384,Item-ball script number 7000 + item ID
+Hidden ground item,Ecruteak City,T27,Hyper Potion,1,385,170,78,0075,4,0920,8012,Release hidden-item parameter table
+Hidden ground item,Ecruteak City,T27,Ether,1,379,146,78,0075,5,0920,8013,Release hidden-item parameter table
+Hidden ground item,Ecruteak City,T27,Ultra Ball,1,365,164,78,0075,6,0920,8133,Release hidden-item parameter table
+Hidden ground item,Lake of Rage,T29,Full Restore,1,511,82,88,0085,2,0938,8036,Release hidden-item parameter table
+Hidden ground item,Lake of Rage,T29,Max Potion,1,542,37,88,0085,3,0938,8102,Release hidden-item parameter table
+Visible ground item,Lake of Rage,T29,TM057,1,498,47,88,0085,11,0938,7384,Item-ball script number 7000 + item ID
+Visible ground item,Lake of Rage,T29,Choice Band,1,538,77,88,0085,12,0938,7220,Item-ball script number 7000 + item ID
+Visible ground item,Lake of Rage,T29,TM043,1,506,34,88,0085,13,0938,7370,Item-ball script number 7000 + item ID
+Visible ground item,Lake of Rage,T29,Red Flute,1,489,73,88,0085,14,0938,7067,Item-ball script number 7000 + item ID
+Visible ground item,Lake of Rage,T29,Choice Specs,1,555,56,88,0085,15,0938,7297,Item-ball script number 7000 + item ID
+Visible ground item,Lake of Rage,T29,Dawn Stone,1,555,56,88,0085,17,0938,7109,Item-ball script number 7000 + item ID
+Visible ground item,Mt. Silver,T31,Reaper Cloth,1,808,277,90,0087,0,0949,7325,Item-ball script number 7000 + item ID
+Hidden ground item,Route 19,W19,Big Pearl,1,1210,505,91,0088,0,0958,8180,Release hidden-item parameter table
+Hidden ground item,Route 19,W19,Pearl,1,1198,468,91,0088,1,0958,8179,Release hidden-item parameter table
+Hidden ground item,Route 19,W19,Pearl,1,1207,467,91,0088,2,0958,8178,Release hidden-item parameter table
+Hidden ground item,Route 19,W19,Revive,1,1210,456,91,0088,3,0958,8207,Release hidden-item parameter table
+Hidden ground item,Route 19,W19,Max Elixir,1,1209,460,91,0088,4,0958,8208,Release hidden-item parameter table
+Visible ground item,Route 19,W19,TM055,1,1209,504,91,0088,17,0958,7382,Item-ball script number 7000 + item ID
+Hidden ground item,Route 20,W20,Deep Sea Scale,1,1107,485,92,0089,2,0960,8229,Release hidden-item parameter table
+Hidden ground item,Route 21,W21,Stardust,1,1044,412,93,0090,0,0961,8175,Release hidden-item parameter table
+Hidden ground item,Route 21,W21,Stardust,1,1031,419,93,0090,1,0961,8176,Release hidden-item parameter table
+Hidden ground item,Route 21,W21,Stardust,1,1042,439,93,0090,2,0961,8177,Release hidden-item parameter table
+Hidden ground item,Route 21,W21,Rare Candy,1,1033,481,93,0090,3,0961,8114,Release hidden-item parameter table
+Visible ground item,Route 40,W40,TM088,1,251,301,94,0091,6,0962,7415,Item-ball script number 7000 + item ID
+Hidden ground item,Route 41,W41,Stardust,1,243,336,95,0092,0,0964,8173,Release hidden-item parameter table
+Hidden ground item,National Park,D22R0101,Full Heal,1,53,78,96,0093,3,0025,8035,Release hidden-item parameter table
+Visible ground item,National Park,D22R0101,TM028,1,24,58,96,0093,0,0025,7355,Item-ball script number 7000 + item ID
+Visible ground item,National Park,D22R0101,Soothe Bell,1,77,33,96,0093,1,0025,7218,Item-ball script number 7000 + item ID
+Visible ground item,National Park,D22R0101,Max Revive,1,81,16,96,0093,29,0025,7029,Item-ball script number 7000 + item ID
+Hidden ground item,Union Cave,UNION CAVE J,Big Pearl,1,3,74,99,0096,0,0056,8154,Release hidden-item parameter table
+Hidden ground item,DIGLETT’s Cave,D01R0101,Max Revive,1,28,60,106,0103,0,0005,8056,Release hidden-item parameter table
+Hidden ground item,DIGLETT’s Cave,D01R0101,Calcium,1,3,44,106,0103,1,0005,8224,Release hidden-item parameter table
+Visible ground item,DIGLETT’s Cave,D01R0101,PP Max,1,10,58,106,0103,2,0005,7053,Item-ball script number 7000 + item ID
+Visible ground item,DIGLETT’s Cave,D01R0101,Rock Incense,1,23,75,106,0103,3,0005,7315,Item-ball script number 7000 + item ID
+Hidden ground item,Mt. Moon,D02R0101,Revive,1,24,7,107,0104,0,0007,8195,Release hidden-item parameter table
+Visible ground item,Rock Tunnel,D05R0101,Max Elixir,1,7,27,108,0105,0,0139,7041,Item-ball script number 7000 + item ID
+Visible ground item,Rock Tunnel,D05R0101,TM056,1,24,20,108,0105,1,0139,7383,Item-ball script number 7000 + item ID
+Visible ground item,Sprout Tower,D15R0101,Focus Sash,1,24,16,110,0107,5,0016,7275,Item-ball script number 7000 + item ID
+Hidden ground item,Ruins of Alph,D24R0101,Rare Candy,1,422,263,113,0110,4,0037,8149,Release hidden-item parameter table
+Hidden ground item,Ruins of Alph,D24R0101,Tiny Mushroom,1,424,278,113,0110,5,0037,8148,Release hidden-item parameter table
+Hidden ground item,Ruins of Alph,D24R0101,Big Mushroom,1,418,314,113,0110,6,0037,8147,Release hidden-item parameter table
+Visible ground item,Ruins of Alph,D24R0101,Smoke Ball,1,435,274,113,0110,8,0037,7228,Item-ball script number 7000 + item ID
+Visible ground item,Ruins of Alph,D24R0101,Max Elixir,1,418,273,113,0110,9,0037,7041,Item-ball script number 7000 + item ID
+Hidden ground item,Ilex Forest,D36R0101,Full Heal,1,39,12,117,0114,2,0092,8032,Release hidden-item parameter table
+Hidden ground item,Ilex Forest,D36R0101,Ether,1,33,14,117,0114,3,0092,8033,Release hidden-item parameter table
+Hidden ground item,Ilex Forest,D36R0101,Tiny Mushroom,1,50,30,117,0114,4,0092,8211,Release hidden-item parameter table
+Hidden ground item,Ilex Forest,D36R0101,Repel,1,28,26,117,0114,5,0092,8212,Release hidden-item parameter table
+Hidden ground item,Ilex Forest,D36R0101,Big Mushroom,1,10,32,117,0114,6,0092,8213,Release hidden-item parameter table
+Visible ground item,Ilex Forest,D36R0101,Max Revive,1,42,73,117,0114,6,0092,7029,Item-ball script number 7000 + item ID
+Visible ground item,Ilex Forest,D36R0101,Full Heal,1,20,30,117,0114,7,0092,7027,Item-ball script number 7000 + item ID
+Visible ground item,Ilex Forest,D36R0101,PP Max,1,47,16,117,0114,8,0092,7053,Item-ball script number 7000 + item ID
+Visible ground item,Ilex Forest,D36R0101,Soothe Bell,1,18,36,117,0114,17,0092,7218,Item-ball script number 7000 + item ID
+Visible ground item,Mt. Mortar,D38R0101,PP Max,1,34,20,119,0116,0,0139,7053,Item-ball script number 7000 + item ID
+Visible ground item,Mt. Mortar,D38R0101,Max Revive,1,67,30,119,0116,1,0139,7029,Item-ball script number 7000 + item ID
+Hidden ground item,Ice Path,D39R0101,Max Potion,1,17,18,120,0117,0,0099,8070,Release hidden-item parameter table
+Visible ground item,Ice Path,D39R0101,HM07,1,47,10,120,0117,0,0099,7426,Item-ball script number 7000 + item ID
+Visible ground item,Ice Path,D39R0101,PP Max,1,53,35,120,0117,3,0099,7053,Item-ball script number 7000 + item ID
+Visible ground item,Ice Path,D39R0101,Full Restore,1,53,15,120,0117,5,0099,7023,Item-ball script number 7000 + item ID
+Hidden ground item,Whirl Islands,D40R0101,Rare Candy,1,47,44,121,0118,0,0139,8073,Release hidden-item parameter table
+Visible ground item,Whirl Islands,D40R0101,Metronome,1,22,47,121,0118,0,0139,7277,Item-ball script number 7000 + item ID
+Visible ground item,Whirl Islands,D40R0101,Scope Lens,1,48,21,121,0118,1,0139,7232,Item-ball script number 7000 + item ID
+Hidden ground item,Mt. Silver Cave,D41R0101,Dire Hit,1,45,45,122,0119,0,0105,8076,Release hidden-item parameter table
+Hidden ground item,Mt. Silver Cave,D41R0101,Ultra Ball,1,10,39,122,0119,1,0105,8077,Release hidden-item parameter table
+Hidden ground item,Mt. Silver Cave,D41R0101,Revive,1,45,17,122,0119,2,0105,8201,Release hidden-item parameter table
+Visible ground item,Mt. Silver Cave,D41R0101,Full Restore,1,54,15,122,0119,0,0105,7023,Item-ball script number 7000 + item ID
+Hidden ground item,Dark Cave,D42R0101,Elixir,1,48,16,123,0120,0,0108,8018,Release hidden-item parameter table
+Visible ground item,Dark Cave,D42R0101,TM054,1,14,49,123,0120,1,0108,7381,Item-ball script number 7000 + item ID
+Visible ground item,Dark Cave,D42R0101,Amulet Coin,1,42,44,123,0120,2,0108,7223,Item-ball script number 7000 + item ID
+Hidden ground item,Victory Road,D43R0101,Full Heal,1,26,35,124,0121,0,0139,8080,Release hidden-item parameter table
+Hidden ground item,Victory Road,D43R0101,Max Potion,1,18,33,124,0121,1,0139,8079,Release hidden-item parameter table
+Visible ground item,Victory Road,D43R0101,Max Revive,1,34,14,124,0121,0,0139,7029,Item-ball script number 7000 + item ID
+Visible ground item,Victory Road,D43R0101,Bright Powder,1,35,33,124,0121,1,0139,7213,Item-ball script number 7000 + item ID
+Visible ground item,Victory Road,D43R0101,Life Orb,1,42,40,124,0121,2,0139,7270,Item-ball script number 7000 + item ID
+Visible ground item,Tohjo Falls,D45R0101,PP Up,1,23,12,126,0123,1,0113,7051,Item-ball script number 7000 + item ID
+Hidden ground item,Cerulean Cave,D03R0101,Hyper Potion,1,4,40,145,0141,0,0139,8093,Release hidden-item parameter table
+Hidden ground item,Cerulean Cave,D03R0101,Rare Candy,1,60,44,145,0141,1,0139,8094,Release hidden-item parameter table
+Hidden ground item,Cerulean Cave,D03R0101,Revive,1,24,36,145,0141,2,0139,8095,Release hidden-item parameter table
+Visible ground item,Cerulean Cave,D03R0101,Max Elixir,1,43,18,145,0141,0,0139,7041,Item-ball script number 7000 + item ID
+Visible ground item,Cerulean Cave,D03R0101,Nugget,1,9,18,145,0141,1,0139,7092,Item-ball script number 7000 + item ID
+Visible ground item,Cerulean Cave,D03R0101,Full Restore,1,21,43,145,0141,2,0139,7023,Item-ball script number 7000 + item ID
+Visible ground item,Cerulean Cave,D03R0101,Sea Incense,1,24,6,145,0141,3,0139,7254,Item-ball script number 7000 + item ID
+Hidden ground item,Seafoam Islands,D11R0101,Escape Rope,1,56,19,146,0142,0,0139,8088,Release hidden-item parameter table
+Hidden ground item,Viridian Forest,D46R0101,Max Ether,1,11,71,147,0143,0,0115,8085,Release hidden-item parameter table
+Hidden ground item,Viridian Forest,D46R0101,Full Restore,1,26,41,147,0143,1,0115,8087,Release hidden-item parameter table
+Hidden ground item,Viridian Forest,D46R0101,Big Mushroom,1,12,46,147,0143,2,0115,8216,Release hidden-item parameter table
+Hidden ground item,Viridian Forest,D46R0101,Big Mushroom,1,47,46,147,0143,3,0115,8217,Release hidden-item parameter table
+Visible ground item,Viridian Forest,D46R0101,Dire Hit,1,23,17,147,0143,1,0115,7056,Item-ball script number 7000 + item ID
+Visible ground item,Viridian Forest,D46R0101,Blue Flute,1,42,32,147,0143,2,0115,7065,Item-ball script number 7000 + item ID
+Visible ground item,Viridian Forest,D46R0101,TM077,1,50,60,147,0143,3,0115,7404,Item-ball script number 7000 + item ID
+Visible ground item,Viridian Forest,D46R0101,Rare Candy,1,20,49,147,0143,11,0115,7050,Item-ball script number 7000 + item ID
+Hidden ground item,Route 47,R47,Stardust,1,81,396,151,0146,0,0260,8039,Release hidden-item parameter table
+Visible ground item,Route 47,R47,Revive,1,117,395,151,0146,0,0260,7028,Item-ball script number 7000 + item ID
+Visible ground item,Route 47,R47,Wave Incense,1,76,399,151,0146,1,0260,7317,Item-ball script number 7000 + item ID
+Visible ground item,Route 47,R47,White Flute,1,77,366,151,0146,2,0260,7069,Item-ball script number 7000 + item ID
+Visible ground item,Route 47,R47,Reveal Glass,1,146,375,151,0146,17,0260,7638,Item-ball script number 7000 + item ID
+Visible ground item,Route 47,R47,Galarica Wreath,1,108,385,151,0146,18,0260,6,Local Script 6: item var + pickup helper
+Visible ground item,Route 48,R48,Nugget,1,75,336,152,0147,0,0261,7092,Item-ball script number 7000 + item ID
+Hidden ground item,Union Cave,D25R0102,Revive,1,24,15,153,0148,0,0057,8155,Release hidden-item parameter table
+Visible ground item,Union Cave,D25R0102,TM039,1,13,44,153,0148,5,0057,7366,Item-ball script number 7000 + item ID
+Visible ground item,Union Cave,D25R0102,X Defense,1,27,30,153,0148,6,0057,7058,Item-ball script number 7000 + item ID
+Hidden ground item,Union Cave,D25R0103,Ultra Ball,1,3,81,154,0149,0,0058,8156,Release hidden-item parameter table
+Hidden ground item,Union Cave,D25R0103,Calcium,1,4,59,154,0149,1,0058,8157,Release hidden-item parameter table
+Visible ground item,Union Cave,D25R0103,Elixir,1,25,43,154,0149,4,0058,7040,Item-ball script number 7000 + item ID
+Visible ground item,Union Cave,D25R0103,Dark Stone,1,17,73,154,0149,5,0058,7617,Item-ball script number 7000 + item ID
+Visible ground item,Sprout Tower,D15R0103,Amulet Coin,1,11,27,156,0151,4,0018,7223,Item-ball script number 7000 + item ID
+Hidden ground item,Dark Cave,D42R0102,Max Ether,1,59,26,176,0169,0,0139,8015,Release hidden-item parameter table
+Visible ground item,Dark Cave,D42R0102,Dire Hit,1,46,51,176,0169,4,0139,7056,Item-ball script number 7000 + item ID
+Visible ground item,Dark Cave,D42R0102,Black Flute,1,17,25,176,0169,5,0139,7068,Item-ball script number 7000 + item ID
+Visible ground item,Dark Cave,D42R0102,Black Augurite,1,10,13,176,0169,7,0139,17,Local Script 17: item var + pickup helper
+Visible ground item,Dark Cave,D42R0102,PP Max,1,51,15,176,0169,8,0139,7053,Item-ball script number 7000 + item ID
+Visible ground item,Dark Cave,D42R0102,Max Revive,1,56,43,176,0169,9,0139,7029,Item-ball script number 7000 + item ID
+Hidden ground item,SLOWPOKE Well,D26R0102,Full Heal,1,36,19,177,0170,0,0060,8029,Release hidden-item parameter table
+Visible ground item,SLOWPOKE Well,D26R0102,Froslassite,1,34,5,177,0170,8,0060,4,Local Script 4: item var + pickup helper
+Hidden ground item,Victory Road,D43R0102,Max Revive,1,15,27,178,0171,0,0109,8185,Release hidden-item parameter table
+Hidden ground item,Victory Road,D43R0102,PP Up,1,28,38,178,0171,1,0109,8186,Release hidden-item parameter table
+Hidden ground item,Victory Road,D43R0102,Ultra Ball,1,57,42,178,0171,2,0109,8189,Release hidden-item parameter table
+Visible ground item,Victory Road,D43R0102,TM026,1,13,24,178,0171,0,0109,7353,Item-ball script number 7000 + item ID
+Visible ground item,Victory Road,D43R0102,Full Restore,1,44,24,178,0171,1,0109,7023,Item-ball script number 7000 + item ID
+Visible ground item,Victory Road,D43R0102,Lucarionite,1,31,36,178,0171,4,0109,7673,Item-ball script number 7000 + item ID
+Hidden ground item,Victory Road,D43R0103,Hyper Potion,1,59,40,179,0172,0,0110,8187,Release hidden-item parameter table
+Hidden ground item,Victory Road,D43R0103,Zinc,1,43,18,179,0172,1,0110,8188,Release hidden-item parameter table
+Visible ground item,Victory Road,D43R0103,TM079,1,33,36,179,0172,2,0110,7406,Item-ball script number 7000 + item ID
+Visible ground item,Victory Road,D43R0103,Rare Candy,1,25,15,179,0172,3,0110,7050,Item-ball script number 7000 + item ID
+Visible ground item,SLOWPOKE Well,D26R0103,TM018,1,25,9,181,0174,1,0061,7345,Item-ball script number 7000 + item ID
+Visible ground item,Goldenrod City,T25R1101,TM078,1,2,15,183,0176,10,0906,7405,Item-ball script number 7000 + item ID
+Visible ground item,Radio Tower,D23R0104,Ultra Ball,1,25,7,188,0181,8,0032,7002,Item-ball script number 7000 + item ID
+Hidden ground item,Goldenrod City,D37R0103,Paralyze Heal,1,1,9,200,0193,0,0095,8052,Release hidden-item parameter table
+Hidden ground item,Goldenrod City,D37R0103,Super Potion,1,13,14,200,0193,1,0095,8053,Release hidden-item parameter table
+Hidden ground item,Goldenrod City,D37R0103,Antidote,1,20,11,200,0193,2,0095,8067,Release hidden-item parameter table
+Visible ground item,Goldenrod City,D37R0103,Amulet Coin,1,27,3,200,0193,18,0095,7223,Item-ball script number 7000 + item ID
+Visible ground item,Goldenrod City,D37R0103,Ether,1,17,23,200,0193,19,0095,7038,Item-ball script number 7000 + item ID
+Hidden ground item,Goldenrod City,D37R0105,Max Potion,1,12,11,202,0195,0,0097,8068,Release hidden-item parameter table
+Hidden ground item,Goldenrod City,D37R0105,Revive,1,27,13,202,0195,1,0097,8069,Release hidden-item parameter table
+Visible ground item,Goldenrod City,D37R0105,TM082,1,21,15,202,0195,4,0097,7409,Item-ball script number 7000 + item ID
+Visible ground item,Goldenrod City,D37R0105,Max Ether,1,28,23,202,0195,5,0097,7039,Item-ball script number 7000 + item ID
+Visible ground item,Goldenrod City,D37R0105,Ultra Ball,1,6,7,202,0195,6,0097,7002,Item-ball script number 7000 + item ID
+Visible ground item,Burned Tower,D18R0102,TM012,1,5,6,217,0204,11,0024,7339,Item-ball script number 7000 + item ID
+Visible ground item,Lighthouse,D27R0103,Rare Candy,1,2,2,221,0207,0,0063,7050,Item-ball script number 7000 + item ID
+Hidden ground item,Lighthouse,D27R0104,Hyper Potion,1,5,14,222,0208,0,0139,8066,Release hidden-item parameter table
+Visible ground item,Lighthouse,D27R0104,Ether,1,14,13,222,0208,3,0139,7038,Item-ball script number 7000 + item ID
+Visible ground item,Lighthouse,D27R0105,TM087,1,2,13,223,0209,2,0064,7414,Item-ball script number 7000 + item ID
+Visible ground item,Lighthouse,D27R0106,Super Repel,1,11,3,224,0210,2,0065,7076,Item-ball script number 7000 + item ID
+Hidden ground item,Ice Path,D39R0102,Revive,1,15,47,237,0223,0,0100,8228,Release hidden-item parameter table
+Visible ground item,Ice Path,D39R0102,Glalitite,1,13,48,237,0223,5,0100,7763,Item-ball script number 7000 + item ID
+Hidden ground item,Ice Path,D39R0103,Carbos,1,26,26,238,0224,0,0101,8071,Release hidden-item parameter table
+Visible ground item,Ice Path,D39R0103,TM072,1,57,24,238,0224,4,0101,7399,Item-ball script number 7000 + item ID
+Visible ground item,Ice Path,D39R0103,Max Elixir,1,15,15,238,0224,5,0101,7041,Item-ball script number 7000 + item ID
+Visible ground item,Ice Path,D39R0103,Full Restore,1,5,12,238,0224,6,0101,7023,Item-ball script number 7000 + item ID
+Visible ground item,Ice Path,D39R0104,Never-Melt Ice,1,12,13,239,0225,1,0139,7246,Item-ball script number 7000 + item ID
+Hidden ground item,Whirl Islands,D40R0102,Ultra Ball,1,63,45,242,0228,0,0102,8074,Release hidden-item parameter table
+Hidden ground item,Whirl Islands,D40R0102,Super Repel,1,67,8,242,0228,1,0102,8191,Release hidden-item parameter table
+Hidden ground item,Whirl Islands,D40R0102,Revive,1,72,20,242,0228,2,0102,8193,Release hidden-item parameter table
+Visible ground item,Whirl Islands,D40R0102,Full Restore,1,26,27,242,0228,1,0102,7023,Item-ball script number 7000 + item ID
+Visible ground item,Whirl Islands,D40R0102,Nugget,1,41,14,242,0228,2,0102,7092,Item-ball script number 7000 + item ID
+Visible ground item,Whirl Islands,D40R0102,PP Up,1,19,36,242,0228,3,0102,7051,Item-ball script number 7000 + item ID
+Visible ground item,Whirl Islands,D40R0102,Rare Candy,1,70,39,242,0228,4,0102,7050,Item-ball script number 7000 + item ID
+Visible ground item,Whirl Islands,D40R0104,Max Revive,1,25,17,243,0229,1,0103,7029,Item-ball script number 7000 + item ID
+Visible ground item,Whirl Islands,D40R0104,Full Restore,1,29,25,243,0229,2,0103,7023,Item-ball script number 7000 + item ID
+Visible ground item,Whirl Islands,D40R0104,Max Elixir,1,25,30,243,0229,3,0103,7041,Item-ball script number 7000 + item ID
+Hidden ground item,Team Rocket HQ,D35R0102,Revive,1,53,16,247,0233,1,0089,8051,Release hidden-item parameter table
+Visible ground item,Team Rocket HQ,D35R0102,Nugget,1,30,28,247,0233,8,0089,7092,Item-ball script number 7000 + item ID
+Hidden ground item,Team Rocket HQ,D35R0103,Full Heal,1,20,29,248,0234,6,0090,8054,Release hidden-item parameter table
+Visible ground item,Team Rocket HQ,D35R0103,TM046,1,12,18,248,0234,15,0090,7373,Item-ball script number 7000 + item ID
+Visible ground item,Team Rocket HQ,D35R0104,TM049,1,32,4,249,0235,12,0091,7376,Item-ball script number 7000 + item ID
+Visible ground item,Team Rocket HQ,D35R0104,PP Max,1,27,18,249,0235,15,0091,7053,Item-ball script number 7000 + item ID
+Hidden ground item,Mt. Mortar,D38R0102,Max Repel,1,54,68,250,0236,0,0139,8045,Release hidden-item parameter table
+Hidden ground item,Mt. Mortar,D38R0102,Ether,1,43,20,250,0236,1,0139,8046,Release hidden-item parameter table
+Hidden ground item,Mt. Mortar,D38R0102,Rare Candy,1,34,74,250,0236,2,0139,8140,Release hidden-item parameter table
+Hidden ground item,Mt. Mortar,D38R0102,Ultra Ball,1,60,37,250,0236,3,0139,8141,Release hidden-item parameter table
+Hidden ground item,Mt. Mortar,D38R0102,Nugget,1,61,71,250,0236,4,0139,8142,Release hidden-item parameter table
+Visible ground item,Mt. Mortar,D38R0102,Nugget,1,67,28,250,0236,1,0139,7092,Item-ball script number 7000 + item ID
+Visible ground item,Mt. Mortar,D38R0102,Iron Ball,1,51,31,250,0236,2,0139,7278,Item-ball script number 7000 + item ID
+Visible ground item,Mt. Mortar,D38R0102,Max Potion,1,51,43,250,0236,3,0139,7024,Item-ball script number 7000 + item ID
+Visible ground item,Mt. Mortar,D38R0102,Iron,1,29,20,250,0236,4,0139,7047,Item-ball script number 7000 + item ID
+Visible ground item,Mt. Mortar,D38R0102,Max Revive,1,23,36,250,0236,5,0139,7029,Item-ball script number 7000 + item ID
+Visible ground item,Mt. Mortar,D38R0102,Full Incense,1,73,47,250,0236,8,0139,7316,Item-ball script number 7000 + item ID
+Visible ground item,Mt. Mortar,D38R0102,Protector,1,38,75,250,0236,9,0139,7321,Item-ball script number 7000 + item ID
+Visible ground item,Mt. Mortar,D38R0102,Max Revive,1,67,54,250,0236,10,0139,7029,Item-ball script number 7000 + item ID
+Visible ground item,Mt. Mortar,D38R0102,Max Elixir,1,37,52,250,0236,11,0139,7041,Item-ball script number 7000 + item ID
+Hidden ground item,Mt. Mortar,D38R0103,Full Restore,1,53,29,251,0237,0,0139,8047,Release hidden-item parameter table
+Hidden ground item,Mt. Mortar,D38R0103,Hyper Potion,1,42,48,251,0237,1,0139,8143,Release hidden-item parameter table
+Hidden ground item,Mt. Mortar,D38R0103,Full Heal,1,16,18,251,0237,2,0139,8144,Release hidden-item parameter table
+Visible ground item,Mt. Mortar,D38R0103,Rare Candy,1,6,55,251,0237,0,0139,7050,Item-ball script number 7000 + item ID
+Visible ground item,Mt. Mortar,D38R0103,TM040,1,29,34,251,0237,1,0139,7367,Item-ball script number 7000 + item ID
+Visible ground item,Mt. Mortar,D38R0103,Elixir,1,16,24,251,0237,2,0139,7040,Item-ball script number 7000 + item ID
+Visible ground item,Mt. Mortar,D38R0103,Escape Rope,1,45,15,251,0237,3,0139,7078,Item-ball script number 7000 + item ID
+Visible ground item,Mt. Mortar,D38R0103,Full Restore,1,45,38,251,0237,5,0139,7023,Item-ball script number 7000 + item ID
+Visible ground item,Mt. Mortar,D38R0103,PP Up,1,27,14,251,0237,6,0139,7051,Item-ball script number 7000 + item ID
+Hidden ground item,Mt. Mortar,D38R0104,Max Revive,1,33,15,252,0238,0,0098,8049,Release hidden-item parameter table
+Hidden ground item,Mt. Mortar,D38R0104,Ultra Ball,1,17,73,252,0238,1,0098,8050,Release hidden-item parameter table
+Visible ground item,Mt. Mortar,D38R0104,PP Up,1,36,66,252,0238,2,0098,7051,Item-ball script number 7000 + item ID
+Visible ground item,Mt. Mortar,D38R0104,Full Restore,1,52,64,252,0238,3,0098,7023,Item-ball script number 7000 + item ID
+Visible ground item,Mt. Mortar,D38R0104,Max Ether,1,46,45,252,0238,4,0098,7039,Item-ball script number 7000 + item ID
+Visible ground item,Mt. Mortar,D38R0104,Garchompite,1,11,58,252,0238,5,0098,7683,Item-ball script number 7000 + item ID
+Visible ground item,Mt. Mortar,D38R0104,Rare Candy,1,40,39,252,0238,6,0098,7050,Item-ball script number 7000 + item ID
+Hidden ground item,Dragon’s Den,D44R0102,Revive,1,14,12,253,0239,0,0111,8081,Release hidden-item parameter table
+Hidden ground item,Dragon’s Den,D44R0102,Max Elixir,1,32,49,253,0239,1,0111,8083,Release hidden-item parameter table
+Hidden ground item,Dragon’s Den,D44R0102,Max Potion,1,8,22,253,0239,2,0111,8082,Release hidden-item parameter table
+Visible ground item,Dragon’s Den,D44R0102,Dragon Fang,1,50,34,253,0239,5,0111,7250,Item-ball script number 7000 + item ID
+Visible ground item,Dragon’s Den,D44R0102,Max Elixir,1,7,33,253,0239,7,0111,7041,Item-ball script number 7000 + item ID
+Visible ground item,Dragon’s Den,D44R0102,PP Max,1,42,16,253,0239,12,0111,7053,Item-ball script number 7000 + item ID
+Hidden ground item,Cliff Edge Gate,D48R0101,Big Pearl,1,40,25,279,0250,3,0121,8209,Release hidden-item parameter table
+Hidden ground item,Pokéathlon Dome,D49,PP Up,1,52,16,280,0251,0,0122,8159,Release hidden-item parameter table
+Hidden ground item,Pokéathlon Dome,D49,Protein,1,20,34,280,0251,1,0122,8160,Release hidden-item parameter table
+Visible ground item,Ruins of Alph,D24R0212,Heal Powder,1,4,8,324,0295,0,0049,7036,Item-ball script number 7000 + item ID
+Visible ground item,Ruins of Alph,D24R0212,Energy Powder,1,8,8,324,0295,1,0049,7034,Item-ball script number 7000 + item ID
+Visible ground item,Ruins of Alph,D24R0212,Oran Berry,1,4,12,324,0295,2,0049,7155,Item-ball script number 7000 + item ID
+Visible ground item,Ruins of Alph,D24R0212,Pecha Berry,1,8,12,324,0295,3,0049,7151,Item-ball script number 7000 + item ID
+Visible ground item,Ruins of Alph,D24R0213,Heal Powder,1,4,8,325,0296,0,0050,7036,Item-ball script number 7000 + item ID
+Visible ground item,Ruins of Alph,D24R0213,Energy Root,1,8,8,325,0296,1,0050,7035,Item-ball script number 7000 + item ID
+Visible ground item,Ruins of Alph,D24R0213,Sitrus Berry,1,4,12,325,0296,2,0050,7158,Item-ball script number 7000 + item ID
+Visible ground item,Ruins of Alph,D24R0213,Max Revive,1,8,12,325,0296,3,0050,7029,Item-ball script number 7000 + item ID
+Visible ground item,Ruins of Alph,D24R0214,Revival Herb,1,4,8,326,0297,0,0051,7037,Item-ball script number 7000 + item ID
+Visible ground item,Ruins of Alph,D24R0214,Charcoal,1,8,8,326,0297,1,0051,7249,Item-ball script number 7000 + item ID
+Visible ground item,Ruins of Alph,D24R0214,Life Orb,1,4,12,326,0297,2,0051,7270,Item-ball script number 7000 + item ID
+Visible ground item,Ruins of Alph,D24R0214,Leppa Berry,1,8,12,326,0297,3,0051,7154,Item-ball script number 7000 + item ID
+Visible ground item,Ruins of Alph,D24R0215,Stardust,1,4,8,327,0298,0,0052,7090,Item-ball script number 7000 + item ID
+Visible ground item,Ruins of Alph,D24R0215,Star Piece,1,8,8,327,0298,1,0052,7091,Item-ball script number 7000 + item ID
+Visible ground item,Ruins of Alph,D24R0215,Leppa Berry,1,4,12,327,0298,2,0052,7154,Item-ball script number 7000 + item ID
+Visible ground item,Ruins of Alph,D24R0215,Mystic Water,1,8,12,327,0298,3,0052,7243,Item-ball script number 7000 + item ID
+Hidden ground item,Olivine City,P01R0102,Protein,1,23,26,330,0301,0,0153,8086,Release hidden-item parameter table
+Hidden ground item,Olivine City,P01R0102,Pearl,1,13,16,330,0301,1,0153,8158,Release hidden-item parameter table
+Hidden ground item,Bell Tower,D17R0103,Max Potion,1,16,8,333,0304,0,0139,8062,Release hidden-item parameter table
+Visible ground item,Bell Tower,D17R0103,Full Heal,1,6,25,333,0304,0,0139,7027,Item-ball script number 7000 + item ID
+Visible ground item,Bell Tower,D17R0104,PP Up,1,25,24,334,0305,0,0139,7051,Item-ball script number 7000 + item ID
+Hidden ground item,Bell Tower,D17R0105,Full Restore,1,24,20,335,0306,0,0139,8063,Release hidden-item parameter table
+Visible ground item,Bell Tower,D17R0105,Rare Candy,1,14,19,335,0306,0,0139,7050,Item-ball script number 7000 + item ID
+Visible ground item,Bell Tower,D17R0106,Raichunite Y,1,6,7,336,0307,0,0139,15,Local Script 15: item var + pickup helper
+Visible ground item,Bell Tower,D17R0106,Max Elixir,1,13,16,336,0307,1,0139,7041,Item-ball script number 7000 + item ID
+Visible ground item,Bell Tower,D17R0107,Max Revive,1,23,7,337,0308,0,0020,7029,Item-ball script number 7000 + item ID
+Visible ground item,Bell Tower,D17R0108,Full Restore,1,6,6,338,0309,0,0139,7023,Item-ball script number 7000 + item ID
+Visible ground item,Bell Tower,D17R0108,Max Elixir,1,17,14,338,0309,1,0139,7041,Item-ball script number 7000 + item ID
+Visible ground item,Bell Tower,D17R0108,Nugget,1,19,24,338,0309,2,0139,7092,Item-ball script number 7000 + item ID
+Hidden ground item,Cliff Cave,D50R0101,Ultra Ball,1,9,30,342,0313,0,0129,8226,Release hidden-item parameter table
+Hidden ground item,Vermilion City,P01R0104,Iron,1,26,20,387,0344,0,0155,8084,Release hidden-item parameter table
+Visible ground item,Route 10,R10R0101,TM069,1,1411,205,388,0345,2,0194,7396,Item-ball script number 7000 + item ID
+Hidden ground item,Frontier Access,D32R0102,Rare Candy,1,24,21,411,0367,0,0081,8161,Release hidden-item parameter table
+Visible ground item,Route 2,R02R0101,Full Restore,1,1053,129,414,0370,3,0170,7023,Item-ball script number 7000 + item ID
+Hidden ground item,Mt. Moon,D02R0103,Max Revive,1,36,2,449,0404,0,0009,8196,Release hidden-item parameter table
+Hidden ground item,Cerulean Cave,D03R0102,Ultra Ball,1,44,23,450,0405,0,0139,8096,Release hidden-item parameter table
+Hidden ground item,Cerulean Cave,D03R0102,PP Up,1,55,40,450,0405,1,0139,8117,Release hidden-item parameter table
+Hidden ground item,Cerulean Cave,D03R0102,Big Pearl,1,45,39,450,0405,2,0139,8118,Release hidden-item parameter table
+Hidden ground item,Cerulean Cave,D03R0102,Zinc,1,53,30,450,0405,3,0139,8119,Release hidden-item parameter table
+Hidden ground item,Cerulean Cave,D03R0102,Full Heal,1,56,24,450,0405,4,0139,8120,Release hidden-item parameter table
+Hidden ground item,Cerulean Cave,D03R0102,Protein,1,6,18,450,0405,5,0139,8221,Release hidden-item parameter table
+Visible ground item,Cerulean Cave,D03R0102,PP Up,1,8,25,450,0405,0,0139,7051,Item-ball script number 7000 + item ID
+Visible ground item,Cerulean Cave,D03R0102,TM024,1,56,17,450,0405,1,0139,7351,Item-ball script number 7000 + item ID
+Visible ground item,Cerulean Cave,D03R0102,Odd Incense,1,39,33,450,0405,2,0139,7314,Item-ball script number 7000 + item ID
+Visible ground item,Cerulean Cave,D03R0102,PP Up,1,12,32,450,0405,11,0139,7051,Item-ball script number 7000 + item ID
+Hidden ground item,Cerulean Cave,D03R0103,Max Revive,1,14,12,451,0406,0,0011,8121,Release hidden-item parameter table
+Hidden ground item,Cerulean Cave,D03R0103,Ultra Ball,1,26,19,451,0406,1,0011,8123,Release hidden-item parameter table
+Hidden ground item,Cerulean Cave,D03R0103,Nugget,1,39,11,451,0406,2,0011,8124,Release hidden-item parameter table
+Visible ground item,Cerulean Cave,D03R0103,Max Revive,1,31,6,451,0406,0,0011,7029,Item-ball script number 7000 + item ID
+Visible ground item,Cerulean Cave,D03R0103,Electirizer,1,58,8,451,0406,1,0011,7322,Item-ball script number 7000 + item ID
+Visible ground item,Cerulean Cave,D03R0103,Mewtwonite Y,1,56,16,451,0406,13,0011,7663,Item-ball script number 7000 + item ID
+Visible ground item,Cerulean Cave,D03R0103,Rare Candy,1,5,32,451,0406,14,0011,7050,Item-ball script number 7000 + item ID
+Visible ground item,Cerulean Cave,D03R0103,PP Max,1,28,26,451,0406,15,0011,7053,Item-ball script number 7000 + item ID
+Visible ground item,Cerulean Cave,D03R0103,Black Sludge,1,57,39,451,0406,16,0011,7281,Item-ball script number 7000 + item ID
+Hidden ground item,Rock Tunnel,D05R0102,HP Up,1,25,34,452,0407,0,0139,8169,Release hidden-item parameter table
+Visible ground item,Rock Tunnel,D05R0102,PP Up,1,31,21,452,0407,0,0139,7051,Item-ball script number 7000 + item ID
+Visible ground item,Rock Tunnel,D05R0102,Revive,1,24,5,452,0407,1,0139,7028,Item-ball script number 7000 + item ID
+Visible ground item,Rock Tunnel,D05R0102,Max Revive,1,33,33,452,0407,17,0139,7029,Item-ball script number 7000 + item ID
+Visible ground item,Rock Tunnel,D05R0102,Max Elixir,1,15,31,452,0407,18,0139,7041,Item-ball script number 7000 + item ID
+Hidden ground item,Seafoam Islands,D11R0102,Ice Heal,1,19,17,453,0408,0,0013,8089,Release hidden-item parameter table
+Visible ground item,Seafoam Islands,D11R0102,Grip Claw,1,22,4,453,0408,6,0013,7286,Item-ball script number 7000 + item ID
+Visible ground item,Seafoam Islands,D11R0102,Full Restore,1,29,9,453,0408,8,0013,7023,Item-ball script number 7000 + item ID
+Hidden ground item,Seafoam Islands,D11R0103,Pearl,1,5,7,454,0409,0,0139,8090,Release hidden-item parameter table
+Hidden ground item,Seafoam Islands,D11R0103,Pearl,1,42,18,454,0409,1,0139,8091,Release hidden-item parameter table
+Visible ground item,Seafoam Islands,D11R0103,PP Up,1,19,25,454,0409,3,0139,7051,Item-ball script number 7000 + item ID
+Hidden ground item,Seafoam Islands,D11R0104,Max Revive,1,38,27,455,0410,0,0139,8092,Release hidden-item parameter table
+Hidden ground item,Seafoam Islands,D11R0104,Rare Candy,1,10,9,455,0410,1,0139,8210,Release hidden-item parameter table
+Visible ground item,Seafoam Islands,D11R0104,Revive,1,21,22,455,0410,7,0139,7028,Item-ball script number 7000 + item ID
+Visible ground item,Seafoam Islands,D11R0104,Big Pearl,1,21,11,455,0410,8,0139,7089,Item-ball script number 7000 + item ID
+Hidden ground item,Seafoam Islands,D11R0105,Zinc,1,27,22,456,0411,0,0014,8223,Release hidden-item parameter table
+Visible ground item,Seafoam Islands,D11R0105,Ultra Ball,1,29,4,456,0411,0,0014,7002,Item-ball script number 7000 + item ID
+Visible ground item,Seafoam Islands,D11R0105,TM013,1,42,8,456,0411,1,0014,7340,Item-ball script number 7000 + item ID
+Hidden ground item,Mt. Silver Cave,D41R0102,Rare Candy,1,28,41,459,0413,0,0139,8165,Release hidden-item parameter table
+Hidden ground item,Mt. Silver Cave,D41R0102,Max Ether,1,23,12,459,0413,1,0139,8204,Release hidden-item parameter table
+Hidden ground item,Mt. Silver Cave,D41R0102,Hyper Potion,1,20,40,459,0413,2,0139,8205,Release hidden-item parameter table
+Visible ground item,Mt. Silver Cave,D41R0102,Pure Incense,1,31,40,459,0413,0,0139,7320,Item-ball script number 7000 + item ID
+Visible ground item,Mt. Silver Cave,D41R0102,Rare Candy,1,10,40,459,0413,1,0139,7050,Item-ball script number 7000 + item ID
+Visible ground item,Mt. Silver Cave,D41R0103,TM076,1,15,45,460,0414,0,0139,7403,Item-ball script number 7000 + item ID
+Visible ground item,Mt. Silver Cave,D41R0103,Charizardite X,1,27,46,460,0414,1,0139,7660,Item-ball script number 7000 + item ID
+Visible ground item,Mt. Silver Cave,D41R0104,Expert Belt,1,5,5,461,0415,0,0139,7268,Item-ball script number 7000 + item ID
+Hidden ground item,Mt. Silver Cave,D41R0105,Ultra Ball,1,18,1,462,0416,0,0106,8202,Release hidden-item parameter table
+Hidden ground item,Mt. Silver Cave,D41R0105,Hyper Potion,1,2,1,462,0416,1,0106,8203,Release hidden-item parameter table
+Hidden ground item,Mt. Silver Cave,D41R0106,Max Potion,1,2,19,463,0417,0,0139,8078,Release hidden-item parameter table
+Hidden ground item,Mt. Silver Cave,D41R0106,Iron,1,38,2,463,0417,1,0139,8222,Release hidden-item parameter table
+Visible ground item,Mt. Silver Cave,D41R0106,Max Elixir,1,17,11,463,0417,0,0139,7041,Item-ball script number 7000 + item ID
+Visible ground item,Mt. Silver Cave,D41R0106,Max Revive,1,25,7,463,0417,1,0139,7029,Item-ball script number 7000 + item ID
+Visible ground item,Mt. Silver Cave,D41R0106,Charizardite Y,1,17,37,463,0417,7,0139,7678,Item-ball script number 7000 + item ID
+Visible ground item,Mt. Silver Cave,D41R0106,PP Max,1,37,17,463,0417,8,0139,7053,Item-ball script number 7000 + item ID
+Hidden ground item,Mt. Silver Cave,D41R0107,Max Revive,1,24,2,464,0418,0,0139,8206,Release hidden-item parameter table
+Visible ground item,Whirl Islands,D40R0106,Rare Candy,1,14,27,486,0439,0,0139,7050,Item-ball script number 7000 + item ID
+Hidden ground item,National Park,D22R0102,Full Heal,1,53,78,487,0440,3,0026,8035,Release hidden-item parameter table
+Visible ground item,National Park,D22R0102,TM028,1,24,58,487,0440,0,0026,7355,Item-ball script number 7000 + item ID
+Visible ground item,National Park,D22R0102,Soothe Bell,1,77,33,487,0440,1,0026,7218,Item-ball script number 7000 + item ID
+Visible ground item,National Park,D22R0102,Max Revive,1,81,16,487,0440,12,0026,7029,Item-ball script number 7000 + item ID
+Hidden ground item,Mt. Moon,D02R0104,Max Revive,1,36,2,513,0465,1,0010,8196,Release hidden-item parameter table
+Hidden ground item,Route 5,R05R0202,Full Restore,1,5,14,532,0484,0,0181,8057,Release hidden-item parameter table
+Visible ground item,Mysterious Cave,KYUREM,DNA Splicers,1,44,7,592,0543,1,1069,7628,Item-ball script number 7000 + item ID
+Visible ground item,Mysterious Cave,KYUREM,DNA Splicers,1,52,7,592,0543,2,1069,7629,Item-ball script number 7000 + item ID
+Visible ground item,Mysterious Cave,ZYGARDE,Zygarde Cube,1,75,79,609,0560,1,1103,7847,Item-ball script number 7000 + item ID
+Visible ground item,Ultra Space,SOLGALEO,N-Solarizer,1,13,11,616,0567,1,1117,7943,Item-ball script number 7000 + item ID
+Visible ground item,Ultra Space,SOLGALEO,N-Solarizer,1,19,11,616,0567,2,1117,7945,Item-ball script number 7000 + item ID
+Visible ground item,Ultra Space,LUNALA,N-Lunarizer,1,13,11,617,0568,1,1119,7944,Item-ball script number 7000 + item ID
+Visible ground item,Ultra Space,LUNALA,N-Lunarizer,1,19,11,617,0568,2,1119,7946,Item-ball script number 7000 + item ID
+Visible ground item,Flower Paradise,FLWR PARADISE,Gracidea,1,980,497,620,0571,1,1125,7466,Item-ball script number 7000 + item ID

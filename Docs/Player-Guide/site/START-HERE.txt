@@ -1,0 +1,9 @@
+Heartfelt Gold player guide
+
+1. Open index.html in a modern browser.
+2. Use the sidebar to browse the story, trainers, wild Pokémon, shops, items, and evolutions.
+3. Use Open rematch trainers for the separate rematch page.
+4. Search a section, choose Larger text, or print the current section as needed.
+
+The HTML pages include their sprites, styles, and code. Keep both HTML files in this folder for the rematch link to work. No internet connection is needed.
+See README-CSV-Review.md for data sources and limitations.
