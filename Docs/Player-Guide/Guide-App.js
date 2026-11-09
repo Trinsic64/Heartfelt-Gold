@@ -11,6 +11,7 @@
   }
   const shopTabs = [...shopTabsByKey.values()];
   const pokedex = DATA.pokedex?.pokemon || [];
+  const pokedexByToken = new Map(pokedex.map(mon => [mon.token, mon]));
   const machineMoves = DATA.pokedex?.machineMoves || {};
   const state = { view: REMATCH ? "rematches" : "walk", chapter: 1, trainerGroup: "All", shopLocation: shopTabs[0]?.key || "", filter: "All", page: 0, query: "", locationQuery: "", selectedArea: -1 };
   let selectedPokemon = null;
@@ -144,7 +145,12 @@
     return `<div class="table-scroll" tabindex="0" aria-label="Item locations table, scroll horizontally if needed"><table class="reference-table"><caption class="sr-only">Item locations</caption><thead><tr><th scope="col" aria-label="Sprite"></th><th scope="col">Item</th><th scope="col">Where</th><th scope="col">Type</th><th scope="col">Coordinates</th><th scope="col">Notes</th></tr></thead><tbody>${rows.map(i => `<tr><td>${icon(i.sprite)}</td><th scope="row">${esc(itemLabel(i.item))}</th><td>${esc(i.location)}</td><td>${esc(i.type)}</td><td>${esc(i.coord)}</td><td>${esc(i.notes)}</td></tr>`).join("")}</tbody></table></div>`;
   }
   function staticTable(rows) {
-    return `<div class="table-scroll" tabindex="0" aria-label="Scripted encounters table, scroll horizontally if needed"><table class="reference-table"><caption class="sr-only">Scripted Pokémon encounters and parent areas</caption><thead><tr><th scope="col" aria-label="Sprite"></th><th scope="col">Pokémon</th><th scope="col">Level</th><th scope="col">Encounter area</th><th scope="col">Parent area</th></tr></thead><tbody>${rows.map(i => `<tr><td>${icon(i.icon, "poke-icon")}</td><th scope="row">${esc(i.name)}</th><td>Lv. ${esc(i.level)}</td><td>${esc(i.area)}</td><td><strong>${esc(i.parent)}</strong><br><small class="dim">${esc(i.parentLink)}</small></td></tr>`).join("")}</tbody></table></div>`;
+    const body = rows.map(encounter => {
+      const stem = (encounter.icon || "").split("/").pop().replace(/\.png$/i, "");
+      const sprite = imageName(pokedexByToken.get(`SPECIES_${stem.toUpperCase()}`) || encounter);
+      return `<tr><td class="static-sprite">${sprite}</td><th scope="row">${esc(encounter.name)}</th><td class="static-level">Lv. ${esc(encounter.level)}</td><td>${esc(encounter.area)}</td><td><strong>${esc(encounter.parent)}</strong><br><small class="dim">${esc(encounter.parentLink)}</small></td></tr>`;
+    }).join("");
+    return `<div class="table-scroll" tabindex="0" aria-label="Scripted encounters table, scroll horizontally if needed"><table class="reference-table static-encounter-table"><caption class="sr-only">Scripted Pokémon encounters and parent areas</caption><thead><tr><th scope="col" aria-label="Sprite"></th><th scope="col">Pokémon</th><th scope="col">Level</th><th scope="col">Encounter area</th><th scope="col">Parent area</th></tr></thead><tbody>${body}</tbody></table></div>`;
   }
 
   function renderTrainers() {
@@ -305,7 +311,7 @@
         const button = event.target.closest("[data-pokemon]");
         if (!button) return;
         dexListScroll = { left: list.scrollLeft, page: window.scrollY };
-        selectedPokemon = pokedex.find(mon => mon.token === button.dataset.pokemon);
+        selectedPokemon = pokedexByToken.get(button.dataset.pokemon);
         render();
         $("dexTitle").focus({ preventScroll: true });
         $("dexBack").scrollIntoView({ block: "start" });
@@ -402,7 +408,6 @@
     $("resultsStatus").textContent = $("content").querySelector(".stats")?.textContent.trim().replace(/\s+/g, " ") || "Guide content updated";
   }
   $("search").addEventListener("input", event => { state.query = event.target.value.trim().toLocaleLowerCase(); state.page = 0; state.selectedArea = -1; selectedPokemon = null; render(); });
-  $("printBtn").onclick = () => window.print();
   $("textSizeBtn").onclick = () => {
     const larger = document.documentElement.classList.toggle("large-text");
     $("textSizeBtn").setAttribute("aria-pressed", String(larger));

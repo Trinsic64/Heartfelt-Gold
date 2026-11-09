@@ -102,8 +102,13 @@ def prepare_data(html, source):
     return html, data
 
 
+def remove_retired_header_actions(html):
+    html = re.sub(r'<button\b[^>]*\bid="printBtn"[^>]*>[^<]*</button>', "", html)
+    return re.sub(r'<a\b[^>]*\bhref="Rematch-Trainer-Guide\.html"[^>]*>Open rematch trainers[^<]*</a>', "", html)
+
+
 def build_page(source, input_name, output_name, script, css, version):
-    html = (source / input_name).read_text(encoding="utf-8")
+    html = remove_retired_header_actions((source / input_name).read_text(encoding="utf-8"))
     html, data = prepare_data(html, source)
     paths = sorted(set(sprite_paths(data)))
     sprites = {}
@@ -163,10 +168,9 @@ def build(source):
         f"Heartfelt Gold player guide — {version}\n\n"
         "1. Open index.html in a modern browser.\n"
         "2. Use the sidebar to browse the story, Pokédex, trainers, wild Pokémon, shops, items, and evolutions.\n"
-        "3. Use Open rematch trainers for the separate rematch page.\n"
-        "4. Search a section, choose Larger text, or print the current section as needed.\n\n"
-        "The HTML pages include their sprites, styles, and code. Keep both HTML files in this folder "
-        "for the rematch link to work. No internet connection is needed.\n"
+        "3. Search a section or choose Larger text as needed.\n"
+        "4. Open Rematch-Trainer-Guide.html for rematches.\n\n"
+        "The HTML pages include their sprites, styles, and code. No internet connection is needed.\n"
         "See README-CSV-Review.md for data sources and limitations.\n",
         encoding="utf-8", newline="\n",
     )
