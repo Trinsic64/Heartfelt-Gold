@@ -63,7 +63,10 @@
   const $ = id => document.getElementById(id);
   const esc = value => String(value ?? "").replace(/[&<>"']/g, ch => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[ch]));
   const icon = (src, cls = "small-sprite", alt = "") => src ? `<img class="${cls}" src="${esc(spriteUrl(src))}" alt="${esc(alt)}">` : "";
-  const chapterNum = value => Number.parseInt(String(value).slice(0, 2), 10) || 44;
+  const chapterNum = value => Number.parseInt(String(value).slice(0, 2), 10) || 45;
+  // Keep audited Gym Trainer order, then the Leader, then the Bonus Battle.
+  const gymRank = trainer => trainer.bonus ? 2 : trainer.major ? 1 : 0;
+  const gymOrder = (a, b) => a.group === b.group && a.group?.startsWith("gym-") ? gymRank(a) - gymRank(b) : 0;
   const matches = (values, q = state.query) => !q || values.some(v => String(v ?? "").toLocaleLowerCase().includes(q));
   const title = (text, count = "") => `<h2>${esc(text)}${count === "" ? "" : `<small>${count} ${count === 1 ? "entry" : "entries"}</small>`}</h2>`;
   const notice = (text, blue = false) => `<div class="notice${blue ? " blue" : ""}">${esc(text)}</div>`;
@@ -149,7 +152,8 @@
 
   function renderWalk() {
     const chapter = DATA.chapters.find(c => c.number === state.chapter);
-    const ts = DATA.trainers.filter(t => chapterNum(t.stage) === state.chapter && trainerMatch(t));
+    const ts = DATA.trainers.filter(t => chapterNum(t.stage) === state.chapter && trainerMatch(t))
+      .sort((a, b) => a.order - b.order || gymOrder(a, b));
     const ws = DATA.wild.filter(a => a.chapter === state.chapter && filteredArea(a).length);
     const ss = DATA.shops.filter(s => s.chapter === state.chapter && matches([s.name, s.floor, ...s.items.map(i => i.name)]));
     const is = DATA.items.filter(i => i.chapter === state.chapter && matches([i.type, i.location, i.item, i.notes]));
@@ -176,12 +180,11 @@
   function renderTrainers() {
     const groupOrder = Object.fromEntries(DATA.trainerGroups.map((g, index) => [g.id, index]));
     const rows = DATA.trainers.filter(t => (state.trainerGroup === "All" || t.group === state.trainerGroup) && trainerMatch(t));
-    const gymRank = t => t.bonus ? 2 : t.major ? 1 : 0;
     rows.sort((a, b) => groupOrder[a.group] - groupOrder[b.group]
-      || (a.group.startsWith("gym-") ? gymRank(a) - gymRank(b) : 0)
+      || gymOrder(a, b)
       || a.order - b.order || Number(a.bonus) - Number(b.bonus) || a.id - b.id);
     const shown = pageSlice(rows, 10);
-    return `<h1 class="page-title">${state.trainerGroup === "All" ? "Story and bonus trainers" : esc(DATA.trainerGroups.find(g => g.id === state.trainerGroup)?.label || "Trainers")}</h1><p class="lead">Trainer battles in approximate story order, including optional bonus battles. Gym trainers and their Leader share one chapter; Elite Four and Champion battles have their own chapters. Rematches are in the separate rematch guide.</p>${stats([rows.length, "matching trainer parties"], [rows.filter(t => t.bonus).length, "bonus parties included"])}${shown.map(trainerCard).join("") || '<div class="empty">No trainers match.</div>'}`;
+    return `<h1 class="page-title">${state.trainerGroup === "All" ? "Story and bonus trainers" : esc(DATA.trainerGroups.find(g => g.id === state.trainerGroup)?.label || "Trainers")}</h1><p class="lead">Trainer battles in approximate story order, including optional bonus battles. Each Gym lists its trainers in audited order, then the Leader, then the Leader's Bonus Battle. Elite Four and Champion battles have their own chapters. Rematches are in the separate rematch guide.</p>${stats([rows.length, "matching trainer parties"], [rows.filter(t => t.bonus).length, "bonus parties included"])}${shown.map(trainerCard).join("") || '<div class="empty">No trainers match.</div>'}`;
   }
 
   function renderWild() {

@@ -133,6 +133,17 @@ assert not ({main_id for main_id, _ in second_run} & (rematch_ids | rematch_csv_
 assert guide_data["counts"]["trainers"] == len(html_trainers)
 assert guide_data["counts"]["rematches"] == rematch_data["counts"]["rematches"] == len(rematch_ids)
 
+gym_groups = [group["id"] for group in guide_data["trainerGroups"]
+              if group["id"].startswith("gym-")]
+assert len(gym_groups) == 16
+for group in gym_groups:
+    members = [t for t in guide_data["trainers"] if t["group"] == group]
+    ranks = [2 if t["bonus"] else 1 if t["major"] else 0 for t in members]
+    assert ranks == sorted(ranks) and ranks.count(1) == ranks.count(2) == 1, group
+    ids = [t["id"] for t in members]
+    assert [trainer_id for trainer_id in csv_trainers if trainer_id in ids] == ids, group
+assert main_html.count("gymOrder(a, b)") >= 2  # Walkthrough and Trainer tab share the rank.
+
 hidden = dict(re.findall(r"\[(SPECIES_[A-Z0-9_]+)\s*\]\s*=\s*(ABILITY_[A-Z0-9_]+)",
                          (ROOT / "HG-Engine/data/HiddenAbilityTable.c").read_text(encoding="utf-8")))
 changed_ids = set(release["changedTrainerPartyIds"]) - {0}

@@ -8,6 +8,7 @@ The source directory is the reviewed guide export. This script does not modify i
 
 import argparse
 import base64
+import csv
 import hashlib
 import json
 import re
@@ -36,6 +37,26 @@ def sprite_paths(value):
     elif isinstance(value, list):
         for nested in value:
             yield from sprite_paths(nested)
+
+
+def check_gym_order(source, data):
+    if data["mode"] != "main":
+        return
+    with (source / "Trainers-Story-Order.csv").open(encoding="utf-8-sig", newline="") as stream:
+        csv_rows = list(csv.DictReader(stream))
+    gym_groups = [group["id"] for group in data["trainerGroups"] if group["id"].startswith("gym-")]
+    if len(gym_groups) != 16:
+        raise ValueError("Expected 16 Gym chapters")
+    for group in gym_groups:
+        members = [t for t in data["trainers"] if t["group"] == group]
+        ranks = [2 if t["bonus"] else 1 if t["major"] else 0 for t in members]
+        if ranks != sorted(ranks) or ranks.count(1) != 1 or ranks.count(2) != 1:
+            raise ValueError(f"Gym order needs normalization: {group}; run order-gym-trainers.py")
+        ids = [t["id"] for t in members]
+        csv_ids = list(dict.fromkeys(int(row["Trainer ID"]) for row in csv_rows
+                                     if int(row["Trainer ID"]) in ids))
+        if csv_ids != ids:
+            raise ValueError(f"Trainer CSV Gym order differs from HTML: {group}")
 
 
 def bundled_script(source):
@@ -70,6 +91,7 @@ def build_page(source, input_name, output_name, script, css, version):
     if not match:
         raise ValueError(f"No guide data in {input_name}")
     data = json.loads(match.group(1))
+    check_gym_order(source, data)
     paths = sorted(set(sprite_paths(data)))
     sprites = {}
     for relative in paths:

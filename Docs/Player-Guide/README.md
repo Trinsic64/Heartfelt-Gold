@@ -10,6 +10,8 @@ This guide is paired with the v1.0.12 patch in [release.json](release.json). The
 
 The first Elite Four and Champion run appears after eight badges. The second run and its bonus battles have their own postgame chapter after Gym #16 Blue; the five second-run teams are included on the main trainer page rather than the generic rematch page.
 
+Every Gym chapter lists its Gym Trainers in audited order, then the Leader, then the Leader's Bonus Battle. This applies to the walkthrough and Trainers tab. The bundle builder checks the HTML and CSV order before publishing; after changing trainer data, run `python Docs/Player-Guide/order-gym-trainers.py --source "C:\ROM-Hack\Heartfelt-Gold\Docs"` before rebuilding.
+
 The site is published from `Docs/Player-Guide/site` by the [Pages workflow](../../.github/workflows/player-guide-pages.yml). To regenerate the portable pages from a reviewed guide export, run:
 
 ```powershell
