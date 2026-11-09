@@ -17,7 +17,7 @@ There are still some awkward or glitchy tiles, but the project is playable and r
 
 ## Player guide
 
-The [v1.0.10 interactive guide](https://trinsic64.github.io/Heartfelt-Gold/) opens in a browser. For offline use, [download the v1.0.10 guide ZIP](https://github.com/Trinsic64/Heartfelt-Gold/releases/download/heartfelt-v1.0.10/Heartfelt-Gold-Player-Guide-Offline.zip), extract it, and double-click `index.html`. The pages include their sprites and work without an account or installation. [Guide details and source notes](Docs/Player-Guide/README.md).
+The [v1.0.10 interactive guide](https://trinsic64.github.io/Heartfelt-Gold/) opens in a browser. For offline use, [download the v1.0.10 guide ZIP](https://trinsic64.github.io/Heartfelt-Gold/Heartfelt-Gold-Player-Guide-Offline.zip), extract it, and double-click `index.html`. The pages include their sprites and work without an account or installation. [Guide details and source notes](Docs/Player-Guide/README.md).
 
 ## Download and play
 
