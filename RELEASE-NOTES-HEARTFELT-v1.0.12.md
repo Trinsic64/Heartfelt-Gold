@@ -27,7 +27,7 @@ Back up your in-game save before switching versions. A copied save loaded and re
 | Artifact | Size | SHA-256 |
 | --- | ---: | --- |
 | v1.0.12 xDelta patch | 39,309,089 bytes | `f7d6e78332db8629d4f4099af1dbba5846c3acc155a79894a1252dd2e8a215ba` |
-| Offline guide ZIP | 4,342,768 bytes | `1fdd5d2033b6a7bec1a0b9159ed181f93402575a14976e5c1f7d7ae39146bbec` |
+| Offline guide ZIP | 4,343,012 bytes | `05deadb45363017e159f353b3d397b606f58c355e8a8c0983971fd203a1a11bd` |
 | Decoded ROM (verification only; not distributed) | 207,742,432 bytes | `9f6e08223717ad90dbf3ce281aed2410c2e209f1e53ed5a566eb79f41bc3731a` |
 
 The patch decoded against the documented clean USA source and matched the v23 hg-engine build byte for byte. The guide's [release manifest](Docs/Player-Guide/release.json) records the source snapshots and hashes used for this version. The v23 map fix was checked in the map archive and matrix; in-game cave navigation has not been separately verified. Script listings do not establish encounter reachability or unlock conditions. Two visible ground pickup objects remain unresolved in the [item audit](Docs/Player-Guide/site/Release-v22-Item-Audit.md).

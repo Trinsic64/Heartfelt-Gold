@@ -264,6 +264,12 @@
       ["Egg groups", mon.eggGroups.join(" / ")], ["EV yield", yields.join(", ") || "None"],
     ];
     const baseStats = [...mon.stats, mon.stats.reduce((sum, value) => sum + value, 0)];
+    // Only TM001–TM092 work in this release. Keep the full engine data for future builds.
+    const machines = mon.machines.filter(code => {
+      if (!code.startsWith("TM")) return true;
+      const number = Number(code.slice(2));
+      return number >= 1 && number <= 92;
+    });
     return `<button type="button" class="dex-back" id="dexBack">← Back to Pokémon list</button>
       <div class="dex-heading">${icon(mon.icon, "poke-icon")}<div><h1 class="page-title" id="dexTitle" tabindex="-1">${esc(mon.name)}</h1>${typeChips(mon.types)}</div></div>
       ${mon.description ? `<p class="lead">${esc(mon.description)}</p>` : ""}
@@ -273,7 +279,7 @@
       </div>
       <section class="section">${title("Learnset")}
         ${learnsetSection("Level up", ["Level", "Move"], mon.level.map(([level, move]) => [level === 0 ? "On evolution" : level, move]), true)}
-        ${learnsetSection("TMs, HMs and TRs", ["Machine", "Move"], mon.machines.map(code => [code, machineMoves[code]]))}
+        ${learnsetSection("TMs, HMs and TRs", ["Machine", "Move"], machines.map(code => [code, machineMoves[code]]))}
         ${learnsetSection("Egg moves", ["Move"], mon.egg.map(move => [move]))}
         ${learnsetSection("Tutor moves", ["Move"], mon.tutor.map(move => [move]))}
       </section>`;
