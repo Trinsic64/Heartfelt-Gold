@@ -1,6 +1,6 @@
 # Historical guide: Retiled Expansion v6
 
-This walkthrough predates Pokémon Heartfelt Gold. Its route order, scripted rewards, and static encounters have not been rechecked against the current patch. Use the [Heartfelt Gold guide index](README.md) for current encounter and team data.
+This walkthrough predates Pokémon Heartfelt Gold. Its route order, scripted rewards, and static encounters have not been rechecked against the current patch. Use the [v1.0.13 interactive walkthrough](https://trinsic64.github.io/Heartfelt-Gold/) for current trainer teams and chapter details. [Other Heartfelt Gold guides](README.md).
 
 # Expansion Walkthrough
 

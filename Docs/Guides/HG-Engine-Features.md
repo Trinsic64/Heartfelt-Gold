@@ -7,7 +7,15 @@ This page reflects the current hg-engine authoring configuration supplied for Po
 - The three starter choices are Treecko, Torchic, and Mudkip. The starter creation code gives each its matching Mega Stone.
 - The National Dex is configured to be available from the start.
 - Mega Evolution is configured in the engine. The existing Oak event is the documented Mega Ring source.
-- A level cap is enabled in `include/config.h` and uses save variable `0x416F`. Its value and progression must be checked in game; the source switch alone does not establish the cap schedule.
+- The v1.0.13 Gym and League victory scripts update the EXP level cap while its current value is below 100. The values below come from the released scripts. [Scripted trainer audit](../Player-Guide/site/Scripted-Trainer-Audit.md).
+
+| Victories | Level cap after each victory |
+| --- | --- |
+| Falkner, Bugsy, Whitney, Morty | 24, 29, 34, 38 |
+| Chuck, Jasmine, Pryce, Clair | 42, 45, 50, 65 |
+| First League run through Will, Koga, Bruno, Karen, and Lance | 67, 68, 70, 70, 72 |
+| Lt. Surge, Sabrina, Misty, Erika, Janine, Brock, Blaine, and Blue | 74, 76, 78, 80, 82, 84, 86, 94 |
+| Postgame Karen, then postgame Lance | 98, 100 |
 
 ## Quality of life
 

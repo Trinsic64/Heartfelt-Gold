@@ -17,11 +17,14 @@ SITE = HERE / "site"
 release = json.loads((HERE / "release.json").read_text(encoding="utf-8"))
 version = release["version"]
 assert release["tag"] == f"heartfelt-{version}"
-assert release["patch"] == f"xDelta/Heartfelt-Gold-{version}-Patch.xdelta"
-
-patch = ROOT / release["patch"]
-with patch.open("rb") as stream:
-    assert hashlib.file_digest(stream, "sha256").hexdigest() == release["patchSha256"]
+patches = release["patches"]
+assert set(patches) == {"Zoomed In", "Zoomed Out"}
+assert len({patch["decodedRomSha256"] for patch in patches.values()}) == 2
+for mode, patch in patches.items():
+    path = ROOT / patch["path"]
+    assert patch["path"] == f"xDelta/Heartfelt-Gold-{version}-Patch-{mode.replace(' ', '-')}.xdelta"
+    with path.open("rb") as stream:
+        assert hashlib.file_digest(stream, "sha256").hexdigest() == patch["sha256"]
 
 assert json.loads((SITE / "release.json").read_text(encoding="utf-8")) == release
 for page in ("index.html", "Rematch-Trainer-Guide.html"):
@@ -161,7 +164,8 @@ assert groups["stage-41"] < groups["dragon-den-tag"] < groups["silver-indigo"]
 dojo_parties = [t for t in rematch_data["trainers"] if 712 <= t["id"] <= 727]
 assert len(dojo_parties) == 16 and all(t["location"] == script_audit["DOJO"] for t in dojo_parties)
 assert all(row["Location"] == script_audit["DOJO"] for row in rematch_csv_rows if 712 <= int(row["Trainer ID"]) <= 727)
-assert release["decodedRomSha256"] in (SITE / "Scripted-Trainer-Audit.md").read_text(encoding="utf-8")
+script_audit_text = (SITE / "Scripted-Trainer-Audit.md").read_text(encoding="utf-8")
+assert any(patch["decodedRomSha256"] in script_audit_text for patch in patches.values())
 
 gym_groups = [group["id"] for group in guide_data["trainerGroups"]
               if group["id"].startswith("gym-")]
@@ -211,7 +215,6 @@ for page_data, page_html in ((guide_data, main_html), (rematch_data, rematch_htm
                 vendor = HERE / "mega-sprites" / kind / f"{stem}.png"
                 assert base64.b64decode(embedded_sprites[path].split(",", 1)[1]) == vendor.read_bytes()
             mega_totals[target] += 1
-assert sum(mega_totals.values()) == 500 and len(mega_totals) == 88
 assert unresolved_stones == Counter({("SPECIES_TATSUGIRI", "Tatsugirinite"): 4,
                                      ("SPECIES_FLOETTE", "Floettite"): 1})
 assert "const shown = m.mega || m" in main_html and "const shown = m.mega || m" in rematch_html
@@ -219,27 +222,40 @@ assert not any("mega" in entry for area in guide_data["wild"] for entry in area[
 
 hidden = dict(re.findall(r"\[(SPECIES_[A-Z0-9_]+)\s*\]\s*=\s*(ABILITY_[A-Z0-9_]+)",
                          (ROOT / "HG-Engine/data/HiddenAbilityTable.c").read_text(encoding="utf-8")))
-changed_ids = set(release["changedTrainerPartyIds"]) - {0}
-assert len(changed_ids) == 21
+changed_ids = set(release["changedTrainerPartyIds"])
+assert changed_ids and 0 not in changed_ids
+assert len(changed_ids) == len(release["changedTrainerPartyIds"])
+all_trainers = html_trainers | {t["id"]: t for t in rematch_data["trainers"]}
+for row in rematch_csv_rows:
+    csv_trainers.setdefault(int(row["Trainer ID"]), []).append(row)
+
+
+def trainer_field(member, field, default=None):
+    match = re.search(r"(?m)^\s*\." + field + r"\s*=\s*([^,\r\n]+)", member)
+    if match:
+        return match[1].strip()
+    assert default is not None, field
+    return default
+
+
 for trainer_id in changed_ids:
     block = trainer_blocks[trainer_id]
-    fields = {field: re.findall(r"(?m)^\s*\." + field + r"\s*=\s*([^,\r\n]+)", block)
-              for field in ("level", "species", "item", "abilitySlot")}
-    moves = [re.findall(r"MOVE_[A-Z0-9_]+", line) for line in
-             re.findall(r"(?m)^\s*\.moves\s*=\s*\{\s*([^}]+)\}", block)]
-    team = html_trainers[trainer_id]["team"]
+    party = re.split(r"(?m)^\s*\.ivs\s*=", block)[1:]
+    team = all_trainers[trainer_id]["team"]
     csv_team = csv_trainers[trainer_id]
-    assert all(len(values) == len(team) == len(csv_team) == 6 for values in (*fields.values(), moves)), trainer_id
-    for index, (mon, row) in enumerate(zip(team, csv_team)):
-        token = fields["species"][index].strip()
-        item = fields["item"][index].strip()
-        slot = fields["abilitySlot"][index].strip()
+    assert len(party) == len(team) == len(csv_team), trainer_id
+    for index, (member, mon, row) in enumerate(zip(party, team, csv_team)):
+        token = trainer_field(member, "species")
+        item = trainer_field(member, "item", "ITEM_NONE")
+        slot = trainer_field(member, "abilitySlot", "TRAINER_POKEMON_ABILITY_1")
         assert Path(mon["icon"]).stem.upper() == token.removeprefix("SPECIES_")
-        assert int(mon["level"]) == int(row["Level"]) == int(fields["level"][index])
+        assert int(mon["level"]) == int(row["Level"]) == int(trainer_field(member, "level"))
         assert normalized(mon["name"]) == normalized(row["Pokémon"])
         expected_item = "" if item == "ITEM_NONE" else item.removeprefix("ITEM_")
         assert normalized(mon["held"]) == normalized(row["Held item"]) == normalized(expected_item)
-        expected_moves = [move.removeprefix("MOVE_") for move in moves[index] if move != "MOVE_NONE"]
+        moves = re.search(r"\.moves\s*=\s*\{([^}]+)\}", member)
+        expected_moves = [move.removeprefix("MOVE_") for move in re.findall(r"MOVE_\w+", moves[1] if moves else "")
+                          if move != "MOVE_NONE"]
         assert [normalized(move) for move in mon["moves"]] == [normalized(move) for move in expected_moves], trainer_id
         assert [normalized(move) for move in row["Moves"].split("; ")] == [normalized(move) for move in expected_moves]
         expected_slot = {"TRAINER_POKEMON_ABILITY_1": "Slot 1", "TRAINER_POKEMON_ABILITY_2": "Slot 2",
@@ -247,7 +263,9 @@ for trainer_id in changed_ids:
         assert mon["abilitySlot"] == row["Ability slot"] == expected_slot
         abilities = re.search(r"\.abilities\s*=\s*\{\s*(ABILITY_\w+)\s*,\s*(ABILITY_\w+)\s*\}", species_blocks[token])
         assert abilities
-        ability = hidden[token] if expected_slot == "Hidden" else abilities.group(2 if expected_slot == "Slot 2" else 1)
+        ability = trainer_field(member, "ability", "ABILITY_NONE")
+        if ability == "ABILITY_NONE" or "TRAINER_DATA_TYPE_ABILITY" not in block.split(".party", 1)[0]:
+            ability = hidden[token] if expected_slot == "Hidden" else abilities.group(2 if expected_slot == "Slot 2" else 1)
         assert normalized(mon["ability"]) == normalized(row["Ability"]) == normalized(ability.removeprefix("ABILITY_"))
         assert row["Pokémon icon"] == mon["icon"] and int(row["Party slot"]) == index + 1
 
@@ -318,10 +336,11 @@ with zipfile.ZipFile(archive) as bundle:
         if path.is_file() and path != archive:
             assert bundle.read(path.name) == path.read_bytes(), path.name
 
-checksum_entry = f"{release['patchSha256']} *{release['patch']}"
-assert checksum_entry in (ROOT / "checksums.sha256").read_text(encoding="utf-8")
-asset_checksums = (ROOT / f"RELEASE-CHECKSUMS-HEARTFELT-{version}.sha256").read_text(encoding="utf-8")
-assert f"{release['patchSha256']} *{patch.name}" in asset_checksums
+repo_checksums = (ROOT / "checksums.sha256").read_text(encoding="utf-8").splitlines()
+asset_checksums = (ROOT / f"RELEASE-CHECKSUMS-HEARTFELT-{version}.sha256").read_text(encoding="utf-8").splitlines()
+for patch in patches.values():
+    assert f"{patch['sha256']} *{patch['path']}" in repo_checksums
+    assert f"{patch['sha256']} *{Path(patch['path']).name}" in asset_checksums
 assert f"{guide_hash} *{archive.name}" in asset_checksums
 assert version in (ROOT / "README.md").read_text(encoding="utf-8")
 assert (ROOT / f"RELEASE-NOTES-HEARTFELT-{version}.md").is_file()

@@ -146,11 +146,12 @@ def build(source):
     SITE.mkdir(parents=True, exist_ok=True)
     release = json.loads(RELEASE.read_text(encoding="utf-8"))
     version = release["version"]
-    patch = HERE.parent.parent / release["patch"]
-    with patch.open("rb") as stream:
-        patch_hash = hashlib.file_digest(stream, "sha256").hexdigest()
-    if patch_hash != release["patchSha256"]:
-        raise ValueError(f"Patch SHA-256 differs from release.json: {patch}")
+    for variant in release["patches"].values():
+        patch = HERE.parent.parent / variant["path"]
+        with patch.open("rb") as stream:
+            patch_hash = hashlib.file_digest(stream, "sha256").hexdigest()
+        if patch_hash != variant["sha256"]:
+            raise ValueError(f"Patch SHA-256 differs from release.json: {patch}")
     css = STYLE.read_text(encoding="utf-8")
     if (source / "Guide-Style.css").read_text(encoding="utf-8") != css:
         raise ValueError("Guide-Style.css in the reviewed export differs from the versioned style")
@@ -181,12 +182,14 @@ def build(source):
         "styles, and code. Rematches have a separate page; bonus battles stay with story trainers. "
         "The first Elite Four and Champion run follows eight badges, while the second run and its "
         "bonus battles follow Gym #16 Blue.\n\n"
-        f"This guide is bundled with the {version} patch named in `release.json`. The patch was decoded "
-        "against the documented clean USA ROM and matched the recorded hg-engine build hash.\n\n"
-        "The trainer, wild encounter, shop, and evolution tables reflect the source data "
-        "used for the v23 hg-engine build. Twenty-one player-facing trainer parties changed "
-        "since v1.0.11; internal dummy Trainer 0 is omitted. Cherrygrove Mart now stocks Cherish "
-        "Ball, and both Frillish forms evolve at level 40. Wild held items match the updated "
+        f"This guide covers both {version} camera variants in `release.json`. Each patch decoded "
+        "against the documented clean USA ROM and matched its hg-engine build hash.\n\n"
+        f"The trainer tables include {len(release['changedTrainerPartyIds'])} party changes from "
+        f"{release['previousVersion']}. The guide uses the compiled trainer archives and the "
+        "matching `HG-Engine/data/Trainers.c` source. Internal dummy Trainer 0 is omitted. "
+        "See `Scripted-Trainer-Audit.md` for the v24 battle placements and cap updates. "
+        "Cherrygrove Mart stocks Cherish Ball, and both Frillish forms evolve at level 40. "
+        "Wild held items match the updated "
         "`HG-Engine/data/Species.c` snapshot, including form-specific rows. Ground pickups come from the named Release-v2 "
         "event extraction and hidden "
         "item parameter table. Two visible pickup objects have unresolved item identities. "
@@ -209,8 +212,8 @@ def build(source):
         "See `Release-v22-Item-Audit.md` for the item audit. "
         "`Item-Locations.csv` is the older Retiled Expansion item list and remains historical. "
         "Form-specific encounter rows and evolution icons were resolved against engine species IDs. "
-        "The v23 input fixed Diglett's Cave map matrix 2 by adding map member 976; those map archives "
-        "were preserved byte for byte in the built ROM.\n",
+        "The v24 build retains the Diglett’s Cave matrix update from v23 and preserves "
+        "the v24 map and event data.\n",
         encoding="utf-8", newline="\n",
     )
     (SITE / ".nojekyll").write_text("", encoding="utf-8")

@@ -20,4 +20,9 @@ SHA-256  65f02a56842b75aa92d775d56d657a56fe3fa993550b04dc20704ab82d760105
 
 Both patches were decoded from the clean USA source and reproduced their v24 hg-engine builds byte for byte. The decoded ROMs differ by four bytes within Camera 0. Both builds passed a DeSmuME boot and continue smoke test with a copied save. Runtime testing covered that startup path.
 
-The [player guide](https://trinsic64.github.io/Heartfelt-Gold/) still documents v1.0.12. Some trainer details can differ in v1.0.13.
+## Player guide
+
+The v1.0.13 walkthrough, trainer pages, and CSVs include all 59 changed parties, including the League, Kanto Gym Leaders, their bonus teams, and the level 90 Gym Leader rematches. The walkthrough also shows the updated Gym and League level caps.
+
+- [Open the online player guide](https://trinsic64.github.io/Heartfelt-Gold/).
+- [Download the v1.0.13 offline ZIP](https://github.com/Trinsic64/Heartfelt-Gold/releases/download/heartfelt-v1.0.13/Heartfelt-Gold-Player-Guide-Offline.zip). Extract it and open `index.html`. The rematch guide is in `Rematch-Trainer-Guide.html`.

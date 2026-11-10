@@ -45,7 +45,7 @@ def collect_audit(rom_path, project, disassembly):
 
     raw = rom_path.read_bytes()
     digest = hashlib.sha256(raw).hexdigest()
-    if digest != RELEASE["decodedRomSha256"]:
+    if digest not in {patch["decodedRomSha256"] for patch in RELEASE["patches"].values()}:
         raise ValueError("Audit ROM does not match the release manifest")
     rom = ndspy.rom.NintendoDSRom(raw)
     archives = {}
@@ -172,15 +172,19 @@ def write_report(path, digest, headers, banks, main, rematches):
            if 0 < tid < 0x4000}
     if not ids <= parties.keys():
         raise ValueError(f"Scripted parties missing from the guide: {sorted(ids - parties.keys())}")
-    report = ["# Scripted trainer audit for Heartfelt Gold v1.0.12", "",
-              f"Reviewed the v23 release ROM (`{digest}`). Its 1,139 script banks, 578 event members, "
-              "and 627 map headers match both DSPRE extracts byte for byte. The v22 script text supplied the disassembly.", "",
+    report = [f"# Scripted trainer audit for Heartfelt Gold {RELEASE['version']}", "",
+              f"Reviewed the v24 release ROM (`{digest}`). All 1,139 script banks, 578 event members, "
+              "and 627 map headers matched the reviewed DSPRE data. The v24 export supplied the disassembly "
+              "except for Seafoam Islands bank 0015, which came from a later export whose bank matched the release byte for byte.", "",
               f"Found {sum(map(len, banks.values()))} battle references in the disassembly of {len(banks)} banks. "
               f"All {len(ids)} distinct literal party IDs are present in the story or rematch guide. "
               "Alternate cutscene paths and shared script offsets can repeat a party reference. Bank 0953 uses variables for ordinary "
               "overworld trainers. The Victoria call in common bank 0003 has no direct map header, so her regular "
               "Goldenrod Gym placement is used.", "",
               "## Progression checks", "",
+              "- **Gym and League victories.** The v24 scripts update the level cap after Gym wins "
+              "and at selected League victories. The walkthrough cards show those values. "
+              "Several bonus-battle branches heal the party before the optional challenge.", "",
               "- **Team Rocket HQ.** Headers 247–249 bind B1F–B3F. The B1F alarm scripts call Grunts 223 and 224. "
               "Nine additional parties are bound to trainer objects across the three floors. Petrel is on B3F. "
               "The B2F generator-door battle calls Ariana and Grunt 499 with Lance 675 as the player’s partner. "
