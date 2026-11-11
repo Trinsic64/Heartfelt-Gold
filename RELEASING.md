@@ -9,7 +9,7 @@ Use GitHub Releases for versioned public downloads while keeping the same files 
 5. Recompute SHA-256 hashes for the patch and map archives.
 6. Update `README.md`, `checksums.sha256`, and the version number together.
 7. Create a tag such as `v1.0.0` and a GitHub Release.
-8. Attach both playable `.xdelta` camera variants and the release checksum file. Decode both against the same clean USA source and verify that their ROMs differ only in Camera 0. Keep engine source `.patch` files in the repository; do not attach them as release downloads because players may mistake them for the game patch.
+8. Attach both playable `.xdelta` camera variants and the release checksum file. Use `-Patch.xdelta` for the default download and `-Patch-Zoomed-In.xdelta` for the Zoomed In download. Decode both against the same clean USA source and verify that their ROMs differ only in Camera 0. Keep engine source `.patch` files in the repository; do not attach them as release downloads because players may mistake them for the game patch.
 9. Document the compatible source ROM region/revision and its MD5, SHA-1, and SHA-256; do not upload the source ROM.
 10. Download the published assets once and verify their hashes.
 

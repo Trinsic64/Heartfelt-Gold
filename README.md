@@ -21,18 +21,18 @@ The [v1.0.13 interactive guide](https://trinsic64.github.io/Heartfelt-Gold/) ope
 
 ## Download and play
 
-Choose one v1.0.13 patch. Both options include the same trainer, script, and Diglett’s Cave updates.
+Choose one v1.0.14 patch. Both include the expanded Blackthorn move tutors and the same gameplay fixes.
 
-- [Zoomed In](https://github.com/Trinsic64/Heartfelt-Gold/releases/download/heartfelt-v1.0.13/Heartfelt-Gold-v1.0.13-Patch-Zoomed-In.xdelta) for Nintendo DS hardware and emulators running at native resolution.
-- [Zoomed Out](https://github.com/Trinsic64/Heartfelt-Gold/releases/download/heartfelt-v1.0.13/Heartfelt-Gold-v1.0.13-Patch-Zoomed-Out.xdelta) for PC emulators with internal resolution upscaling.
+- [Default patch](https://github.com/Trinsic64/Heartfelt-Gold/releases/download/heartfelt-v1.0.14/Heartfelt-Gold-v1.0.14-Patch.xdelta) for PC emulators with internal resolution upscaling.
+- [Zoomed In](https://github.com/Trinsic64/Heartfelt-Gold/releases/download/heartfelt-v1.0.14/Heartfelt-Gold-v1.0.14-Patch-Zoomed-In.xdelta) for Nintendo DS hardware and emulators running at native resolution.
 
-See the [GitHub release](https://github.com/Trinsic64/Heartfelt-Gold/releases/tag/heartfelt-v1.0.13) and [release notes](RELEASE-NOTES-HEARTFELT-v1.0.13.md).
+See the [GitHub release](https://github.com/Trinsic64/Heartfelt-Gold/releases/tag/heartfelt-v1.0.14) and [release notes](RELEASE-NOTES-HEARTFELT-v1.0.14.md).
 
-The [v1.0.12](https://github.com/Trinsic64/Heartfelt-Gold/releases/tag/heartfelt-v1.0.12), [v1.0.11](https://github.com/Trinsic64/Heartfelt-Gold/releases/tag/heartfelt-v1.0.11), [v1.0.10](https://github.com/Trinsic64/Heartfelt-Gold/releases/tag/heartfelt-v1.0.10), [v1.0.9](https://github.com/Trinsic64/Heartfelt-Gold/releases/tag/heartfelt-v1.0.9), [v1.0.8](https://github.com/Trinsic64/Heartfelt-Gold/releases/tag/heartfelt-v1.0.8), [v1.0.7](https://github.com/Trinsic64/Heartfelt-Gold/releases/tag/heartfelt-v1.0.7), [v1.0.6](https://github.com/Trinsic64/Heartfelt-Gold/releases/tag/heartfelt-v1.0.6), [v1.0.5](https://github.com/Trinsic64/Heartfelt-Gold/releases/tag/heartfelt-v1.0.5), [v1.0.4](https://github.com/Trinsic64/Heartfelt-Gold/releases/tag/heartfelt-v1.0.4), [v1.0.3](https://github.com/Trinsic64/Heart-Gold-Retiled/releases/tag/heartfelt-v1.0.3), [v1.0.2](https://github.com/Trinsic64/Heart-Gold-Retiled/releases/tag/heartfelt-v1.0.2), [v1.0.1](https://github.com/Trinsic64/Heart-Gold-Retiled/releases/tag/heartfelt-v1.0.1), and [v1.0.0](https://github.com/Trinsic64/Heart-Gold-Retiled/releases/tag/heartfelt-v1.0.0) patches remain available for archival use.
+The [v1.0.13](https://github.com/Trinsic64/Heartfelt-Gold/releases/tag/heartfelt-v1.0.13), [v1.0.12](https://github.com/Trinsic64/Heartfelt-Gold/releases/tag/heartfelt-v1.0.12), [v1.0.11](https://github.com/Trinsic64/Heartfelt-Gold/releases/tag/heartfelt-v1.0.11), [v1.0.10](https://github.com/Trinsic64/Heartfelt-Gold/releases/tag/heartfelt-v1.0.10), [v1.0.9](https://github.com/Trinsic64/Heartfelt-Gold/releases/tag/heartfelt-v1.0.9), [v1.0.8](https://github.com/Trinsic64/Heartfelt-Gold/releases/tag/heartfelt-v1.0.8), [v1.0.7](https://github.com/Trinsic64/Heartfelt-Gold/releases/tag/heartfelt-v1.0.7), [v1.0.6](https://github.com/Trinsic64/Heartfelt-Gold/releases/tag/heartfelt-v1.0.6), [v1.0.5](https://github.com/Trinsic64/Heartfelt-Gold/releases/tag/heartfelt-v1.0.5), [v1.0.4](https://github.com/Trinsic64/Heartfelt-Gold/releases/tag/heartfelt-v1.0.4), [v1.0.3](https://github.com/Trinsic64/Heart-Gold-Retiled/releases/tag/heartfelt-v1.0.3), [v1.0.2](https://github.com/Trinsic64/Heart-Gold-Retiled/releases/tag/heartfelt-v1.0.2), [v1.0.1](https://github.com/Trinsic64/Heart-Gold-Retiled/releases/tag/heartfelt-v1.0.1), and [v1.0.0](https://github.com/Trinsic64/Heart-Gold-Retiled/releases/tag/heartfelt-v1.0.0) patches remain available for archival use.
 
-Both v1.0.13 patches reproduced their v24 builds byte for byte when applied to the clean USA source below. The resulting ROMs differ only in Camera 0.
+Both v1.0.14 patches reproduced their v27 builds byte for byte when applied to the clean USA source below. The resulting ROMs differ only in Camera 0.
 
-**Save import friendly:** in-game saves from earlier Heartfelt Gold versions are expected to remain compatible. Both v1.0.13 variants reached gameplay with a copied save in a DeSmuME smoke test. Back up your save, import or copy it for the new ROM, and continue without starting a new game. Match the save filename to the new ROM where your emulator requires it. Boot from the in-game save rather than loading an older emulator save state.
+**Save import friendly:** in-game saves from earlier Heartfelt Gold versions are expected to remain compatible. Both v1.0.14 variants were tested with copied saves in DeSmuME. Back up your save, import or copy it for the new ROM, and continue without starting a new game. Match the save filename to the new ROM where your emulator requires it. Boot from the in-game save rather than loading an older emulator save state.
 
 The older Retiled Expansion and visual-only patches remain available for archival use:
 
@@ -65,7 +65,7 @@ Then:
 1. Back up your clean ROM dump.
 2. Open xDelta UI or RomPatcher.js.
 3. Select your original Pokémon HeartGold (USA) `.nds` file as the **source/ROM file**.
-4. Select the Zoomed In or Zoomed Out v1.0.13 `.xdelta` file as the **patch file**.
+4. Select the default or Zoomed In v1.0.14 `.xdelta` file as the **patch file**.
 5. Apply the patch and save the newly generated `.nds` file separately from your original ROM.
 
 Apply exactly one patch to the clean ROM. Do not stack Heartfelt Gold with any earlier Retiled patch.
@@ -85,6 +85,8 @@ In RomPatcher.js, the selections should look like this:
 SHA-256:
 
 ```text
+B4AE668688B5E547CCC461519E459CA8B7AA489EAD9B00747D78E41389EB9594  xDelta/Heartfelt-Gold-v1.0.14-Patch.xdelta
+CF3591DE811B09DBFC379737CF7E22535CB48345C65DAF8EFECCD69C3F9012D6  xDelta/Heartfelt-Gold-v1.0.14-Patch-Zoomed-In.xdelta
 A8D869CCBD1351A4E2E5A86E2FAFE675B8663803E7A32D3337D9F8D72A021730  xDelta/Heartfelt-Gold-v1.0.13-Patch-Zoomed-Out.xdelta
 2E70B1624AFFF629791A77F32CF589BDB63D75D5D19D4754E35AE86DABE2C52A  xDelta/Heartfelt-Gold-v1.0.13-Patch-Zoomed-In.xdelta
 F7D6E78332DB8629D4F4099AF1DBBA5846C3ACC155A79894A1252DD2E8A215BA  xDelta/Heartfelt-Gold-v1.0.12-Patch.xdelta
@@ -108,8 +110,8 @@ D814036E86628E9D0512701094DC7F9AC54A11D6B3AEBC716A837F77CCF74506  xDelta/Heartfe
 On PowerShell:
 
 ```powershell
-Get-FileHash .\xDelta\Heartfelt-Gold-v1.0.13-Patch-Zoomed-Out.xdelta -Algorithm SHA256
-Get-FileHash .\xDelta\Heartfelt-Gold-v1.0.13-Patch-Zoomed-In.xdelta -Algorithm SHA256
+Get-FileHash .\xDelta\Heartfelt-Gold-v1.0.14-Patch.xdelta -Algorithm SHA256
+Get-FileHash .\xDelta\Heartfelt-Gold-v1.0.14-Patch-Zoomed-In.xdelta -Algorithm SHA256
 Get-FileHash .\xDelta\HG-Retiled-Expansion-Patch.xdelta -Algorithm SHA256
 Get-FileHash .\xDelta\HG-Retiled-Patch.xdelta -Algorithm SHA256
 Get-FileHash .\HG-Retiled-v3.bps -Algorithm SHA256
@@ -118,7 +120,7 @@ Get-FileHash .\HG-Retiled-v3.bps -Algorithm SHA256
 On macOS or Linux:
 
 ```bash
-sha256sum xDelta/Heartfelt-Gold-v1.0.13-Patch-Zoomed-Out.xdelta xDelta/Heartfelt-Gold-v1.0.13-Patch-Zoomed-In.xdelta xDelta/HG-Retiled-Expansion-Patch.xdelta xDelta/HG-Retiled-Patch.xdelta HG-Retiled-v3.bps
+sha256sum xDelta/Heartfelt-Gold-v1.0.14-Patch.xdelta xDelta/Heartfelt-Gold-v1.0.14-Patch-Zoomed-In.xdelta xDelta/HG-Retiled-Expansion-Patch.xdelta xDelta/HG-Retiled-Patch.xdelta HG-Retiled-v3.bps
 ```
 
 The map archive hashes are recorded in [checksums.sha256](checksums.sha256).
