@@ -815,7 +815,7 @@ const EvolutionTable __data[MAX_SPECIES_INCLUDING_FORMS + 1] =
     [SPECIES_PRIMEAPE] = {
         .entries = {
             { EVO_FORM_ARGUMENT, 20, SPECIES_ANNIHILAPE },
-            { EVO_NONE, 0, SPECIES_NONE },
+            { EVO_LEVEL, 40, SPECIES_ANNIHILAPE },
             { EVO_NONE, 0, SPECIES_NONE },
             { EVO_NONE, 0, SPECIES_NONE },
             { EVO_NONE, 0, SPECIES_NONE },
@@ -5784,10 +5784,10 @@ const EvolutionTable __data[MAX_SPECIES_INCLUDING_FORMS + 1] =
 
     [SPECIES_BURMY] = {
         .entries = {
-            { EVO_LEVEL_FEMALE, 20, SPECIES_WORMADAM },
-            { EVO_LEVEL_MALE, 20, SPECIES_MOTHIM },
-            { EVO_NONE, 0, SPECIES_NONE },
-            { EVO_NONE, 0, SPECIES_NONE },
+            { EVO_STONE, ITEM_SUN_STONE, SPECIES_WORMADAM_SANDY },
+            { EVO_LEVEL, 20, SPECIES_MOTHIM },
+            { EVO_STONE, ITEM_LEAF_STONE, SPECIES_WORMADAM },
+            { EVO_STONE, ITEM_METAL_COAT, SPECIES_WORMADAM_TRASH },
             { EVO_NONE, 0, SPECIES_NONE },
             { EVO_NONE, 0, SPECIES_NONE },
             { EVO_NONE, 0, SPECIES_NONE },
@@ -14703,7 +14703,7 @@ const EvolutionTable __data[MAX_SPECIES_INCLUDING_FORMS + 1] =
     [SPECIES_GIMMIGHOUL] = {
         .entries = {
             { EVO_FORM_ARGUMENT, 999, SPECIES_GHOLDENGO },
-            { EVO_NONE, 0, SPECIES_NONE },
+            { EVO_LEVEL, 38, SPECIES_GHOLDENGO },
             { EVO_NONE, 0, SPECIES_NONE },
             { EVO_NONE, 0, SPECIES_NONE },
             { EVO_NONE, 0, SPECIES_NONE },
@@ -14870,7 +14870,7 @@ const EvolutionTable __data[MAX_SPECIES_INCLUDING_FORMS + 1] =
 
     [SPECIES_DIPPLIN] = {
         .entries = {
-            { EVO_HAS_MOVE, MOVE_DRAGON_PULSE, SPECIES_HYDRAPPLE },
+            { EVO_LEVEL, 40, SPECIES_HYDRAPPLE },
             { EVO_NONE, 0, SPECIES_NONE },
             { EVO_NONE, 0, SPECIES_NONE },
             { EVO_NONE, 0, SPECIES_NONE },
@@ -16271,7 +16271,7 @@ const EvolutionTable __data[MAX_SPECIES_INCLUDING_FORMS + 1] =
     [SPECIES_FARFETCHD_GALARIAN] = {
         .entries = {
             { EVO_AMOUNT_OF_CRITICAL_HITS, 3, SPECIES_SIRFETCHD },
-            { EVO_NONE, 0, SPECIES_NONE },
+            { EVO_LEVEL, 38, SPECIES_SIRFETCHD },
             { EVO_NONE, 0, SPECIES_NONE },
             { EVO_NONE, 0, SPECIES_NONE },
             { EVO_NONE, 0, SPECIES_NONE },

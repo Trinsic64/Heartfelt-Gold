@@ -73,7 +73,7 @@ def collect_audit(rom_path, project, disassembly):
         for index, section in enumerate(sections):
             end = sections[index + 1].start() if index + 1 < len(sections) else len(text)
             for command in BATTLE.finditer(text, section.end(), end):
-                name, args = command[1], command[2].split()
+                name, args = command[1], command[2].split("//", 1)[0].split()
                 if name == "TrainerBattle":
                     first, second, result, mode = map(trainer_id, args)
                     encoded = struct.pack("<HHHBB", 0xD5, first, second, result, mode)
@@ -173,21 +173,20 @@ def write_report(path, digest, headers, banks, main, rematches):
     if not ids <= parties.keys():
         raise ValueError(f"Scripted parties missing from the guide: {sorted(ids - parties.keys())}")
     report = [f"# Scripted trainer audit for Heartfelt Gold {RELEASE['version']}", "",
-              f"Reviewed the v24 release ROM (`{digest}`). All 1,139 script banks, 578 event members, "
-              "and 627 map headers matched the reviewed DSPRE data. The v24 export supplied the disassembly "
-              "except for Seafoam Islands bank 0015, which came from a later export whose bank matched the release byte for byte.", "",
+              f"Reviewed the v31 release ROM ({digest}). All 1,139 script banks, 578 event members, "
+              "and 627 map headers matched the v28 Test DSPRE export used for the build.", "",
               f"Found {sum(map(len, banks.values()))} battle references in the disassembly of {len(banks)} banks. "
               f"All {len(ids)} distinct literal party IDs are present in the story or rematch guide. "
               "Alternate cutscene paths and shared script offsets can repeat a party reference. Bank 0953 uses variables for ordinary "
               "overworld trainers. The Victoria call in common bank 0003 has no direct map header, so her regular "
               "Goldenrod Gym placement is used.", "",
               "## Progression checks", "",
-              "- **Gym and League victories.** The v24 scripts update the level cap after Gym wins "
+              "- **Gym and League victories.** The scripts update the level cap after Gym wins "
               "and at selected League victories. The walkthrough cards show those values. "
               "Several bonus-battle branches heal the party before the optional challenge.", "",
               "- **Team Rocket HQ.** Headers 247–249 bind B1F–B3F. The B1F alarm scripts call Grunts 223 and 224. "
               "Nine additional parties are bound to trainer objects across the three floors. Petrel is on B3F. "
-              "The B2F generator-door battle calls Ariana and Grunt 499 with Lance 675 as the player’s partner. "
+              "The B2F generator-door battle calls Ariana and Grunt 499, each with three Pokémon, with Lance 675 as the player’s partner. "
               "The group follows the route through the base. Optional trainer order can vary.",
               "- **Ecruteak Dance Theater.** Header 86 and bank 0928 bind both visits. Script 4 calls Grunt 601 "
               "on the first visit. The later branches all call Zuki → Naoko → Miki → Sayo → Kuni. "

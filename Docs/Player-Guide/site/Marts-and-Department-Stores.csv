@@ -66,6 +66,7 @@ Department Store,Goldenrod Department Store,2F upper counter,Razor Fang,,1000,Sp
 Department Store,Goldenrod Department Store,2F upper counter,Oval Stone,,1000,Sprites/Items/oval_stone.png,Configured stock; availability may depend on story state,src/field/mart.c (local engine source)
 Department Store,Goldenrod Department Store,2F upper counter,Tart Apple,,1000,Sprites/Items/tart_apple.png,Configured stock; availability may depend on story state,src/field/mart.c (local engine source)
 Department Store,Goldenrod Department Store,2F upper counter,Sweet Apple,,1000,Sprites/Items/sweet_apple.png,Configured stock; availability may depend on story state,src/field/mart.c (local engine source)
+Department Store,Goldenrod Department Store,2F upper counter,Syrupy Apple,,1000,Sprites/Items/syrupy_apple.png,Configured stock; availability may depend on story state,src/field/mart.c (local engine source)
 Department Store,Goldenrod Department Store,2F upper counter,Razor Claw,,1000,Sprites/Items/razor_claw.png,Configured stock; availability may depend on story state,src/field/mart.c (local engine source)
 Department Store,Goldenrod Department Store,2F upper counter,Cracked Pot,,1000,Sprites/Items/cracked_pot.png,Configured stock; availability may depend on story state,src/field/mart.c (local engine source)
 Department Store,Goldenrod Department Store,2F upper counter,Chipped Pot,,1000,Sprites/Items/chipped_pot.png,Configured stock; availability may depend on story state,src/field/mart.c (local engine source)

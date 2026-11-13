@@ -39,8 +39,10 @@ Buizel,Floatzel,Lv 26,EVO_LEVEL,Sprites/ColorIcons/buizel.png,Sprites/ColorIcons
 Bulbasaur,Ivysaur,Lv 16,EVO_LEVEL,Sprites/ColorIcons/bulbasaur.png,Sprites/ColorIcons/ivysaur.png,https://github.com/Trinsic64/Heartfelt-Gold/blob/main/Docs/Guides/Evolution-Guide.md,,
 Buneary,Lopunny,Friendship,EVO_FRIENDSHIP,Sprites/ColorIcons/buneary.png,Sprites/ColorIcons/lopunny.png,https://github.com/Trinsic64/Heartfelt-Gold/blob/main/Docs/Guides/Evolution-Guide.md,,
 Bunnelby,Diggersby,Lv 20,EVO_LEVEL,Sprites/ColorIcons/bunnelby.png,Sprites/ColorIcons/diggersby.png,https://github.com/Trinsic64/Heartfelt-Gold/blob/main/Docs/Guides/Evolution-Guide.md,,
-Burmy,Mothim,Lv 20 · Male,EVO_LEVEL_MALE,Sprites/ColorIcons/burmy.png,Sprites/ColorIcons/mothim.png,https://github.com/Trinsic64/Heartfelt-Gold/blob/main/Docs/Guides/Evolution-Guide.md,,
-Burmy,Wormadam,Lv 20 · Female,EVO_LEVEL_FEMALE,Sprites/ColorIcons/burmy.png,Sprites/ColorIcons/wormadam.png,https://github.com/Trinsic64/Heartfelt-Gold/blob/main/Docs/Guides/Evolution-Guide.md,,
+Burmy,Wormadam (Sandy Cloak),Sun Stone,EVO_STONE,Sprites/ColorIcons/burmy.png,Sprites/ColorIcons/wormadam_sandy.png,https://github.com/Trinsic64/Heartfelt-Gold/blob/main/Docs/Guides/Evolution-Guide.md,WORMADAM_SANDY,BURMY
+Burmy,Mothim,Lv 20,EVO_LEVEL,Sprites/ColorIcons/burmy.png,Sprites/ColorIcons/mothim.png,https://github.com/Trinsic64/Heartfelt-Gold/blob/main/Docs/Guides/Evolution-Guide.md,MOTHIM,BURMY
+Burmy,Wormadam (Plant Cloak),Leaf Stone,EVO_STONE,Sprites/ColorIcons/burmy.png,Sprites/ColorIcons/wormadam.png,https://github.com/Trinsic64/Heartfelt-Gold/blob/main/Docs/Guides/Evolution-Guide.md,WORMADAM,BURMY
+Burmy,Wormadam (Trash Cloak),Metal Coat,EVO_STONE,Sprites/ColorIcons/burmy.png,Sprites/ColorIcons/wormadam_trash.png,https://github.com/Trinsic64/Heartfelt-Gold/blob/main/Docs/Guides/Evolution-Guide.md,WORMADAM_TRASH,BURMY
 Cacnea,Cacturne,Lv 32,EVO_LEVEL,Sprites/ColorIcons/cacnea.png,Sprites/ColorIcons/cacturne.png,https://github.com/Trinsic64/Heartfelt-Gold/blob/main/Docs/Guides/Evolution-Guide.md,,
 Capsakid,Scovillain,Fire Stone,EVO_STONE,Sprites/ColorIcons/capsakid.png,Sprites/ColorIcons/scovillain.png,https://github.com/Trinsic64/Heartfelt-Gold/blob/main/Docs/Guides/Evolution-Guide.md,,
 Carkol,Coalossal,Lv 34,EVO_LEVEL,Sprites/ColorIcons/carkol.png,Sprites/ColorIcons/coalossal.png,https://github.com/Trinsic64/Heartfelt-Gold/blob/main/Docs/Guides/Evolution-Guide.md,,
@@ -101,7 +103,7 @@ Dewott,Hisuian Samurott,Lv 36 · Night,EVO_LEVEL_NIGHT,Sprites/ColorIcons/dewott
 Dewpider,Araquanid,Lv 22,EVO_LEVEL,Sprites/ColorIcons/dewpider.png,Sprites/ColorIcons/araquanid.png,https://github.com/Trinsic64/Heartfelt-Gold/blob/main/Docs/Guides/Evolution-Guide.md,,
 Diglett,Dugtrio,Lv 26,EVO_LEVEL,Sprites/ColorIcons/diglett.png,Sprites/ColorIcons/dugtrio.png,https://github.com/Trinsic64/Heartfelt-Gold/blob/main/Docs/Guides/Evolution-Guide.md,,
 Alolan Diglett,Alolan Dugtrio,Lv 26,EVO_LEVEL,Sprites/ColorIcons/diglett_alolan.png,Sprites/ColorIcons/dugtrio_alolan.png,https://github.com/Trinsic64/Heartfelt-Gold/blob/main/Docs/Guides/Evolution-Guide.md,DUGTRIO_ALOLAN,DIGLETT_ALOLAN
-Dipplin,Hydrapple,Knows Dragon Pulse,EVO_HAS_MOVE,Sprites/ColorIcons/dipplin.png,Sprites/ColorIcons/hydrapple.png,https://github.com/Trinsic64/Heartfelt-Gold/blob/main/Docs/Guides/Evolution-Guide.md,,
+Dipplin,Hydrapple,Lv 40,EVO_LEVEL,Sprites/ColorIcons/dipplin.png,Sprites/ColorIcons/hydrapple.png,https://github.com/Trinsic64/Heartfelt-Gold/blob/main/Docs/Guides/Evolution-Guide.md,HYDRAPPLE,DIPPLIN
 Doduo,Dodrio,Lv 31,EVO_LEVEL,Sprites/ColorIcons/doduo.png,Sprites/ColorIcons/dodrio.png,https://github.com/Trinsic64/Heartfelt-Gold/blob/main/Docs/Guides/Evolution-Guide.md,,
 Dolliv,Arboliva,Lv 35,EVO_LEVEL,Sprites/ColorIcons/dolliv.png,Sprites/ColorIcons/arboliva.png,https://github.com/Trinsic64/Heartfelt-Gold/blob/main/Docs/Guides/Evolution-Guide.md,,
 Dottler,Orbeetle,Lv 30,EVO_LEVEL,Sprites/ColorIcons/dottler.png,Sprites/ColorIcons/orbeetle.png,https://github.com/Trinsic64/Heartfelt-Gold/blob/main/Docs/Guides/Evolution-Guide.md,,
@@ -139,7 +141,8 @@ Espurr,Meowstic,Lv 25 · Male,EVO_LEVEL_MALE,Sprites/ColorIcons/espurr.png,Sprit
 Espurr,Meowstic (Female),Lv 25 · Female,EVO_LEVEL_FEMALE,Sprites/ColorIcons/espurr.png,Sprites/ColorIcons/meowstic_female.png,https://github.com/Trinsic64/Heartfelt-Gold/blob/main/Docs/Guides/Evolution-Guide.md,MEOWSTIC_FEMALE,ESPURR
 Exeggcute,Exeggutor,Leaf Stone,EVO_STONE,Sprites/ColorIcons/exeggcute.png,Sprites/ColorIcons/exeggutor.png,https://github.com/Trinsic64/Heartfelt-Gold/blob/main/Docs/Guides/Evolution-Guide.md,,
 Exeggcute,Alolan Exeggutor,Sun Stone,EVO_STONE,Sprites/ColorIcons/exeggcute.png,Sprites/ColorIcons/exeggutor_alolan.png,https://github.com/Trinsic64/Heartfelt-Gold/blob/main/Docs/Guides/Evolution-Guide.md,EXEGGUTOR_ALOLAN,EXEGGCUTE
-Farfetch’d,Sirfetch’d,3 critical hits,EVO_AMOUNT_OF_CRITICAL_HITS,Sprites/ColorIcons/farfetchd.png,Sprites/ColorIcons/sirfetchd.png,https://github.com/Trinsic64/Heartfelt-Gold/blob/main/Docs/Guides/Evolution-Guide.md,,
+Galarian Farfetch’d,Sirfetch’d,3 critical hits in one battle,EVO_AMOUNT_OF_CRITICAL_HITS,Sprites/ColorIcons/farfetchd_galarian.png,Sprites/ColorIcons/sirfetchd.png,https://github.com/Trinsic64/Heartfelt-Gold/blob/main/Docs/Guides/Evolution-Guide.md,SIRFETCHD,FARFETCHD_GALARIAN
+Galarian Farfetch’d,Sirfetch’d,Lv 38,EVO_LEVEL,Sprites/ColorIcons/farfetchd_galarian.png,Sprites/ColorIcons/sirfetchd.png,https://github.com/Trinsic64/Heartfelt-Gold/blob/main/Docs/Guides/Evolution-Guide.md,SIRFETCHD,FARFETCHD_GALARIAN
 Feebas,Milotic,Lv 34,EVO_LEVEL,Sprites/ColorIcons/feebas.png,Sprites/ColorIcons/milotic.png,https://github.com/Trinsic64/Heartfelt-Gold/blob/main/Docs/Guides/Evolution-Guide.md,,
 Fennekin,Braixen,Lv 16,EVO_LEVEL,Sprites/ColorIcons/fennekin.png,Sprites/ColorIcons/braixen.png,https://github.com/Trinsic64/Heartfelt-Gold/blob/main/Docs/Guides/Evolution-Guide.md,,
 Ferroseed,Ferrothorn,Lv 40,EVO_LEVEL,Sprites/ColorIcons/ferroseed.png,Sprites/ColorIcons/ferrothorn.png,https://github.com/Trinsic64/Heartfelt-Gold/blob/main/Docs/Guides/Evolution-Guide.md,,
@@ -175,7 +178,8 @@ Gastly,Haunter,Lv 25,EVO_LEVEL,Sprites/ColorIcons/gastly.png,Sprites/ColorIcons/
 Geodude,Graveler,Lv 25,EVO_LEVEL,Sprites/ColorIcons/geodude.png,Sprites/ColorIcons/graveler.png,https://github.com/Trinsic64/Heartfelt-Gold/blob/main/Docs/Guides/Evolution-Guide.md,,
 Alolan Geodude,Alolan Graveler,Lv 25,EVO_LEVEL,Sprites/ColorIcons/geodude_alolan.png,Sprites/ColorIcons/graveler_alolan.png,https://github.com/Trinsic64/Heartfelt-Gold/blob/main/Docs/Guides/Evolution-Guide.md,GRAVELER_ALOLAN,GEODUDE_ALOLAN
 Gible,Gabite,Lv 24,EVO_LEVEL,Sprites/ColorIcons/gible.png,Sprites/ColorIcons/gabite.png,https://github.com/Trinsic64/Heartfelt-Gold/blob/main/Docs/Guides/Evolution-Guide.md,,
-Gimmighoul,Gholdengo,Form Argument · 999,EVO_FORM_ARGUMENT,Sprites/ColorIcons/gimmighoul.png,Sprites/ColorIcons/gholdengo.png,https://github.com/Trinsic64/Heartfelt-Gold/blob/main/Docs/Guides/Evolution-Guide.md,,
+Gimmighoul,Gholdengo,Form counter threshold 999,EVO_FORM_ARGUMENT,Sprites/ColorIcons/gimmighoul.png,Sprites/ColorIcons/gholdengo.png,https://github.com/Trinsic64/Heartfelt-Gold/blob/main/Docs/Guides/Evolution-Guide.md,GHOLDENGO,GIMMIGHOUL
+Gimmighoul,Gholdengo,Lv 38,EVO_LEVEL,Sprites/ColorIcons/gimmighoul.png,Sprites/ColorIcons/gholdengo.png,https://github.com/Trinsic64/Heartfelt-Gold/blob/main/Docs/Guides/Evolution-Guide.md,GHOLDENGO,GIMMIGHOUL
 Girafarig,Farigiraf,Knows Twin Beam,EVO_HAS_MOVE,Sprites/ColorIcons/girafarig.png,Sprites/ColorIcons/farigiraf.png,https://github.com/Trinsic64/Heartfelt-Gold/blob/main/Docs/Guides/Evolution-Guide.md,,
 Glameow,Purugly,Lv 38,EVO_LEVEL,Sprites/ColorIcons/glameow.png,Sprites/ColorIcons/purugly.png,https://github.com/Trinsic64/Heartfelt-Gold/blob/main/Docs/Guides/Evolution-Guide.md,,
 Gligar,Gliscor,Razor Fang,EVO_STONE,Sprites/ColorIcons/gligar.png,Sprites/ColorIcons/gliscor.png,https://github.com/Trinsic64/Heartfelt-Gold/blob/main/Docs/Guides/Evolution-Guide.md,,
@@ -356,7 +360,8 @@ Poochyena,Mightyena,Lv 18,EVO_LEVEL,Sprites/ColorIcons/poochyena.png,Sprites/Col
 Popplio,Brionne,Lv 17,EVO_LEVEL,Sprites/ColorIcons/popplio.png,Sprites/ColorIcons/brionne.png,https://github.com/Trinsic64/Heartfelt-Gold/blob/main/Docs/Guides/Evolution-Guide.md,,
 Porygon,Porygon2,Lv 30,EVO_LEVEL,Sprites/ColorIcons/porygon.png,Sprites/ColorIcons/porygon2.png,https://github.com/Trinsic64/Heartfelt-Gold/blob/main/Docs/Guides/Evolution-Guide.md,,
 Porygon2,Porygon-Z,Lv 40,EVO_LEVEL,Sprites/ColorIcons/porygon2.png,Sprites/ColorIcons/porygon_z.png,https://github.com/Trinsic64/Heartfelt-Gold/blob/main/Docs/Guides/Evolution-Guide.md,,
-Primeape,Annihilape,Form Argument · 20,EVO_FORM_ARGUMENT,Sprites/ColorIcons/primeape.png,Sprites/ColorIcons/annihilape.png,https://github.com/Trinsic64/Heartfelt-Gold/blob/main/Docs/Guides/Evolution-Guide.md,,
+Primeape,Annihilape,Form counter threshold 20,EVO_FORM_ARGUMENT,Sprites/ColorIcons/primeape.png,Sprites/ColorIcons/annihilape.png,https://github.com/Trinsic64/Heartfelt-Gold/blob/main/Docs/Guides/Evolution-Guide.md,ANNIHILAPE,PRIMEAPE
+Primeape,Annihilape,Lv 40,EVO_LEVEL,Sprites/ColorIcons/primeape.png,Sprites/ColorIcons/annihilape.png,https://github.com/Trinsic64/Heartfelt-Gold/blob/main/Docs/Guides/Evolution-Guide.md,ANNIHILAPE,PRIMEAPE
 Prinplup,Empoleon,Lv 36,EVO_LEVEL,Sprites/ColorIcons/prinplup.png,Sprites/ColorIcons/empoleon.png,https://github.com/Trinsic64/Heartfelt-Gold/blob/main/Docs/Guides/Evolution-Guide.md,,
 Psyduck,Golduck,Lv 33,EVO_LEVEL,Sprites/ColorIcons/psyduck.png,Sprites/ColorIcons/golduck.png,https://github.com/Trinsic64/Heartfelt-Gold/blob/main/Docs/Guides/Evolution-Guide.md,,
 Pumpkaboo,Gourgeist,Lv 30,EVO_LEVEL,Sprites/ColorIcons/pumpkaboo.png,Sprites/ColorIcons/gourgeist.png,https://github.com/Trinsic64/Heartfelt-Gold/blob/main/Docs/Guides/Evolution-Guide.md,,

@@ -1,8 +1,8 @@
 # Evolution guide — Pokémon Heartfelt Gold
 
-These tables are generated from the current hg-engine authoring source supplied for Heartfelt Gold. The v1.0.12 xDelta patch decoded to the audited v23 build; the changed Frillish methods match the compiled source. Encounter availability still depends on game progress.
+These tables use the v1.0.15 evolution source. Burmy can evolve into a specific Wormadam cloak with an item or into Mothim at level 20. Dipplin evolves at level 40. Primeape, Gimmighoul, and Galarian Farfetch’d gain additional level-up routes.
 
-Search for either Pokémon or an item. “Form N” is the engine's numeric form slot. Some special methods depend on engine handlers and still need in-game verification; the final column exposes the exact method constant for source checking.
+Search for either Pokémon or an item. Syrupy Apple is sold for ₽1,000 at Goldenrod Department Store’s 2F upper counter. “Form N” is the engine's numeric form slot. Some special methods depend on engine handlers and still need in-game verification; the final column exposes the exact method constant for source checking.
 
 Sources: [evolution table](../../HG-Engine/data/Evolutions.c), local `Data/Pokemon/Evolution-Methods.csv`, local `Data/Pokemon/Evolution-Policy-Changes.csv`.
 
@@ -48,8 +48,10 @@ Sources: [evolution table](../../HG-Engine/data/Evolutions.c), local `Data/Pokem
 | Bulbasaur | Ivysaur | Lv 16 | EVO_LEVEL |
 | Buneary | Lopunny | Friendship | EVO_FRIENDSHIP |
 | Bunnelby | Diggersby | Lv 20 | EVO_LEVEL |
-| Burmy | Mothim | Lv 20 · Male | EVO_LEVEL_MALE |
-| Burmy | Wormadam | Lv 20 · Female | EVO_LEVEL_FEMALE |
+| Burmy | Wormadam (Sandy Cloak) | Sun Stone | EVO_STONE |
+| Burmy | Mothim | Lv 20 | EVO_LEVEL |
+| Burmy | Wormadam (Plant Cloak) | Leaf Stone | EVO_STONE |
+| Burmy | Wormadam (Trash Cloak) | Metal Coat | EVO_STONE |
 | Cacnea | Cacturne | Lv 32 | EVO_LEVEL |
 | Capsakid | Scovillain | Fire Stone | EVO_STONE |
 | Carkol | Coalossal | Lv 34 | EVO_LEVEL |
@@ -110,7 +112,7 @@ Sources: [evolution table](../../HG-Engine/data/Evolutions.c), local `Data/Pokem
 | Dewpider | Araquanid | Lv 22 | EVO_LEVEL |
 | Diglett | Dugtrio | Lv 26 | EVO_LEVEL |
 | Diglett | Dugtrio (form 1) | Lv 26 | EVO_LEVEL |
-| Dipplin | Hydrapple | Knows Dragon Pulse | EVO_HAS_MOVE |
+| Dipplin | Hydrapple | Lv 40 | EVO_LEVEL |
 | Doduo | Dodrio | Lv 31 | EVO_LEVEL |
 | Dolliv | Arboliva | Lv 35 | EVO_LEVEL |
 | Dottler | Orbeetle | Lv 30 | EVO_LEVEL |
@@ -148,7 +150,8 @@ Sources: [evolution table](../../HG-Engine/data/Evolutions.c), local `Data/Pokem
 | Espurr | Meowstic (form 1) | Lv 25 · Female | EVO_LEVEL_FEMALE |
 | Exeggcute | Exeggutor | Leaf Stone | EVO_STONE |
 | Exeggcute | Exeggutor (form 1) | Sun Stone | EVO_STONE |
-| Farfetch’d | Sirfetch’d | 3 critical hits | EVO_AMOUNT_OF_CRITICAL_HITS |
+| Galarian Farfetch’d | Sirfetch’d | 3 critical hits in one battle | EVO_AMOUNT_OF_CRITICAL_HITS |
+| Galarian Farfetch’d | Sirfetch’d | Lv 38 | EVO_LEVEL |
 | Feebas | Milotic | Lv 34 | EVO_LEVEL |
 | Fennekin | Braixen | Lv 16 | EVO_LEVEL |
 | Ferroseed | Ferrothorn | Lv 40 | EVO_LEVEL |
@@ -184,7 +187,8 @@ Sources: [evolution table](../../HG-Engine/data/Evolutions.c), local `Data/Pokem
 | Geodude | Graveler | Lv 25 | EVO_LEVEL |
 | Geodude | Graveler (form 1) | Lv 25 | EVO_LEVEL |
 | Gible | Gabite | Lv 24 | EVO_LEVEL |
-| Gimmighoul | Gholdengo | Form Argument · 999 | EVO_FORM_ARGUMENT |
+| Gimmighoul | Gholdengo | Form counter threshold 999 | EVO_FORM_ARGUMENT |
+| Gimmighoul | Gholdengo | Lv 38 | EVO_LEVEL |
 | Girafarig | Farigiraf | Knows Twin Beam | EVO_HAS_MOVE |
 | Glameow | Purugly | Lv 38 | EVO_LEVEL |
 | Gligar | Gliscor | Razor Fang | EVO_STONE |
@@ -365,7 +369,8 @@ Sources: [evolution table](../../HG-Engine/data/Evolutions.c), local `Data/Pokem
 | Popplio | Brionne | Lv 17 | EVO_LEVEL |
 | Porygon | Porygon2 | Lv 30 | EVO_LEVEL |
 | Porygon2 | Porygon-Z | Lv 40 | EVO_LEVEL |
-| Primeape | Annihilape | Form Argument · 20 | EVO_FORM_ARGUMENT |
+| Primeape | Annihilape | Form counter threshold 20 | EVO_FORM_ARGUMENT |
+| Primeape | Annihilape | Lv 40 | EVO_LEVEL |
 | Prinplup | Empoleon | Lv 36 | EVO_LEVEL |
 | Psyduck | Golduck | Lv 33 | EVO_LEVEL |
 | Pumpkaboo | Gourgeist | Lv 30 | EVO_LEVEL |

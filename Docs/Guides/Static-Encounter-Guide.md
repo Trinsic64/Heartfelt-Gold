@@ -1,9 +1,11 @@
 # Static Encounter Guide — Pokémon Heartfelt Gold
 
-Encounter levels are verified against the Heartfelt Gold v22 Test DSPRE export and its unpacked script binaries.
+Most encounter levels were checked against the v22 Test script export. The two Suicune entries were checked against the v31 release scripts. Suicune’s event state controls availability.
 
 | **Pokémon** | **Level** | **Area** | **Parent Area** |
 | :---: | :---: | :---: | :---: |
+| **Suicune** | 40 | Burned Tower B1F | Ecruteak City |
+| **Suicune** | 65 | Route 25 | Route 25 |
 | **Regirock** | 10 | Ancient Cavern | West of Ruins of Alphs |
 | **Regice** | 10 | Ancient Cavern | West of Ruins of Alphs |
 | **Registeel** | 10 | Ancient Cavern | West of Ruins of Alphs |

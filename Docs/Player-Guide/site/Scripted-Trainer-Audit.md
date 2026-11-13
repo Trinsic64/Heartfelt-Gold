@@ -1,14 +1,14 @@
-# Scripted trainer audit for Heartfelt Gold v1.0.13
+# Scripted trainer audit for Heartfelt Gold v1.0.15
 
-Reviewed the v24 release ROM (`952374e13bd3f3a7e234ddf1b0d7e47cf54c4a366c909df5bbf1e3d44ad3a961`). All 1,139 script banks, 578 event members, and 627 map headers matched the reviewed DSPRE data. The v24 export supplied the disassembly except for Seafoam Islands bank 0015, which came from a later export whose bank matched the release byte for byte.
+Reviewed the v31 release ROM (9483b74b21d8771b0442cd2d3bb2cc176789c4902d42139b8763a796eb14f1a2). All 1,139 script banks, 578 event members, and 627 map headers matched the v28 Test DSPRE export used for the build.
 
 Found 201 battle references in the disassembly of 51 banks. All 134 distinct literal party IDs are present in the story or rematch guide. Alternate cutscene paths and shared script offsets can repeat a party reference. Bank 0953 uses variables for ordinary overworld trainers. The Victoria call in common bank 0003 has no direct map header, so her regular Goldenrod Gym placement is used.
 
 ## Progression checks
 
-- **Gym and League victories.** The v24 scripts update the level cap after Gym wins and at selected League victories. The walkthrough cards show those values. Several bonus-battle branches heal the party before the optional challenge.
+- **Gym and League victories.** The scripts update the level cap after Gym wins and at selected League victories. The walkthrough cards show those values. Several bonus-battle branches heal the party before the optional challenge.
 
-- **Team Rocket HQ.** Headers 247–249 bind B1F–B3F. The B1F alarm scripts call Grunts 223 and 224. Nine additional parties are bound to trainer objects across the three floors. Petrel is on B3F. The B2F generator-door battle calls Ariana and Grunt 499 with Lance 675 as the player’s partner. The group follows the route through the base. Optional trainer order can vary.
+- **Team Rocket HQ.** Headers 247–249 bind B1F–B3F. The B1F alarm scripts call Grunts 223 and 224. Nine additional parties are bound to trainer objects across the three floors. Petrel is on B3F. The B2F generator-door battle calls Ariana and Grunt 499, each with three Pokémon, with Lance 675 as the player’s partner. The group follows the route through the base. Optional trainer order can vary.
 - **Ecruteak Dance Theater.** Header 86 and bank 0928 bind both visits. Script 4 calls Grunt 601 on the first visit. The later branches all call Zuki → Naoko → Miki → Sayo → Kuni. The dialogue refers to completing the Dragon’s Den test and defeating Team Rocket in Goldenrod. The guide places the five battles after the eight Johto badges, before Routes 26–27.
 - **Goldenrod takeover.** The Radio Tower and Goldenrod Tunnel B2F/Warehouse trainers appear in the raid after Pryce. The scripted parties include Petrel, Silver’s three starter variants, and Archer.
 - **Silver follow-up.** Mt. Moon bank 0007 sets `0x40FC` to 1. The Dragon’s Den tag-battle trigger uses that state and its win sets it to 2. League entrance bank 0819 checks that progression and weekday values 1 or 3. These follow-up battles are grouped with the Mt. Moon stage, with the actual battle locations shown on the cards.

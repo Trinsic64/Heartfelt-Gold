@@ -196,10 +196,12 @@
 ,Route 32,Headbutt,Any,Rookidee,6,7,,,Normal tree,1,Sprites/ColorIcons/rookidee.png,data/Headbutt.c (local engine source),Keen Eye / Unnerve,Big Pecks,,,Flying Gem,Flying Gem,Sprites/Items/flying_gem.png,Sprites/Items/flying_gem.png
 ,Route 32,Headbutt,Any,Shinx,6,7,,,Normal tree,1,Sprites/ColorIcons/shinx.png,data/Headbutt.c (local engine source),Rivalry / Intimidate,Guts,,,Toxic Orb,Toxic Orb,Sprites/Items/toxic_orb.png,Sprites/Items/toxic_orb.png
 ,Route 32,Headbutt,Any,Beldum,6,7,,,Normal tree,1,Sprites/ColorIcons/beldum.png,data/Headbutt.c (local engine source),Clear Body,Light Metal,,,Metagrossite,Metagrossite,Sprites/Items/metagrossite.png,Sprites/Items/metagrossite.png
-,Route 33,Headbutt,Any,Snom,12,12,,,Normal tree,1,Sprites/ColorIcons/snom.png,data/Headbutt.c (local engine source),Shield Dust,Ice Scales,,,Babiri Berry,Babiri Berry,Sprites/Items/babiri_berry.png,Sprites/Items/babiri_berry.png
-,Route 33,Headbutt,Any,Tyrogue,12,12,,,Normal tree,2,Sprites/ColorIcons/tyrogue.png,data/Headbutt.c (local engine source),Guts / Steadfast,Vital Spirit,,,Flame Orb,Flame Orb,Sprites/Items/flame_orb.png,Sprites/Items/flame_orb.png
-,Route 33,Headbutt,Any,Burmy,12,12,,,Normal tree,1,Sprites/ColorIcons/burmy.png,data/Headbutt.c (local engine source),Shed Skin,Overcoat,,BURMY,No item,No item,,
-,Route 33,Headbutt,Any,Stantler,10,13,,,Normal tree,3,Sprites/ColorIcons/stantler.png,data/Headbutt.c (local engine source),Intimidate / Frisk,Sap Sipper,,,No item,No item,,
+,Route 33,Headbutt,Any,Burmy (Plant Cloak),12,12,,,Normal tree,1,Sprites/ColorIcons/burmy.png,data/Headbutt.c (local engine source),Shed Skin,Overcoat,,BURMY,No item,No item,,
+,Route 33,Headbutt,Any,Burmy (Sandy Cloak),12,12,,,Normal tree,1,Sprites/ColorIcons/burmy_sandy.png,data/Headbutt.c (local engine source),Shed Skin,Overcoat,,BURMY_SANDY,No item,No item,,
+,Route 33,Headbutt,Any,Burmy (Trash Cloak),12,12,,,Normal tree,1,Sprites/ColorIcons/burmy_trash.png,data/Headbutt.c (local engine source),Shed Skin,Overcoat,,BURMY_TRASH,No item,No item,,
+,Route 33,Headbutt,Any,Stantler,10,13,,,Normal tree,1,Sprites/ColorIcons/stantler.png,data/Headbutt.c (local engine source),Intimidate / Frisk,Sap Sipper,,,No item,No item,,
+,Route 33,Headbutt,Any,Snom,12,12,,,Normal tree,2,Sprites/ColorIcons/snom.png,data/Headbutt.c (local engine source),Shield Dust,Ice Scales,,,Babiri Berry,Babiri Berry,Sprites/Items/babiri_berry.png,Sprites/Items/babiri_berry.png
+,Route 33,Headbutt,Any,Tyrogue,12,12,,,Normal tree,1,Sprites/ColorIcons/tyrogue.png,data/Headbutt.c (local engine source),Guts / Steadfast,Vital Spirit,,,Flame Orb,Flame Orb,Sprites/Items/flame_orb.png,Sprites/Items/flame_orb.png
 ,Route 33,Headbutt,Any,Stantler,16,16,,,Normal tree,1,Sprites/ColorIcons/stantler.png,data/Headbutt.c (local engine source),Intimidate / Frisk,Sap Sipper,,,No item,No item,,
 ,Route 33,Headbutt,Any,Spearow,6,8,,,Normal tree,1,Sprites/ColorIcons/spearow.png,data/Headbutt.c (local engine source),Keen Eye,Sniper,,,No item,Sharp Beak,,Sprites/Items/sharp_beak.png
 ,Route 33,Headbutt,Any,Snom,6,8,,,Normal tree,3,Sprites/ColorIcons/snom.png,data/Headbutt.c (local engine source),Shield Dust,Ice Scales,,,Babiri Berry,Babiri Berry,Sprites/Items/babiri_berry.png,Sprites/Items/babiri_berry.png

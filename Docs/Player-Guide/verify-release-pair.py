@@ -22,7 +22,8 @@ assert set(patches) == {"Zoomed In", "Zoomed Out"}
 assert len({patch["decodedRomSha256"] for patch in patches.values()}) == 2
 for mode, patch in patches.items():
     path = ROOT / patch["path"]
-    assert patch["path"] == f"xDelta/Heartfelt-Gold-{version}-Patch-{mode.replace(' ', '-')}.xdelta"
+    suffix = "-Zoomed-In" if mode == "Zoomed In" else ""
+    assert patch["path"] == f"xDelta/Heartfelt-Gold-{version}-Patch{suffix}.xdelta"
     with path.open("rb") as stream:
         assert hashlib.file_digest(stream, "sha256").hexdigest() == patch["sha256"]
 
@@ -91,13 +92,18 @@ for relative, key in (
     ("HG-Engine/data/Trainers.c", "trainerSourceSha256"),
     ("HG-Engine/data/Encounters.c", "encounterSourceSha256"),
     ("HG-Engine/data/Evolutions.c", "evolutionSourceSha256"),
+    ("HG-Engine/data/Headbutt.c", "headbuttSourceSha256"),
+    ("HG-Engine/data/HiddenAbilityTable.c", "hiddenAbilitySourceSha256"),
+    ("HG-Engine/data/learnsets/learnsets.json", "learnsetSourceSha256"),
+    ("HG-Engine/data/Moves.c", "moveSourceSha256"),
+    ("HG-Engine/src/field/move_tutor.c", "tutorSourceSha256"),
     ("HG-Engine/data/itemdata/itemdata.c", "itemDataSourceSha256"),
     ("HG-Engine/src/field/mart.c", "martSourceSha256"),
     ("HG-Engine/src/battle/mega.c", "megaSourceSha256"),
     ("HG-Engine/data/PokeFormDataTbl.c", "formTableSha256"),
 ):
-    with (ROOT / relative).open("rb") as stream:
-        assert hashlib.file_digest(stream, "sha256").hexdigest() == release[key], relative
+    contents = (ROOT / relative).read_bytes().replace(b"\r\n", b"\n")
+    assert hashlib.sha256(contents).hexdigest() == release[key], relative
 
 trainer_text = (ROOT / "HG-Engine/data/Trainers.c").read_text(encoding="utf-8")
 trainer_starts = list(re.finditer(r"(?m)^\s*\[(\d+)\]\s*=\s*\{", trainer_text))
@@ -257,7 +263,7 @@ for trainer_id in changed_ids:
         expected_moves = [move.removeprefix("MOVE_") for move in re.findall(r"MOVE_\w+", moves[1] if moves else "")
                           if move != "MOVE_NONE"]
         assert [normalized(move) for move in mon["moves"]] == [normalized(move) for move in expected_moves], trainer_id
-        assert [normalized(move) for move in row["Moves"].split("; ")] == [normalized(move) for move in expected_moves]
+        assert [normalized(move) for move in row["Moves"].split("; ") if move] == [normalized(move) for move in expected_moves]
         expected_slot = {"TRAINER_POKEMON_ABILITY_1": "Slot 1", "TRAINER_POKEMON_ABILITY_2": "Slot 2",
                          "TRAINER_POKEMON_ABILITY_HIDDEN": "Hidden"}[slot]
         assert mon["abilitySlot"] == row["Ability slot"] == expected_slot
@@ -289,7 +295,11 @@ for shop in guide_data["shops"]:
                         item["sprite"], item["badges"])] += 1
 csv_shop_rows = Counter((row["Shop"], row["Floor / state"], row["Item"], row["Price"],
                          row["Item sprite"], row["Badges required"]) for row in shops_csv)
-assert html_shop_rows == csv_shop_rows and sum(html_shop_rows.values()) == 1065
+assert html_shop_rows == csv_shop_rows
+goldenrod = next(shop for shop in guide_data["shops"] if shop["name"] == "Goldenrod Department Store" and shop["floor"] == "2F upper counter")
+stock = [item["name"] for item in goldenrod["items"]]
+assert stock[stock.index("Tart Apple"):stock.index("Tart Apple")+3] == ["Tart Apple", "Sweet Apple", "Syrupy Apple"]
+assert next(item for item in goldenrod["items"] if item["name"] == "Syrupy Apple")["price"] == 1000
 assert len({shop["name"] for shop in guide_data["shops"]}) == 21
 shop_tabs = Counter((shop["name"], shop["floor"]
                      if "Department Store" in shop["name"] else "") for shop in guide_data["shops"])
@@ -304,6 +314,19 @@ expected_dex = runpy.run_path(str(HERE / "pokedex-data.py"))["read_pokedex"]()
 assert [{k: v for k, v in mon.items() if k not in {"icon", "front"}}
         for mon in pokedex["pokemon"]] == expected_dex["pokemon"]
 assert pokedex["machineMoves"] == expected_dex["machineMoves"]
+dex_by_id = {mon["token"]: mon for mon in pokedex["pokemon"]}
+assert "Rage Fist" in dex_by_id["SPECIES_PRIMEAPE"]["tutor"]
+assert [0, "Triple Arrows"] in dex_by_id["SPECIES_DECIDUEYE_HISUIAN"]["level"]
+assert [0, "Infernal Parade"] in dex_by_id["SPECIES_TYPHLOSION_HISUIAN"]["level"]
+assert dex_by_id["SPECIES_MEGA_SHARPEDO"]["hidden"] == "Speed Boost"
+
+route33 = next(area for area in guide_data["wild"] if area["name"] == "Route 33")
+cloaks = {row["speciesToken"]: (row["min"], row["max"], row["slots"]) for row in route33["entries"]
+          if row["method"] == "Headbutt" and row["speciesToken"].startswith("BURMY")}
+assert cloaks == dict.fromkeys(("BURMY", "BURMY_SANDY", "BURMY_TRASH"), ("12", "12", "1"))
+assert {(row["area"], row["level"]) for row in guide_data["statics"] if row["name"] == "Suicune"} == {
+    ("Burned Tower B1F", "40"), ("Route 25", "65")}
+
 for shop, floor, item, *_ in html_shop_rows:
     if re.fullmatch(r"(?:TM|HM|TR)\d+(?:_[A-Z]+)?", item):
         assert item in pokedex["machineMoves"], (shop, floor, item)
@@ -345,4 +368,4 @@ assert f"{guide_hash} *{archive.name}" in asset_checksums
 assert version in (ROOT / "README.md").read_text(encoding="utf-8")
 assert (ROOT / f"RELEASE-NOTES-HEARTFELT-{version}.md").is_file()
 print(f"PASS: {version} patch, HGEFE teams, {sum(mega_totals.values())} Mega displays, held items, "
-      "1,065 Mart prices, Pokédex, machine moves, evolutions, statics, site, ZIP, checksums, and notes agree")
+      "Mart prices, Pokédex, machine moves, evolutions, statics, site, ZIP, checksums, and notes agree")

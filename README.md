@@ -17,7 +17,7 @@ There are still some awkward or glitchy tiles, but the project is playable and r
 
 ## Player guide
 
-The [v1.0.13 interactive guide](https://trinsic64.github.io/Heartfelt-Gold/) opens in a browser. For offline use, [download the v1.0.13 offline ZIP](https://github.com/Trinsic64/Heartfelt-Gold/releases/download/heartfelt-v1.0.13/Heartfelt-Gold-Player-Guide-Offline.zip), extract it, and double-click `index.html`. The pages include their sprites and work without an account or installation. [Guide details and source notes](Docs/Player-Guide/README.md).
+The [v1.0.15 interactive guide](https://trinsic64.github.io/Heartfelt-Gold/) opens in a browser. For offline use, [download the v1.0.15 offline ZIP](https://github.com/Trinsic64/Heartfelt-Gold/releases/download/heartfelt-v1.0.15/Heartfelt-Gold-Player-Guide-Offline.zip), extract it, and double-click `index.html`. The pages include their sprites and work without an account or installation. [Guide details and source notes](Docs/Player-Guide/README.md).
 
 ## Download and play
 
@@ -127,7 +127,7 @@ The map archive hashes are recorded in [checksums.sha256](checksums.sha256).
 
 ## Player guides
 
-The [Heartfelt Gold player-guide index](Docs/Guides/README.md) links to current wild encounter, trainer, evolution, static encounter, and hg-engine feature guides. The v1.0.13 HTML and offline ZIP cover both camera variants listed in [release.json](Docs/Player-Guide/release.json); wild held items follow the updated `Species.c` snapshot and static levels follow the v22 Test script audit.
+The [Heartfelt Gold player-guide index](Docs/Guides/README.md) links to current wild encounter, trainer, evolution, static encounter, and hg-engine feature guides. The v1.0.15 HTML and offline ZIP cover both camera variants listed in [release.json](Docs/Player-Guide/release.json); the guide includes updated learnsets, abilities, evolutions, shop stock, Route 33 Headbutt encounters, and trainer parties.
 
 
 ## Maps for creators

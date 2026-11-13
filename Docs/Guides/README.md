@@ -1,8 +1,8 @@
 # Pokémon Heartfelt Gold player guides
 
-For the v1.0.13 walkthrough and searchable guides, [open the interactive player guide](https://trinsic64.github.io/Heartfelt-Gold/). To use it locally, [download the v1.0.13 offline ZIP](https://github.com/Trinsic64/Heartfelt-Gold/releases/download/heartfelt-v1.0.13/Heartfelt-Gold-Player-Guide-Offline.zip), extract it, and double-click `index.html`. Keep the extracted files together for the separate rematch page. [Source and review notes](../Player-Guide/README.md).
+For the v1.0.15 walkthrough and searchable guides, [open the interactive player guide](https://trinsic64.github.io/Heartfelt-Gold/). To use it locally, [download the v1.0.15 offline ZIP](https://github.com/Trinsic64/Heartfelt-Gold/releases/download/heartfelt-v1.0.15/Heartfelt-Gold-Player-Guide-Offline.zip), extract it, and double-click `index.html`. Keep the extracted files together for the separate rematch page. [Source and review notes](../Player-Guide/README.md).
 
-These guides describe the current Heartfelt Gold authoring data and contain spoilers. Trainer parties reflect the v24 hg-engine build used by both v1.0.13 camera variants. The updated trainer guide and HTML walkthrough cover the revised levels, teams, and Gym and League level caps. The evolution, Mart, and wild held-item data carry forward from v1.0.12. Static encounter levels follow the reviewed v22 Test script export.
+These guides cover both v1.0.15 camera variants and contain spoilers. The interactive Pokédex uses the v31 move and ability tables. The walkthrough and CSVs include current trainer parties, evolution routes, Route 33 Headbutt encounters, and Goldenrod Department Store stock. The Suicune entries were checked against the v31 release.
 
 | Guide | Contents |
 | --- | --- |

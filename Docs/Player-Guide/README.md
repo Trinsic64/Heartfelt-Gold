@@ -1,12 +1,12 @@
-# Heartfelt Gold player guide — v1.0.13
+# Heartfelt Gold player guide — v1.0.15
 
 **For players:** [Open the guide online](https://trinsic64.github.io/Heartfelt-Gold/). It includes the story walkthrough, Pokédex, trainer chapters, wild encounters, shops, item locations, evolutions, and scripted encounters. [Separate rematch guide](https://trinsic64.github.io/Heartfelt-Gold/Rematch-Trainer-Guide.html).
 
-**For offline play:** Download the ZIP, extract it, and double-click `index.html`. For rematches, open `Rematch-Trainer-Guide.html` in the same folder. Both pages include their sprites, styles, and code and work offline. [Download the v1.0.13 offline ZIP](https://github.com/Trinsic64/Heartfelt-Gold/releases/download/heartfelt-v1.0.13/Heartfelt-Gold-Player-Guide-Offline.zip).
+**For offline play:** Download the ZIP, extract it, and double-click `index.html`. For rematches, open `Rematch-Trainer-Guide.html` in the same folder. Both pages include their sprites, styles, and code and work offline. [Download the v1.0.15 offline ZIP](https://github.com/Trinsic64/Heartfelt-Gold/releases/download/heartfelt-v1.0.15/Heartfelt-Gold-Player-Guide-Offline.zip).
 
 The standalone HTML also opens locally by itself. To use it from GitHub, download the file and open it in your browser. [Standalone index.html](site/index.html).
 
-This guide covers the Zoomed In and Zoomed Out v1.0.13 patches in [release.json](release.json). The patches decoded against the clean USA source and matched their v24 builds byte for byte. The walkthrough, trainer pages, and CSVs use the 59 changed parties from the compiled trainer archives and matching [Trainers.c](../../HG-Engine/data/Trainers.c). The Cherrygrove Mart and Frillish evolution data carry forward from v1.0.12. Wild held items use the updated [Species.c snapshot](../../HG-Engine/data/Species.c); the 89 scripted encounters use the reviewed v22 Test levels. Ground pickups were audited from the named Release-v2 event extraction, with two unresolved visible objects. Scripted encounters and listed placements do not by themselves establish reachability or unlock conditions; individual guide rows have not all been checked in gameplay. See [source and review notes](site/README-CSV-Review.md) and the [item audit](site/Release-v22-Item-Audit.md).
+This guide covers both v1.0.15 camera patches in [release.json](release.json). Both reproduce their v31 builds byte for byte. The walkthrough and trainer CSVs use the revised Ariana, Team Rocket Grunt, and Falkner bonus parties. The Pokédex uses the current move pools, expanded tutor roster, and updated hidden abilities. The guide also lists the revised evolutions, all three Burmy cloaks in Route 33 Headbutt trees, Syrupy Apple at Goldenrod Department Store, and the two Suicune script entries. Ground pickups retain the reviewed v22 evidence. [Source and review notes](site/README-CSV-Review.md).
 
 The first Elite Four and Champion run appears after eight badges. The second run and its bonus battles have their own postgame chapter after Gym #16 Blue; the five second-run teams are included on the main trainer page rather than the generic rematch page.
 

@@ -5141,12 +5141,12 @@ const HeadbuttArchiveData __data =
         .specialTreeCount = 0,
         .normalSlots =
         {
-            { SPECIES_SNOM, 12, 12 },
-            { SPECIES_TYROGUE, 12, 12 },
             { SPECIES_BURMY, 12, 12 },
+            { SPECIES_BURMY_SANDY, 12, 12 },
+            { SPECIES_BURMY_TRASH, 12, 12 },
             { SPECIES_STANTLER, 10, 13 },
-            { SPECIES_STANTLER, 10, 13 },
-            { SPECIES_STANTLER, 10, 13 },
+            { SPECIES_SNOM, 12, 12 },
+            { SPECIES_SNOM, 12, 12 },
             { SPECIES_TYROGUE, 12, 12 },
             { SPECIES_STANTLER, 16, 16 },
             { SPECIES_SPEAROW, 6, 8 },

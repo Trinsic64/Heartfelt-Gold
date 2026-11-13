@@ -28,4 +28,4 @@ SHA-256  65f02a56842b75aa92d775d56d657a56fe3fa993550b04dc20704ab82d760105
 
 Both patches reproduce the audited v31 builds byte for byte. Both builds passed boot and continue checks in DeSmuME with a copied save and differ only in Camera 0.
 
-The [online player guide](https://trinsic64.github.io/Heartfelt-Gold/) documents v1.0.13.
+The player guide covers v1.0.15. [Open the online guide](https://trinsic64.github.io/Heartfelt-Gold/) · [Download the offline guide](https://github.com/Trinsic64/Heartfelt-Gold/releases/download/heartfelt-v1.0.15/Heartfelt-Gold-Player-Guide-Offline.zip).

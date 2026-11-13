@@ -230,6 +230,7 @@
         ${learnsetSection("Level up", ["Level", "Move"], mon.level.map(([level, move]) => [level === 0 ? "On evolution" : level, move]), true)}
         ${learnsetSection("TMs and HMs", ["Machine", "Move"], machines.map(code => [code, machineMoves[code]]))}
         ${learnsetSection("Egg moves", ["Move"], mon.egg.map(move => [move]))}
+        <p>Choose a Pokémon at one of Blackthorn City’s three free move tutors to see its compatible moves.</p>
         ${learnsetSection("Tutor moves", ["Move"], mon.tutor.map(move => [move]))}
       </section>`;
   }
